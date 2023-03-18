@@ -10,13 +10,12 @@ namespace model
 {
     public class ConexionBD
     {
-        private static SqlConnection cn;
+        private static readonly string ConnectionString = "Data Source=.;Initial Catalog=SISTEMA_ERP;Integrated Security=True";
         public static async Task<bool> AbrirConexionAsync()
         {
             try
             {
-                cn = new SqlConnection();
-                cn.ConnectionString = "Data Source=.;Initial Catalog=SISTEMA_ERP;Integrated Security=True";
+                using SqlConnection cn = new SqlConnection(ConnectionString);
                 await cn.OpenAsync();
                 return true;
             }
@@ -30,7 +29,8 @@ namespace model
         {
             try
             {
-                if(cn != null && cn.State == System.Data.ConnectionState.Open)
+                using SqlConnection cn = new SqlConnection(ConnectionString);
+                if (cn.State == System.Data.ConnectionState.Open)
                 {
                     await cn.CloseAsync();
                 }

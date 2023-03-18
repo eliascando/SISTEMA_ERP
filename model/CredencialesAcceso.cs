@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
 
 namespace model
 {
@@ -30,5 +31,39 @@ namespace model
         public string Usuario { get => usuario; set => usuario = value; }
         public string Password { get => password; set => password = value; }
         public bool Usuario_activo { get => usuario_activo; set => usuario_activo = value; }
+
+        public String EncriptarPassword(String password)
+        {
+            string hashedpassword;
+            using (var sha256 = SHA256.Create())
+            {
+                byte[] hash = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                hashedpassword = Convert.ToBase64String(hash);
+            }
+            return hashedpassword;
+        }
+        public async Task<bool> ValidarCredenciales(CredencialesAcceso credencialesAcceso)
+        {
+            bool isValidUser = false;
+            try
+            {
+                if(await ConexionBD.AbrirConexionAsync())
+                {
+
+                    isValidUser = true;
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("ERROR!: " + ex);
+            }
+            finally
+            {
+                await ConexionBD.CerrarConexionAsync();
+            }
+            
+            return isValidUser; 
+        }
+
     }
 }

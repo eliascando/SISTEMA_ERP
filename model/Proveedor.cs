@@ -39,5 +39,24 @@ namespace model
         public string Direccion { get => direccion; set => direccion = value; }
         public DateOnly Fecha_ingreso { get => fecha_ingreso; set => fecha_ingreso = value; }
         public bool Proveedor_activo { get => proveedor_activo; set => proveedor_activo = value; }
+
+        public async Task RegistrarUsuario(Proveedor proveedor)
+        {
+            try
+            {
+                if (await ConexionBD.AbrirConexionAsync())
+                {
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                await ConexionBD.CerrarConexionAsync();
+            }
+        }
     }
 }

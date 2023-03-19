@@ -33,24 +33,5 @@ namespace model
         public string Nombre { get => nombre; set => nombre = value; }
         public string Apellido { get => apellido; set => apellido = value; }
         public byte[] Imagen { get => imagen; set => imagen = value; }
-
-        public async Task RegistrarUsuario(Usuario usuario)
-        {
-            try 
-            {
-                if (await ConexionBD.AbrirConexionAsync())
-                {
-
-                }
-            }
-            catch(Exception ex)
-            {
-
-            }
-            finally
-            {
-                await ConexionBD.CerrarConexionAsync();
-            }
-        }
     }
 }

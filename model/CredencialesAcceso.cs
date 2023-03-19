@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace model
 {
@@ -13,6 +15,7 @@ namespace model
         private string usuario;
         private string password;
         private bool usuario_activo;
+    
 
         public CredencialesAcceso()
         {
@@ -49,13 +52,37 @@ namespace model
             {
                 if(await ConexionBD.AbrirConexionAsync())
                 {
-
-                    isValidUser = true;
+                    var cmd = new SqlCommand("ValidarCredenciales",ConexionBD.cn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@id_usuario", credencialesAcceso.id_usuario);
+                    cmd.Parameters.AddWithValue("@password",EncriptarPassword(credencialesAcceso.password));
+                    SqlParameter esValidoParam = new SqlParameter("@EsValido", SqlDbType.Bit);
+                    esValidoParam.Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add(esValidoParam);
+                    SqlParameter idRolParam = new SqlParameter("@IdRol", SqlDbType.Int);
+                    idRolParam.Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add(idRolParam);
+                    await cmd.ExecuteNonQueryAsync();
+                    
+                    isValidUser = (bool)esValidoParam.Value;    
+                    if (isValidUser)
+                    {
+                        MessageBox.Show("Credenciales Válidas!");
+                        GlobalVariables.id_rol = (int)idRolParam.Value;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Credenciales No Válidas!");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("ERROR!: Conexión a la base de datos");
                 }
             }
             catch(Exception ex)
             {
-                MessageBox.Show("ERROR!: " + ex);
+                MessageBox.Show("ERROR DE EXCEPCIÓN!: " + ex);
             }
             finally
             {

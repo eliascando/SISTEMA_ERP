@@ -24,13 +24,14 @@ namespace model
         private DateTime fecha_ingreso;
         private double salario;
         private bool personal_activo;
+        private bool usuario_asignado;
 
         public Personal()
         {
 
         }
 
-        public Personal(string id, string nombre, string apellido, string telefono, string correo, string direccion, string cargo, DateTime fecha_nacimiento, string sexo, DateTime fecha_ingreso, double salario, bool personal_activo)
+        public Personal(string id, string nombre, string apellido, string telefono, string correo, string direccion, string cargo, DateTime fecha_nacimiento, string sexo, DateTime fecha_ingreso, double salario, bool personal_activo, bool usuario_asignado)
         {
             Id = id;
             Nombre = nombre;
@@ -44,6 +45,7 @@ namespace model
             Fecha_ingreso = fecha_ingreso;
             Salario = salario;
             Personal_activo = personal_activo;
+            Usuario_asignado = usuario_asignado;
         }
 
         public string Id { get => id; set => id = value; }
@@ -58,6 +60,7 @@ namespace model
         public DateTime Fecha_ingreso { get => fecha_ingreso; set => fecha_ingreso = value; }
         public double Salario { get => salario; set => salario = value; }
         public bool Personal_activo { get => personal_activo; set => personal_activo = value; }
+        public bool Usuario_asignado { get => usuario_asignado; set => usuario_asignado = value; }
 
         public async Task<bool> RegistrarPersonal(Personal personal)
         {
@@ -79,7 +82,8 @@ namespace model
                     cmd.Parameters.AddWithValue("@direccion_personal", personal.Direccion);
                     cmd.Parameters.AddWithValue("@fecha_ingreso", personal.Fecha_ingreso);
                     cmd.Parameters.AddWithValue("@salario_mensual", personal.Salario);
-                    cmd.Parameters.AddWithValue("@personal_activo", personal.Personal_activo);              
+                    cmd.Parameters.AddWithValue("@personal_activo", personal.Personal_activo);
+                    cmd.Parameters.AddWithValue("@usuario_asignado", personal.Usuario_asignado);
                     SqlParameter registroExitosoParam = new SqlParameter("@RegistroExitoso", SqlDbType.Bit);
                     registroExitosoParam.Direction = ParameterDirection.Output;
                     cmd.Parameters.Add(registroExitosoParam);

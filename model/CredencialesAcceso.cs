@@ -35,7 +35,7 @@ namespace model
         public string Password { get => password; set => password = value; }
         public bool Usuario_activo { get => usuario_activo; set => usuario_activo = value; }
 
-        public String EncriptarPassword(String password)
+        public static String EncriptarPassword(String password)
         {
             string hashedpassword;
             using (var sha256 = SHA256.Create())

@@ -24,6 +24,7 @@ namespace control
             personal.Fecha_ingreso = ingreso;
             personal.Salario = Double.Parse(salario);
             personal.Personal_activo = true;
+            personal.Usuario_asignado = false;
 
             return await personal.RegistrarPersonal(personal);
         }

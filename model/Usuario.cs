@@ -36,7 +36,7 @@ namespace model
         public string Apellido { get => apellido; set => apellido = value; }
         public byte[] Imagen { get => imagen; set => imagen = value; }
 
-        public async Task<bool> RegistrarUsuario(Usuario usuario, CredencialesAcceso credenciales)
+        public async Task<bool> RegistrarUsuario(Personal personal, Usuario usuario, CredencialesAcceso credenciales)
         {
             bool registroExitoso = false;
             try
@@ -46,7 +46,7 @@ namespace model
                     var cmd = new SqlCommand("RegistrarUsuario", ConexionBD.cn);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@id_usuario", usuario.Id);
-                    cmd.Parameters.AddWithValue("@id_rol_usuario", usuario.rol_usuario.Id);
+                    cmd.Parameters.AddWithValue("@nombre_rol", personal.Cargo);
                     cmd.Parameters.AddWithValue("@nombre_usuario", usuario.Nombre);
                     cmd.Parameters.AddWithValue("@apellido_usuario", usuario.Apellido);
                     cmd.Parameters.AddWithValue("@imagen_usuario", usuario.Imagen);

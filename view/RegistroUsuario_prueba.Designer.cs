@@ -91,6 +91,7 @@
             Controls.Add(label1);
             Controls.Add(datagridPersonalSinUsuario);
             Name = "RegistroUsuario_prueba";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "RegistroUsuario_prueba";
             Load += RegistroUsuario_prueba_Load;
             ((System.ComponentModel.ISupportInitialize)datagridPersonalSinUsuario).EndInit();

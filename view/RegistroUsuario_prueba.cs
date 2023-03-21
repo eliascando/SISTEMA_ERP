@@ -25,10 +25,15 @@ namespace view
 
         private void button1_Click(object sender, EventArgs e)
         {
+            RegistroDatosUsuario_prueba registro = new RegistroDatosUsuario_prueba(this);
             if (datagridPersonalSinUsuario.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = datagridPersonalSinUsuario.SelectedRows[0];
-                //string id = selectedRow.Cells[0].Value.ToString();
+                registro.lblIdCedula.Text = selectedRow.Cells[0].Value.ToString();
+                registro.blbNombresPersonal.Text = selectedRow.Cells[1].Value.ToString();
+                registro.lblApellidosPersonal.Text = selectedRow.Cells[2].Value.ToString();
+                registro.lblCargoPersonal.Text = selectedRow.Cells[3].Value.ToString();
+                registro.Show();
             }
         }
         public async Task CargarTabla()

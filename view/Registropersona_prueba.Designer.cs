@@ -180,38 +180,36 @@
             txtTelefono.Location = new Point(142, 183);
             txtTelefono.Name = "txtTelefono";
             txtTelefono.Size = new Size(164, 23);
-            txtTelefono.TabIndex = 14;
+            txtTelefono.TabIndex = 18;
             // 
             // txtCorreo
             // 
             txtCorreo.Location = new Point(142, 210);
             txtCorreo.Name = "txtCorreo";
             txtCorreo.Size = new Size(164, 23);
-            txtCorreo.TabIndex = 15;
+            txtCorreo.TabIndex = 19;
             // 
             // txtDireccion
             // 
             txtDireccion.Location = new Point(142, 234);
             txtDireccion.Name = "txtDireccion";
             txtDireccion.Size = new Size(164, 23);
-            txtDireccion.TabIndex = 16;
+            txtDireccion.TabIndex = 20;
             // 
             // txtSalario
             // 
             txtSalario.Location = new Point(142, 290);
             txtSalario.Name = "txtSalario";
             txtSalario.Size = new Size(164, 23);
-            txtSalario.TabIndex = 17;
+            txtSalario.TabIndex = 22;
             // 
             // cmbCargo
             // 
             cmbCargo.FormattingEnabled = true;
-            cmbCargo.Items.AddRange(new object[] { "RR HH", "Administrador Bodega", "Administrador Caja", "Asistente" });
             cmbCargo.Location = new Point(142, 102);
             cmbCargo.Name = "cmbCargo";
             cmbCargo.Size = new Size(164, 23);
-            cmbCargo.TabIndex = 18;
-            cmbCargo.Text = "Elegir cargo...";
+            cmbCargo.TabIndex = 14;
             // 
             // dateNacimiento
             // 
@@ -219,7 +217,7 @@
             dateNacimiento.Location = new Point(142, 130);
             dateNacimiento.Name = "dateNacimiento";
             dateNacimiento.Size = new Size(164, 23);
-            dateNacimiento.TabIndex = 19;
+            dateNacimiento.TabIndex = 15;
             // 
             // dateIngreso
             // 
@@ -227,7 +225,7 @@
             dateIngreso.Location = new Point(142, 260);
             dateIngreso.Name = "dateIngreso";
             dateIngreso.Size = new Size(164, 23);
-            dateIngreso.TabIndex = 20;
+            dateIngreso.TabIndex = 21;
             // 
             // rbtnSexoF
             // 
@@ -235,7 +233,7 @@
             rbtnSexoF.Location = new Point(142, 158);
             rbtnSexoF.Name = "rbtnSexoF";
             rbtnSexoF.Size = new Size(78, 19);
-            rbtnSexoF.TabIndex = 21;
+            rbtnSexoF.TabIndex = 16;
             rbtnSexoF.TabStop = true;
             rbtnSexoF.Text = "Femenino";
             rbtnSexoF.UseVisualStyleBackColor = true;
@@ -246,7 +244,7 @@
             rbtnSexoM.Location = new Point(226, 158);
             rbtnSexoM.Name = "rbtnSexoM";
             rbtnSexoM.Size = new Size(80, 19);
-            rbtnSexoM.TabIndex = 22;
+            rbtnSexoM.TabIndex = 17;
             rbtnSexoM.TabStop = true;
             rbtnSexoM.Text = "Masculino";
             rbtnSexoM.UseVisualStyleBackColor = true;
@@ -291,7 +289,9 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "Registropersonal_prueba";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Registropersonal_prueba";
+            Load += Registropersonal_prueba_Load;
             ResumeLayout(false);
             PerformLayout();
         }

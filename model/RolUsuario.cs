@@ -37,6 +37,7 @@ namespace model
                 {
                     var cmd = new SqlCommand("ObtenerRoles", ConexionBD.cn);
                     cmd.CommandType = CommandType.StoredProcedure;
+                    roles.Insert(0, new RolUsuario(-1, "Elegir cargo..."));
                     using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
                     {
                         while(await reader.ReadAsync())

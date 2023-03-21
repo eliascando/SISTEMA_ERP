@@ -9,6 +9,10 @@ namespace control
 {
     public class RolUsuarioCtrl
     {
-
+        public async Task<List<RolUsuario>>ObtenerRolesCtrl()
+        {
+            RolUsuario rolUsuario = new RolUsuario();
+            return await rolUsuario.ObtenerRoles();
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace view
 {
-    partial class VentanaPrincipal
+    partial class VentanaPrincipal_prueba
     {
         /// <summary>
         /// Required designer variable.
@@ -30,6 +30,7 @@
         {
             button1 = new Button();
             button2 = new Button();
+            lblNombreUsuario = new Label();
             SuspendLayout();
             // 
             // button1
@@ -52,21 +53,35 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
-            // VentanaPrincipal
+            // lblNombreUsuario
+            // 
+            lblNombreUsuario.AutoSize = true;
+            lblNombreUsuario.Font = new Font("Montserrat", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblNombreUsuario.Location = new Point(12, 9);
+            lblNombreUsuario.Name = "lblNombreUsuario";
+            lblNombreUsuario.Size = new Size(192, 25);
+            lblNombreUsuario.TabIndex = 2;
+            lblNombreUsuario.Text = "NombresUsuario";
+            // 
+            // VentanaPrincipal_prueba
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(lblNombreUsuario);
             Controls.Add(button2);
             Controls.Add(button1);
-            Name = "VentanaPrincipal";
+            Name = "VentanaPrincipal_prueba";
             Text = "VentanaPrincipal";
+            Load += VentanaPrincipal_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Button button1;
         private Button button2;
+        private Label lblNombreUsuario;
     }
 }

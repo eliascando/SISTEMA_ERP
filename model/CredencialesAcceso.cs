@@ -52,32 +52,27 @@ namespace model
             {
                 if(await ConexionBD.AbrirConexionAsync())
                 {
-                    var cmd = new SqlCommand("ValidarCredenciales",ConexionBD.cn);
+                    var cmd = new SqlCommand("ValidarCredenciales", ConexionBD.cn);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@id_usuario", credencialesAcceso.id_usuario);
-                    cmd.Parameters.AddWithValue("@password",EncriptarPassword(credencialesAcceso.password));
+                    cmd.Parameters.AddWithValue("@id_usuario", credencialesAcceso.Usuario);
+                    cmd.Parameters.AddWithValue("@password",EncriptarPassword(credencialesAcceso.Password));
                     SqlParameter esValidoParam = new SqlParameter("@EsValido", SqlDbType.Bit);
                     esValidoParam.Direction = ParameterDirection.Output;
                     cmd.Parameters.Add(esValidoParam);
+                    SqlParameter nombreParam = new SqlParameter("@NombreCompleto", SqlDbType.NVarChar,200);
+                    nombreParam.Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add(nombreParam);
                     SqlParameter idRolParam = new SqlParameter("@IdRol", SqlDbType.Int);
                     idRolParam.Direction = ParameterDirection.Output;
                     cmd.Parameters.Add(idRolParam);
                     await cmd.ExecuteNonQueryAsync();
                     
-                    isValidUser = (bool)esValidoParam.Value;    
+                    isValidUser = (bool)esValidoParam.Value;
                     if (isValidUser)
                     {
-                        MessageBox.Show("Credenciales Válidas!");
                         GlobalVariables.id_rol = (int)idRolParam.Value;
+                        GlobalVariables.usuario = (string)nombreParam.Value;
                     }
-                    else
-                    {
-                        MessageBox.Show("Credenciales No Válidas!");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("ERROR!: Conexión a la base de datos");
                 }
             }
             catch(Exception ex)

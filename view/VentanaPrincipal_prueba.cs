@@ -1,4 +1,5 @@
-﻿using System;
+﻿using model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,9 +11,9 @@ using System.Windows.Forms;
 
 namespace view
 {
-    public partial class VentanaPrincipal : Form
+    public partial class VentanaPrincipal_prueba : Form
     {
-        public VentanaPrincipal()
+        public VentanaPrincipal_prueba()
         {
             InitializeComponent();
         }
@@ -27,6 +28,11 @@ namespace view
         {
             RegistroUsuario_prueba registroUsuario = new RegistroUsuario_prueba();
             registroUsuario.ShowDialog();
+        }
+
+        private void VentanaPrincipal_Load(object sender, EventArgs e)
+        {
+            lblNombreUsuario.Text = GlobalVariables.usuario;
         }
     }
 }

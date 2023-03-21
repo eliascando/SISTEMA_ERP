@@ -107,9 +107,6 @@ namespace model
             DataTable personalDT = new DataTable();
             try
             {
-                //personalDT.Columns.Add("ID");
-                //personalDT.Columns.Add("Nombres");
-                //personalDT.Columns.Add("Apellidos");
                 if(await ConexionBD.AbrirConexionAsync())
                 {                   
                     var cmd = new SqlCommand("ObtenerPersonalSinUsuario", ConexionBD.cn);

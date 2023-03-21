@@ -102,5 +102,31 @@ namespace model
             }
             return registroExitoso;
         }
+        public async Task<DataTable> ObtenerPersonalSinUsuario()
+        {
+            DataTable personalDT = new DataTable();
+            try
+            {
+                //personalDT.Columns.Add("ID");
+                //personalDT.Columns.Add("Nombres");
+                //personalDT.Columns.Add("Apellidos");
+                if(await ConexionBD.AbrirConexionAsync())
+                {                   
+                    var cmd = new SqlCommand("ObtenerPersonalSinUsuario", ConexionBD.cn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(personalDT);
+                }
+
+            }catch(Exception ex)
+            {
+                MessageBox.Show("ERROR DE EXCEPCIÓN!: " + ex);
+            }
+            finally
+            {
+                await ConexionBD.CerrarConexionAsync();
+            }
+            return personalDT;
+        }
     }
 }

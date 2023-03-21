@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using control;
-using model;
 
 namespace view
 {
@@ -49,10 +48,8 @@ namespace view
 
         private async void Registropersonal_prueba_Load(object sender, EventArgs e)
         {
-            List<RolUsuario> roles = new List<RolUsuario>();
             RolUsuarioCtrl rolUsuarioCtrl = new RolUsuarioCtrl();
-            roles = await rolUsuarioCtrl.ObtenerRolesCtrl();
-            cmbCargo.DataSource = roles;
+            cmbCargo.DataSource = await rolUsuarioCtrl.ObtenerRolesCtrl();
             cmbCargo.DisplayMember = "Nombre";
             cmbCargo.ValueMember = "Id";
             cmbCargo.SelectedValue = -1;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -27,6 +28,11 @@ namespace control
             personal.Usuario_asignado = false;
 
             return await personal.RegistrarPersonal(personal);
+        }
+        public async Task<DataTable>ObtenerPersonalSinUsuarioCtrl()
+        {
+            Personal personal = new Personal();
+            return await personal.ObtenerPersonalSinUsuario();
         }
     }
 }

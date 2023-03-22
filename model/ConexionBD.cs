@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace model
 {
@@ -16,7 +17,8 @@ namespace model
             try
             {
                 cn = new SqlConnection();
-                cn.ConnectionString = "Data Source=.;Initial Catalog=SISTEMA_ERP;Integrated Security=True";
+                string connectionString = ConfigurationManager.ConnectionStrings["conexionsql"].ConnectionString;
+                cn.ConnectionString = connectionString;
                 await cn.OpenAsync();
                 return true;
             }

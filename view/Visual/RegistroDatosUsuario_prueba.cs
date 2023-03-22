@@ -13,6 +13,7 @@ namespace view
 {
     public partial class RegistroDatosUsuario_prueba : Form
     {
+        PersonalCtrl personalCtrl = new PersonalCtrl();
         private RegistroUsuario_prueba registroForm;
         private byte[] imageData;
         public RegistroDatosUsuario_prueba(RegistroUsuario_prueba registroForm)
@@ -23,8 +24,7 @@ namespace view
 
         private async void button1_Click(object sender, EventArgs e)
         {
-            UsuarioCtrl usuarioCtrl = new UsuarioCtrl();
-            if (await usuarioCtrl.RegistrarUsuarioCrl(lblIdCedula.Text, lblCargoPersonal.Text, blbNombresPersonal.Text, lblApellidosPersonal.Text, imageData, txtUsuario.Text, txtPassword.Text))
+            if (await personalCtrl.RegistrarUsuarioCrl(lblIdCedula.Text, lblCargoPersonal.Text, blbNombresPersonal.Text, lblApellidosPersonal.Text, imageData, txtUsuario.Text, txtPassword.Text))
             {
                 MessageBox.Show("Usuario Registrado!");
                 this.Close();

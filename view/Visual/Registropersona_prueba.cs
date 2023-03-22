@@ -13,6 +13,7 @@ namespace view
 {
     public partial class Registropersonal_prueba : Form
     {
+        PersonalCtrl personalCtrl = new PersonalCtrl();
         public Registropersonal_prueba()
         {
             InitializeComponent();
@@ -34,7 +35,6 @@ namespace view
             {
                 sexoE = rbtnSexoF.Text;
             }
-            PersonalCtrl personalCtrl = new PersonalCtrl();
 
             if (await personalCtrl.RegistrarPersonalCtrl(txtCedula.Text, txtNombres.Text, txtApellidos.Text, cmbCargo.Text, dateNacimiento.Value, sexoE, txtTelefono.Text, txtCorreo.Text, txtDireccion.Text, dateIngreso.Value, txtSalario.Text))
             {
@@ -48,8 +48,7 @@ namespace view
 
         private async void Registropersonal_prueba_Load(object sender, EventArgs e)
         {
-            RolUsuarioCtrl rolUsuarioCtrl = new RolUsuarioCtrl();
-            cmbCargo.DataSource = await rolUsuarioCtrl.ObtenerRolesCtrl();
+            cmbCargo.DataSource = await personalCtrl.ObtenerRolesCtrl();
             cmbCargo.DisplayMember = "Nombre";
             cmbCargo.ValueMember = "Id";
             cmbCargo.SelectedValue = -1;

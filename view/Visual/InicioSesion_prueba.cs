@@ -14,11 +14,10 @@ namespace view
 {
     public partial class InicioSesion_prueba : Form
     {
-        //private VentanaPrincipal_prueba ventanaPrincipal;
-        public InicioSesion_prueba()//(VentanaPrincipal_prueba ventanaPrincipal)
+        PersonalCtrl personalCtrl = new PersonalCtrl();
+        public InicioSesion_prueba()
         {
             InitializeComponent();
-            //this.ventanaPrincipal = ventanaPrincipal;
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -28,8 +27,7 @@ namespace view
 
         private async void btnIniciarSesion_Click(object sender, EventArgs e)
         {
-            CredencialesAccesoCtrl credenciales = new CredencialesAccesoCtrl();
-            if (await credenciales.ValidarCredenciales(txtUsuario.Text, txtPassword.Text))
+            if (await personalCtrl.ValidarCredenciales(txtUsuario.Text, txtPassword.Text))
             {
                 VentanaPrincipal_prueba ventanaPrincipal = new VentanaPrincipal_prueba();
                 MessageBox.Show("Acceso Exitoso!, Bienvenido " + GlobalVariables.usuario);

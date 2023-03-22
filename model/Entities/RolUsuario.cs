@@ -1,31 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 
-namespace model
+namespace model.Entities
 {
-    public class TipoProducto
+    public class RolUsuario
     {
         private int id;
-        private int id_categoria;
         private string nombre;
 
-        public TipoProducto()
+        public RolUsuario()
         {
 
         }
 
-        public TipoProducto(int id, int id_categoria, string nombre)
+        public RolUsuario(int id, string nombre)
         {
             Id = id;
-            Id_categoria = id_categoria;
             Nombre = nombre;
         }
 
         public int Id { get => id; set => id = value; }
-        public int Id_categoria { get => id_categoria; set => id_categoria = value; }
         public string Nombre { get => nombre; set => nombre = value; }
     }
 }

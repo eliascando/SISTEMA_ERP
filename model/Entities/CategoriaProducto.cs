@@ -4,25 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace model
+namespace model.Entities
 {
-    public class EstadoProducto
+    public class CategoriaProducto
     {
-        private int id_estado;
+        private int id;
         private string nombre;
 
-        public EstadoProducto()
+        public CategoriaProducto()
         {
 
         }
 
-        public EstadoProducto(int id_estado, string nombre)
+        public CategoriaProducto(int id, string nombre)
         {
-            Id_estado = id_estado;
+            Id = id;
             Nombre = nombre;
         }
 
-        public int Id_estado { get => id_estado; set => id_estado = value; }
+        public int Id { get => id; set => id = value; }
         public string Nombre { get => nombre; set => nombre = value; }
     }
 }

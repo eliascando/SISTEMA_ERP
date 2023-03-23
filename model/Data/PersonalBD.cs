@@ -22,7 +22,7 @@ namespace model.Data
                     var cmd = new SqlCommand("ValidarCredenciales", ConexionBD.cn);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@id_usuario", credencialesAcceso.Usuario);
-                    cmd.Parameters.AddWithValue("@password", Aurora.EncriptarPassword(credencialesAcceso.Password));
+                    cmd.Parameters.AddWithValue("@password", Aurora.Encrypt(credencialesAcceso.Password));
                     SqlParameter esValidoParam = new SqlParameter("@EsValido", SqlDbType.Bit);
                     esValidoParam.Direction = ParameterDirection.Output;
                     cmd.Parameters.Add(esValidoParam);
@@ -163,7 +163,7 @@ namespace model.Data
                     cmd.Parameters.AddWithValue("@apellido_usuario", usuario.Apellido);
                     cmd.Parameters.AddWithValue("@imagen_usuario", usuario.Imagen);
                     cmd.Parameters.AddWithValue("@usuario", credenciales.Usuario);
-                    cmd.Parameters.AddWithValue("@password", Aurora.EncriptarPassword(credenciales.Password));
+                    cmd.Parameters.AddWithValue("@password", Aurora.Encrypt(credenciales.Password));
                     cmd.Parameters.AddWithValue("@usuario_activo", credenciales.Usuario_activo);
                     SqlParameter registroExitosoParam = new SqlParameter("@RegistroExitoso", SqlDbType.Bit);
                     registroExitosoParam.Direction = ParameterDirection.Output;

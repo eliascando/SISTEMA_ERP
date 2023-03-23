@@ -3,21 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Security.Cryptography;
+using Org.BouncyCastle.Crypto.Digests;
 
 namespace aurora
 {
     public class Aurora
     {
-        public static string EncriptarPassword(string password)
+        public static string Encrypt(string entrada)
         {
-            string hashedpassword;
-            using (var sha256 = SHA256.Create())
-            {
-                byte[] hash = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
-                hashedpassword = Convert.ToBase64String(hash);
-            }
-            return hashedpassword;
+            Sha3Digest sha3 = new Sha3Digest(256);
+            byte[] inputBytes = Encoding.UTF8.GetBytes(entrada);
+            byte[] hash = new byte[sha3.GetDigestSize()];
+            sha3.BlockUpdate(inputBytes, 0, inputBytes.Length);
+            sha3.DoFinal(hash, 0);
+            return Convert.ToBase64String(hash);
         }
     }
 }

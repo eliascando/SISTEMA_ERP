@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using view.Visual;
 
 namespace view
 {
@@ -33,6 +34,12 @@ namespace view
         private void VentanaPrincipal_Load(object sender, EventArgs e)
         {
             lblNombreUsuario.Text = GlobalVariables.usuario;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            VerUsuarios_prueba verUsuarios = new VerUsuarios_prueba();
+            verUsuarios.ShowDialog();
         }
     }
 }

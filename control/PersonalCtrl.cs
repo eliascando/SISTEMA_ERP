@@ -63,5 +63,9 @@ namespace control
             credenciales.Usuario_activo = true;
             return await personalBD.RegistrarUsuario(personal, usuarios, credenciales);
         }
+        public async Task<DataTable> ObtenerUsuarios()
+        {
+            return await personalBD.ObtenerUsuarios();
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using model.Entities;
+﻿using aurora;
+using model.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -6,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
-using aurora;
+using Org.BouncyCastle.Asn1.X509.SigI;
 
 namespace model.Data
 {
@@ -37,6 +38,7 @@ namespace model.Data
                     isValidUser = (bool)esValidoParam.Value;
                     if (isValidUser)
                     {
+                        
                         GlobalVariables.id_rol = (int)idRolParam.Value;
                         GlobalVariables.usuario = (string)nombreParam.Value;
                     }
@@ -105,7 +107,6 @@ namespace model.Data
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                     adapter.Fill(personalDT);
                 }
-
             }
             catch (Exception ex)
             {
@@ -183,5 +184,28 @@ namespace model.Data
             }
             return registroExitoso;
         }
+        public async Task<DataTable> ObtenerUsuarios()
+        {
+            DataTable usuariosDT = new DataTable();
+            try
+            {
+                if (await ConexionBD.AbrirConexionAsync())
+                {
+                    var cmd = new SqlCommand("ObtenerUsuarios", ConexionBD.cn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(usuariosDT);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("ERROR DE EXCEPCIÓN!: " + ex);
+            }
+            finally
+            {
+                await ConexionBD.CerrarConexionAsync();
+            }
+            return usuariosDT;
+        }    
     }
 }

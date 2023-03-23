@@ -1,5 +1,4 @@
 ﻿using control;
-using model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,17 +19,12 @@ namespace view
             InitializeComponent();
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private async void btnIniciarSesion_Click(object sender, EventArgs e)
         {
             if (await personalCtrl.ValidarCredenciales(txtUsuario.Text, txtPassword.Text))
             {
                 VentanaPrincipal_prueba ventanaPrincipal = new VentanaPrincipal_prueba();
-                MessageBox.Show("Acceso Exitoso!, Bienvenido " + GlobalVariables.usuario);
+                MessageBox.Show("Acceso Exitoso!, Bienvenido " + GlobalVariablesCtrl.ObtenerUsuario());
                 ventanaPrincipal.ShowDialog();
             }
             else

@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using System.Threading.Tasks;
 using System.Configuration;
 
-namespace model
+namespace model.Data
 {
     public class ConexionBD
     {
@@ -22,7 +22,7 @@ namespace model
                 await cn.OpenAsync();
                 return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("ERROR DE EXCEPCIÓN!: " + ex.Message);
                 return false;
@@ -37,7 +37,7 @@ namespace model
                     await cn.CloseAsync();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("ERROR DE EXCEPCIÓN!: " + ex.Message);
             }

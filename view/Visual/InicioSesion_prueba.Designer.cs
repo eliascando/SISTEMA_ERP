@@ -102,7 +102,6 @@
             groupBox1.TabIndex = 6;
             groupBox1.TabStop = false;
             groupBox1.Text = "Ingrese Credenciales";
-            groupBox1.Enter += groupBox1_Enter;
             // 
             // InicioSesion_prueba
             // 
@@ -115,7 +114,6 @@
             Name = "InicioSesion_prueba";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "InicioSesion_prueba";
-            Load += InicioSesion_prueba_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);

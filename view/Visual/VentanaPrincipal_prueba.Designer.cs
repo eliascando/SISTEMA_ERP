@@ -31,6 +31,7 @@
             button1 = new Button();
             button2 = new Button();
             lblNombreUsuario = new Label();
+            button3 = new Button();
             SuspendLayout();
             // 
             // button1
@@ -63,11 +64,22 @@
             lblNombreUsuario.TabIndex = 2;
             lblNombreUsuario.Text = "NombresUsuario";
             // 
+            // button3
+            // 
+            button3.Location = new Point(266, 209);
+            button3.Name = "button3";
+            button3.Size = new Size(169, 40);
+            button3.TabIndex = 3;
+            button3.Text = "Ver Usuarios";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
             // VentanaPrincipal_prueba
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button3);
             Controls.Add(lblNombreUsuario);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -83,5 +95,6 @@
         private Button button1;
         private Button button2;
         private Label lblNombreUsuario;
+        private Button button3;
     }
 }

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
-using Org.BouncyCastle.Asn1.X509.SigI;
+using System.Collections;
 
 namespace model.Data
 {
@@ -65,8 +65,8 @@ namespace model.Data
                     var cmd = new SqlCommand("RegistrarPersonal", ConexionBD.cn);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@id_cedula", personal.Id);
-                    cmd.Parameters.AddWithValue("@nombre_personal", personal.Nombre);
-                    cmd.Parameters.AddWithValue("@apellido_personal", personal.Apellido);
+                    cmd.Parameters.AddWithValue("@nombre_personal", personal.Nombre_personal);
+                    cmd.Parameters.AddWithValue("@apellido_personal", personal.Apellido_personal);
                     cmd.Parameters.AddWithValue("@cargo_personal", personal.Cargo);
                     cmd.Parameters.AddWithValue("@fecha_nacimiento", personal.Fecha_nacimiento);
                     cmd.Parameters.AddWithValue("@sexo", personal.Sexo);
@@ -207,18 +207,33 @@ namespace model.Data
             }
             return usuariosDT;
         }
-        public async Task<DataTable> ObtenerDatosUsuarios(string id)
+        public async Task<Dictionary<string, object>> ObtenerDatosUsuarios(string id)
         {
-            DataTable DataUsuarios = new DataTable();
+            Dictionary<string, object> DatosCombinados = new Dictionary<string, object>();
             try
             {
                 if (await ConexionBD.AbrirConexionAsync())
                 {
+                    Personal personal = new Personal();
+                    Usuario usuario = new Usuario();
+                    CredencialesAcceso credenciales = new CredencialesAcceso();
                     var cmd = new SqlCommand("ObtenerDatosUsuarios", ConexionBD.cn);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@id_cedula", id);
-                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                    adapter.Fill(DataUsuarios);
+                    SqlDataReader reader = await cmd.ExecuteReaderAsync();
+                    while (await reader.ReadAsync())
+                    {
+                        personal.Nombre_personal = reader.GetString(0);
+                        personal.Apellido_personal = reader.GetString(1);
+                        personal.Cargo = reader.GetString(2);
+                        personal.Fecha_nacimiento = reader.GetDateTime(3);
+                        personal.Telefono = reader.GetString(4);
+                        personal.Correo = reader.GetString(5);
+                        personal.Fecha_ingreso = reader.GetDateTime(6);
+                        usuario.Imagen = (byte[])reader.GetValue(7);
+                        credenciales.Usuario = reader.GetString(8);
+                        DatosCombinados = Aurora.CombineObjects(personal, usuario, credenciales);
+                    }
                 }
             }
             catch (Exception ex)
@@ -229,7 +244,7 @@ namespace model.Data
             {
                 await ConexionBD.CerrarConexionAsync();
             }
-            return DataUsuarios;
+            return DatosCombinados;
         }
     }
 }

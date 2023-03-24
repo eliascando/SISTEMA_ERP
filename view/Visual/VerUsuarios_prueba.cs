@@ -10,12 +10,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using model.Entities;
 
 namespace view.Visual
 {
     public partial class VerUsuarios_prueba : Form
     {
-        
+        PersonalCtrl personalCtrl = new PersonalCtrl();
+
         public VerUsuarios_prueba()
         {
             InitializeComponent();
@@ -27,37 +29,27 @@ namespace view.Visual
         }
         public async Task CargarTabla()
         {
-            PersonalCtrl personalCtrl = new PersonalCtrl();
             gridUsuarios.DataSource = await personalCtrl.ObtenerUsuarios();
         }
 
         private async void button1_Click(object sender, EventArgs e)
         {
-            VerDatosUsuario_prueba verDatos = new VerDatosUsuario_prueba(this);
+            VerDatosUsuario_prueba DatosForm = new VerDatosUsuario_prueba(this);
             if (gridUsuarios.SelectedRows.Count > 0)
             {
-                //List<object> data = new List<object>();
-                //DataGridViewRow selectedRow = gridUsuarios.SelectedRows[0];
-                //PersonalCtrl verData = new PersonalCtrl();
-                //string id = selectedRow.Cells[0].Value.ToString();
-                //data = await verData.ObtenerDatosUsuarios(id);
-                //data.
-                //verDatos.lblNombreUsuario.Text = data.Columns[0].ToString() + data.Columns[1].ToString();
-                //verDatos.lblCargo.Text = data.Columns[2].ToString();
-                //verDatos.lblEdad.Text = Aurora.Edad(data.Columns[3].ToString()).ToString() + " años";
-                //verDatos.lblTelefono.Text = data.Columns[4].ToString();
-                //verDatos.lblCorreo.Text = data.Columns[5].ToString();
-                //verDatos.lblFechaIngreso.Text = data.Columns[6].ToString();
-                //verDatos.lblUsuario.Text = data.Columns[8].ToString();
-                ////byte[] imagen = byte[]. data.Columns[7];
-                ////using (MemoryStream ms = new MemoryStream(imagen))
-                ////{
+                Dictionary<string, object> combinedData = new Dictionary<string, object>();
+                DataGridViewRow selectedRow = gridUsuarios.SelectedRows[0];
+                combinedData = await personalCtrl.ObtenerDatosUsuariosCtrl(selectedRow.Cells[0].Value.ToString());
+                DatosForm.lblNombreUsuario.Text = (string)combinedData["Nombre_personal"] + " " + (string)combinedData["Apellido_personal"];
+                DatosForm.lblCargo.Text = (string)combinedData["Cargo"];
+                DatosForm.lblCorreo.Text = (string)combinedData["Correo"];
+                DatosForm.lblTelefono.Text = (string)combinedData["Telefono"];
+                DatosForm.lblFechaIngreso.Text = Aurora.DateToString((DateTime)combinedData["Fecha_ingreso"]);
+                DatosForm.picFotoUsuario.Image = Image.FromStream(new MemoryStream((byte[])combinedData["Imagen"]));
+                DatosForm.lblUsuario.Text = (string)combinedData["Usuario"];
+                DatosForm.lblEdad.Text = Aurora.GetAge((DateTime)combinedData["Fecha_nacimiento"]).ToString();
 
-                ////}
-
-                //verDatos.ShowDialog();
-
-                ////registro.Show();
+                DatosForm.ShowDialog();
             }
         }
     }

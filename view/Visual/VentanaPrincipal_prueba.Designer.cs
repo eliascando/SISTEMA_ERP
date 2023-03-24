@@ -84,6 +84,7 @@
             Controls.Add(button2);
             Controls.Add(button1);
             Name = "VentanaPrincipal_prueba";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "VentanaPrincipal";
             Load += VentanaPrincipal_Load;
             ResumeLayout(false);

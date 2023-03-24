@@ -48,7 +48,7 @@
             // 
             // picFotoUsuario
             // 
-            picFotoUsuario.Location = new Point(222, 67);
+            picFotoUsuario.Location = new Point(330, 67);
             picFotoUsuario.Name = "picFotoUsuario";
             picFotoUsuario.Size = new Size(114, 149);
             picFotoUsuario.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -59,11 +59,12 @@
             // 
             lblNombreUsuario.AutoSize = true;
             lblNombreUsuario.Font = new Font("Montserrat", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lblNombreUsuario.Location = new Point(82, 26);
+            lblNombreUsuario.Location = new Point(24, 19);
             lblNombreUsuario.Name = "lblNombreUsuario";
             lblNombreUsuario.Size = new Size(194, 25);
             lblNombreUsuario.TabIndex = 9;
             lblNombreUsuario.Text = "NombreUsuario";
+            lblNombreUsuario.TextAlign = ContentAlignment.TopCenter;
             // 
             // label1
             // 
@@ -178,7 +179,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(357, 244);
+            ClientSize = new Size(456, 244);
             Controls.Add(lblFechaIngreso);
             Controls.Add(lblEdad);
             Controls.Add(lblCorreo);
@@ -194,6 +195,7 @@
             Controls.Add(lblNombreUsuario);
             Controls.Add(picFotoUsuario);
             Name = "VerDatosUsuario_prueba";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "VerDatosUsuario";
             Load += VerDatosUsuario_prueba_Load;
             ((System.ComponentModel.ISupportInitialize)picFotoUsuario).EndInit();

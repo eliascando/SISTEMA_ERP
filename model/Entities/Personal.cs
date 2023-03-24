@@ -13,8 +13,8 @@ namespace model.Entities
     public class Personal
     {
         private string id;
-        private string nombre;
-        private string apellido;
+        private string nombre_personal;
+        private string apellido_personal;
         private string telefono;
         private string correo;
         private string direccion;
@@ -31,11 +31,11 @@ namespace model.Entities
 
         }
 
-        public Personal(string id, string nombre, string apellido, string telefono, string correo, string direccion, string cargo, DateTime fecha_nacimiento, string sexo, DateTime fecha_ingreso, double salario, bool personal_activo, bool usuario_asignado)
+        public Personal(string id, string nombre_personal, string apellido_personal, string telefono, string correo, string direccion, string cargo, DateTime fecha_nacimiento, string sexo, DateTime fecha_ingreso, double salario, bool personal_activo, bool usuario_asignado)
         {
             Id = id;
-            Nombre = nombre;
-            Apellido = apellido;
+            Nombre_personal = nombre_personal;
+            Apellido_personal = apellido_personal;
             Telefono = telefono;
             Correo = correo;
             Direccion = direccion;
@@ -49,8 +49,8 @@ namespace model.Entities
         }
 
         public string Id { get => id; set => id = value; }
-        public string Nombre { get => nombre; set => nombre = value; }
-        public string Apellido { get => apellido; set => apellido = value; }
+        public string Nombre_personal { get => nombre_personal; set => nombre_personal = value; }
+        public string Apellido_personal { get => apellido_personal; set => apellido_personal = value; }
         public string Telefono { get => telefono; set => telefono = value; }
         public string Correo { get => correo; set => correo = value; }
         public string Direccion { get => direccion; set => direccion = value; }

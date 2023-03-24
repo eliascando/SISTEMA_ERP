@@ -25,8 +25,8 @@ namespace control
         {
             Personal personal = new Personal();
             personal.Id = cedula;
-            personal.Nombre = nombre;
-            personal.Apellido = apellido;
+            personal.Nombre_personal = nombre;
+            personal.Apellido_personal = apellido;
             personal.Cargo = cargo;
             personal.Fecha_nacimiento = nacimiento;
             personal.Sexo = sexo;
@@ -68,17 +68,9 @@ namespace control
         {
             return await personalBD.ObtenerUsuarios();
         }
-        public async Task<List<object>> ObtenerDatosUsuarios(string id_cedula)
+        public async Task<Dictionary<string, object>> ObtenerDatosUsuariosCtrl(string id)
         {
-            List<object> datos = new List<object>();
-            //Personal personal = new Personal();
-            //Usuario usuario = new Usuario();
-            //CredencialesAcceso credenciales = new CredencialesAcceso();
-            //DataTable dt = new DataTable();
-            //dt = await personalBD.ObtenerDatosUsuarios(id_cedula);
-            ////dt.Columns[0];
-            //datos.Add(dt);
-            return datos;
+            return await personalBD.ObtenerDatosUsuarios(id);
         }
     }
 }

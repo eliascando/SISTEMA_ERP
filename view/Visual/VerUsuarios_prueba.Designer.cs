@@ -79,6 +79,7 @@
             Controls.Add(button1);
             Controls.Add(gridUsuarios);
             Name = "VerUsuarios_prueba";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "VerUsuarios_prueba";
             Load += VerUsuarios_prueba_Load;
             ((System.ComponentModel.ISupportInitialize)gridUsuarios).EndInit();

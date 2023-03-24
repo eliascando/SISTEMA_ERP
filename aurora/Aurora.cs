@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Org.BouncyCastle.Crypto.Digests;
@@ -18,10 +19,8 @@ namespace aurora
             sha3.DoFinal(hash, 0);
             return Convert.ToBase64String(hash);
         }
-        public static int Edad(String fechaNacimientoString)
+        public static int GetAge(DateTime fechaNacimiento)
         {
-            DateTime fechaNacimiento;
-            fechaNacimiento = DateTime.Parse(fechaNacimientoString);
             DateTime fechaActual = DateTime.Today;
             int edad = fechaActual.Year - fechaNacimiento.Year;
             if(fechaNacimiento.Date > fechaActual.AddYears(-edad))
@@ -29,6 +28,26 @@ namespace aurora
                 edad--;
             }
             return edad;
+        }
+        public static Dictionary<string, object>CombineObjects(params object[] objects)
+        {
+            Dictionary<string, object> combinedData = new Dictionary<string, object>();
+            
+            foreach (object obj in objects)
+            {
+                PropertyInfo[] properties = obj.GetType().GetProperties();
+
+                foreach (PropertyInfo property in properties)
+                {
+                    combinedData[property.Name] = property.GetValue(obj);
+                }
+            }
+
+            return combinedData;
+        }
+        public static string DateToString(DateTime date)
+        {
+            return date.ToString("dd/MM/yyyy");
         }
     }
 }

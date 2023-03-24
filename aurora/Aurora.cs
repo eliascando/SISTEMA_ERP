@@ -18,5 +18,17 @@ namespace aurora
             sha3.DoFinal(hash, 0);
             return Convert.ToBase64String(hash);
         }
+        public static int Edad(String fechaNacimientoString)
+        {
+            DateTime fechaNacimiento;
+            fechaNacimiento = DateTime.Parse(fechaNacimientoString);
+            DateTime fechaActual = DateTime.Today;
+            int edad = fechaActual.Year - fechaNacimiento.Year;
+            if(fechaNacimiento.Date > fechaActual.AddYears(-edad))
+            {
+                edad--;
+            }
+            return edad;
+        }
     }
 }

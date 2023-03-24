@@ -206,6 +206,30 @@ namespace model.Data
                 await ConexionBD.CerrarConexionAsync();
             }
             return usuariosDT;
-        }    
+        }
+        public async Task<DataTable> ObtenerDatosUsuarios(string id)
+        {
+            DataTable DataUsuarios = new DataTable();
+            try
+            {
+                if (await ConexionBD.AbrirConexionAsync())
+                {
+                    var cmd = new SqlCommand("ObtenerDatosUsuarios", ConexionBD.cn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@id_cedula", id);
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(DataUsuarios);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERROR DE EXCEPCIÓN!: " + ex);
+            }
+            finally
+            {
+                await ConexionBD.CerrarConexionAsync();
+            }
+            return DataUsuarios;
+        }
     }
 }

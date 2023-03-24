@@ -1,4 +1,5 @@
-﻿using System;
+﻿using aurora;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
@@ -66,6 +67,18 @@ namespace control
         public async Task<DataTable> ObtenerUsuarios()
         {
             return await personalBD.ObtenerUsuarios();
+        }
+        public async Task<List<object>> ObtenerDatosUsuarios(string id_cedula)
+        {
+            List<object> datos = new List<object>();
+            //Personal personal = new Personal();
+            //Usuario usuario = new Usuario();
+            //CredencialesAcceso credenciales = new CredencialesAcceso();
+            //DataTable dt = new DataTable();
+            //dt = await personalBD.ObtenerDatosUsuarios(id_cedula);
+            ////dt.Columns[0];
+            //datos.Add(dt);
+            return datos;
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using model;
+﻿using control;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,7 +33,7 @@ namespace view
 
         private void VentanaPrincipal_Load(object sender, EventArgs e)
         {
-            lblNombreUsuario.Text = GlobalVariables.usuario;
+            lblNombreUsuario.Text = GlobalVariablesCtrl.ObtenerUsuario();
         }
 
         private void button3_Click(object sender, EventArgs e)

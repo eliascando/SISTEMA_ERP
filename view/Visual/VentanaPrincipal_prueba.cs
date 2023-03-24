@@ -17,6 +17,15 @@ namespace view
         public VentanaPrincipal_prueba()
         {
             InitializeComponent();
+            if (GlobalVariablesCtrl.ObtenerIdRol() > 2)
+            {
+                button1.Visible = false;
+                button2.Visible = false;
+            }
+            if (GlobalVariablesCtrl.ObtenerIdRol() == 2)
+            {
+                button2.Visible=false;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

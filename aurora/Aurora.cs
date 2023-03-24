@@ -10,6 +10,7 @@ namespace aurora
 {
     public class Aurora
     {
+        //Encrypt recibe una entrada de tipo string, generalmente una contraseña para encriptarla con SHA3 y obtener el string de la entrada enciptado
         public static string Encrypt(string entrada)
         {
             Sha3Digest sha3 = new Sha3Digest(256);
@@ -19,6 +20,8 @@ namespace aurora
             sha3.DoFinal(hash, 0);
             return Convert.ToBase64String(hash);
         }
+
+        //GetAge obtiene la edad a partir de una fecha de tipo datetime
         public static int GetAge(DateTime fechaNacimiento)
         {
             DateTime fechaActual = DateTime.Today;
@@ -29,6 +32,8 @@ namespace aurora
             }
             return edad;
         }
+
+        //CombineObjects combina los datos de N número de objetos con sus atributos, utilizando un diccionario de datos
         public static Dictionary<string, object>CombineObjects(params object[] objects)
         {
             Dictionary<string, object> combinedData = new Dictionary<string, object>();
@@ -45,6 +50,8 @@ namespace aurora
 
             return combinedData;
         }
+
+        //DateToString convierte una fecha de tipo datetime a una cadena de string
         public static string DateToString(DateTime date)
         {
             return date.ToString("dd/MM/yyyy");

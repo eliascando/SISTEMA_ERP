@@ -12,20 +12,12 @@ using view.Visual;
 
 namespace view
 {
-    public partial class VentanaPrincipal_prueba : Form
+    public partial class VentanaPrincipalGerente : Form
     {
-        public VentanaPrincipal_prueba()
+        public VentanaPrincipalGerente()
         {
             InitializeComponent();
-            if (GlobalVariablesCtrl.ObtenerIdRol() > 2)
-            {
-                button1.Visible = false;
-                button2.Visible = false;
-            }
-            if (GlobalVariablesCtrl.ObtenerIdRol() == 2)
-            {
-                button2.Visible=false;
-            }
+            lblNombreUsuario.Text = GlobalVariablesCtrl.ObtenerUsuario();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -42,13 +34,18 @@ namespace view
 
         private void VentanaPrincipal_Load(object sender, EventArgs e)
         {
-            lblNombreUsuario.Text = GlobalVariablesCtrl.ObtenerUsuario();
+
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             VerUsuarios_prueba verUsuarios = new VerUsuarios_prueba();
             verUsuarios.ShowDialog();
+        }
+
+        private void lblNombreUsuario_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

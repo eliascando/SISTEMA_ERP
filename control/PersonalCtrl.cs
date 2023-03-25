@@ -24,7 +24,7 @@ namespace control
         public async Task<Boolean> RegistrarPersonalCtrl(string cedula, string nombre, string apellido, string cargo, DateTime nacimiento, string sexo, string telefono, string correo, string direccion, DateTime ingreso, string salario)
         {
             Personal personal = new Personal();
-            personal.Id = cedula;
+            personal.Id_personal = cedula;
             personal.Nombre_personal = nombre;
             personal.Apellido_personal = apellido;
             personal.Cargo = cargo;

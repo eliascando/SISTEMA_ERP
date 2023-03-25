@@ -12,7 +12,7 @@ namespace model.Entities
 {
     public class Personal
     {
-        private string id;
+        private string id_personal;
         private string nombre_personal;
         private string apellido_personal;
         private string telefono;
@@ -31,9 +31,9 @@ namespace model.Entities
 
         }
 
-        public Personal(string id, string nombre_personal, string apellido_personal, string telefono, string correo, string direccion, string cargo, DateTime fecha_nacimiento, string sexo, DateTime fecha_ingreso, double salario, bool personal_activo, bool usuario_asignado)
+        public Personal(string id_personal, string nombre_personal, string apellido_personal, string telefono, string correo, string direccion, string cargo, DateTime fecha_nacimiento, string sexo, DateTime fecha_ingreso, double salario, bool personal_activo, bool usuario_asignado)
         {
-            Id = id;
+            Id_personal = id_personal;
             Nombre_personal = nombre_personal;
             Apellido_personal = apellido_personal;
             Telefono = telefono;
@@ -48,7 +48,7 @@ namespace model.Entities
             Usuario_asignado = usuario_asignado;
         }
 
-        public string Id { get => id; set => id = value; }
+        public string Id_personal { get => id_personal; set => id_personal = value; }
         public string Nombre_personal { get => nombre_personal; set => nombre_personal = value; }
         public string Apellido_personal { get => apellido_personal; set => apellido_personal = value; }
         public string Telefono { get => telefono; set => telefono = value; }

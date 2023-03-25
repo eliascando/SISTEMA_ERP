@@ -1,6 +1,6 @@
-﻿namespace view
+﻿namespace view.Visual
 {
-    partial class VentanaPrincipal_prueba
+    partial class VentanaPrincipalRRHH
     {
         /// <summary>
         /// Required designer variable.
@@ -29,64 +29,52 @@
         private void InitializeComponent()
         {
             button1 = new Button();
-            button2 = new Button();
-            lblNombreUsuario = new Label();
             button3 = new Button();
+            lblNombreUsuarioRRHH = new Label();
             SuspendLayout();
             // 
             // button1
             // 
-            button1.Location = new Point(266, 107);
+            button1.Location = new Point(288, 188);
             button1.Name = "button1";
             button1.Size = new Size(169, 40);
-            button1.TabIndex = 0;
+            button1.TabIndex = 1;
             button1.Text = "Registrar Nuevo Personal";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
-            // button2
-            // 
-            button2.Location = new Point(266, 163);
-            button2.Name = "button2";
-            button2.Size = new Size(169, 40);
-            button2.TabIndex = 1;
-            button2.Text = "Registrar Usuario Nuevo";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
-            // 
-            // lblNombreUsuario
-            // 
-            lblNombreUsuario.AutoSize = true;
-            lblNombreUsuario.Font = new Font("Montserrat", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lblNombreUsuario.Location = new Point(12, 9);
-            lblNombreUsuario.Name = "lblNombreUsuario";
-            lblNombreUsuario.Size = new Size(192, 25);
-            lblNombreUsuario.TabIndex = 2;
-            lblNombreUsuario.Text = "NombresUsuario";
-            // 
             // button3
             // 
-            button3.Location = new Point(266, 209);
+            button3.Location = new Point(288, 234);
             button3.Name = "button3";
             button3.Size = new Size(169, 40);
-            button3.TabIndex = 3;
+            button3.TabIndex = 4;
             button3.Text = "Ver Usuarios";
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
             // 
-            // VentanaPrincipal_prueba
+            // lblNombreUsuarioRRHH
+            // 
+            lblNombreUsuarioRRHH.AutoSize = true;
+            lblNombreUsuarioRRHH.Font = new Font("Montserrat", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblNombreUsuarioRRHH.Location = new Point(12, 416);
+            lblNombreUsuarioRRHH.Name = "lblNombreUsuarioRRHH";
+            lblNombreUsuarioRRHH.Size = new Size(192, 25);
+            lblNombreUsuarioRRHH.TabIndex = 5;
+            lblNombreUsuarioRRHH.Text = "NombresUsuario";
+            // 
+            // VentanaPrincipalRRHH
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(lblNombreUsuarioRRHH);
             Controls.Add(button3);
-            Controls.Add(lblNombreUsuario);
-            Controls.Add(button2);
             Controls.Add(button1);
-            Name = "VentanaPrincipal_prueba";
+            Name = "VentanaPrincipalRRHH";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "VentanaPrincipal";
-            Load += VentanaPrincipal_Load;
+            Text = "VentanaPrincipalRRHH";
+            Load += VentanaPrincipalRRHH_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -94,8 +82,7 @@
         #endregion
 
         private Button button1;
-        private Button button2;
-        private Label lblNombreUsuario;
         private Button button3;
+        public Label lblNombreUsuarioRRHH;
     }
 }

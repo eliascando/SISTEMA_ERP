@@ -40,6 +40,7 @@ namespace view.Visual
                 Dictionary<string, object> combinedData = new Dictionary<string, object>();
                 DataGridViewRow selectedRow = gridUsuarios.SelectedRows[0];
                 combinedData = await personalCtrl.ObtenerDatosUsuariosCtrl(selectedRow.Cells[0].Value.ToString());
+                DatosForm.lblID.Text = (string)combinedData["Id_personal"];
                 DatosForm.lblNombreUsuario.Text = (string)combinedData["Nombre_personal"] + " " + (string)combinedData["Apellido_personal"];
                 DatosForm.lblCargo.Text = (string)combinedData["Cargo"];
                 DatosForm.lblCorreo.Text = (string)combinedData["Correo"];

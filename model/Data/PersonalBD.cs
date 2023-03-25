@@ -64,7 +64,7 @@ namespace model.Data
                 {
                     var cmd = new SqlCommand("RegistrarPersonal", ConexionBD.cn);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@id_cedula", personal.Id);
+                    cmd.Parameters.AddWithValue("@id_cedula", personal.Id_personal);
                     cmd.Parameters.AddWithValue("@nombre_personal", personal.Nombre_personal);
                     cmd.Parameters.AddWithValue("@apellido_personal", personal.Apellido_personal);
                     cmd.Parameters.AddWithValue("@cargo_personal", personal.Cargo);
@@ -224,6 +224,7 @@ namespace model.Data
                     SqlDataReader reader = await cmd.ExecuteReaderAsync();
                     while (await reader.ReadAsync())
                     {
+                        personal.Id_personal = id;
                         personal.Nombre_personal = reader.GetString(0);
                         personal.Apellido_personal = reader.GetString(1);
                         personal.Cargo = reader.GetString(2);

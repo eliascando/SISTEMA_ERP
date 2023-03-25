@@ -51,11 +51,12 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(34, 34);
+            label2.Location = new Point(64, 34);
             label2.Name = "label2";
-            label2.Size = new Size(50, 15);
+            label2.Size = new Size(20, 15);
             label2.TabIndex = 1;
-            label2.Text = "Usuario:";
+            label2.Text = "Id:";
+            label2.Click += label2_Click;
             // 
             // label3
             // 

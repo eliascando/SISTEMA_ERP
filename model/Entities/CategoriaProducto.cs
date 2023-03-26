@@ -1,28 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace model.Entities
+﻿namespace model.Entities
 {
     public class CategoriaProducto
     {
-        private int id;
-        private string nombre;
+        private int id_categoria;
+        private string nombre_categoria;
 
         public CategoriaProducto()
         {
 
         }
 
-        public CategoriaProducto(int id, string nombre)
+        public CategoriaProducto(int id_categoria, string nombre_categoria)
         {
-            Id = id;
-            Nombre = nombre;
+            Id_categoria = id_categoria;
+            Nombre_categoria = nombre_categoria;
         }
 
-        public int Id { get => id; set => id = value; }
-        public string Nombre { get => nombre; set => nombre = value; }
+        public int Id_categoria { get => id_categoria; set => id_categoria = value; }
+        public string Nombre_categoria { get => nombre_categoria; set => nombre_categoria = value; }
     }
 }

@@ -31,6 +31,7 @@
             gridUsuarios = new DataGridView();
             button1 = new Button();
             label1 = new Label();
+            btnActualizar = new Button();
             ((System.ComponentModel.ISupportInitialize)gridUsuarios).BeginInit();
             SuspendLayout();
             // 
@@ -52,7 +53,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(377, 323);
+            button1.Location = new Point(211, 323);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 2;
@@ -70,11 +71,21 @@
             label1.TabIndex = 3;
             label1.Text = "Usuarios";
             // 
+            // btnActualizar
+            // 
+            btnActualizar.Location = new Point(377, 323);
+            btnActualizar.Name = "btnActualizar";
+            btnActualizar.Size = new Size(75, 23);
+            btnActualizar.TabIndex = 4;
+            btnActualizar.Text = "Actualizar";
+            btnActualizar.UseVisualStyleBackColor = true;
+            // 
             // VerUsuarios_prueba
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(479, 358);
+            Controls.Add(btnActualizar);
             Controls.Add(label1);
             Controls.Add(button1);
             Controls.Add(gridUsuarios);
@@ -92,5 +103,6 @@
         private DataGridView gridUsuarios;
         private Button button1;
         private Label label1;
+        private Button btnActualizar;
     }
 }

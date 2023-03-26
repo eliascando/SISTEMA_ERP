@@ -1,31 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
-
-namespace model.Entities
+﻿namespace model.Entities
 {
     public class RolUsuario
     {
-        private int id;
-        private string nombre;
+        private int id_rol;
+        private string nombre_rol;
 
         public RolUsuario()
         {
 
         }
 
-        public RolUsuario(int id, string nombre)
+        public RolUsuario(int id_rol, string nombre)
         {
-            Id = id;
-            Nombre = nombre;
+            Id_rol = id_rol;
+            Nombre_rol = nombre;
         }
 
-        public int Id { get => id; set => id = value; }
-        public string Nombre { get => nombre; set => nombre = value; }
+        public int Id_rol { get => id_rol; set => id_rol = value; }
+        public string Nombre_rol { get => nombre_rol; set => nombre_rol = value; }
     }
 }

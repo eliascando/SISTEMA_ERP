@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
-using System.Data;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
-using System.CodeDom;
-
-namespace model.Entities
+﻿namespace model.Entities
 {
     public class Personal
     {

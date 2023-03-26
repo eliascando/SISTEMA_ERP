@@ -86,7 +86,7 @@
             Controls.Add(button1);
             Name = "VentanaPrincipalGerente";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "VentanaPrincipal";
+            Text = "VentanaPrincipalGerente";
             Load += VentanaPrincipal_Load;
             ResumeLayout(false);
             PerformLayout();

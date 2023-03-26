@@ -29,6 +29,7 @@ namespace view
                 VentanaPrincipalAdminBodega bodega = new VentanaPrincipalAdminBodega();
                 VentanaPrincipalAdminCaja caja = new VentanaPrincipalAdminCaja();
                 VentanaPrincipalAsistente asistente = new VentanaPrincipalAsistente();
+                VentanaPrincipalGG gg = new VentanaPrincipalGG();
 
                 MessageBox.Show("Acceso Exitoso!, Bienvenido " + GlobalVariablesCtrl.ObtenerUsuario());
                 int id = GlobalVariablesCtrl.ObtenerIdRol();
@@ -51,6 +52,9 @@ namespace view
                 else if (id == 5)
                 {
                     asistente.ShowDialog();
+                }else if (id == 10)
+                {
+                    gg.ShowDialog();
                 }
             }
             else

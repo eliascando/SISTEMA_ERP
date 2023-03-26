@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace model.Entities
+﻿namespace model.Entities
 {
     public class Proveedor
     {
-        private string id;
-        private string nombre;
-        private string telefono;
-        private string correo;
-        private string direccion;
-        private DateOnly fecha_ingreso;
+        private string id_proveedor;
+        private string nombre_proveedor;
+        private string telefono_proveedor;
+        private string correo_proveedor;
+        private string direccion_proveedor;
+        private DateTime fecha_ingreso_proveedor;
         private bool proveedor_activo;
 
         public Proveedor()
@@ -21,23 +15,23 @@ namespace model.Entities
 
         }
 
-        public Proveedor(string id, string nombre, string telefono, string correo, string direccion, DateOnly fecha_ingreso, bool proveedor_activo)
+        public Proveedor(string id_proveedor, string nombre_proveedor, string telefono_proveedor, string correo_proveedor, string direccion_proveedor, DateTime fecha_ingreso_proveedor, bool proveedor_activo)
         {
-            Id = id;
-            Nombre = nombre;
-            Telefono = telefono;
-            Correo = correo;
-            Direccion = direccion;
-            Fecha_ingreso = fecha_ingreso;
+            Id_proveedor = id_proveedor;
+            Nombre_proveedor = nombre_proveedor;
+            Telefono_proveedor = telefono_proveedor;
+            Correo_proveedor = correo_proveedor;
+            Direccion_proveedor = direccion_proveedor;
+            Fecha_ingreso_proveedor = fecha_ingreso_proveedor;
             Proveedor_activo = proveedor_activo;
         }
 
-        public string Id { get => id; set => id = value; }
-        public string Nombre { get => nombre; set => nombre = value; }
-        public string Telefono { get => telefono; set => telefono = value; }
-        public string Correo { get => correo; set => correo = value; }
-        public string Direccion { get => direccion; set => direccion = value; }
-        public DateOnly Fecha_ingreso { get => fecha_ingreso; set => fecha_ingreso = value; }
+        public string Id_proveedor { get => id_proveedor; set => id_proveedor = value; }
+        public string Nombre_proveedor { get => nombre_proveedor; set => nombre_proveedor = value; }
+        public string Telefono_proveedor { get => telefono_proveedor; set => telefono_proveedor = value; }
+        public string Correo_proveedor { get => correo_proveedor; set => correo_proveedor = value; }
+        public string Direccion_proveedor { get => direccion_proveedor; set => direccion_proveedor = value; }
+        public DateTime Fecha_ingreso_proveedor { get => fecha_ingreso_proveedor; set => fecha_ingreso_proveedor = value; }
         public bool Proveedor_activo { get => proveedor_activo; set => proveedor_activo = value; }
     }
 }

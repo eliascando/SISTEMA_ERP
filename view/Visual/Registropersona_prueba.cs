@@ -49,8 +49,8 @@ namespace view
         private async void Registropersonal_prueba_Load(object sender, EventArgs e)
         {
             cmbCargo.DataSource = await personalCtrl.ObtenerRolesCtrl();
-            cmbCargo.DisplayMember = "Nombre";
-            cmbCargo.ValueMember = "Id";
+            cmbCargo.DisplayMember = "Nombre_rol";
+            cmbCargo.ValueMember = "Id_rol";
             cmbCargo.SelectedValue = -1;
         }
     }

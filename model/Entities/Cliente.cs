@@ -1,39 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace model.Entities
+﻿namespace model.Entities
 {
     public class Cliente
     {
-        private string id;
-        private string nombre;
-        private string apellido;
-        private string telefono;
-        private string correo;
-        private string direccion;
+        private string id_cliente;
+        private string nombre_cliente;
+        private string apellido_cliente;
+        private string telefono_cliente;
+        private string correo_cliente;
+        private string direccion_cliente;
 
         public Cliente()
         {
 
         }
-        public Cliente(string id, string nombre, string apellido, string telefono, string correo, string direccion)
+        public Cliente(string id_cliente, string nombre_cliente, string apellido_cliente, string telefono_cliente, string correo_cliente, string direccion_cliente)
         {
-            Id = id;
-            Nombre = nombre;
-            Apellido = apellido;
-            Telefono = telefono;
-            Correo = correo;
-            Direccion = direccion;
+            Id_cliente = id_cliente;
+            Nombre_cliente = nombre_cliente;
+            Apellido_cliente = apellido_cliente;
+            Telefono_cliente = telefono_cliente;
+            Correo_cliente = correo_cliente;
+            Direccion_cliente = direccion_cliente;
         }
 
-        public string Id { get => id; set => id = value; }
-        public string Nombre { get => nombre; set => nombre = value; }
-        public string Apellido { get => apellido; set => apellido = value; }
-        public string Telefono { get => telefono; set => telefono = value; }
-        public string Correo { get => correo; set => correo = value; }
-        public string Direccion { get => direccion; set => direccion = value; }
+        public string Id_cliente { get => id_cliente; set => id_cliente = value; }
+        public string Nombre_cliente { get => nombre_cliente; set => nombre_cliente = value; }
+        public string Apellido_cliente { get => apellido_cliente; set => apellido_cliente = value; }
+        public string Telefono_cliente { get => telefono_cliente; set => telefono_cliente = value; }
+        public string Correo_cliente { get => correo_cliente; set => correo_cliente = value; }
+        public string Direccion_cliente { get => direccion_cliente; set => direccion_cliente = value; }
     }
 }

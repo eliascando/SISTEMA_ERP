@@ -1,31 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace model.Entities
+﻿namespace model.Entities
 {
     public class TipoProducto
     {
-        private int id;
+        private int id_tipo;
         private int id_categoria;
-        private string nombre;
+        private string nombre_tipo;
 
         public TipoProducto()
         {
 
         }
 
-        public TipoProducto(int id, int id_categoria, string nombre)
+        public TipoProducto(int id_tipo, int id_categoria, string nombre_tipo)
         {
-            Id = id;
+            Id_tipo = id_tipo;
             Id_categoria = id_categoria;
-            Nombre = nombre;
+            Nombre_tipo = nombre_tipo;
         }
 
-        public int Id { get => id; set => id = value; }
+        public int Id_tipo { get => id_tipo; set => id_tipo = value; }
         public int Id_categoria { get => id_categoria; set => id_categoria = value; }
-        public string Nombre { get => nombre; set => nombre = value; }
+        public string Nombre_tipo { get => nombre_tipo; set => nombre_tipo = value; }
     }
 }

@@ -1,27 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace model.Entities
+﻿namespace model.Entities
 {
     public class Producto
     {
-        private string codigo;
+        private string codigo_producto;
         private string id_proveedor;
-        private TipoProducto tipo;
-        private EstadoProducto estado;
-        private string nombre;
+        private TipoProducto tipo_producto;
+        private EstadoProducto estado_producto;
+        private string nombre_producto;
         private string descripcion;
-        private byte[] imagen;
-        private double costo;
-        private double precio;
-        private bool aplica_iva;
+        private byte[] imagen_producto;
+        private double costo_producto;
+        private double precio_producto;
+        private bool aplica_producto;
         private bool aplica_descuento;
-        private double descuento;
+        private double descuento_producto;
         private bool venta_peso;
-        private double peso;
+        private double peso_producto;
         private int unidades_caja;
         private int stock_producto;
 
@@ -30,40 +24,40 @@ namespace model.Entities
 
         }
 
-        public Producto(string codigo, string id_proveedor, TipoProducto tipo, EstadoProducto estado, string nombre, string descripcion, byte[] imagen, double costo, double precio, bool aplica_iva, bool aplica_descuento, double descuento, bool venta_peso, double peso, int unidades_caja, int stock_producto)
+        public Producto(string codigo_producto, string id_proveedor, TipoProducto tipo_producto, EstadoProducto estado_producto, string nombre_producto, string descripcion, byte[] imagen_producto, double costo_producto, double precio_producto, bool aplica_producto, bool aplica_descuento, double descuento_producto, bool venta_peso, double peso_producto, int unidades_caja, int stock_producto)
         {
-            Codigo = codigo;
+            Codigo_producto = codigo_producto;
             Id_proveedor = id_proveedor;
-            Tipo = tipo;
-            Estado = estado;
-            Nombre = nombre;
+            Tipo_producto = tipo_producto;
+            Estado_producto = estado_producto;
+            Nombre_producto = nombre_producto;
             Descripcion = descripcion;
-            Imagen = imagen;
-            Costo = costo;
-            Precio = precio;
-            Aplica_iva = aplica_iva;
+            Imagen_producto = imagen_producto;
+            Costo_producto = costo_producto;
+            Precio_producto = precio_producto;
+            Aplica_producto = aplica_producto;
             Aplica_descuento = aplica_descuento;
-            Descuento = descuento;
+            Descuento_producto = descuento_producto;
             Venta_peso = venta_peso;
-            Peso = peso;
+            Peso_producto = peso_producto;
             Unidades_caja = unidades_caja;
             Stock_producto = stock_producto;
         }
 
-        public string Codigo { get => codigo; set => codigo = value; }
+        public string Codigo_producto { get => codigo_producto; set => codigo_producto = value; }
         public string Id_proveedor { get => id_proveedor; set => id_proveedor = value; }
-        public TipoProducto Tipo { get => tipo; set => tipo = value; }
-        public EstadoProducto Estado { get => estado; set => estado = value; }
-        public string Nombre { get => nombre; set => nombre = value; }
+        public TipoProducto Tipo_producto { get => tipo_producto; set => tipo_producto = value; }
+        public EstadoProducto Estado_producto { get => estado_producto; set => estado_producto = value; }
+        public string Nombre_producto { get => nombre_producto; set => nombre_producto = value; }
         public string Descripcion { get => descripcion; set => descripcion = value; }
-        public byte[] Imagen { get => imagen; set => imagen = value; }
-        public double Costo { get => costo; set => costo = value; }
-        public double Precio { get => precio; set => precio = value; }
-        public bool Aplica_iva { get => aplica_iva; set => aplica_iva = value; }
+        public byte[] Imagen_producto { get => imagen_producto; set => imagen_producto = value; }
+        public double Costo_producto { get => costo_producto; set => costo_producto = value; }
+        public double Precio_producto { get => precio_producto; set => precio_producto = value; }
+        public bool Aplica_producto { get => aplica_producto; set => aplica_producto = value; }
         public bool Aplica_descuento { get => aplica_descuento; set => aplica_descuento = value; }
-        public double Descuento { get => descuento; set => descuento = value; }
+        public double Descuento_producto { get => descuento_producto; set => descuento_producto = value; }
         public bool Venta_peso { get => venta_peso; set => venta_peso = value; }
-        public double Peso { get => peso; set => peso = value; }
+        public double Peso_producto { get => peso_producto; set => peso_producto = value; }
         public int Unidades_caja { get => unidades_caja; set => unidades_caja = value; }
         public int Stock_producto { get => stock_producto; set => stock_producto = value; }
     }

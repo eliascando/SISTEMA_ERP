@@ -1,4 +1,5 @@
-﻿using System;
+﻿using control;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,9 +16,10 @@ namespace view.Visual
         public VentanaPrincipalGG()
         {
             InitializeComponent();
+            lblNombreUsuario.Text = GlobalVariablesCtrl.ObtenerUsuario();
         }
 
-        private void btnAgregarGerente_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             RegistrarGerente registrarGerente = new RegistrarGerente();
             registrarGerente.ShowDialog();
@@ -25,14 +27,8 @@ namespace view.Visual
 
         private void button3_Click(object sender, EventArgs e)
         {
-            VerUsuarios_prueba verUsuarios_Prueba = new VerUsuarios_prueba();
-            verUsuarios_Prueba.ShowDialog();
-        }
-
-        private void btnAgregarPersonal_Click(object sender, EventArgs e)
-        {
-            Registropersonal_prueba registropersonal = new Registropersonal_prueba();
-            registropersonal.ShowDialog();
+            VerUsuarios_prueba verUsuarios = new VerUsuarios_prueba();
+            verUsuarios.ShowDialog();
         }
     }
 }

@@ -28,12 +28,72 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            lblNombreUsuario = new Label();
+            button3 = new Button();
+            button1 = new Button();
+            button2 = new Button();
+            SuspendLayout();
+            // 
+            // lblNombreUsuario
+            // 
+            lblNombreUsuario.AutoSize = true;
+            lblNombreUsuario.Font = new Font("Montserrat", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblNombreUsuario.Location = new Point(12, 416);
+            lblNombreUsuario.Name = "lblNombreUsuario";
+            lblNombreUsuario.Size = new Size(192, 25);
+            lblNombreUsuario.TabIndex = 3;
+            lblNombreUsuario.Text = "NombresUsuario";
+            // 
+            // button3
+            // 
+            button3.Location = new Point(316, 246);
+            button3.Name = "button3";
+            button3.Size = new Size(169, 40);
+            button3.TabIndex = 6;
+            button3.Text = "Ver Usuarios";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(316, 154);
+            button1.Name = "button1";
+            button1.Size = new Size(169, 40);
+            button1.TabIndex = 4;
+            button1.Text = "Registrar Gerente";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(316, 200);
+            button2.Name = "button2";
+            button2.Size = new Size(169, 40);
+            button2.TabIndex = 5;
+            button2.Text = "Registrar Nuevo Personal";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // VentanaPrincipalGG
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Text = "VentanaPrincipalGerenteGeneral";
+            Controls.Add(button3);
+            Controls.Add(button2);
+            Controls.Add(button1);
+            Controls.Add(lblNombreUsuario);
+            Name = "VentanaPrincipalGG";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "VentanaPrincipalGG";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Label lblNombreUsuario;
+        private Button button3;
+        private Button button1;
+        private Button button2;
     }
 }

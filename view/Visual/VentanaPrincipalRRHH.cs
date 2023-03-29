@@ -21,13 +21,13 @@ namespace view.Visual
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Registropersonal_prueba registropersonal = new Registropersonal_prueba();
+            RegistroPersonal registropersonal = new RegistroPersonal();
             registropersonal.ShowDialog();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            VerUsuarios_prueba verUsuarios = new VerUsuarios_prueba();
+            VerUsuarios verUsuarios = new VerUsuarios();
             verUsuarios.ShowDialog();
         }
 

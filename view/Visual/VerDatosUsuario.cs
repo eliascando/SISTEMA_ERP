@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace view.Visual
 {
-    public partial class VerDatosUsuario_prueba : Form
+    public partial class VerDatosUsuario : Form
     {
-        private VerUsuarios_prueba verUsuario_prueba;
-        public VerDatosUsuario_prueba(VerUsuarios_prueba verUsuarios_Prueba)
+        private VerUsuarios verUsuario_prueba;
+        public VerDatosUsuario(VerUsuarios verUsuarios_Prueba)
         {
             InitializeComponent();
             this.verUsuario_prueba = verUsuarios_Prueba;

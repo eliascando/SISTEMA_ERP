@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace view
 {
-    public partial class RegistroUsuario_prueba : Form
+    public partial class RegistroUsuario : Form
     {
-        public RegistroUsuario_prueba()
+        public RegistroUsuario()
         {
             InitializeComponent();
         }
@@ -25,7 +25,7 @@ namespace view
 
         private void button1_Click(object sender, EventArgs e)
         {
-            RegistroDatosUsuario_prueba registro = new RegistroDatosUsuario_prueba(this);
+            RegistroDatosUsuario registro = new RegistroDatosUsuario(this);
             if (datagridPersonalSinUsuario.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = datagridPersonalSinUsuario.SelectedRows[0];

@@ -1,6 +1,6 @@
 ﻿namespace view
 {
-    partial class InicioSesion_prueba
+    partial class InicioSesion
     {
         /// <summary>
         /// Required designer variable.
@@ -104,7 +104,7 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Ingrese Credenciales";
             // 
-            // InicioSesion_prueba
+            // InicioSesion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -112,9 +112,9 @@
             Controls.Add(groupBox1);
             Controls.Add(btnIniciarSesion);
             Controls.Add(label1);
-            Name = "InicioSesion_prueba";
+            Name = "InicioSesion";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "InicioSesion_prueba";
+            Text = "InicioSesion";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);

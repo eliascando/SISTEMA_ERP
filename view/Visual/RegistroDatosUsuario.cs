@@ -11,12 +11,12 @@ using System.Windows.Forms;
 
 namespace view
 {
-    public partial class RegistroDatosUsuario_prueba : Form
+    public partial class RegistroDatosUsuario : Form
     {
         PersonalCtrl personalCtrl = new PersonalCtrl();
-        private RegistroUsuario_prueba registroForm;
+        private RegistroUsuario registroForm;
         private byte[] imageData;
-        public RegistroDatosUsuario_prueba(RegistroUsuario_prueba registroForm)
+        public RegistroDatosUsuario(RegistroUsuario registroForm)
         {
             InitializeComponent();
             this.registroForm = registroForm;

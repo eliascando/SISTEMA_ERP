@@ -14,11 +14,11 @@ using model.Entities;
 
 namespace view.Visual
 {
-    public partial class VerUsuarios_prueba : Form
+    public partial class VerUsuarios : Form
     {
         PersonalCtrl personalCtrl = new PersonalCtrl();
 
-        public VerUsuarios_prueba()
+        public VerUsuarios()
         {
             InitializeComponent();
         }
@@ -34,7 +34,7 @@ namespace view.Visual
 
         private async void button1_Click(object sender, EventArgs e)
         {
-            VerDatosUsuario_prueba DatosForm = new VerDatosUsuario_prueba(this);
+            VerDatosUsuario DatosForm = new VerDatosUsuario(this);
             if (gridUsuarios.SelectedRows.Count > 0)
             {
                 Dictionary<string, object> combinedData = new Dictionary<string, object>();
@@ -51,6 +51,27 @@ namespace view.Visual
                 DatosForm.lblEdad.Text = Aurora.GetAge((DateTime)combinedData["Fecha_nacimiento"]).ToString();
 
                 DatosForm.ShowDialog();
+            }
+        }
+
+        private async void btnActualizar_Click(object sender, EventArgs e)
+        {
+            ActualizarDatosPersonal UpdateForm = new ActualizarDatosPersonal(this);
+            if (gridUsuarios.SelectedRows.Count > 0)
+            {
+                Dictionary<string, object> combinedData = new Dictionary<string, object>();
+                DataGridViewRow selectedRow = gridUsuarios.SelectedRows[0];
+                combinedData = await personalCtrl.ObtenerDatosUsuariosCtrl(selectedRow.Cells[0].Value.ToString());
+                UpdateForm.lblCedula.Text = (string)combinedData["Id_personal"];
+                UpdateForm.lblNombresPersonal.Text = (string)combinedData["Nombre_personal"];
+                UpdateForm.lblApellidosPersonal.Text = (string)combinedData["Apellido_personal"];
+                UpdateForm.lblCargoPersonal.Text = (string)combinedData["Cargo"];
+                UpdateForm.txtCorreoU.Text = (string)combinedData["Correo"];
+                UpdateForm.txtTelefonoU.Text = (string)combinedData["Telefono"];
+                UpdateForm.txtDireccionU.Text = (string)combinedData["Direccion"];
+                UpdateForm.picFotoPersonal.Image = Image.FromStream(new MemoryStream((byte[])combinedData["Imagen"]));
+
+                UpdateForm.ShowDialog();
             }
         }
     }

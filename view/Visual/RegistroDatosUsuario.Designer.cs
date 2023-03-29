@@ -1,6 +1,6 @@
 ﻿namespace view
 {
-    partial class RegistroDatosUsuario_prueba
+    partial class RegistroDatosUsuario
     {
         /// <summary>
         /// Required designer variable.
@@ -237,7 +237,7 @@
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click;
             // 
-            // RegistroDatosUsuario_prueba
+            // RegistroDatosUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -247,9 +247,9 @@
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(label1);
-            Name = "RegistroDatosUsuario_prueba";
+            Name = "RegistroDatosUsuario";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "RegistroDatosUsuario_prueba";
+            Text = "RegistroDatosUsuario";
             Load += RegistroDatosUsuario_prueba_Load;
             ((System.ComponentModel.ISupportInitialize)picFotoPersonal).EndInit();
             groupBox1.ResumeLayout(false);

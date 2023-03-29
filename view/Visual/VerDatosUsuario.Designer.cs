@@ -1,6 +1,6 @@
 ﻿namespace view.Visual
 {
-    partial class VerDatosUsuario_prueba
+    partial class VerDatosUsuario
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,6 @@
         {
             picFotoUsuario = new PictureBox();
             lblNombreUsuario = new Label();
-            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -195,7 +194,7 @@
             lblID.TabIndex = 23;
             lblID.Text = "IdUsuario";
             // 
-            // VerDatosUsuario_prueba
+            // VerDatosUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -216,7 +215,7 @@
             Controls.Add(label1);
             Controls.Add(lblNombreUsuario);
             Controls.Add(picFotoUsuario);
-            Name = "VerDatosUsuario_prueba";
+            Name = "VerDatosUsuario";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "VerDatosUsuario";
             Load += VerDatosUsuario_prueba_Load;
@@ -226,7 +225,6 @@
         }
 
         #endregion
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         public PictureBox picFotoUsuario;
         private Label label1;
         private Label label2;

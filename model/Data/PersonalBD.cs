@@ -127,7 +127,7 @@ namespace model.Data
                 {
                     var cmd = new SqlCommand("ObtenerRoles", ConexionBD.cn);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    //cmd.Parameters.AddWithValue("@Id_rol", GlobalVariables.id_rol);
+                    //cmd.Parameters.AddWithValue("@IdRol", GlobalVariables.id_rol);
                     roles.Insert(0, new RolUsuario(-1, "Elegir cargo..."));
                     using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
                     {
@@ -229,11 +229,13 @@ namespace model.Data
                         personal.Apellido_personal = reader.GetString(1);
                         personal.Cargo = reader.GetString(2);
                         personal.Fecha_nacimiento = reader.GetDateTime(3);
-                        personal.Telefono = reader.GetString(4);
-                        personal.Correo = reader.GetString(5);
-                        personal.Fecha_ingreso = reader.GetDateTime(6);
-                        usuario.Imagen = (byte[])reader.GetValue(7);
-                        credenciales.Usuario = reader.GetString(8);
+                        personal.Sexo = reader.GetString(4);
+                        personal.Telefono = reader.GetString(5);
+                        personal.Correo = reader.GetString(6);
+                        personal.Direccion = reader.GetString(7);
+                        personal.Fecha_ingreso = reader.GetDateTime(8);
+                        usuario.Imagen = (byte[])reader.GetValue(9);
+                        credenciales.Usuario = reader.GetString(10);
                         DatosCombinados = Aurora.CombineObjects(personal, usuario, credenciales);
                     }
                 }
@@ -247,6 +249,77 @@ namespace model.Data
                 await ConexionBD.CerrarConexionAsync();
             }
             return DatosCombinados;
+        }
+        public async Task<bool>RegistrarGerente(Dictionary<string,object> DatosGerente)
+        {
+            bool registrado=false;
+            try
+            {
+                if (await ConexionBD.AbrirConexionAsync())
+                {
+                    var cmd = new SqlCommand("RegistrarGerente", ConexionBD.cn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@id_cedula", (string)DatosGerente["Id_personal"]);
+                    cmd.Parameters.AddWithValue("@nombre_gerente", (string)DatosGerente["Nombre_personal"]);
+                    cmd.Parameters.AddWithValue("@apellido_gerente", (string)DatosGerente["Apellido_personal"]);
+                    cmd.Parameters.AddWithValue("@fecha_nacimiento", (DateTime)DatosGerente["Fecha_nacimiento"]);
+                    cmd.Parameters.AddWithValue("@sexo_gerente", (string)DatosGerente["Sexo"]);
+                    cmd.Parameters.AddWithValue("@telefono_gerente", (string)DatosGerente["Telefono"]);
+                    cmd.Parameters.AddWithValue("@correo_gerente", (string)DatosGerente["Correo"]);
+                    cmd.Parameters.AddWithValue("@direccion_gerente", (string)DatosGerente["Direccion"]);
+                    cmd.Parameters.AddWithValue("@fecha_ingreso", (DateTime)DatosGerente["Fecha_ingreso"]);
+                    cmd.Parameters.AddWithValue("@salario_mensual", (double)DatosGerente["Salario"]);
+                    cmd.Parameters.AddWithValue("@imagen_gerente", (byte[])DatosGerente["Imagen"]);
+                    cmd.Parameters.AddWithValue("@usuario", (string)DatosGerente["Usuario"]);
+                    cmd.Parameters.AddWithValue("@password", Aurora.Encrypt((string)DatosGerente["Password"]));
+                    SqlParameter registroExitosoParam = new SqlParameter("@RegistroExitoso", SqlDbType.Bit);
+                    registroExitosoParam.Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add(registroExitosoParam);
+                    await cmd.ExecuteNonQueryAsync();
+
+                    registrado = (bool)registroExitosoParam.Value;
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("ERROR DE EXCEPCIÓN!: " + ex);
+            }
+            finally
+            {
+                await ConexionBD.CerrarConexionAsync();
+            }
+            return registrado;
+        }
+        public async Task<bool>ActualizarDatosPersonal(Dictionary<string,object> DatosPersonal)
+        {
+            bool actualizado = false;
+            try
+            {
+                if (await ConexionBD.AbrirConexionAsync())
+                {
+                    var cmd = new SqlCommand("ActualizarDatosPersonal", ConexionBD.cn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@id_cedula", (string)DatosPersonal["Id_personal"]);
+                    cmd.Parameters.AddWithValue("@telefono_personal", (string)DatosPersonal["Telefono"]);
+                    cmd.Parameters.AddWithValue("@correo_personal", (string)DatosPersonal["Correo"]);
+                    cmd.Parameters.AddWithValue("@direccion_personal", (string)DatosPersonal["Direccion"]);
+                    cmd.Parameters.AddWithValue("@imagen_personal", (byte[])DatosPersonal["Imagen"]);
+                    SqlParameter actualizadoParam = new SqlParameter("@Actualizado", SqlDbType.Bit);
+                    actualizadoParam.Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add(actualizadoParam);
+                    await cmd.ExecuteNonQueryAsync();
+
+                    actualizado = (bool)actualizadoParam.Value;
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show("ERROR DE EXCEPCIÓN!: " + ex);
+            }
+            finally
+            {
+                await ConexionBD.CerrarConexionAsync();
+            }
+            return actualizado;
         }
     }
 }

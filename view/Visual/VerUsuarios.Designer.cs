@@ -1,6 +1,6 @@
 ﻿namespace view.Visual
 {
-    partial class VerUsuarios_prueba
+    partial class VerUsuarios
     {
         /// <summary>
         /// Required designer variable.
@@ -79,8 +79,9 @@
             btnActualizar.TabIndex = 4;
             btnActualizar.Text = "Actualizar";
             btnActualizar.UseVisualStyleBackColor = true;
+            btnActualizar.Click += btnActualizar_Click;
             // 
-            // VerUsuarios_prueba
+            // VerUsuarios
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -89,9 +90,9 @@
             Controls.Add(label1);
             Controls.Add(button1);
             Controls.Add(gridUsuarios);
-            Name = "VerUsuarios_prueba";
+            Name = "VerUsuarios";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "VerUsuarios_prueba";
+            Text = "VerUsuarios";
             Load += VerUsuarios_prueba_Load;
             ((System.ComponentModel.ISupportInitialize)gridUsuarios).EndInit();
             ResumeLayout(false);

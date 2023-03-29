@@ -1,4 +1,5 @@
-﻿using System;
+﻿using control;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,21 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using control;
 
-namespace view
+namespace view.Visual
 {
-    public partial class Registropersonal_prueba : Form
+    public partial class RegistroPersonal : Form
     {
         PersonalCtrl personalCtrl = new PersonalCtrl();
-        public Registropersonal_prueba()
+        public RegistroPersonal()
         {
             InitializeComponent();
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
         }
 
         private async void btnGuardar_Click(object sender, EventArgs e)
@@ -46,7 +41,7 @@ namespace view
             }
         }
 
-        private async void Registropersonal_prueba_Load(object sender, EventArgs e)
+        private async void RegistroPersonal_Load(object sender, EventArgs e)
         {
             cmbCargo.DataSource = await personalCtrl.ObtenerRolesCtrl();
             cmbCargo.DisplayMember = "Nombre_rol";

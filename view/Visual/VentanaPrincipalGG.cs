@@ -27,8 +27,14 @@ namespace view.Visual
 
         private void button3_Click(object sender, EventArgs e)
         {
-            VerUsuarios_prueba verUsuarios = new VerUsuarios_prueba();
+            VerUsuarios verUsuarios = new VerUsuarios();
             verUsuarios.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            RegistroPersonal registropersonal = new RegistroPersonal();
+            registropersonal.ShowDialog();
         }
     }
 }

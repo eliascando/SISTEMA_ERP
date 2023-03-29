@@ -12,10 +12,10 @@ using view.Visual;
 
 namespace view
 {
-    public partial class InicioSesion_prueba : Form
+    public partial class InicioSesion : Form
     {
         PersonalCtrl personalCtrl = new PersonalCtrl();
-        public InicioSesion_prueba()
+        public InicioSesion()
         {
             InitializeComponent();
         }
@@ -43,16 +43,17 @@ namespace view
                 }
                 else if (id == 3)
                 {
-                    bodega.ShowDialog();
+                    caja.ShowDialog();
                 }
                 else if (id == 4)
                 {
-                    caja.ShowDialog();
+                    bodega.ShowDialog();
                 }
                 else if (id == 5)
                 {
                     asistente.ShowDialog();
-                }else if (id == 10)
+                }
+                else if (id == 10)
                 {
                     gg.ShowDialog();
                 }

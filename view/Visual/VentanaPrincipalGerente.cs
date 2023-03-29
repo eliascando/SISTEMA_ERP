@@ -22,13 +22,13 @@ namespace view
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Registropersonal_prueba registropersonal = new Registropersonal_prueba();
+            RegistroPersonal registropersonal = new RegistroPersonal();
             registropersonal.ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            RegistroUsuario_prueba registroUsuario = new RegistroUsuario_prueba();
+            RegistroUsuario registroUsuario = new RegistroUsuario();
             registroUsuario.ShowDialog();
         }
 
@@ -39,7 +39,7 @@ namespace view
 
         private void button3_Click(object sender, EventArgs e)
         {
-            VerUsuarios_prueba verUsuarios = new VerUsuarios_prueba();
+            VerUsuarios verUsuarios = new VerUsuarios();
             verUsuarios.ShowDialog();
         }
 

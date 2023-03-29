@@ -72,5 +72,40 @@ namespace control
         {
             return await personalBD.ObtenerDatosUsuarios(id);
         }
+        public async Task<bool> RegistrarGerenteCtrl(string id, string nombre, string apellido, DateTime nacimiento, string sexo, string telefono, string correo, string direccion, DateTime ingreso, string salario, byte[] imagen, string usuario, string password)
+        {
+            Dictionary<string, object> DatosCombinados = new Dictionary<string, object>();
+            Personal personal = new Personal();
+            Usuario usuarios = new Usuario();
+            CredencialesAcceso credenciales = new CredencialesAcceso();
+
+            personal.Id_personal = id;
+            personal.Nombre_personal = nombre;
+            personal.Apellido_personal = apellido;
+            personal.Fecha_nacimiento = nacimiento;
+            personal.Sexo = sexo;
+            personal.Telefono = telefono;
+            personal.Correo = correo;
+            personal.Direccion = direccion;
+            personal.Fecha_ingreso = ingreso;
+            personal.Salario = Double.Parse(salario);
+            usuarios.Imagen = imagen;
+            credenciales.Usuario = usuario;
+            credenciales.Password = password;
+            DatosCombinados = Aurora.CombineObjects(personal, usuarios, credenciales);
+            return await personalBD.RegistrarGerente(DatosCombinados);
+        }
+        public async Task<bool> ActualizarDatosUsuarioCtrl(string id, string telefono, string correo, string direccion, byte[] imagen)
+        {
+            Personal personal = new Personal();
+            Usuario usuario = new Usuario();
+            personal.Id_personal = id; 
+            personal.Telefono = telefono;
+            personal.Correo = correo;
+            personal.Direccion = direccion;
+            usuario.Imagen = imagen;
+            
+            return await personalBD.ActualizarDatosPersonal(Aurora.CombineObjects(personal,usuario));
+        }    
     }
 }

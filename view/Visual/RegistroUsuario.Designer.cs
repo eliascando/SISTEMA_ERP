@@ -1,6 +1,6 @@
 ﻿namespace view
 {
-    partial class RegistroUsuario_prueba
+    partial class RegistroUsuario
     {
         /// <summary>
         /// Required designer variable.
@@ -81,7 +81,7 @@
             btnActualizarLista.UseVisualStyleBackColor = true;
             btnActualizarLista.Click += btnActualizarLista_Click;
             // 
-            // RegistroUsuario_prueba
+            // RegistroUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -90,9 +90,9 @@
             Controls.Add(button1);
             Controls.Add(label1);
             Controls.Add(datagridPersonalSinUsuario);
-            Name = "RegistroUsuario_prueba";
+            Name = "RegistroUsuario";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "RegistroUsuario_prueba";
+            Text = "RegistroUsuario";
             Load += RegistroUsuario_prueba_Load;
             ((System.ComponentModel.ISupportInitialize)datagridPersonalSinUsuario).EndInit();
             ResumeLayout(false);

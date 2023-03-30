@@ -238,6 +238,7 @@
             btnCerrar.TabIndex = 14;
             btnCerrar.Text = "Cerrar";
             btnCerrar.UseVisualStyleBackColor = true;
+            btnCerrar.Click += btnCerrar_Click;
             // 
             // btnCambiarCredenciales
             // 

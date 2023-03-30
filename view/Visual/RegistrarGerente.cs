@@ -1,4 +1,5 @@
-﻿using control;
+﻿using aurora;
+using control;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,25 +28,27 @@ namespace view.Visual
 
         private async void btnGuardar_Click(object sender, EventArgs e)
         {
-            string sexoE = "";
-            if (rbtnSexoM.Checked)
+            if (Aurora.AreTextBoxEmpty(this))
             {
-                sexoE = rbtnSexoM.Text;
-            }
-            if (rbtnSexoF.Checked)
-            {
-                sexoE = rbtnSexoF.Text;
-            }
-
-            if (await personalCtrl.RegistrarGerenteCtrl(txtCedula.Text, txtNombres.Text, txtApellidos.Text, dateNacimiento.Value, sexoE, txtTelefono.Text, txtCorreo.Text, txtDireccion.Text, dateIngreso.Value, txtSalario.Text, imageData, txtUsuario.Text, txtPassword.Text))
-            {
-                MessageBox.Show("Registro Exitoso!");
+                MessageBox.Show("ERROR!: Debe llenar todos los campos");               
             }
             else
             {
-                MessageBox.Show("Error en Registro!");
-            }
+                DialogResult result = MessageBox.Show("¿Estás seguro de que desea registrar nuevo gerente?", "Confirmación", MessageBoxButtons.OKCancel);
+                if (result == DialogResult.OK)
+                {
+                    string sexoE = rbtnSexoM.Checked ? rbtnSexoM.Text : rbtnSexoM.Text;
 
+                    if (await personalCtrl.RegistrarGerenteCtrl(txtCedula.Text, txtNombres.Text, txtApellidos.Text, dateNacimiento.Value, sexoE, txtTelefono.Text, txtCorreo.Text, txtDireccion.Text, dateIngreso.Value, txtSalario.Text, imageData, txtUsuario.Text, txtPassword.Text))
+                    {
+                        MessageBox.Show("Registro Exitoso!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error en Registro!");
+                    }
+                }
+            }
         }
 
         private void btnAddImagen_Click(object sender, EventArgs e)

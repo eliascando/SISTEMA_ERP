@@ -1,4 +1,5 @@
-﻿using control;
+﻿using aurora;
+using control;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -42,17 +43,30 @@ namespace view.Visual
 
         private async void btnActualizar_Click(object sender, EventArgs e)
         {
-            PersonalCtrl personalCtrl = new PersonalCtrl();
-            if(await personalCtrl.ActualizarDatosUsuarioCtrl(lblCedula.Text, txtTelefonoU.Text, txtCorreoU.Text, txtDireccionU.Text, imageData))
+            if (Aurora.AreTextBoxModified(this))
             {
-                MessageBox.Show("Actualizado Correctamente!");
-                await verUsuario.CargarTabla();
-                this.Close();
+                PersonalCtrl personalCtrl = new PersonalCtrl();
+                if (await personalCtrl.ActualizarDatosUsuarioCtrl(lblCedula.Text, txtTelefonoU.Text, txtCorreoU.Text, txtDireccionU.Text, imageData))
+                {
+                    MessageBox.Show("Actualizado Correctamente!");
+                    await verUsuario.CargarTabla();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("ERROR!: No se pudo actualizar");
+                }
             }
             else
             {
-                MessageBox.Show("ERROR!: No se pudo actualizar");
+                MessageBox.Show("No se han registrado cambios!");
             }
+
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

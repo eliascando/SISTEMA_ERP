@@ -56,5 +56,59 @@ namespace aurora
         {
             return date.ToString("dd/MM/yyyy");
         }
+        
+        //AreTextBoxEmpty recibe como parametro un formulario y comprueba si los text box estan vacios o no devolviendo un bool
+        public static bool AreTextBoxEmpty(Form form)
+        {
+            bool isEmpty = false;
+            foreach(Control control in form.Controls)
+            {
+                if(control is TextBox textBox)
+                {
+                    if(string.IsNullOrEmpty(textBox.Text))
+                    {
+                        isEmpty = true;
+                        break;
+                    }
+                }
+            }
+            return isEmpty;
+        }
+
+        //AreTextBoxModified recibe como parametro un formulario y comprueba si los text box han sido modificado o no, devolviendo un bool
+        public static bool AreTextBoxModified(Form form)
+        {
+            bool isModified = false;
+            foreach (Control control in form.Controls)
+            {
+                if (control is TextBox textBox)
+                {
+                    if (textBox.Modified == true)
+                    {
+                        //Los textBox han sido modificados
+                        isModified = true;
+                    }
+                }
+            }
+            return isModified;
+        }
+
+        //IsValidEmail recibe un string y verifica que el correo tenga un formato valido
+        public static bool IsValidEmail(string email)
+        {
+            if (string.IsNullOrEmpty(email))
+            {
+                return false;
+            }
+            try
+            {
+                var valido = new System.Net.Mail.MailAddress(email);
+                return valido.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

@@ -10,7 +10,11 @@ namespace aurora
 {
     public class Aurora
     {
-        //Encrypt recibe una entrada de tipo string, generalmente una contraseña para encriptarla con SHA3 y obtener el string de la entrada enciptado
+        /// <summary>
+        /// Recibe una entrada de tipo string, generalmente una contraseña para encriptarla con SHA3
+        /// </summary>
+        /// <param name="entrada"></param>
+        /// <returns>El hash de la entrada</returns>
         public static string Encrypt(string entrada)
         {
             Sha3Digest sha3 = new Sha3Digest(256);
@@ -20,8 +24,12 @@ namespace aurora
             sha3.DoFinal(hash, 0);
             return Convert.ToBase64String(hash);
         }
-
-        //GetAge obtiene la edad a partir de una fecha de tipo datetime
+ 
+        /// <summary>
+        /// Calcula la edad a partir de una fecha de tipo datetime y la devuelve como entero
+        /// </summary>
+        /// <param name="fechaNacimiento"></param>
+        /// <returns>La edad de un sujeto </returns>
         public static int GetAge(DateTime fechaNacimiento)
         {
             DateTime fechaActual = DateTime.Today;
@@ -33,7 +41,11 @@ namespace aurora
             return edad;
         }
 
-        //CombineObjects combina los datos de N número de objetos con sus atributos, utilizando un diccionario de datos
+        /// <summary>
+        /// Combina los datos de N número de objetos con sus atributos, utilizando un diccionario de datos
+        /// </summary>
+        /// <param name="objects"></param>
+        /// <returns>Los objetos combinados</returns>
         public static Dictionary<string, object>CombineObjects(params object[] objects)
         {
             Dictionary<string, object> combinedData = new Dictionary<string, object>();
@@ -50,14 +62,22 @@ namespace aurora
 
             return combinedData;
         }
-
-        //DateToString convierte una fecha de tipo datetime a una cadena de string
+ 
+        /// <summary>
+        /// Convierte una fecha de tipo datetime a una cadena de string
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns>La fecha en formato string</returns>
         public static string DateToString(DateTime date)
         {
             return date.ToString("dd/MM/yyyy");
         }
-        
-        //AreTextBoxEmpty recibe como parametro un formulario y comprueba si los text box estan vacios o no devolviendo un bool
+
+        /// <summary>
+        /// Recibe como parametro un formulario y comprueba si los text box estan vacios o no devolviendo un bool
+        /// </summary>
+        /// <param name="form"></param>
+        /// <returns>Si los TextBox están vacíos</returns>
         public static bool AreTextBoxEmpty(Form form)
         {
             bool isEmpty = false;
@@ -75,7 +95,11 @@ namespace aurora
             return isEmpty;
         }
 
-        //AreTextBoxModified recibe como parametro un formulario y comprueba si los text box han sido modificado o no, devolviendo un bool
+        /// <summary>
+        /// Recibe como parametro un formulario y comprueba si los text box han sido modificado o no, devolviendo un bool
+        /// </summary>
+        /// <param name="form"></param>
+        /// <returns>Si los TextBox han sido modificados</returns>
         public static bool AreTextBoxModified(Form form)
         {
             bool isModified = false;
@@ -93,7 +117,43 @@ namespace aurora
             return isModified;
         }
 
-        //IsValidEmail recibe un string y verifica que el correo tenga un formato valido
+        /// <summary>
+        /// Reestablece todos los controles del formulario
+        /// </summary>
+        /// <param name="form"></param>
+        /// <returns>El formulario limpio</returns>
+        public static void ClearForm(Form form)
+        {
+            foreach (Control control in form.Controls)
+            {
+                if(control is TextBox textBox)
+                {
+                    textBox.Clear();
+                }
+                if (control is RadioButton radioButton)
+                {
+                    radioButton.Checked = false;
+                }
+                if (control is ComboBox comboBox)
+                {
+                    comboBox.SelectedIndex = -1;
+                }
+                if(control is CheckBox checkBox)
+                {
+                    checkBox.Checked = false;
+                }
+                if(control is DateTimePicker dateTimePicker)
+                {
+                    dateTimePicker.Value = DateTime.Now;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Recibe un email y verifica que tenga el formato válido
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns>Si el correo es válido</returns>
         public static bool IsValidEmail(string email)
         {
             if (string.IsNullOrEmpty(email))
@@ -110,5 +170,6 @@ namespace aurora
                 return false;
             }
         }
+
     }
 }

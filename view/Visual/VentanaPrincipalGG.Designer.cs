@@ -32,6 +32,7 @@
             button3 = new Button();
             button1 = new Button();
             button2 = new Button();
+            btnLogout = new Button();
             SuspendLayout();
             // 
             // lblNombreUsuario
@@ -74,11 +75,22 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
+            // btnLogout
+            // 
+            btnLogout.Location = new Point(671, 402);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(117, 36);
+            btnLogout.TabIndex = 7;
+            btnLogout.Text = "Cerrar Sesión";
+            btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.Click += btnLogout_Click;
+            // 
             // VentanaPrincipalGG
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnLogout);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -96,5 +108,6 @@
         private Button button3;
         private Button button1;
         private Button button2;
+        private Button btnLogout;
     }
 }

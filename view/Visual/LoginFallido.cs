@@ -1,5 +1,4 @@
-﻿using control;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,9 +10,9 @@ using System.Windows.Forms;
 
 namespace view.Visual
 {
-    public partial class FormEspera : Form
+    public partial class LoginFallido : Form
     {
-        public FormEspera()
+        public LoginFallido()
         {
             InitializeComponent();
         }

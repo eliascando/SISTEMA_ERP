@@ -29,37 +29,61 @@ namespace view.Visual
             else
             {
                 var formEspera = new FormEspera();
-                formEspera.StartPosition = FormStartPosition.CenterScreen;
-                formEspera.FormBorderStyle = FormBorderStyle.None;
-                formEspera.ShowInTaskbar = false;
-                formEspera.TopMost = true;
+                var formSucceful = new LoginExitoso();
+                var formFail = new LoginFallido();
+                var validarCredencialesTask = personalCtrl.ValidarCredenciales(txtId.Text, txtPass.Text);
+                var esperarTask = Task.Delay(1500);
+
                 formEspera.Show();
-                if (await personalCtrl.ValidarCredenciales(txtId.Text, txtPass.Text))
+
+                await Task.WhenAll(validarCredencialesTask, esperarTask);
+
+                if (validarCredencialesTask.Result)
                 {
                     formEspera.Close();
+                    formSucceful.Show();
+                    formSucceful.lblBienvenida.Text = "Bienvenido " + GlobalVariablesCtrl.ObtenerUsuario();
+                    await Task.Delay(2500);
+                    formSucceful.Close();
                     Dictionary<int, Form> idVentana = new Dictionary<int, Form>()
                     {
-                        {1, new VentanaPrincipalGerente() },
-                        {2, new VentanaPrincipalRRHH() },
-                        {3, new VentanaPrincipalAdminCaja() },
-                        {4, new VentanaPrincipalAdminBodega() },
-                        {5, new VentanaPrincipalAsistente() },
-                        {10, new VentanaPrincipalGG() }
-                    };  
+                        {1, new VentanaPrincipalGerente(this) },
+                        {2, new VentanaPrincipalRRHH(this) },
+                        {3, new VentanaPrincipalAdminCaja(this) },
+                        {4, new VentanaPrincipalAdminBodega(this) },
+                        {5, new VentanaPrincipalAsistente(this) },
+                        {10, new VentanaPrincipalGG(this) }
+                    };
 
-                    MessageBox.Show("Acceso Exitoso!, Bienvenido " + GlobalVariablesCtrl.ObtenerUsuario());
                     int id = GlobalVariablesCtrl.ObtenerIdRol();
                     if (idVentana.ContainsKey(id))
                     {
                         Form ventana = idVentana[id];
                         ventana.ShowDialog();
+                        this.Hide();
                     }
+                    Aurora.ClearForm(this);
                 }
                 else
                 {
                     formEspera.Close();
-                    MessageBox.Show("ERROR! Credenciales incorrectas");
+                    formFail.Show();
+                    await Task.Delay(2000);
+                    formFail.Close();
+                    //MessageBox.Show("ERROR! Credenciales incorrectas");
                 }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Esta seguro que desa Salir?", "Confirmación", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK)
+            {
+                //this.Close();
+                //this.Dispose();
+                //Environment.Exit(0);
+                Application.Exit();
             }
         }
     }

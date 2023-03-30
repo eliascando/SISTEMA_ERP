@@ -14,10 +14,13 @@ namespace view
 {
     public partial class VentanaPrincipalGerente : Form
     {
-        public VentanaPrincipalGerente()
+        Login loginForm;
+        public VentanaPrincipalGerente(Login loginForm)
         {
             InitializeComponent();
             lblNombreUsuario.Text = GlobalVariablesCtrl.ObtenerUsuario();
+            this.FormClosing += VentanaPrincipal_FormClosing;
+            this.loginForm = loginForm;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -46,6 +49,12 @@ namespace view
         private void lblNombreUsuario_Click(object sender, EventArgs e)
         {
 
+        }
+        private void VentanaPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            loginForm.Close();
+            loginForm.Dispose();
+            Environment.Exit(0);
         }
     }
 }

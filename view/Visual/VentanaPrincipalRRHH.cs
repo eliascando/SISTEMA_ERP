@@ -13,10 +13,13 @@ namespace view.Visual
 {
     public partial class VentanaPrincipalRRHH : Form
     {
-        public VentanaPrincipalRRHH()
+        Login loginForm;
+        public VentanaPrincipalRRHH(Login loginForm)
         {
             InitializeComponent();
             lblNombreUsuarioRRHH.Text = GlobalVariablesCtrl.ObtenerUsuario();
+            this.FormClosing += VentanaPrincipal_FormClosing;
+            this.loginForm = loginForm;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -34,6 +37,12 @@ namespace view.Visual
         private void VentanaPrincipalRRHH_Load(object sender, EventArgs e)
         {
 
+        }
+        private void VentanaPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            loginForm.Close();
+            loginForm.Dispose();
+            Environment.Exit(0);
         }
     }
 }

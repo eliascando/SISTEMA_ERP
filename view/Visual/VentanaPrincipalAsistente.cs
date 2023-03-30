@@ -13,15 +13,24 @@ namespace view.Visual
 {
     public partial class VentanaPrincipalAsistente : Form
     {
-        public VentanaPrincipalAsistente()
+        Login loginForm;
+        public VentanaPrincipalAsistente(Login loginForm)
         {
             InitializeComponent();
             lblNombreUsuarioAsistente.Text = GlobalVariablesCtrl.ObtenerUsuario();
+            this.FormClosing += VentanaPrincipal_FormClosing;
+            this.loginForm = loginForm;
         }
 
         private void VentanaPrincipalAsistente_Load(object sender, EventArgs e)
         {
 
+        }
+        private void VentanaPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            loginForm.Close();
+            loginForm.Dispose();
+            Environment.Exit(0);
         }
     }
 }

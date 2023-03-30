@@ -34,13 +34,14 @@
             txtId = new TextBox();
             txtPass = new TextBox();
             btnLogin = new Button();
+            button1 = new Button();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Montserrat", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(281, 90);
+            label1.Location = new Point(298, 127);
             label1.Name = "label1";
             label1.Size = new Size(197, 25);
             label1.TabIndex = 0;
@@ -49,7 +50,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(278, 149);
+            label2.Location = new Point(295, 186);
             label2.Name = "label2";
             label2.Size = new Size(21, 15);
             label2.TabIndex = 1;
@@ -58,7 +59,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(229, 181);
+            label3.Location = new Point(246, 218);
             label3.Name = "label3";
             label3.Size = new Size(70, 15);
             label3.TabIndex = 2;
@@ -66,21 +67,21 @@
             // 
             // txtId
             // 
-            txtId.Location = new Point(305, 146);
+            txtId.Location = new Point(322, 183);
             txtId.Name = "txtId";
             txtId.Size = new Size(173, 23);
             txtId.TabIndex = 3;
             // 
             // txtPass
             // 
-            txtPass.Location = new Point(305, 178);
+            txtPass.Location = new Point(322, 215);
             txtPass.Name = "txtPass";
             txtPass.Size = new Size(173, 23);
             txtPass.TabIndex = 4;
             // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(305, 225);
+            btnLogin.Location = new Point(322, 262);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(130, 39);
             btnLogin.TabIndex = 5;
@@ -88,11 +89,22 @@
             btnLogin.UseVisualStyleBackColor = true;
             btnLogin.Click += btnLogin_Click;
             // 
+            // button1
+            // 
+            button1.Location = new Point(12, 399);
+            button1.Name = "button1";
+            button1.Size = new Size(101, 39);
+            button1.TabIndex = 6;
+            button1.Text = "Salir";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button1);
             Controls.Add(btnLogin);
             Controls.Add(txtPass);
             Controls.Add(txtId);
@@ -114,5 +126,6 @@
         private TextBox txtId;
         private TextBox txtPass;
         private Button btnLogin;
+        private Button button1;
     }
 }

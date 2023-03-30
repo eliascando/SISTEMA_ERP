@@ -13,10 +13,13 @@ namespace view.Visual
 {
     public partial class VentanaPrincipalGG : Form
     {
-        public VentanaPrincipalGG()
+        Login loginForm;
+        public VentanaPrincipalGG(Login loginForm)
         {
             InitializeComponent();
             lblNombreUsuario.Text = GlobalVariablesCtrl.ObtenerUsuario();
+            this.FormClosing += VentanaPrincipal_FormClosing;
+            this.loginForm = loginForm;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -35,6 +38,22 @@ namespace view.Visual
         {
             RegistroPersonal registropersonal = new RegistroPersonal();
             registropersonal.ShowDialog();
+        }
+        private void VentanaPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            loginForm.Close();
+            loginForm.Dispose();
+            Environment.Exit(0);
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("¿Cerrar Sesión?", "Confirmación", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK)
+            {
+                this.Dispose();
+                loginForm.Show();
+            }
         }
     }
 }

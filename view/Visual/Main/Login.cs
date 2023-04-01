@@ -57,7 +57,7 @@ namespace view.Visual
                     {
                         lblPanelSucces2.Text = "Bienvenido " + GlobalVariablesCtrl.ObtenerUsuario();
                         showPanelSucces();
-                        await Task.Delay(2500);
+                        await Task.Delay(2000);
                         hidePanelLogin();
 
                         Dictionary<int, Form> idVentana = new Dictionary<int, Form>()

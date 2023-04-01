@@ -1,6 +1,6 @@
 ﻿using System.Data.SqlClient;
 using System.Configuration;
-
+using aurora;
 namespace model.Data
 {
     public class ConexionBD
@@ -12,7 +12,8 @@ namespace model.Data
             {
                 cn = new SqlConnection();
                 string connectionString = ConfigurationManager.ConnectionStrings["conexionsql"].ConnectionString;
-                cn.ConnectionString = connectionString;
+                string decryptedConnection = Aurora.DecryptConnectionString(connectionString);
+                cn.ConnectionString = decryptedConnection;
                 await cn.OpenAsync();
                 return true;
             }

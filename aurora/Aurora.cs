@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Org.BouncyCastle.Crypto.Digests;
 
-namespace aurora
+namespace libraries
 {
     public class Aurora
     {

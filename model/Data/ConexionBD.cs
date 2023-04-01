@@ -1,6 +1,5 @@
 ﻿using System.Data.SqlClient;
 using System.Configuration;
-using aurora;
 using System.Security.Cryptography;
 using System.Text;
 

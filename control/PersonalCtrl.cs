@@ -92,7 +92,7 @@ namespace control
             usuarios.Imagen = imagen;
             credenciales.Usuario = usuario;
             credenciales.Password = password;
-            DatosCombinados = Aurora.CombineObjects(personal, usuarios, credenciales);
+            DatosCombinados = Alquimia.CombineObjects(personal, usuarios, credenciales);
             return await personalBD.RegistrarGerente(DatosCombinados);
         }
         public async Task<bool> ActualizarDatosUsuarioCtrl(string id, string telefono, string correo, string direccion, byte[] imagen)
@@ -105,7 +105,7 @@ namespace control
             personal.Direccion = direccion;
             usuario.Imagen = imagen;
             
-            return await personalBD.ActualizarDatosPersonal(Aurora.CombineObjects(personal,usuario));
+            return await personalBD.ActualizarDatosPersonal(Alquimia.CombineObjects(personal,usuario));
         }    
     }
 }

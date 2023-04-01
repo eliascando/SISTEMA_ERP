@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using view.Visual.Main;
 
 namespace view.Visual
 {
@@ -22,14 +23,13 @@ namespace view.Visual
             AlertId.Visible = false;
             AlertPass.Visible = false;
             lblMensaje.Visible = false;
-            hidePanelLogin();
         }
 
         private async void btnLogin_Click(object sender, EventArgs e)
         {
             try
             {
-                if (Aurora.AreTextBoxEmpty(this))
+                if (Aurora.AreTextBoxPanelEmpty(panelLogin))
                 {
                     if (String.IsNullOrEmpty(txtId.Text))
                     {
@@ -55,10 +55,10 @@ namespace view.Visual
 
                     if (validarCredencialesTask.Result)
                     {
-                        lblPanelSucces2.Text = "Bienvenido " + GlobalVariablesCtrl.ObtenerUsuario();
-                        showPanelSucces();
+                        Form success = new LoginSuccess();
+                        loadState(success);
                         await Task.Delay(2000);
-                        hidePanelLogin();
+                        closeState(success);
 
                         Dictionary<int, Form> idVentana = new Dictionary<int, Form>()
                         {
@@ -77,15 +77,16 @@ namespace view.Visual
                             this.Hide();
                             ventana.Show();
                         }
-                        Aurora.ClearForm(this);
+                        Aurora.ClearPanel(panelLogin);
                         btnLogin.Visible = true;
                         Loading.Visible = false;
                     }
                     else
                     {
-                        showPanelFail();
+                        Form fail = new LoginFail();
+                        loadState(fail);
                         await Task.Delay(2000);
-                        hidePanelLogin();
+                        closeState(fail);
                         btnLogin.Visible = true;
                         Loading.Visible = false;
                     }
@@ -117,36 +118,25 @@ namespace view.Visual
         {
             AlertPass.Visible = false;
         }
-        public void hidePanelLogin()
+        private Form activeForm = null;
+        private void loadState(Form panelEstadoLogin)
         {
-            panelLogin.Visible = false;
-            picturePanelFail.Visible = false;
-            picturePanelSucces.Visible = false;
-            lblPanelFail1.Visible = false;
-            lblPanelFail2.Visible = false;
-            lblPanelSucces1.Visible = false;
-            lblPanelSucces2.Visible = false;
-
+            if (activeForm != null)
+            {
+                activeForm.Close();
+            }
+            activeForm = panelEstadoLogin;
+            panelEstadoLogin.TopLevel = false;
+            panelEstadoLogin.FormBorderStyle = FormBorderStyle.None;
+            panelEstadoLogin.Dock = DockStyle.Fill;
+            panelLogin.Controls.Add(panelEstadoLogin);
+            panelLogin.Tag = panelEstadoLogin;
+            panelEstadoLogin.BringToFront();
+            panelEstadoLogin.Show();
         }
-        public void showPanelSucces()
+        private void closeState(Form panelEstadoLogin)
         {
-            panelLogin.Visible = true;
-            picturePanelFail.Visible = false;
-            picturePanelSucces.Visible = true;
-            lblPanelFail1.Visible = false;
-            lblPanelSucces1.Visible = true;
-            lblPanelFail2.Visible = false;
-            lblPanelSucces2.Visible = true;
-        }
-        public void showPanelFail()
-        {
-            panelLogin.Visible = true;
-            picturePanelFail.Visible = true;
-            picturePanelSucces.Visible = false;
-            lblPanelFail1.Visible = true;
-            lblPanelSucces1.Visible = false;
-            lblPanelFail2.Visible = true;
-            lblPanelSucces2.Visible = false;
+            panelEstadoLogin.Close();
         }
     }
 }

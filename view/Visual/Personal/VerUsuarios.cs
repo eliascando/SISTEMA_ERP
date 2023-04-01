@@ -54,10 +54,10 @@ namespace view.Visual
                     DatosForm.lblCargo.Text = (string)combinedData["Cargo"];
                     DatosForm.lblCorreo.Text = (string)combinedData["Correo"];
                     DatosForm.lblTelefono.Text = (string)combinedData["Telefono"];
-                    DatosForm.lblFechaIngreso.Text = Aurora.DateToString((DateTime)combinedData["Fecha_ingreso"]);
+                    DatosForm.lblFechaIngreso.Text = Alquimia.DateToString((DateTime)combinedData["Fecha_ingreso"]);
                     DatosForm.picFotoUsuario.Image = Image.FromStream(new MemoryStream((byte[])combinedData["Imagen"]));
                     DatosForm.lblUsuario.Text = (string)combinedData["Usuario"];
-                    DatosForm.lblEdad.Text = Aurora.GetAge((DateTime)combinedData["Fecha_nacimiento"]).ToString();
+                    DatosForm.lblEdad.Text = Alquimia.GetAge((DateTime)combinedData["Fecha_nacimiento"]).ToString();
 
                     DatosForm.ShowDialog();
                 }

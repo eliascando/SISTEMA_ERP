@@ -34,33 +34,26 @@
             txtId = new TextBox();
             txtPass = new TextBox();
             btnLogin = new Button();
-            button1 = new Button();
+            btnExit = new Button();
             Loading = new PictureBox();
             AlertId = new PictureBox();
             AlertPass = new PictureBox();
             lblMensaje = new Label();
-            panel1 = new Panel();
-            lblPanelSucces2 = new Label();
-            lblPanelSucces1 = new Label();
-            picturePanelSucces = new PictureBox();
+            panelLogo = new Panel();
             panelLogin = new Panel();
-            lblPanelFail2 = new Label();
-            lblPanelFail1 = new Label();
-            picturePanelFail = new PictureBox();
+            lblIngreseCredenciales = new Label();
             ((System.ComponentModel.ISupportInitialize)Loading).BeginInit();
             ((System.ComponentModel.ISupportInitialize)AlertId).BeginInit();
             ((System.ComponentModel.ISupportInitialize)AlertPass).BeginInit();
-            panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)picturePanelSucces).BeginInit();
             panelLogin.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)picturePanelFail).BeginInit();
             SuspendLayout();
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Montserrat", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(534, 98);
+            label1.Location = new Point(209, 106);
             label1.Name = "label1";
             label1.Size = new Size(143, 25);
             label1.TabIndex = 0;
@@ -69,7 +62,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(519, 143);
+            label2.Location = new Point(194, 161);
             label2.Name = "label2";
             label2.Size = new Size(21, 15);
             label2.TabIndex = 1;
@@ -78,7 +71,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(519, 201);
+            label3.Location = new Point(194, 219);
             label3.Name = "label3";
             label3.Size = new Size(70, 15);
             label3.TabIndex = 2;
@@ -86,7 +79,8 @@
             // 
             // txtId
             // 
-            txtId.Location = new Point(519, 162);
+            txtId.Anchor = AnchorStyles.None;
+            txtId.Location = new Point(194, 180);
             txtId.Name = "txtId";
             txtId.Size = new Size(173, 23);
             txtId.TabIndex = 3;
@@ -94,7 +88,8 @@
             // 
             // txtPass
             // 
-            txtPass.Location = new Point(519, 219);
+            txtPass.Anchor = AnchorStyles.None;
+            txtPass.Location = new Point(194, 237);
             txtPass.Name = "txtPass";
             txtPass.Size = new Size(173, 23);
             txtPass.TabIndex = 4;
@@ -102,7 +97,8 @@
             // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(539, 287);
+            btnLogin.Anchor = AnchorStyles.None;
+            btnLogin.Location = new Point(215, 296);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(130, 39);
             btnLogin.TabIndex = 5;
@@ -110,31 +106,33 @@
             btnLogin.UseVisualStyleBackColor = true;
             btnLogin.Click += btnLogin_Click;
             // 
-            // button1
+            // btnExit
             // 
-            button1.Location = new Point(11, 400);
-            button1.Name = "button1";
-            button1.Size = new Size(101, 39);
-            button1.TabIndex = 6;
-            button1.Text = "Salir";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            btnExit.Location = new Point(458, 12);
+            btnExit.Name = "btnExit";
+            btnExit.Size = new Size(101, 39);
+            btnExit.TabIndex = 6;
+            btnExit.Text = "Salir";
+            btnExit.UseVisualStyleBackColor = true;
+            btnExit.Click += button1_Click;
             // 
             // Loading
             // 
+            Loading.Anchor = AnchorStyles.None;
             Loading.Image = Properties.Resources.ajax_loader;
-            Loading.Location = new Point(565, 250);
+            Loading.Location = new Point(241, 278);
             Loading.Name = "Loading";
-            Loading.Size = new Size(78, 76);
+            Loading.Size = new Size(80, 73);
             Loading.SizeMode = PictureBoxSizeMode.StretchImage;
             Loading.TabIndex = 7;
             Loading.TabStop = false;
             // 
             // AlertId
             // 
+            AlertId.Anchor = AnchorStyles.None;
             AlertId.Image = Properties.Resources.alert;
             AlertId.InitialImage = Properties.Resources.alert;
-            AlertId.Location = new Point(698, 162);
+            AlertId.Location = new Point(373, 180);
             AlertId.Name = "AlertId";
             AlertId.Size = new Size(24, 23);
             AlertId.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -143,8 +141,9 @@
             // 
             // AlertPass
             // 
+            AlertPass.Anchor = AnchorStyles.None;
             AlertPass.Image = Properties.Resources.alert;
-            AlertPass.Location = new Point(698, 219);
+            AlertPass.Location = new Point(373, 237);
             AlertPass.Name = "AlertPass";
             AlertPass.Size = new Size(24, 23);
             AlertPass.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -156,91 +155,50 @@
             lblMensaje.AutoSize = true;
             lblMensaje.Font = new Font("Montserrat", 8.999999F, FontStyle.Bold, GraphicsUnit.Point);
             lblMensaje.ForeColor = Color.Brown;
-            lblMensaje.Location = new Point(497, 260);
+            lblMensaje.Location = new Point(170, 274);
             lblMensaje.Name = "lblMensaje";
             lblMensaje.Size = new Size(234, 15);
             lblMensaje.TabIndex = 10;
             lblMensaje.Text = "Debe ingresar todos los campos!";
             // 
-            // panel1
+            // panelLogo
             // 
-            panel1.BackColor = SystemColors.ActiveCaption;
-            panel1.Controls.Add(button1);
-            panel1.Location = new Point(1, -1);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(427, 452);
-            panel1.TabIndex = 12;
-            // 
-            // lblPanelSucces2
-            // 
-            lblPanelSucces2.AutoSize = true;
-            lblPanelSucces2.Font = new Font("Montserrat", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblPanelSucces2.Location = new Point(73, 320);
-            lblPanelSucces2.Name = "lblPanelSucces2";
-            lblPanelSucces2.Size = new Size(181, 19);
-            lblPanelSucces2.TabIndex = 5;
-            lblPanelSucces2.Text = "MensajeBienvenida";
-            // 
-            // lblPanelSucces1
-            // 
-            lblPanelSucces1.AutoSize = true;
-            lblPanelSucces1.Location = new Point(138, 288);
-            lblPanelSucces1.Name = "lblPanelSucces1";
-            lblPanelSucces1.Size = new Size(77, 15);
-            lblPanelSucces1.TabIndex = 4;
-            lblPanelSucces1.Text = "Inicio Exitoso";
-            // 
-            // picturePanelSucces
-            // 
-            picturePanelSucces.Image = Properties.Resources.success2;
-            picturePanelSucces.Location = new Point(101, 100);
-            picturePanelSucces.Name = "picturePanelSucces";
-            picturePanelSucces.Size = new Size(171, 169);
-            picturePanelSucces.SizeMode = PictureBoxSizeMode.StretchImage;
-            picturePanelSucces.TabIndex = 3;
-            picturePanelSucces.TabStop = false;
+            panelLogo.BackColor = SystemColors.ActiveCaption;
+            panelLogo.Dock = DockStyle.Left;
+            panelLogo.Location = new Point(0, 0);
+            panelLogo.Name = "panelLogo";
+            panelLogo.Size = new Size(229, 450);
+            panelLogo.TabIndex = 12;
             // 
             // panelLogin
             // 
-            panelLogin.Controls.Add(lblPanelSucces2);
-            panelLogin.Controls.Add(lblPanelFail2);
-            panelLogin.Controls.Add(lblPanelSucces1);
-            panelLogin.Controls.Add(lblPanelFail1);
-            panelLogin.Controls.Add(picturePanelSucces);
-            panelLogin.Controls.Add(picturePanelFail);
-            panelLogin.Location = new Point(427, -1);
+            panelLogin.BackColor = SystemColors.InactiveCaption;
+            panelLogin.Controls.Add(lblIngreseCredenciales);
+            panelLogin.Controls.Add(btnExit);
+            panelLogin.Controls.Add(label1);
+            panelLogin.Controls.Add(AlertPass);
+            panelLogin.Controls.Add(txtPass);
+            panelLogin.Controls.Add(label3);
+            panelLogin.Controls.Add(Loading);
+            panelLogin.Controls.Add(lblMensaje);
+            panelLogin.Controls.Add(txtId);
+            panelLogin.Controls.Add(AlertId);
+            panelLogin.Controls.Add(btnLogin);
+            panelLogin.Controls.Add(label2);
+            panelLogin.Dock = DockStyle.Fill;
+            panelLogin.Location = new Point(229, 0);
             panelLogin.Name = "panelLogin";
-            panelLogin.Size = new Size(373, 452);
+            panelLogin.Size = new Size(571, 450);
             panelLogin.TabIndex = 13;
             // 
-            // lblPanelFail2
+            // lblIngreseCredenciales
             // 
-            lblPanelFail2.AutoSize = true;
-            lblPanelFail2.Font = new Font("Montserrat", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblPanelFail2.Location = new Point(73, 320);
-            lblPanelFail2.Name = "lblPanelFail2";
-            lblPanelFail2.Size = new Size(229, 19);
-            lblPanelFail2.TabIndex = 8;
-            lblPanelFail2.Text = "Credenciales Incorrectas";
-            // 
-            // lblPanelFail1
-            // 
-            lblPanelFail1.AutoSize = true;
-            lblPanelFail1.Location = new Point(166, 288);
-            lblPanelFail1.Name = "lblPanelFail1";
-            lblPanelFail1.Size = new Size(35, 15);
-            lblPanelFail1.TabIndex = 7;
-            lblPanelFail1.Text = "Error!";
-            // 
-            // picturePanelFail
-            // 
-            picturePanelFail.Image = Properties.Resources.failure;
-            picturePanelFail.Location = new Point(101, 100);
-            picturePanelFail.Name = "picturePanelFail";
-            picturePanelFail.Size = new Size(171, 169);
-            picturePanelFail.SizeMode = PictureBoxSizeMode.StretchImage;
-            picturePanelFail.TabIndex = 6;
-            picturePanelFail.TabStop = false;
+            lblIngreseCredenciales.AutoSize = true;
+            lblIngreseCredenciales.Location = new Point(212, 133);
+            lblIngreseCredenciales.Name = "lblIngreseCredenciales";
+            lblIngreseCredenciales.Size = new Size(133, 15);
+            lblIngreseCredenciales.TabIndex = 11;
+            lblIngreseCredenciales.Text = "Ingrese sus credenciales";
             // 
             // Login
             // 
@@ -248,30 +206,18 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(panelLogin);
-            Controls.Add(label1);
-            Controls.Add(Loading);
-            Controls.Add(panel1);
-            Controls.Add(label2);
-            Controls.Add(lblMensaje);
-            Controls.Add(AlertPass);
-            Controls.Add(label3);
-            Controls.Add(AlertId);
-            Controls.Add(btnLogin);
-            Controls.Add(txtId);
-            Controls.Add(txtPass);
+            Controls.Add(panelLogo);
+            FormBorderStyle = FormBorderStyle.None;
+            MaximizeBox = false;
             Name = "Login";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
             ((System.ComponentModel.ISupportInitialize)Loading).EndInit();
             ((System.ComponentModel.ISupportInitialize)AlertId).EndInit();
             ((System.ComponentModel.ISupportInitialize)AlertPass).EndInit();
-            panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)picturePanelSucces).EndInit();
             panelLogin.ResumeLayout(false);
             panelLogin.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)picturePanelFail).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -282,18 +228,13 @@
         private TextBox txtId;
         private TextBox txtPass;
         private Button btnLogin;
-        private Button button1;
+        private Button btnExit;
         private PictureBox Loading;
         private PictureBox AlertId;
         private PictureBox AlertPass;
         private Label lblMensaje;
-        private Panel panel1;
-        private Panel panelLogin;
-        public Label lblPanelFail2;
-        private Label lblPanelFail1;
-        private PictureBox picturePanelFail;
-        public Label lblPanelSucces2;
-        private Label lblPanelSucces1;
-        private PictureBox picturePanelSucces;
+        private Panel panelLogo;
+        public Panel panelLogin;
+        private Label lblIngreseCredenciales;
     }
 }

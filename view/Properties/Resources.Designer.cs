@@ -83,9 +83,9 @@ namespace view.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap failure {
+        public static System.Drawing.Bitmap exit_ico {
             get {
-                object obj = ResourceManager.GetObject("failure", resourceCulture);
+                object obj = ResourceManager.GetObject("exit_ico", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace view.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap success {
+        public static System.Drawing.Bitmap failure {
             get {
-                object obj = ResourceManager.GetObject("success", resourceCulture);
+                object obj = ResourceManager.GetObject("failure", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

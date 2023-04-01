@@ -268,8 +268,8 @@
             Controls.Add(groupBox1);
             Controls.Add(label1);
             Name = "ActualizarDatosPersonal";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ActualizarDatosPersonal";
-            Load += ActualizarDatosPersonal_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picFotoPersonal).EndInit();

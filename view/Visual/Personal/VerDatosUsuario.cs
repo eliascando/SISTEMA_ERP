@@ -18,10 +18,6 @@ namespace view.Visual
             InitializeComponent();
             this.verUsuario_prueba = verUsuarios_Prueba;
         }
-        private void button1_clik(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
         private void VerDatosUsuario_prueba_Load(object sender, EventArgs e)
         {

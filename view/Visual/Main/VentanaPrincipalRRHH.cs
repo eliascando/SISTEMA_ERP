@@ -11,21 +11,21 @@ using System.Windows.Forms;
 
 namespace view.Visual
 {
-    public partial class VentanaPrincipalGG : Form
+    public partial class VentanaPrincipalRRHH : Form
     {
         Login loginForm;
-        public VentanaPrincipalGG(Login loginForm)
+        public VentanaPrincipalRRHH(Login loginForm)
         {
             InitializeComponent();
-            lblNombreUsuario.Text = GlobalVariablesCtrl.ObtenerUsuario();
+            lblNombreUsuarioRRHH.Text = GlobalVariablesCtrl.ObtenerUsuario();
             this.FormClosing += VentanaPrincipal_FormClosing;
             this.loginForm = loginForm;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            RegistrarGerente registrarGerente = new RegistrarGerente();
-            registrarGerente.ShowDialog();
+            RegistroPersonal registropersonal = new RegistroPersonal();
+            registropersonal.ShowDialog();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -34,10 +34,9 @@ namespace view.Visual
             verUsuarios.ShowDialog();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void VentanaPrincipalRRHH_Load(object sender, EventArgs e)
         {
-            RegistroPersonal registropersonal = new RegistroPersonal();
-            registropersonal.ShowDialog();
+
         }
         private void VentanaPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -51,6 +50,8 @@ namespace view.Visual
             DialogResult result = MessageBox.Show("¿Cerrar Sesión?", "Confirmación", MessageBoxButtons.OKCancel);
             if (result == DialogResult.OK)
             {
+                GlobalVariablesCtrl.AsignarIdRol(0);
+                GlobalVariablesCtrl.AsignarUsuario("");
                 this.Dispose();
                 loginForm.Show();
             }

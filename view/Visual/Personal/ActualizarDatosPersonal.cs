@@ -22,11 +22,6 @@ namespace view.Visual
             this.verUsuario = verUsuarios;
         }
 
-        private void ActualizarDatosPersonal_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnChangeImagen_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
@@ -43,25 +38,31 @@ namespace view.Visual
 
         private async void btnActualizar_Click(object sender, EventArgs e)
         {
-            if (Aurora.AreTextBoxModified(this))
+            try
             {
-                PersonalCtrl personalCtrl = new PersonalCtrl();
-                if (await personalCtrl.ActualizarDatosUsuarioCtrl(lblCedula.Text, txtTelefonoU.Text, txtCorreoU.Text, txtDireccionU.Text, imageData))
+                if (Aurora.AreTextBoxModified(this))
                 {
-                    MessageBox.Show("Actualizado Correctamente!");
-                    await verUsuario.CargarTabla();
-                    this.Close();
+                    PersonalCtrl personalCtrl = new PersonalCtrl();
+                    if (await personalCtrl.ActualizarDatosUsuarioCtrl(lblCedula.Text, txtTelefonoU.Text, txtCorreoU.Text, txtDireccionU.Text, imageData))
+                    {
+                        MessageBox.Show("Actualizado Correctamente!");
+                        await verUsuario.CargarTabla();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("ERROR!: No se pudo actualizar");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("ERROR!: No se pudo actualizar");
+                    MessageBox.Show("No se han registrado cambios!");
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("No se han registrado cambios!");
+                MessageBox.Show("ERROR DE EXCEPCIÓN: " + ex);
             }
-
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)

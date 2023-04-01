@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             lblNombreUsuarioAdminC = new Label();
+            btnLogout = new Button();
             SuspendLayout();
             // 
             // lblNombreUsuarioAdminC
@@ -41,11 +42,22 @@
             lblNombreUsuarioAdminC.TabIndex = 3;
             lblNombreUsuarioAdminC.Text = "NombresUsuario";
             // 
+            // btnLogout
+            // 
+            btnLogout.Location = new Point(671, 402);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(117, 36);
+            btnLogout.TabIndex = 8;
+            btnLogout.Text = "Cerrar Sesión";
+            btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.Click += btnLogout_Click;
+            // 
             // VentanaPrincipalAdminCaja
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnLogout);
             Controls.Add(lblNombreUsuarioAdminC);
             Name = "VentanaPrincipalAdminCaja";
             StartPosition = FormStartPosition.CenterScreen;
@@ -58,5 +70,6 @@
         #endregion
 
         public Label lblNombreUsuarioAdminC;
+        private Button btnLogout;
     }
 }

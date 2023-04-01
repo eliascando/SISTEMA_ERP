@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             lblNombreUsuarioAsistente = new Label();
+            btnLogout = new Button();
             SuspendLayout();
             // 
             // lblNombreUsuarioAsistente
@@ -41,11 +42,22 @@
             lblNombreUsuarioAsistente.TabIndex = 3;
             lblNombreUsuarioAsistente.Text = "NombresUsuario";
             // 
+            // btnLogout
+            // 
+            btnLogout.Location = new Point(671, 402);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(117, 36);
+            btnLogout.TabIndex = 8;
+            btnLogout.Text = "Cerrar Sesión";
+            btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.Click += btnLogout_Click;
+            // 
             // VentanaPrincipalAsistente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnLogout);
             Controls.Add(lblNombreUsuarioAsistente);
             Name = "VentanaPrincipalAsistente";
             StartPosition = FormStartPosition.CenterScreen;
@@ -59,5 +71,6 @@
 
         public Label lblNombreUsuarioAsistente;
         private Label lblNombreUsuario;
+        private Button btnLogout;
     }
 }

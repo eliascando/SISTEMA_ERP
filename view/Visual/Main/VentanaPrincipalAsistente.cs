@@ -32,5 +32,17 @@ namespace view.Visual
             loginForm.Dispose();
             Environment.Exit(0);
         }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("¿Cerrar Sesión?", "Confirmación", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK)
+            {
+                GlobalVariablesCtrl.AsignarIdRol(0);
+                GlobalVariablesCtrl.AsignarUsuario("");
+                this.Dispose();
+                loginForm.Show();
+            }
+        }
     }
 }

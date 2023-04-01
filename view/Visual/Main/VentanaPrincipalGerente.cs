@@ -45,16 +45,23 @@ namespace view
             VerUsuarios verUsuarios = new VerUsuarios();
             verUsuarios.ShowDialog();
         }
-
-        private void lblNombreUsuario_Click(object sender, EventArgs e)
-        {
-
-        }
         private void VentanaPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
             loginForm.Close();
             loginForm.Dispose();
             Environment.Exit(0);
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("¿Cerrar Sesión?", "Confirmación", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK)
+            {
+                GlobalVariablesCtrl.AsignarIdRol(0);
+                GlobalVariablesCtrl.AsignarUsuario("");
+                this.Dispose();
+                loginForm.Show();
+            }
         }
     }
 }

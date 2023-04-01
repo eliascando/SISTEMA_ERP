@@ -11,21 +11,21 @@ using System.Windows.Forms;
 
 namespace view.Visual
 {
-    public partial class VentanaPrincipalRRHH : Form
+    public partial class VentanaPrincipalGG : Form
     {
         Login loginForm;
-        public VentanaPrincipalRRHH(Login loginForm)
+        public VentanaPrincipalGG(Login loginForm)
         {
             InitializeComponent();
-            lblNombreUsuarioRRHH.Text = GlobalVariablesCtrl.ObtenerUsuario();
+            lblNombreUsuario.Text = GlobalVariablesCtrl.ObtenerUsuario();
             this.FormClosing += VentanaPrincipal_FormClosing;
             this.loginForm = loginForm;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            RegistroPersonal registropersonal = new RegistroPersonal();
-            registropersonal.ShowDialog();
+            RegistrarGerente registrarGerente = new RegistrarGerente();
+            registrarGerente.ShowDialog();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -34,15 +34,28 @@ namespace view.Visual
             verUsuarios.ShowDialog();
         }
 
-        private void VentanaPrincipalRRHH_Load(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-
+            RegistroPersonal registropersonal = new RegistroPersonal();
+            registropersonal.ShowDialog();
         }
         private void VentanaPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
             loginForm.Close();
             loginForm.Dispose();
             Environment.Exit(0);
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("¿Cerrar Sesión?", "Confirmación", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK)
+            {
+                GlobalVariablesCtrl.AsignarIdRol(0);
+                GlobalVariablesCtrl.AsignarUsuario("");
+                this.Dispose();
+                loginForm.Show();
+            }
         }
     }
 }

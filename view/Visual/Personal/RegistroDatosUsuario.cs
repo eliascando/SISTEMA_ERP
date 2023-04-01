@@ -24,15 +24,22 @@ namespace view
 
         private async void button1_Click(object sender, EventArgs e)
         {
-            if (await personalCtrl.RegistrarUsuarioCrl(lblIdCedula.Text, lblCargoPersonal.Text, blbNombresPersonal.Text, lblApellidosPersonal.Text, imageData, txtUsuario.Text, txtPassword.Text))
+            try
             {
-                MessageBox.Show("Usuario Registrado!");
-                this.Close();
-                await registroForm.CargarTabla();
+                if (await personalCtrl.RegistrarUsuarioCrl(lblIdCedula.Text, lblCargoPersonal.Text, blbNombresPersonal.Text, lblApellidosPersonal.Text, imageData, txtUsuario.Text, txtPassword.Text))
+                {
+                    MessageBox.Show("Usuario Registrado!");
+                    this.Close();
+                    await registroForm.CargarTabla();
+                }
+                else
+                {
+                    MessageBox.Show("ERROR!: No se pudo egistrar usuario");
+                }
             }
-            else
+            catch(Exception ex)
             {
-                MessageBox.Show("ERROR!: No se pudo egistrar usuario");
+                MessageBox.Show("ERROR DE EXCEPCIÓN: " + ex);
             }
         }
 

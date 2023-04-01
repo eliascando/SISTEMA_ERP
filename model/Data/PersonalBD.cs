@@ -46,7 +46,7 @@ namespace model.Data
             }
             catch (Exception ex)
             {
-                MessageBox.Show("ERROR DE EXCEPCIÓN!: " + ex);
+                throw new Exception(""+ex);
             }
             finally
             {
@@ -87,7 +87,7 @@ namespace model.Data
             }
             catch (Exception ex)
             {
-                MessageBox.Show("ERROR DE EXCEPCIÓN!: " + ex);
+                throw new Exception("" + ex);
             }
             finally
             {
@@ -110,7 +110,7 @@ namespace model.Data
             }
             catch (Exception ex)
             {
-                MessageBox.Show("ERROR DE EXCEPCIÓN!: " + ex);
+                throw new Exception("" + ex);
             }
             finally
             {
@@ -142,7 +142,7 @@ namespace model.Data
             }
             catch (Exception ex)
             {
-                MessageBox.Show("ERROR DE EXCEPCIÓN: " + ex);
+                throw new Exception("" + ex);
             }
             finally
             {
@@ -177,7 +177,7 @@ namespace model.Data
             }
             catch (Exception ex)
             {
-                MessageBox.Show("ERROR DE EXCEPCIÓN!: " + ex);
+                throw new Exception("" + ex);
             }
             finally
             {
@@ -200,7 +200,7 @@ namespace model.Data
             }
             catch(Exception ex)
             {
-                MessageBox.Show("ERROR DE EXCEPCIÓN!: " + ex);
+                throw new Exception("" + ex);
             }
             finally
             {
@@ -242,7 +242,7 @@ namespace model.Data
             }
             catch (Exception ex)
             {
-                MessageBox.Show("ERROR DE EXCEPCIÓN!: " + ex);
+                throw new Exception("" + ex);
             }
             finally
             {
@@ -282,7 +282,7 @@ namespace model.Data
             }
             catch(Exception ex)
             {
-                MessageBox.Show("ERROR DE EXCEPCIÓN!: " + ex);
+                throw new Exception("" + ex);
             }
             finally
             {
@@ -313,7 +313,7 @@ namespace model.Data
                 }
             }catch(Exception ex)
             {
-                MessageBox.Show("ERROR DE EXCEPCIÓN!: " + ex);
+                throw new Exception("" + ex);
             }
             finally
             {

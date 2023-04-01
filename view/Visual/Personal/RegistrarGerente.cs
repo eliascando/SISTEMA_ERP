@@ -28,27 +28,34 @@ namespace view.Visual
 
         private async void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (Aurora.AreTextBoxEmpty(this))
+            try
             {
-                MessageBox.Show("ERROR!: Debe llenar todos los campos");               
-            }
-            else
-            {
-                DialogResult result = MessageBox.Show("¿Estás seguro de que desea registrar nuevo gerente?", "Confirmación", MessageBoxButtons.OKCancel);
-                if (result == DialogResult.OK)
+                if (Aurora.AreTextBoxEmpty(this))
                 {
-                    string sexoE = rbtnSexoM.Checked ? rbtnSexoM.Text : rbtnSexoM.Text;
+                    MessageBox.Show("ERROR!: Debe llenar todos los campos");
+                }
+                else
+                {
+                    DialogResult result = MessageBox.Show("¿Estás seguro de que desea registrar nuevo gerente?", "Confirmación", MessageBoxButtons.OKCancel);
+                    if (result == DialogResult.OK)
+                    {
+                        string sexoE = rbtnSexoM.Checked ? rbtnSexoM.Text : rbtnSexoM.Text;
 
-                    if (await personalCtrl.RegistrarGerenteCtrl(txtCedula.Text, txtNombres.Text, txtApellidos.Text, dateNacimiento.Value, sexoE, txtTelefono.Text, txtCorreo.Text, txtDireccion.Text, dateIngreso.Value, txtSalario.Text, imageData, txtUsuario.Text, txtPassword.Text))
-                    {
-                        MessageBox.Show("Registro Exitoso!");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error en Registro!");
+                        if (await personalCtrl.RegistrarGerenteCtrl(txtCedula.Text, txtNombres.Text, txtApellidos.Text, dateNacimiento.Value, sexoE, txtTelefono.Text, txtCorreo.Text, txtDireccion.Text, dateIngreso.Value, txtSalario.Text, imageData, txtUsuario.Text, txtPassword.Text))
+                        {
+                            MessageBox.Show("Registro Exitoso!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error en Registro!");
+                        }
                     }
                 }
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show("ERROR DE EXCEPCIÓN: " + ex);
+            }            
         }
 
         private void btnAddImagen_Click(object sender, EventArgs e)

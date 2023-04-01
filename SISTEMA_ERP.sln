@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "control", "control\control.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "model", "model\model.csproj", "{DAD63DDF-A64D-4310-9DA8-02795B476FC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aurora", "aurora\aurora.csproj", "{058C94FF-8DA3-42D6-BF50-6FE0FE2D5A5E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "aurora", "aurora\aurora.csproj", "{058C94FF-8DA3-42D6-BF50-6FE0FE2D5A5E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

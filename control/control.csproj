@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\aurora\libraries.csproj" />
+    <ProjectReference Include="..\libraries\libraries.csproj" />
     <ProjectReference Include="..\model\model.csproj" />
   </ItemGroup>
 

@@ -83,23 +83,29 @@ namespace view.Visual
 
         private void btnRegistrarGerente_Click(object sender, EventArgs e)
         {
-            RegistrarGerente registrarGerente = new RegistrarGerente();
-            registrarGerente.ShowDialog();
-            hideSubMenu();
+            //RegistrarGerente registrarGerente = new RegistrarGerente();
+            //registrarGerente.ShowDialog();
+            Form registrarGerente = new RegistrarGerente();
+            loadWindow(registrarGerente);
+            //hideSubMenu();
         }
 
         private void btnRegistrarPersonal_Click(object sender, EventArgs e)
         {
-            RegistroPersonal registropersonal = new RegistroPersonal();
-            registropersonal.ShowDialog();
-            hideSubMenu();
+            //RegistroPersonal registropersonal = new RegistroPersonal();
+            //registropersonal.ShowDialog();
+            Form registrarPersonal = new RegistroPersonal();
+            loadWindow(registrarPersonal);
+            //hideSubMenu();
         }
 
         private void btnVerUsuarios_Click(object sender, EventArgs e)
         {
-            VerUsuarios verUsuarios = new VerUsuarios();
-            verUsuarios.ShowDialog();
-            hideSubMenu();
+            //VerUsuarios verUsuarios = new VerUsuarios();
+            //verUsuarios.ShowDialog();
+            Form verUsuarios = new VerUsuarios();
+            loadWindow(verUsuarios);
+            //hideSubMenu();
         }
 
         private void btnAlmacen_Click(object sender, EventArgs e)
@@ -110,6 +116,27 @@ namespace view.Visual
         private void btnVentas_Click(object sender, EventArgs e)
         {
             showSubMenu(panelVentasMenu);
+        }
+
+        private Form activeForm = null;
+        private void loadWindow(Form Window)
+        {
+            if (activeForm != null)
+            {
+                activeForm.Close();
+            }
+            activeForm = Window;
+            Window.TopLevel = false;
+            Window.FormBorderStyle = FormBorderStyle.None;
+            Window.Dock = DockStyle.Fill;
+            panelContenedor.Controls.Add(Window);
+            panelContenedor.Tag = Window;
+            Window.BringToFront();
+            Window.Show();
+        }
+        private void closeWindow(Form Window)
+        {
+            Window.Close();
         }
     }
 }

@@ -20,6 +20,8 @@ namespace view.Visual
             lblNombreUsuarioAdminB.Text = GlobalVariablesCtrl.ObtenerUsuario();
             this.FormClosing += VentanaPrincipal_FormClosing;
             this.loginForm = loginForm;
+            customizeDesign();
+            
         }
 
         private void VentanaPrincipalAdminBodega_Load(object sender, EventArgs e)
@@ -33,7 +35,7 @@ namespace view.Visual
             Environment.Exit(0);
         }
 
-        private void btnLogout_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("¿Cerrar Sesión?", "Confirmación", MessageBoxButtons.OKCancel);
             if (result == DialogResult.OK)
@@ -42,6 +44,31 @@ namespace view.Visual
                 GlobalVariablesCtrl.AsignarUsuario("");
                 this.Dispose();
                 loginForm.Show();
+            }
+        }
+
+        private void customizeDesign()
+        {
+            panelAlmacenMenu.Visible = false;
+            //..
+        }
+        private void hideSubMenu()
+        {
+            if (panelAlmacenMenu.Visible == true)
+            {
+                panelAlmacenMenu.Visible = false;
+            }
+        }
+        private void showSubMenu(Panel subMenu)
+        {
+            if (subMenu.Visible == false)
+            {
+                hideSubMenu();
+                subMenu.Visible = true;
+            }
+            else
+            {
+                subMenu.Visible = false;
             }
         }
     }

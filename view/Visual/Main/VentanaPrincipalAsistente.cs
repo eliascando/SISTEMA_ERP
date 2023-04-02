@@ -22,10 +22,6 @@ namespace view.Visual
             this.loginForm = loginForm;
         }
 
-        private void VentanaPrincipalAsistente_Load(object sender, EventArgs e)
-        {
-
-        }
         private void VentanaPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
             loginForm.Close();

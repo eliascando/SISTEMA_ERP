@@ -52,6 +52,7 @@
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
+            btnCancelar = new Button();
             SuspendLayout();
             // 
             // btnGuardar
@@ -258,11 +259,22 @@
             label1.TabIndex = 24;
             label1.Text = "Cédula:";
             // 
+            // btnCancelar
+            // 
+            btnCancelar.Location = new Point(259, 372);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(75, 23);
+            btnCancelar.TabIndex = 48;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
+            // 
             // RegistroPersonal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(729, 514);
+            Controls.Add(btnCancelar);
             Controls.Add(btnGuardar);
             Controls.Add(rbtnSexoM);
             Controls.Add(rbtnSexoF);
@@ -287,6 +299,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "RegistroPersonal";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "RegistroPersonal";
@@ -321,5 +334,6 @@
         private Label label3;
         private Label label2;
         private Label label1;
+        private Button btnCancelar;
     }
 }

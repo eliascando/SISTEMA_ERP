@@ -57,10 +57,10 @@ namespace view.Visual
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("ERROR DE EXCEPCIÓN: " + ex);
-            }       
+            }
         }
 
         private async void RegistroPersonal_Load(object sender, EventArgs e)
@@ -72,10 +72,15 @@ namespace view.Visual
                 cmbCargo.ValueMember = "Id_rol";
                 cmbCargo.SelectedValue = -1;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("ERROR DE EXCEPCIÓN: " + ex);
-            }          
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

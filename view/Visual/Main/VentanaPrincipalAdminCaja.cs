@@ -20,6 +20,7 @@ namespace view.Visual
             lblNombreUsuarioAdminC.Text = GlobalVariablesCtrl.ObtenerUsuario();
             this.FormClosing += VentanaPrincipal_FormClosing;
             this.loginForm = loginForm;
+            customizeDesign();
         }
 
         private void VentanaPrincipalAdminCaja_Load(object sender, EventArgs e)
@@ -33,7 +34,37 @@ namespace view.Visual
             Environment.Exit(0);
         }
 
-        private void btnLogout_Click(object sender, EventArgs e)
+        private void customizeDesign()
+        {
+            panelVentasMenu.Visible = false;
+            //..
+        }
+        private void hideSubMenu()
+        {
+            if (panelVentasMenu.Visible == true)
+            {
+                panelVentasMenu.Visible = false;
+            }
+        }
+        private void showSubMenu(Panel subMenu)
+        {
+            if (subMenu.Visible == false)
+            {
+                hideSubMenu();
+                subMenu.Visible = true;
+            }
+            else
+            {
+                subMenu.Visible = false;
+            }
+        }
+
+        private void btnVentas_Click(object sender, EventArgs e)
+        {
+            showSubMenu(panelVentasMenu);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("¿Cerrar Sesión?", "Confirmación", MessageBoxButtons.OKCancel);
             if (result == DialogResult.OK)

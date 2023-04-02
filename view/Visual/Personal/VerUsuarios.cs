@@ -36,7 +36,7 @@ namespace view.Visual
             catch (Exception ex)
             {
                 MessageBox.Show("ERROR DE EXCEPCIÓN: " + ex);
-            }           
+            }
         }
 
         private async void button1_Click(object sender, EventArgs e)
@@ -62,7 +62,7 @@ namespace view.Visual
                     DatosForm.ShowDialog();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("ERROR DE EXCEPCIÓN: " + ex);
             }

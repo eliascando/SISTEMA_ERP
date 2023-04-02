@@ -57,7 +57,7 @@
             // picturePanelSucces
             // 
             picturePanelSucces.Image = Properties.Resources.success2;
-            picturePanelSucces.Location = new Point(192, 84);
+            picturePanelSucces.Location = new Point(185, 84);
             picturePanelSucces.Name = "picturePanelSucces";
             picturePanelSucces.Size = new Size(171, 169);
             picturePanelSucces.SizeMode = PictureBoxSizeMode.StretchImage;

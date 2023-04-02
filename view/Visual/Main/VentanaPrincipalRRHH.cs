@@ -20,6 +20,7 @@ namespace view.Visual
             lblNombreUsuarioRRHH.Text = GlobalVariablesCtrl.ObtenerUsuario();
             this.FormClosing += VentanaPrincipal_FormClosing;
             this.loginForm = loginForm;
+            customizeDesign();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -54,6 +55,30 @@ namespace view.Visual
                 GlobalVariablesCtrl.AsignarUsuario("");
                 this.Dispose();
                 loginForm.Show();
+            }
+        }
+        private void customizeDesign()
+        {
+            panelRRHHMenu.Visible = false;
+            //..
+        }
+        private void hideSubMenu()
+        {
+            if (panelRRHHMenu.Visible == true)
+            {
+                panelRRHHMenu.Visible = false;
+            }
+        }
+        private void showSubMenu(Panel subMenu)
+        {
+            if (subMenu.Visible == false)
+            {
+                hideSubMenu();
+                subMenu.Visible = true;
+            }
+            else
+            {
+                subMenu.Visible = false;
             }
         }
     }

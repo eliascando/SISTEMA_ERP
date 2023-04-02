@@ -53,6 +53,7 @@
             btnRRHH = new Button();
             panelLogo = new Panel();
             panelInfo = new Panel();
+            panelContenedor = new Panel();
             panelMenu.SuspendLayout();
             panelVentasMenu.SuspendLayout();
             panelAlmacenMenu.SuspendLayout();
@@ -65,7 +66,7 @@
             lblNombreUsuario.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             lblNombreUsuario.AutoSize = true;
             lblNombreUsuario.Font = new Font("Montserrat", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            lblNombreUsuario.Location = new Point(534, 64);
+            lblNombreUsuario.Location = new Point(525, 19);
             lblNombreUsuario.Name = "lblNombreUsuario";
             lblNombreUsuario.Size = new Size(192, 25);
             lblNombreUsuario.TabIndex = 3;
@@ -408,16 +409,25 @@
             panelInfo.BackColor = Color.LightGray;
             panelInfo.Controls.Add(lblNombreUsuario);
             panelInfo.Dock = DockStyle.Bottom;
-            panelInfo.Location = new Point(229, 469);
+            panelInfo.Location = new Point(229, 514);
             panelInfo.Name = "panelInfo";
-            panelInfo.Size = new Size(729, 98);
+            panelInfo.Size = new Size(729, 53);
             panelInfo.TabIndex = 9;
+            // 
+            // panelContenedor
+            // 
+            panelContenedor.Dock = DockStyle.Fill;
+            panelContenedor.Location = new Point(229, 0);
+            panelContenedor.Name = "panelContenedor";
+            panelContenedor.Size = new Size(729, 514);
+            panelContenedor.TabIndex = 10;
             // 
             // VentanaPrincipalGG
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(958, 567);
+            Controls.Add(panelContenedor);
             Controls.Add(panelInfo);
             Controls.Add(panelMenu);
             MinimumSize = new Size(974, 606);
@@ -462,5 +472,6 @@
         private Button button11;
         private Button button10;
         private Button button9;
+        private Panel panelContenedor;
     }
 }

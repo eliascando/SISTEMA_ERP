@@ -43,17 +43,18 @@
             gridUsuarios.AllowUserToResizeRows = false;
             gridUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             gridUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            gridUsuarios.Location = new Point(30, 79);
+            gridUsuarios.Location = new Point(37, 57);
             gridUsuarios.MultiSelect = false;
             gridUsuarios.Name = "gridUsuarios";
             gridUsuarios.ReadOnly = true;
             gridUsuarios.RowTemplate.Height = 25;
-            gridUsuarios.Size = new Size(422, 225);
+            gridUsuarios.Size = new Size(465, 298);
             gridUsuarios.TabIndex = 1;
             // 
             // button1
             // 
-            button1.Location = new Point(211, 323);
+            button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            button1.Location = new Point(552, 479);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 2;
@@ -65,7 +66,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Montserrat", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(164, 22);
+            label1.Location = new Point(218, 9);
             label1.Name = "label1";
             label1.Size = new Size(141, 33);
             label1.TabIndex = 3;
@@ -73,7 +74,8 @@
             // 
             // btnActualizar
             // 
-            btnActualizar.Location = new Point(377, 323);
+            btnActualizar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnActualizar.Location = new Point(642, 479);
             btnActualizar.Name = "btnActualizar";
             btnActualizar.Size = new Size(75, 23);
             btnActualizar.TabIndex = 4;
@@ -85,11 +87,12 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(479, 358);
+            ClientSize = new Size(729, 514);
             Controls.Add(btnActualizar);
             Controls.Add(label1);
             Controls.Add(button1);
             Controls.Add(gridUsuarios);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "VerUsuarios";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "VerUsuarios";

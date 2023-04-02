@@ -56,7 +56,7 @@
             // picturePanelFail
             // 
             picturePanelFail.Image = Properties.Resources.failure;
-            picturePanelFail.Location = new Point(192, 84);
+            picturePanelFail.Location = new Point(182, 84);
             picturePanelFail.Name = "picturePanelFail";
             picturePanelFail.Size = new Size(171, 169);
             picturePanelFail.SizeMode = PictureBoxSizeMode.StretchImage;

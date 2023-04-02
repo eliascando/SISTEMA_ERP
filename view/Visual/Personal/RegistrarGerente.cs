@@ -52,10 +52,10 @@ namespace view.Visual
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("ERROR DE EXCEPCIÓN: " + ex);
-            }            
+            }
         }
 
         private void btnAddImagen_Click(object sender, EventArgs e)

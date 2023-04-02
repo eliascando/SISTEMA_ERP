@@ -260,7 +260,7 @@
             // 
             // btnAddImagen
             // 
-            btnAddImagen.Location = new Point(689, 187);
+            btnAddImagen.Location = new Point(527, 431);
             btnAddImagen.Name = "btnAddImagen";
             btnAddImagen.Size = new Size(87, 23);
             btnAddImagen.TabIndex = 6;
@@ -302,7 +302,7 @@
             // 
             // picFotoPersonal
             // 
-            picFotoPersonal.Location = new Point(689, 71);
+            picFotoPersonal.Location = new Point(527, 315);
             picFotoPersonal.Name = "picFotoPersonal";
             picFotoPersonal.Size = new Size(87, 110);
             picFotoPersonal.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -323,7 +323,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 379);
+            ClientSize = new Size(729, 514);
             Controls.Add(txtPassword);
             Controls.Add(btnAddImagen);
             Controls.Add(label12);
@@ -354,6 +354,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "RegistrarGerente";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "RegistrarGerente";

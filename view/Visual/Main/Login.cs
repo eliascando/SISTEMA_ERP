@@ -27,6 +27,7 @@ namespace view.Visual
 
         private async void btnLogin_Click(object sender, EventArgs e)
         {
+            lblMensaje.Visible = false;
             try
             {
                 if (Aurora.AreTextBoxPanelEmpty(panelLogin))

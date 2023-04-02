@@ -72,27 +72,5 @@ namespace libraries
         {
             return date.ToString("dd/MM/yyyy");
         }
-
-        /// <summary>
-        /// Recibe un email y verifica que tenga el formato válido
-        /// </summary>
-        /// <param name="email"></param>
-        /// <returns>Si el correo es válido</returns>
-        public static bool IsValidEmail(string email)
-        {
-            if (string.IsNullOrEmpty(email))
-            {
-                return false;
-            }
-            try
-            {
-                var valido = new System.Net.Mail.MailAddress(email);
-                return valido.Address == email;
-            }
-            catch
-            {
-                return false;
-            }
-        }
     }
 }

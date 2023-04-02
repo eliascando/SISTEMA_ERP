@@ -155,5 +155,30 @@
                 }
             }
         }
+
+        /// <summary>
+        /// Toma uno o más parámetros TextBox y establece la propiedad "UseSystemPasswordChar" de cada TextBox en true, lo que hace que los caracteres ingresados en los TextBox aparezcan como asteriscos o puntos para ocultar la contraseña.
+        /// </summary>
+        /// <param name="textBoxes"></param>
+        public static void HidePassword(params TextBox[] textBoxes)
+        {
+            foreach (var textBox in textBoxes)
+            {
+                textBox.UseSystemPasswordChar = true;
+            }
+        }
+
+        /// <summary>
+        /// Toma uno o más parámetros TextBox y establece la propiedad "UseSystemPasswordChar" de cada TextBox en false, lo que hace que los caracteres ingresados en los TextBox aparezcan en texto legible para ver la contraseña.
+        /// </summary>
+        /// <param name="textBoxes"></param>
+        public static void ShowPassword(params TextBox[] textBoxes)
+        {
+            foreach (var textBox in textBoxes)
+            {
+                textBox.UseSystemPasswordChar = false;
+            }
+        }
+
     }
 }

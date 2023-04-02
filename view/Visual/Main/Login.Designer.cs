@@ -34,18 +34,21 @@
             txtId = new TextBox();
             txtPass = new TextBox();
             btnLogin = new Button();
-            btnExit = new Button();
             Loading = new PictureBox();
             AlertId = new PictureBox();
             AlertPass = new PictureBox();
             lblMensaje = new Label();
             panelLogo = new Panel();
             panelLogin = new Panel();
+            PassStatusIcon = new PictureBox();
+            ExitIco = new PictureBox();
             lblIngreseCredenciales = new Label();
             ((System.ComponentModel.ISupportInitialize)Loading).BeginInit();
             ((System.ComponentModel.ISupportInitialize)AlertId).BeginInit();
             ((System.ComponentModel.ISupportInitialize)AlertPass).BeginInit();
             panelLogin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)PassStatusIcon).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ExitIco).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -106,16 +109,6 @@
             btnLogin.UseVisualStyleBackColor = true;
             btnLogin.Click += btnLogin_Click;
             // 
-            // btnExit
-            // 
-            btnExit.Location = new Point(458, 12);
-            btnExit.Name = "btnExit";
-            btnExit.Size = new Size(101, 39);
-            btnExit.TabIndex = 6;
-            btnExit.Text = "Salir";
-            btnExit.UseVisualStyleBackColor = true;
-            btnExit.Click += button1_Click;
-            // 
             // Loading
             // 
             Loading.Anchor = AnchorStyles.None;
@@ -173,8 +166,9 @@
             // panelLogin
             // 
             panelLogin.BackColor = SystemColors.InactiveCaption;
+            panelLogin.Controls.Add(PassStatusIcon);
+            panelLogin.Controls.Add(ExitIco);
             panelLogin.Controls.Add(lblIngreseCredenciales);
-            panelLogin.Controls.Add(btnExit);
             panelLogin.Controls.Add(label1);
             panelLogin.Controls.Add(AlertPass);
             panelLogin.Controls.Add(txtPass);
@@ -190,6 +184,29 @@
             panelLogin.Name = "panelLogin";
             panelLogin.Size = new Size(571, 450);
             panelLogin.TabIndex = 13;
+            // 
+            // PassStatusIcon
+            // 
+            PassStatusIcon.BackColor = SystemColors.Window;
+            PassStatusIcon.Image = Properties.Resources.hide_pass;
+            PassStatusIcon.Location = new Point(343, 239);
+            PassStatusIcon.Name = "PassStatusIcon";
+            PassStatusIcon.Size = new Size(23, 19);
+            PassStatusIcon.SizeMode = PictureBoxSizeMode.StretchImage;
+            PassStatusIcon.TabIndex = 13;
+            PassStatusIcon.TabStop = false;
+            PassStatusIcon.Click += PassStatusIcon_Click;
+            // 
+            // ExitIco
+            // 
+            ExitIco.Image = Properties.Resources.exit_ico;
+            ExitIco.Location = new Point(518, 12);
+            ExitIco.Name = "ExitIco";
+            ExitIco.Size = new Size(41, 40);
+            ExitIco.SizeMode = PictureBoxSizeMode.StretchImage;
+            ExitIco.TabIndex = 12;
+            ExitIco.TabStop = false;
+            ExitIco.Click += ExitIco_Click;
             // 
             // lblIngreseCredenciales
             // 
@@ -217,6 +234,8 @@
             ((System.ComponentModel.ISupportInitialize)AlertPass).EndInit();
             panelLogin.ResumeLayout(false);
             panelLogin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)PassStatusIcon).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ExitIco).EndInit();
             ResumeLayout(false);
         }
 
@@ -228,7 +247,6 @@
         private TextBox txtId;
         private TextBox txtPass;
         private Button btnLogin;
-        private Button btnExit;
         private PictureBox Loading;
         private PictureBox AlertId;
         private PictureBox AlertPass;
@@ -236,5 +254,7 @@
         private Panel panelLogo;
         public Panel panelLogin;
         private Label lblIngreseCredenciales;
+        private PictureBox ExitIco;
+        private PictureBox PassStatusIcon;
     }
 }

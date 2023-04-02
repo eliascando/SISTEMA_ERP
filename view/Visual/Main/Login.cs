@@ -1,21 +1,14 @@
 ﻿using libraries;
 using control;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using view.Visual.Main;
+using view.Properties;
 
 namespace view.Visual
 {
     public partial class Login : Form
     {
         PersonalCtrl personalCtrl = new PersonalCtrl();
+        bool isShowPass = false;
         public Login()
         {
             InitializeComponent();
@@ -23,6 +16,8 @@ namespace view.Visual
             AlertId.Visible = false;
             AlertPass.Visible = false;
             lblMensaje.Visible = false;
+            Guardian.ValidateIdInput(txtId);
+            Aurora.HidePassword(txtPass);
         }
 
         private async void btnLogin_Click(object sender, EventArgs e)
@@ -99,17 +94,6 @@ namespace view.Visual
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Esta seguro que desa Salir?", "Confirmación", MessageBoxButtons.OKCancel);
-            if (result == DialogResult.OK)
-            {
-                this.Close();
-                this.Dispose();
-                Environment.Exit(0);
-            }
-        }
-
         private void txtId_TextChanged(object sender, EventArgs e)
         {
             AlertId.Visible = false;
@@ -138,6 +122,34 @@ namespace view.Visual
         private void closeState(Form panelEstadoLogin)
         {
             panelEstadoLogin.Close();
+        }
+
+        private void ExitIco_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Esta seguro que desa Salir?", "Confirmación", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK)
+            {
+                this.Close();
+                this.Dispose();
+                Environment.Exit(0);
+            }
+        }
+
+        private void PassStatusIcon_Click(object sender, EventArgs e)
+        {
+            if (isShowPass == false)
+            {
+                Aurora.ShowPassword(txtPass);
+                PassStatusIcon.Image = Resources.show_pass;
+                isShowPass = true;
+            }
+            else
+            {
+                Aurora.HidePassword(txtPass);
+                PassStatusIcon.Image = Resources.hide_pass;
+                isShowPass = false;
+            }
+
         }
     }
 }

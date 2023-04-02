@@ -18,6 +18,10 @@ namespace view.Visual
         public RegistroPersonal()
         {
             InitializeComponent();
+            Guardian.ValidateTextInput(txtApellidos, txtNombres);
+            Guardian.ValidateIdInput(txtCedula);
+            Guardian.ValidateDecimalInput(txtSalario);
+            Guardian.ValidateIntegerInput(txtTelefono);
         }
 
         private async void btnGuardar_Click(object sender, EventArgs e)
@@ -30,18 +34,25 @@ namespace view.Visual
                 }
                 else
                 {
-                    DialogResult result = MessageBox.Show("¿Estás seguro de que desea registrar nuevo personal?", "Confirmación", MessageBoxButtons.OKCancel);
-                    if (result == DialogResult.OK)
+                    if (!Guardian.IsValidEmail(txtCorreo))
                     {
-                        string sexoE = rbtnSexoM.Checked ? rbtnSexoM.Text : rbtnSexoM.Text;
+                        MessageBox.Show("ERROR!: Formato Correo Inválido : nombre@dominio.com");
+                    }
+                    else
+                    {
+                        DialogResult result = MessageBox.Show("¿Estás seguro de que desea registrar nuevo personal?", "Confirmación", MessageBoxButtons.OKCancel);
+                        if (result == DialogResult.OK)
+                        {
+                            string sexoE = rbtnSexoM.Checked ? rbtnSexoM.Text : rbtnSexoM.Text;
 
-                        if (await personalCtrl.RegistrarPersonalCtrl(txtCedula.Text, txtNombres.Text, txtApellidos.Text, cmbCargo.Text, dateNacimiento.Value, sexoE, txtTelefono.Text, txtCorreo.Text, txtDireccion.Text, dateIngreso.Value, txtSalario.Text))
-                        {
-                            MessageBox.Show("Registro Exitoso!");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Error en Registro!");
+                            if (await personalCtrl.RegistrarPersonalCtrl(txtCedula.Text, txtNombres.Text, txtApellidos.Text, cmbCargo.Text, dateNacimiento.Value, sexoE, txtTelefono.Text, txtCorreo.Text, txtDireccion.Text, dateIngreso.Value, txtSalario.Text))
+                            {
+                                MessageBox.Show("Registro Exitoso!");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Error en Registro!");
+                            }
                         }
                     }
                 }

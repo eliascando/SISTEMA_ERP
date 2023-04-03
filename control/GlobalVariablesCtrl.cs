@@ -27,7 +27,7 @@ namespace control
         }
         public static void AsignarKeyEncryption(string key)
         {
-            GlobalVariables.encryptionKey = key;
+            GlobalVariables.encryptionKey = key.Trim();
         }
         public static string ObtenerKeyEncryption()
         {

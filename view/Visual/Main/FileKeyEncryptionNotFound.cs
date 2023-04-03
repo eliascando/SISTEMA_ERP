@@ -40,21 +40,14 @@ namespace view.Visual.Main
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             string rootFolder = AppDomain.CurrentDomain.BaseDirectory;
-            string filePath = Path.Combine(rootFolder, "encryptionKey.bin");
+            string filePath = Path.Combine(rootFolder, "encryptionKey.txt");
             if (Aurora.AreTextBoxEmpty(this))
             {
                 MessageBox.Show("ERROR!: Ingrese la llave de cifrado");
             }
             else
             {
-                string encryptionKey = Alquimia.Encrypt(txtKeyEncryption.Text);
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    using (var binaryWriter = new BinaryWriter(fileStream))
-                    {
-                        binaryWriter.Write(encryptionKey);
-                    }
-                }                    
+                File.WriteAllText(filePath, Alquimia.Encrypt(txtKeyEncryption.Text.Trim()));
                 if (File.Exists(filePath))
                 {
                     MessageBox.Show("Llave de cifrado guardada con éxito");

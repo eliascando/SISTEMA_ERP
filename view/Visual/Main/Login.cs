@@ -156,7 +156,7 @@ namespace view.Visual
         private void ValidateFileEncryption()
         {
             string rootFolder = AppDomain.CurrentDomain.BaseDirectory;
-            string filePath = Path.Combine(rootFolder, "encryptionKey.bin");
+            string filePath = Path.Combine(rootFolder,"encryptionKey.txt");
             if (!File.Exists(filePath))
             {
                 Form fileKey = new FileKeyEncryptionNotFound();
@@ -164,14 +164,7 @@ namespace view.Visual
             }
             else
             {
-                using (var fileStream = new FileStream(filePath, FileMode.Open))
-                {
-                    using (var binaryReader = new BinaryReader(fileStream))
-                    {
-                        string encryptionKey = binaryReader.ReadString();
-                        GlobalVariablesCtrl.AsignarKeyEncryption(encryptionKey);
-                    }
-                }
+                GlobalVariablesCtrl.AsignarKeyEncryption(File.ReadAllText(filePath).Trim());
             }
         }
     }

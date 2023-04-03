@@ -25,5 +25,13 @@ namespace control
         {
             return GlobalVariables.id_rol;
         }
+        public static void AsignarKeyEncryption(string key)
+        {
+            GlobalVariables.encryptionKey = key;
+        }
+        public static string ObtenerKeyEncryption()
+        {
+            return GlobalVariables.encryptionKey;
+        }
     }
 }

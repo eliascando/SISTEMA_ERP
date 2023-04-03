@@ -2,6 +2,8 @@
 using control;
 using view.Visual.Main;
 using view.Properties;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace view.Visual
 {
@@ -18,6 +20,7 @@ namespace view.Visual
             lblMensaje.Visible = false;
             Guardian.ValidateIdInput(txtId);
             Aurora.HidePassword(txtPass);
+            ValidateFileEncryption();
         }
 
         private async void btnLogin_Click(object sender, EventArgs e)
@@ -88,21 +91,22 @@ namespace view.Visual
                     }
                 }
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 MessageBox.Show("ERROR DE EXCEPCIÓN!: " + ex);
+                btnLogin.Visible = true;
+                Loading.Visible = false;            
             }
         }
-
         private void txtId_TextChanged(object sender, EventArgs e)
         {
             AlertId.Visible = false;
         }
-
         private void txtPass_TextChanged(object sender, EventArgs e)
         {
             AlertPass.Visible = false;
         }
+
         private Form activeForm = null;
         private void loadState(Form panelEstadoLogin)
         {
@@ -123,7 +127,6 @@ namespace view.Visual
         {
             panelEstadoLogin.Close();
         }
-
         private void ExitIco_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Esta seguro que desa Salir?", "Confirmación", MessageBoxButtons.OKCancel);
@@ -134,7 +137,6 @@ namespace view.Visual
                 Environment.Exit(0);
             }
         }
-
         private void PassStatusIcon_Click(object sender, EventArgs e)
         {
             if (isShowPass == false)
@@ -150,6 +152,27 @@ namespace view.Visual
                 isShowPass = false;
             }
 
+        }
+        private void ValidateFileEncryption()
+        {
+            string rootFolder = AppDomain.CurrentDomain.BaseDirectory;
+            string filePath = Path.Combine(rootFolder, "encryptionKey.bin");
+            if (!File.Exists(filePath))
+            {
+                Form fileKey = new FileKeyEncryptionNotFound();
+                loadState(fileKey);
+            }
+            else
+            {
+                using (var fileStream = new FileStream(filePath, FileMode.Open))
+                {
+                    using (var binaryReader = new BinaryReader(fileStream))
+                    {
+                        string encryptionKey = binaryReader.ReadString();
+                        GlobalVariablesCtrl.AsignarKeyEncryption(encryptionKey);
+                    }
+                }
+            }
         }
     }
 }

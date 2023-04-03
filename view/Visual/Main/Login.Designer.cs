@@ -46,6 +46,7 @@
             ((System.ComponentModel.ISupportInitialize)Loading).BeginInit();
             ((System.ComponentModel.ISupportInitialize)AlertId).BeginInit();
             ((System.ComponentModel.ISupportInitialize)AlertPass).BeginInit();
+            panelLogo.SuspendLayout();
             panelLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PassStatusIcon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ExitIco).BeginInit();
@@ -157,6 +158,7 @@
             // panelLogo
             // 
             panelLogo.BackColor = SystemColors.ActiveCaption;
+            panelLogo.Controls.Add(ExitIco);
             panelLogo.Dock = DockStyle.Left;
             panelLogo.Location = new Point(0, 0);
             panelLogo.Name = "panelLogo";
@@ -167,7 +169,6 @@
             // 
             panelLogin.BackColor = SystemColors.InactiveCaption;
             panelLogin.Controls.Add(PassStatusIcon);
-            panelLogin.Controls.Add(ExitIco);
             panelLogin.Controls.Add(lblIngreseCredenciales);
             panelLogin.Controls.Add(label1);
             panelLogin.Controls.Add(AlertPass);
@@ -199,8 +200,8 @@
             // 
             // ExitIco
             // 
-            ExitIco.Image = Properties.Resources.exit_ico;
-            ExitIco.Location = new Point(518, 12);
+            ExitIco.Image = Properties.Resources.exit_left_ico;
+            ExitIco.Location = new Point(12, 398);
             ExitIco.Name = "ExitIco";
             ExitIco.Size = new Size(41, 40);
             ExitIco.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -232,6 +233,7 @@
             ((System.ComponentModel.ISupportInitialize)Loading).EndInit();
             ((System.ComponentModel.ISupportInitialize)AlertId).EndInit();
             ((System.ComponentModel.ISupportInitialize)AlertPass).EndInit();
+            panelLogo.ResumeLayout(false);
             panelLogin.ResumeLayout(false);
             panelLogin.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)PassStatusIcon).EndInit();

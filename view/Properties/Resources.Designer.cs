@@ -93,6 +93,16 @@ namespace view.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap exit_left_ico {
+            get {
+                object obj = ResourceManager.GetObject("exit-left-ico", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap failure {
             get {
                 object obj = ResourceManager.GetObject("failure", resourceCulture);

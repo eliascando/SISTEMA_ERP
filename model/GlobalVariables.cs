@@ -4,5 +4,6 @@
     {
         public static string usuario = "";
         public static int id_rol = 0;
+        public static string encryptionKey = "";
     }
 }

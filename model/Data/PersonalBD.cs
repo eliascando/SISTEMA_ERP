@@ -127,7 +127,7 @@ namespace model.Data
                 {
                     var cmd = new SqlCommand("ObtenerRoles", ConexionBD.cn);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    //cmd.Parameters.AddWithValue("@IdRol", GlobalVariables.id_rol);
+                    cmd.Parameters.AddWithValue("@IdRol", GlobalVariables.id_rol);
                     roles.Insert(0, new RolUsuario(-1, "Elegir cargo..."));
                     using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
                     {

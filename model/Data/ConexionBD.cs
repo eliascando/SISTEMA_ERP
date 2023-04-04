@@ -23,7 +23,7 @@ namespace model.Data
                 if (ex is CryptographicException)
                 {
                     string rootFolder = AppDomain.CurrentDomain.BaseDirectory;
-                    string filePath = Path.Combine(rootFolder, "encryptionKey.txt");
+                    string filePath = Path.Combine(rootFolder, "encryptionKey.bin");
                     if (File.Exists(filePath))
                     {
                         File.Delete(filePath);
@@ -81,6 +81,7 @@ namespace model.Data
                 {
                     throw new Exception("Formato de cifrado incorrecto!");
                 }
+                throw;
             }
             return connectionString;
         }

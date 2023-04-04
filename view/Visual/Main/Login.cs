@@ -93,6 +93,10 @@ namespace view.Visual
             }
             catch(Exception ex)
             {
+                if(ex is CryptographicException)
+                {
+                    btnLogin.Enabled = false;
+                }
                 MessageBox.Show("ERROR DE EXCEPCIÓN!: " + ex);
                 btnLogin.Visible = true;
                 Loading.Visible = false;            

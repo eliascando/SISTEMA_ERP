@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using control;
 using libraries;
 using view.Properties;
 
@@ -47,6 +48,7 @@ namespace view.Visual.Main
             }
             else
             {
+                GlobalVariablesCtrl.AsignarKeyEncryption(Alquimia.Encrypt(txtKeyEncryption.Text.Trim()));
                 byte[] keyEncryptBytes = Encoding.UTF8.GetBytes(Alquimia.Encrypt(txtKeyEncryption.Text.Trim()));
                 string keyEncryptBase64 = Convert.ToBase64String(keyEncryptBytes);
                 using (FileStream fileStream = new FileStream(filePath, FileMode.Create))

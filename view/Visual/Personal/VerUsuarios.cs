@@ -1,16 +1,5 @@
 ﻿using control;
 using libraries;
-using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using model.Entities;
 
 namespace view.Visual
 {
@@ -59,7 +48,7 @@ namespace view.Visual
                     DatosForm.lblUsuario.Text = (string)combinedData["Usuario"];
                     DatosForm.lblEdad.Text = Alquimia.GetAge((DateTime)combinedData["Fecha_nacimiento"]).ToString();
 
-                    loadWindow(DatosForm);
+                    Aurora.LoadFormInPanel(DatosForm, panelUsuarios, ref activeForm);
                 }
             }
             catch (Exception ex)
@@ -87,7 +76,7 @@ namespace view.Visual
                     UpdateForm.txtDireccionU.Text = (string)combinedData["Direccion"];
                     UpdateForm.picFotoPersonal.Image = Image.FromStream(new MemoryStream((byte[])combinedData["Imagen"]));
 
-                    loadWindow(UpdateForm);
+                    Aurora.LoadFormInPanel(UpdateForm, panelUsuarios, ref activeForm);
                 }
             }
             catch (Exception ex)
@@ -96,21 +85,6 @@ namespace view.Visual
             }
         }
         private Form activeForm = null;
-        private void loadWindow(Form Window)
-        {
-            if (activeForm != null)
-            {
-                activeForm.Close();
-            }
-            activeForm = Window;
-            Window.TopLevel = false;
-            Window.FormBorderStyle = FormBorderStyle.None;
-            Window.Dock = DockStyle.Fill;
-            panelUsuarios.Controls.Add(Window);
-            panelUsuarios.Tag = Window;
-            Window.BringToFront();
-            Window.Show();
-        }
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {

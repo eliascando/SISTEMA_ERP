@@ -97,7 +97,7 @@
             tabVentas.Location = new Point(4, 24);
             tabVentas.Name = "tabVentas";
             tabVentas.Padding = new Padding(3);
-            tabVentas.Size = new Size(721, 215);
+            tabVentas.Size = new Size(697, 200);
             tabVentas.TabIndex = 1;
             tabVentas.Text = "Registro de Ventas";
             tabVentas.UseVisualStyleBackColor = true;
@@ -109,7 +109,7 @@
             dgvVentas.Location = new Point(3, 3);
             dgvVentas.Name = "dgvVentas";
             dgvVentas.RowTemplate.Height = 25;
-            dgvVentas.Size = new Size(715, 209);
+            dgvVentas.Size = new Size(691, 194);
             dgvVentas.TabIndex = 0;
             // 
             // lblVentasMes
@@ -305,7 +305,6 @@
             Name = "VerDatosUsuario";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "VerDatosUsuario";
-            Load += VerDatosUsuario_prueba_Load;
             tabActividades.ResumeLayout(false);
             tabInicioSesion.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvInicioSesion).EndInit();

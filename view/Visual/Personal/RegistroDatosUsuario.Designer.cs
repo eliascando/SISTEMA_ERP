@@ -250,7 +250,6 @@
             Name = "RegistroDatosUsuario";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "RegistroDatosUsuario";
-            Load += RegistroDatosUsuario_prueba_Load;
             ((System.ComponentModel.ISupportInitialize)picFotoPersonal).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();

@@ -253,7 +253,6 @@
             Name = "VentanaPrincipalAdminCaja";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "VentanaPrincipalAdminCaja";
-            Load += VentanaPrincipalAdminCaja_Load;
             panelMenu.ResumeLayout(false);
             panelVentasMenu.ResumeLayout(false);
             panelInfo.ResumeLayout(false);

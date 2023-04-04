@@ -1,13 +1,5 @@
 ﻿using control;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using libraries;
 using view.Visual;
 
 namespace view
@@ -36,7 +28,6 @@ namespace view
             panelRRHHMenu.Visible = false;
             panelAlmacenMenu.Visible = false;
             panelVentasMenu.Visible = false;
-            //..
         }
         private void hideSubMenu()
         {
@@ -81,42 +72,24 @@ namespace view
             showSubMenu(panelVentasMenu);
         }
 
+        private Form activeForm = null;
+
         private void btnRegistrarPersonal_Click(object sender, EventArgs e)
         {
             Form registrarPersonal = new RegistroPersonal();
-            loadWindow(registrarPersonal);
-        }
-        private Form activeForm = null;
-        private void loadWindow(Form Window)
-        {
-            if (activeForm != null)
-            {
-                activeForm.Close();
-            }
-            activeForm = Window;
-            Window.TopLevel = false;
-            Window.FormBorderStyle = FormBorderStyle.None;
-            Window.Dock = DockStyle.Fill;
-            panelContenedor.Controls.Add(Window);
-            panelContenedor.Tag = Window;
-            Window.BringToFront();
-            Window.Show();
-        }
-        private void closeWindow(Form Window)
-        {
-            Window.Close();
+            Aurora.LoadFormInPanel(registrarPersonal, panelContenedor, ref activeForm);
         }
 
         private void btnRegistrarUsuario_Click(object sender, EventArgs e)
         {
             Form registrarUsuario = new RegistroUsuario();
-            loadWindow(registrarUsuario);
+            Aurora.LoadFormInPanel(registrarUsuario, panelContenedor, ref activeForm);
         }
 
         private void btnVerUsuarios_Click(object sender, EventArgs e)
         {
             Form verUsuarios = new VerUsuarios();
-            loadWindow(verUsuarios);
+            Aurora.LoadFormInPanel(verUsuarios, panelContenedor, ref activeForm);
         }
 
         private void button14_Click(object sender, EventArgs e)

@@ -1,13 +1,5 @@
 ﻿using control;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using libraries;
 
 namespace view.Visual
 {
@@ -51,7 +43,6 @@ namespace view.Visual
             panelRRHHMenu.Visible = false;
             panelAlmacenMenu.Visible = false;
             panelVentasMenu.Visible = false;
-            //..
         }
         private void hideSubMenu()
         {
@@ -83,29 +74,20 @@ namespace view.Visual
 
         private void btnRegistrarGerente_Click(object sender, EventArgs e)
         {
-            //RegistrarGerente registrarGerente = new RegistrarGerente();
-            //registrarGerente.ShowDialog();
             Form registrarGerente = new RegistrarGerente();
-            loadWindow(registrarGerente);
-            //hideSubMenu();
+            Aurora.LoadFormInPanel(registrarGerente, panelContenedor, ref activeForm);
         }
 
         private void btnRegistrarPersonal_Click(object sender, EventArgs e)
         {
-            //RegistroPersonal registropersonal = new RegistroPersonal();
-            //registropersonal.ShowDialog();
             Form registrarPersonal = new RegistroPersonal();
-            loadWindow(registrarPersonal);
-            //hideSubMenu();
+            Aurora.LoadFormInPanel(registrarPersonal, panelContenedor, ref activeForm);
         }
 
         private void btnVerUsuarios_Click(object sender, EventArgs e)
         {
-            //VerUsuarios verUsuarios = new VerUsuarios();
-            //verUsuarios.ShowDialog();
             Form verUsuarios = new VerUsuarios();
-            loadWindow(verUsuarios);
-            //hideSubMenu();
+            Aurora.LoadFormInPanel(verUsuarios, panelContenedor, ref activeForm);
         }
 
         private void btnAlmacen_Click(object sender, EventArgs e)
@@ -119,24 +101,5 @@ namespace view.Visual
         }
 
         private Form activeForm = null;
-        private void loadWindow(Form Window)
-        {
-            if (activeForm != null)
-            {
-                activeForm.Close();
-            }
-            activeForm = Window;
-            Window.TopLevel = false;
-            Window.FormBorderStyle = FormBorderStyle.None;
-            Window.Dock = DockStyle.Fill;
-            panelContenedor.Controls.Add(Window);
-            panelContenedor.Tag = Window;
-            Window.BringToFront();
-            Window.Show();
-        }
-        private void closeWindow(Form Window)
-        {
-            Window.Close();
-        }
     }
 }

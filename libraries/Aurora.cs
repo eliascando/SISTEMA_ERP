@@ -180,5 +180,28 @@
             }
         }
 
+        /// <summary>
+        /// Toma como parámetros un formulario y un panel, añadiendo una referencia que indique
+        /// si ya hay un formulario activo si es el caso la cierra y procede con el resto de la función
+        /// para cargar el formulario en el panel
+        /// </summary>
+        /// <param name="form"></param>
+        /// <param name="panel"></param>
+        /// <param name="activeForm"></param>
+        public static void LoadFormInPanel(Form form, Panel panel, ref Form activeForm)
+        {
+            if(activeForm != null)
+            {
+                activeForm.Close();
+            }
+            activeForm = form;
+            form.TopLevel = false;
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.Dock = DockStyle.Fill;
+            panel.Controls.Add(form);
+            panel.Tag = form;
+            form.BringToFront();
+            form.Show();
+        }
     }
 }

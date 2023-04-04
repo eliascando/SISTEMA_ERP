@@ -252,7 +252,6 @@
             Name = "VentanaPrincipalAdminBodega";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "VentanaPrincipalAdminBodega";
-            Load += VentanaPrincipalAdminBodega_Load;
             panelMenu.ResumeLayout(false);
             panelAlmacenMenu.ResumeLayout(false);
             panelInfo.ResumeLayout(false);

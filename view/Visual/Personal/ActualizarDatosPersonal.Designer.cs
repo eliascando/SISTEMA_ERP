@@ -253,7 +253,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(729, 451);
             Controls.Add(btnCambiarCredenciales);
             Controls.Add(btnCerrar);
             Controls.Add(btnActualizar);
@@ -267,9 +267,11 @@
             Controls.Add(label6);
             Controls.Add(groupBox1);
             Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "ActualizarDatosPersonal";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ActualizarDatosPersonal";
+            Load += ActualizarDatosPersonal_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picFotoPersonal).EndInit();

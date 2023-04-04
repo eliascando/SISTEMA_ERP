@@ -69,5 +69,10 @@ namespace view.Visual
         {
             this.Close();
         }
+
+        private void ActualizarDatosPersonal_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

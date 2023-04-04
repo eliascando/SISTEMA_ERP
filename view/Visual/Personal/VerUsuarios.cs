@@ -59,7 +59,7 @@ namespace view.Visual
                     DatosForm.lblUsuario.Text = (string)combinedData["Usuario"];
                     DatosForm.lblEdad.Text = Alquimia.GetAge((DateTime)combinedData["Fecha_nacimiento"]).ToString();
 
-                    DatosForm.ShowDialog();
+                    loadWindow(DatosForm);
                 }
             }
             catch (Exception ex)
@@ -87,13 +87,34 @@ namespace view.Visual
                     UpdateForm.txtDireccionU.Text = (string)combinedData["Direccion"];
                     UpdateForm.picFotoPersonal.Image = Image.FromStream(new MemoryStream((byte[])combinedData["Imagen"]));
 
-                    UpdateForm.ShowDialog();
+                    loadWindow(UpdateForm);
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("ERROR DE EXCEPCIÓN: " + ex);
             }
+        }
+        private Form activeForm = null;
+        private void loadWindow(Form Window)
+        {
+            if (activeForm != null)
+            {
+                activeForm.Close();
+            }
+            activeForm = Window;
+            Window.TopLevel = false;
+            Window.FormBorderStyle = FormBorderStyle.None;
+            Window.Dock = DockStyle.Fill;
+            panelUsuarios.Controls.Add(Window);
+            panelUsuarios.Tag = Window;
+            Window.BringToFront();
+            Window.Show();
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

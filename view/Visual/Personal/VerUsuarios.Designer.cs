@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             gridUsuarios = new DataGridView();
             button1 = new Button();
             label1 = new Label();
@@ -46,16 +49,38 @@
             gridUsuarios.AllowUserToDeleteRows = false;
             gridUsuarios.AllowUserToResizeColumns = false;
             gridUsuarios.AllowUserToResizeRows = false;
-            gridUsuarios.Anchor = AnchorStyles.None;
+            gridUsuarios.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             gridUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.DarkSalmon;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.Brown;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.Window;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            gridUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             gridUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.DarkSalmon;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.Brown;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            gridUsuarios.DefaultCellStyle = dataGridViewCellStyle2;
+            gridUsuarios.EnableHeadersVisualStyles = false;
             gridUsuarios.Location = new Point(31, 73);
             gridUsuarios.MultiSelect = false;
             gridUsuarios.Name = "gridUsuarios";
             gridUsuarios.ReadOnly = true;
+            gridUsuarios.RowHeadersVisible = false;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(255, 192, 192);
+            gridUsuarios.RowsDefaultCellStyle = dataGridViewCellStyle3;
             gridUsuarios.RowTemplate.Height = 25;
+            gridUsuarios.ScrollBars = ScrollBars.None;
             gridUsuarios.Size = new Size(665, 346);
             gridUsuarios.TabIndex = 1;
+            gridUsuarios.CellClick += gridUsuarios_CellClick;
             // 
             // button1
             // 
@@ -112,6 +137,7 @@
             // 
             // btnCerrar
             // 
+            btnCerrar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnCerrar.Location = new Point(31, 27);
             btnCerrar.Name = "btnCerrar";
             btnCerrar.Size = new Size(75, 23);

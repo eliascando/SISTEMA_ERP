@@ -90,5 +90,13 @@ namespace view.Visual
         {
             this.Close();
         }
+
+        private void gridUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                gridUsuarios.Rows[e.RowIndex].Selected = true;
+            }
+        }
     }
 }

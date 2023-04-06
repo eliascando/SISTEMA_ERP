@@ -106,6 +106,15 @@ namespace control
             usuario.Imagen = imagen;
             
             return await personalBD.ActualizarDatosPersonal(Alquimia.CombineObjects(personal,usuario));
-        }    
+        }
+        public async Task<bool> CambiarCredencialesCtrl(string id, string newPassword)
+        {
+            PersonalBD personalBD = new PersonalBD();
+            CredencialesAcceso credenciales = new CredencialesAcceso();
+            credenciales.Id_usuario = id.Trim();
+            credenciales.Password = newPassword;
+
+            return await personalBD.CambiarCredenciales(credenciales);
+        }
     }
 }

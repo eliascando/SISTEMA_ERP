@@ -46,7 +46,7 @@ namespace model.Data
             }
             catch (Exception ex)
             {
-                throw new Exception(""+ex);
+                throw new Exception(ex.Message);
             }
             finally
             {
@@ -87,7 +87,7 @@ namespace model.Data
             }
             catch (Exception ex)
             {
-                throw new Exception("" + ex);
+                throw new Exception(ex.Message);
             }
             finally
             {
@@ -110,7 +110,7 @@ namespace model.Data
             }
             catch (Exception ex)
             {
-                throw new Exception("" + ex);
+                throw new Exception(ex.Message);
             }
             finally
             {
@@ -142,7 +142,7 @@ namespace model.Data
             }
             catch (Exception ex)
             {
-                throw new Exception("" + ex);
+                throw new Exception(ex.Message);
             }
             finally
             {
@@ -177,7 +177,7 @@ namespace model.Data
             }
             catch (Exception ex)
             {
-                throw new Exception("" + ex);
+                throw new Exception(ex.Message);
             }
             finally
             {
@@ -200,7 +200,7 @@ namespace model.Data
             }
             catch(Exception ex)
             {
-                throw new Exception("" + ex);
+                throw new Exception(ex.Message);
             }
             finally
             {
@@ -242,7 +242,7 @@ namespace model.Data
             }
             catch (Exception ex)
             {
-                throw new Exception("" + ex);
+                throw new Exception(ex.Message);
             }
             finally
             {
@@ -282,7 +282,7 @@ namespace model.Data
             }
             catch(Exception ex)
             {
-                throw new Exception("" + ex);
+                throw new Exception(ex.Message);
             }
             finally
             {
@@ -313,13 +313,42 @@ namespace model.Data
                 }
             }catch(Exception ex)
             {
-                throw new Exception("" + ex);
+                throw new Exception(ex.Message);
             }
             finally
             {
                 await ConexionBD.CerrarConexionAsync();
             }
             return actualizado;
+        }
+        public async Task<bool> CambiarCredenciales(CredencialesAcceso credencialesAcceso)
+        {
+            bool IsChanged = false;
+            try
+            {
+                if(await ConexionBD.AbrirConexionAsync())
+                {
+                    var cmd = new SqlCommand("CambiarCredenciales", ConexionBD.cn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@id_usuario", credencialesAcceso.Id_usuario);
+                    cmd.Parameters.AddWithValue("@new_password", Alquimia.Encrypt(credencialesAcceso.Password));
+                    SqlParameter cambiadoParam = new SqlParameter("@cambiado", SqlDbType.Bit);
+                    cambiadoParam.Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add(cambiadoParam);
+                    await cmd.ExecuteNonQueryAsync();
+
+                    IsChanged = (bool)cambiadoParam.Value;
+                }
+
+            }catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+
+            }
+            return IsChanged;
         }
     }
 }

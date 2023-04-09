@@ -18,7 +18,7 @@ namespace control
         {
             CredencialesAcceso credenciales = new CredencialesAcceso();
             credenciales.Usuario = usuario;
-            credenciales.Password = password;
+            credenciales.Password = Alquimia.Encrypt(password);
             return await personalBD.ValidarCredenciales(credenciales);
         }
         public async Task<Boolean> RegistrarPersonalCtrl(string cedula, string nombre, string apellido, string cargo, DateTime nacimiento, string sexo, string telefono, string correo, string direccion, DateTime ingreso, string salario)
@@ -60,7 +60,7 @@ namespace control
             usuarios.Apellido = apellidos;
             usuarios.Imagen = imagen;
             credenciales.Usuario = usuario;
-            credenciales.Password = password;
+            credenciales.Password = Alquimia.Encrypt(password);
             credenciales.Usuario_activo = true;
             return await personalBD.RegistrarUsuario(personal, usuarios, credenciales);
         }
@@ -91,7 +91,7 @@ namespace control
             personal.Salario = Double.Parse(salario);
             usuarios.Imagen = imagen;
             credenciales.Usuario = usuario;
-            credenciales.Password = password;
+            credenciales.Password = Alquimia.Encrypt(password);
             DatosCombinados = Alquimia.CombineObjects(personal, usuarios, credenciales);
             return await personalBD.RegistrarGerente(DatosCombinados);
         }
@@ -111,8 +111,8 @@ namespace control
         {
             PersonalBD personalBD = new PersonalBD();
             CredencialesAcceso credenciales = new CredencialesAcceso();
-            credenciales.Id_usuario = id.Trim();
-            credenciales.Password = newPassword;
+            credenciales.Id_usuario = id;
+            credenciales.Password = Alquimia.Encrypt(newPassword);
 
             return await personalBD.CambiarCredenciales(credenciales);
         }

@@ -1,5 +1,6 @@
 ﻿using libraries;
 using control;
+using view.Visual.Personal;
 
 namespace view.Visual
 {
@@ -48,6 +49,7 @@ namespace view.Visual
                 else
                 {
                     MessageBox.Show("No se han registrado cambios!");
+                    this.Close();
                 }
             }
             catch (Exception ex)
@@ -59,6 +61,13 @@ namespace view.Visual
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnCambiarCredenciales_Click(object sender, EventArgs e)
+        {
+            CambiarCredenciales cambiarCredenciales = new CambiarCredenciales();
+            cambiarCredenciales.lblCedulaPersonal.Text = lblCedula.Text;
+            cambiarCredenciales.ShowDialog();
         }
     }
 }

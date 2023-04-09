@@ -11,7 +11,7 @@
         private byte[] imagen_producto;
         private double costo_producto;
         private double precio_producto;
-        private bool aplica_producto;
+        private bool aplica_iva;
         private bool aplica_descuento;
         private double descuento_producto;
         private bool venta_peso;
@@ -24,7 +24,7 @@
 
         }
 
-        public Producto(string codigo_producto, string id_proveedor, TipoProducto tipo_producto, EstadoProducto estado_producto, string nombre_producto, string descripcion, byte[] imagen_producto, double costo_producto, double precio_producto, bool aplica_producto, bool aplica_descuento, double descuento_producto, bool venta_peso, double peso_producto, int unidades_caja, int stock_producto)
+        public Producto(string codigo_producto, string id_proveedor, TipoProducto tipo_producto, EstadoProducto estado_producto, string nombre_producto, string descripcion, byte[] imagen_producto, double costo_producto, double precio_producto, bool aplica_iva, bool aplica_descuento, double descuento_producto, bool venta_peso, double peso_producto, int unidades_caja, int stock_producto)
         {
             Codigo_producto = codigo_producto;
             Id_proveedor = id_proveedor;
@@ -35,7 +35,7 @@
             Imagen_producto = imagen_producto;
             Costo_producto = costo_producto;
             Precio_producto = precio_producto;
-            Aplica_producto = aplica_producto;
+            Aplica_iva = aplica_iva;
             Aplica_descuento = aplica_descuento;
             Descuento_producto = descuento_producto;
             Venta_peso = venta_peso;
@@ -53,7 +53,7 @@
         public byte[] Imagen_producto { get => imagen_producto; set => imagen_producto = value; }
         public double Costo_producto { get => costo_producto; set => costo_producto = value; }
         public double Precio_producto { get => precio_producto; set => precio_producto = value; }
-        public bool Aplica_producto { get => aplica_producto; set => aplica_producto = value; }
+        public bool Aplica_iva { get => aplica_iva; set => aplica_iva = value; }
         public bool Aplica_descuento { get => aplica_descuento; set => aplica_descuento = value; }
         public double Descuento_producto { get => descuento_producto; set => descuento_producto = value; }
         public bool Venta_peso { get => venta_peso; set => venta_peso = value; }

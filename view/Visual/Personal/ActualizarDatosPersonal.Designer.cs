@@ -248,6 +248,7 @@
             btnCambiarCredenciales.TabIndex = 15;
             btnCambiarCredenciales.Text = "Cambiar Credenciales";
             btnCambiarCredenciales.UseVisualStyleBackColor = true;
+            btnCambiarCredenciales.Click += btnCambiarCredenciales_Click;
             // 
             // ActualizarDatosPersonal
             // 

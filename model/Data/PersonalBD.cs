@@ -23,7 +23,7 @@ namespace model.Data
                     var cmd = new SqlCommand("ValidarCredenciales", ConexionBD.cn);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@id_usuario", credencialesAcceso.Usuario);
-                    cmd.Parameters.AddWithValue("@password", Alquimia.Encrypt(credencialesAcceso.Password));
+                    cmd.Parameters.AddWithValue("@password", credencialesAcceso.Password);
                     SqlParameter esValidoParam = new SqlParameter("@EsValido", SqlDbType.Bit);
                     esValidoParam.Direction = ParameterDirection.Output;
                     cmd.Parameters.Add(esValidoParam);
@@ -165,7 +165,7 @@ namespace model.Data
                     cmd.Parameters.AddWithValue("@apellido_usuario", usuario.Apellido);
                     cmd.Parameters.AddWithValue("@imagen_usuario", usuario.Imagen);
                     cmd.Parameters.AddWithValue("@usuario", credenciales.Usuario);
-                    cmd.Parameters.AddWithValue("@password", Alquimia.Encrypt(credenciales.Password));
+                    cmd.Parameters.AddWithValue("@password", credenciales.Password);
                     cmd.Parameters.AddWithValue("@usuario_activo", credenciales.Usuario_activo);
                     SqlParameter registroExitosoParam = new SqlParameter("@RegistroExitoso", SqlDbType.Bit);
                     registroExitosoParam.Direction = ParameterDirection.Output;
@@ -271,7 +271,7 @@ namespace model.Data
                     cmd.Parameters.AddWithValue("@salario_mensual", (double)DatosGerente["Salario"]);
                     cmd.Parameters.AddWithValue("@imagen_gerente", (byte[])DatosGerente["Imagen"]);
                     cmd.Parameters.AddWithValue("@usuario", (string)DatosGerente["Usuario"]);
-                    cmd.Parameters.AddWithValue("@password", Alquimia.Encrypt((string)DatosGerente["Password"]));
+                    cmd.Parameters.AddWithValue("@password", (string)DatosGerente["Password"]);
                     SqlParameter registroExitosoParam = new SqlParameter("@RegistroExitoso", SqlDbType.Bit);
                     registroExitosoParam.Direction = ParameterDirection.Output;
                     cmd.Parameters.Add(registroExitosoParam);
@@ -331,7 +331,7 @@ namespace model.Data
                     var cmd = new SqlCommand("CambiarCredenciales", ConexionBD.cn);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@id_usuario", credencialesAcceso.Id_usuario);
-                    cmd.Parameters.AddWithValue("@new_password", Alquimia.Encrypt(credencialesAcceso.Password));
+                    cmd.Parameters.AddWithValue("@new_password", credencialesAcceso.Password);
                     SqlParameter cambiadoParam = new SqlParameter("@cambiado", SqlDbType.Bit);
                     cambiadoParam.Direction = ParameterDirection.Output;
                     cmd.Parameters.Add(cambiadoParam);

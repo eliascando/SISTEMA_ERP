@@ -108,5 +108,9 @@
                 };
             }
         }
+        public static bool AreTextEqual(TextBox textbox1, TextBox textbox2)
+        {
+            return textbox1.Text == textbox2.Text;
+        }
     }
 }

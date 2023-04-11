@@ -63,6 +63,16 @@ namespace view.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap add_user_picture {
+            get {
+                object obj = ResourceManager.GetObject("add_user_picture", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap ajax_loader {
             get {
                 object obj = ResourceManager.GetObject("ajax-loader", resourceCulture);
@@ -76,6 +86,16 @@ namespace view.Properties {
         public static System.Drawing.Bitmap alert {
             get {
                 object obj = ResourceManager.GetObject("alert", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap default_user_picture {
+            get {
+                object obj = ResourceManager.GetObject("default_user_picture", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

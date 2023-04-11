@@ -7,7 +7,7 @@ namespace view.Visual
     public partial class ActualizarDatosPersonal : Form
     {
         private VerUsuarios verUsuario;
-        private byte[] imageData;
+        private byte[] imageData = null;
         public ActualizarDatosPersonal(VerUsuarios verUsuarios)
         {
             InitializeComponent();
@@ -32,7 +32,8 @@ namespace view.Visual
         {
             try
             {
-                if (Aurora.AreTextBoxModified(this))
+
+                if (Aurora.AreTextBoxModified(this) || imageData != null)
                 {
                     PersonalCtrl personalCtrl = new PersonalCtrl();
                     if (await personalCtrl.ActualizarDatosUsuarioCtrl(lblCedula.Text, txtTelefonoU.Text, txtCorreoU.Text, txtDireccionU.Text, imageData))

@@ -1,5 +1,6 @@
 ﻿using control;
 using libraries;
+using view.Properties;
 
 namespace view.Visual
 {
@@ -44,7 +45,14 @@ namespace view.Visual
                     DatosForm.lblCorreo.Text = (string)combinedData["Correo"];
                     DatosForm.lblTelefono.Text = (string)combinedData["Telefono"];
                     DatosForm.lblFechaIngreso.Text = Alquimia.DateToString((DateTime)combinedData["Fecha_ingreso"]);
-                    DatosForm.picFotoUsuario.Image = Image.FromStream(new MemoryStream((byte[])combinedData["Imagen"]));
+                    if (combinedData.ContainsKey("Imagen") && combinedData["Imagen"] != null)
+                    {
+                        DatosForm.picFotoUsuario.Image = Image.FromStream(new MemoryStream((byte[])combinedData["Imagen"]));
+                    }
+                    else
+                    {
+                        DatosForm.picFotoUsuario.Image = Resources.default_user_picture;
+                    }
                     DatosForm.lblUsuario.Text = (string)combinedData["Usuario"];
                     DatosForm.lblEdad.Text = Alquimia.GetAge((DateTime)combinedData["Fecha_nacimiento"]).ToString();
 
@@ -74,7 +82,16 @@ namespace view.Visual
                     UpdateForm.txtCorreoU.Text = (string)combinedData["Correo"];
                     UpdateForm.txtTelefonoU.Text = (string)combinedData["Telefono"];
                     UpdateForm.txtDireccionU.Text = (string)combinedData["Direccion"];
-                    UpdateForm.picFotoPersonal.Image = Image.FromStream(new MemoryStream((byte[])combinedData["Imagen"]));
+                    if (combinedData.ContainsKey("Imagen") && combinedData["Imagen"] != null)
+                    {
+                        UpdateForm.picFotoPersonal.Image = Image.FromStream(new MemoryStream((byte[])combinedData["Imagen"]));
+                    }
+                    else
+                    {
+                        UpdateForm.picFotoPersonal.Image = Resources.default_user_picture;
+                        UpdateForm.btnChangeImagen.Text = "Añadir";
+                    }
+                    
 
                     Aurora.LoadFormInPanel(UpdateForm, panelUsuarios, ref activeForm);
                 }

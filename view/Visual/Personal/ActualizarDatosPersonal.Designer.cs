@@ -294,7 +294,6 @@
         private Label label6;
         private Label label7;
         private Label label8;
-        private Button btnChangeImagen;
         private Button btnActualizar;
         private Button btnCerrar;
         private Button btnCambiarCredenciales;
@@ -302,5 +301,6 @@
         public TextBox txtTelefonoU;
         public TextBox txtCorreoU;
         public TextBox txtDireccionU;
+        public Button btnChangeImagen;
     }
 }

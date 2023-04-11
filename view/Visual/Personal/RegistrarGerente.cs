@@ -1,15 +1,17 @@
 ﻿using libraries;
 using control;
+using view.Properties;
 
 namespace view.Visual
 {
     public partial class RegistrarGerente : Form
     {
         PersonalCtrl personalCtrl = new PersonalCtrl();
-        private byte[] imageData;
+        private byte[] imageData = null;
         public RegistrarGerente()
         {
             InitializeComponent();
+            picFotoPersonal.Image = Resources.default_user_picture;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

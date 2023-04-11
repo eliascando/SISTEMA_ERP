@@ -234,7 +234,14 @@ namespace model.Data
                         personal.Correo = reader.GetString(6);
                         personal.Direccion = reader.GetString(7);
                         personal.Fecha_ingreso = reader.GetDateTime(8);
-                        usuario.Imagen = (byte[])reader.GetValue(9);
+                        if (!reader.IsDBNull(9))
+                        {
+                            usuario.Imagen = (byte[])reader.GetValue(9);
+                        }
+                        else
+                        {
+                            usuario.Imagen = null;
+                        }
                         credenciales.Usuario = reader.GetString(10);
                         DatosCombinados = Alquimia.CombineObjects(personal, usuario, credenciales);
                     }

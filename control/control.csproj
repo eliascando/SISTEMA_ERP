@@ -8,10 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\libraries\libraries.csproj" />
     <ProjectReference Include="..\model\model.csproj" />
   </ItemGroup>

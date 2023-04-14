@@ -29,7 +29,10 @@ namespace view.Visual.Personal
             {
                 if (Aurora.AreTextBoxEmpty(this))
                 {
-                    MessageBox.Show("ERROR!: DEBE LLENAR TODOS LOS CAMPOS");
+                    //MessageBox.Show("ERROR!: DEBE LLENAR TODOS LOS CAMPOS");
+                    AlertMessage.Visible = true;
+                    AlertMessage.Text = "ERROR!: DEBE LLENAR TODOS LOS CAMPOS";
+                    await Task.Delay(2000);
                 }
                 else
                 {
@@ -37,12 +40,22 @@ namespace view.Visual.Personal
                     {
                         if (await personalCtrl.CambiarCredencialesCtrl(lblCedulaPersonal.Text, txtNewPass.Text))
                         {
-                            MessageBox.Show("Credenciales Actualizadas Correctamente!");
+                            //MessageBox.Show("Credenciales Actualizadas Correctamente!");
+                            AlertMessage.Visible = true;
+                            AlertMessage.ForeColor = Color.Green;
+                            AlertMessage.Text = "Credenciales Actualizadas Correctamente!";
+                            btnActualizar.Enabled = false;
+                            await Task.Delay(2000);
                             this.Close();
                         }
                         else
                         {
-                            MessageBox.Show("ERROR!: No se pudo actualizar correctamente...");
+                            //MessageBox.Show("ERROR!: No se pudo actualizar correctamente...");
+                            AlertMessage.Visible = true;
+                            AlertMessage.Text = "ERROR!: No se pudo actualizar correctamente";
+                            btnActualizar.Enabled = false;
+                            await Task.Delay(2000);
+                            this.Close();
                         }
                     }
                     else

@@ -108,6 +108,13 @@
                 };
             }
         }
+
+        /// <summary>
+        /// Compara dos entradas de un textbox y devuelve si las cadenas son iguales o no como un bool
+        /// </summary>
+        /// <param name="textbox1"></param>
+        /// <param name="textbox2"></param>
+        /// <returns>Si las entradas son iguales</returns>
         public static bool AreTextEqual(TextBox textbox1, TextBox textbox2)
         {
             return textbox1.Text == textbox2.Text;

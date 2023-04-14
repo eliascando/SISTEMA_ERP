@@ -353,7 +353,7 @@ namespace model.Data
             }
             finally
             {
-
+                await ConexionBD.CerrarConexionAsync();
             }
             return IsChanged;
         }

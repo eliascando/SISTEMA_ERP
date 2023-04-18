@@ -66,8 +66,7 @@ namespace view.Visual
 
         private void btnCambiarCredenciales_Click(object sender, EventArgs e)
         {
-            CambiarCredenciales cambiarCredenciales = new CambiarCredenciales();
-            cambiarCredenciales.lblCedulaPersonal.Text = lblCedula.Text;
+            CambiarCredenciales cambiarCredenciales = new CambiarCredenciales(lblCedula.Text);
             cambiarCredenciales.ShowDialog();
         }
     }

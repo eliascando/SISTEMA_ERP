@@ -8,6 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Collections;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
+using System.Net.Mail;
+using System.Net;
+using System.Xml.Linq;
+using System.Security.Cryptography;
+using System.Configuration;
 
 namespace model.Data
 {
@@ -54,6 +60,100 @@ namespace model.Data
             }
 
             return isValidUser;
+        }
+        public async Task<bool> SendEmail(string id)
+        {
+            bool sended = false;
+            string OTP = OTPKey.GenerateOTP(Alquimia.Encrypt(id));
+            string to = await GetEmail(id);
+            string subject = "Recuperar Contraseña";
+            string body = "Su clave OTP es: \n"+OTP+"\nNo compartas esta clave con nadie.";
+            try
+            {
+                string direccionCorreo = DecryptEmailClient(ConfigurationManager.AppSettings["DireccionCorreo"]);
+                string contraseñaCorreo = DecryptEmailClient(ConfigurationManager.AppSettings["ContraseñaCorreo"]);
+
+                MailMessage mail = new MailMessage();
+                mail.From = new MailAddress(direccionCorreo);
+                mail.To.Add(to);
+                mail.Subject = subject;
+                mail.Body = body;
+
+                SmtpClient client = new SmtpClient("smtp.office365.com",587);
+                client.Credentials = new NetworkCredential(direccionCorreo, contraseñaCorreo);
+                client.EnableSsl = true;
+                client.Send(mail);
+                sended = true;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+            return sended;
+        }
+        internal async Task<string> GetEmail(string id)
+        {
+            string email = "";
+            try
+            {
+                if (await ConexionBD.AbrirConexionAsync())
+                {
+                    var cmd = new SqlCommand("ObtenerCorreo", ConexionBD.cn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@id_cedula", id);
+                    SqlDataReader reader = await cmd.ExecuteReaderAsync();
+                    while (await reader.ReadAsync())
+                    {
+                        email = reader.GetString(0);
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                await ConexionBD.CerrarConexionAsync();
+            }
+            return email;
+        }
+        internal static string DecryptEmailClient(string input)
+        {
+            try
+            {
+                input = input.Replace(" ", "+");
+                byte[] cipherBytes = Convert.FromBase64String(input);
+                using (Aes encryptor = Aes.Create())
+                {
+                    Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(GlobalVariables.encryptionKey.Trim(), new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
+                    encryptor.Key = pdb.GetBytes(32);
+                    encryptor.IV = pdb.GetBytes(16);
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        using (CryptoStream cs = new CryptoStream(ms, encryptor.CreateDecryptor(), CryptoStreamMode.Write))
+                        {
+                            cs.Write(cipherBytes, 0, cipherBytes.Length);
+                            cs.Close();
+                        }
+                        input = Encoding.Unicode.GetString(ms.ToArray());
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                if (ex is IOException)
+                {
+                    throw new Exception("Archivo no encontrado o inaccesible!");
+                }
+                if (ex is FormatException)
+                {
+                    throw new Exception("Formato de cifrado incorrecto!");
+                }
+                throw;
+            }
+            return input;
         }
         public async Task<bool> RegistrarPersonal(Personal personal)
         {

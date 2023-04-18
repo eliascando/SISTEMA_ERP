@@ -39,17 +39,18 @@
             AlertPass = new PictureBox();
             lblMensaje = new Label();
             panelLogo = new Panel();
+            ExitIco = new PictureBox();
             panelLogin = new Panel();
             PassStatusIcon = new PictureBox();
-            ExitIco = new PictureBox();
             lblIngreseCredenciales = new Label();
+            linklblForgotPass = new LinkLabel();
             ((System.ComponentModel.ISupportInitialize)Loading).BeginInit();
             ((System.ComponentModel.ISupportInitialize)AlertId).BeginInit();
             ((System.ComponentModel.ISupportInitialize)AlertPass).BeginInit();
             panelLogo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ExitIco).BeginInit();
             panelLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PassStatusIcon).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)ExitIco).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -165,9 +166,21 @@
             panelLogo.Size = new Size(229, 450);
             panelLogo.TabIndex = 12;
             // 
+            // ExitIco
+            // 
+            ExitIco.Image = Properties.Resources.exit_left_ico;
+            ExitIco.Location = new Point(12, 398);
+            ExitIco.Name = "ExitIco";
+            ExitIco.Size = new Size(41, 40);
+            ExitIco.SizeMode = PictureBoxSizeMode.StretchImage;
+            ExitIco.TabIndex = 12;
+            ExitIco.TabStop = false;
+            ExitIco.Click += ExitIco_Click;
+            // 
             // panelLogin
             // 
             panelLogin.BackColor = SystemColors.InactiveCaption;
+            panelLogin.Controls.Add(linklblForgotPass);
             panelLogin.Controls.Add(PassStatusIcon);
             panelLogin.Controls.Add(lblIngreseCredenciales);
             panelLogin.Controls.Add(label1);
@@ -198,17 +211,6 @@
             PassStatusIcon.TabStop = false;
             PassStatusIcon.Click += PassStatusIcon_Click;
             // 
-            // ExitIco
-            // 
-            ExitIco.Image = Properties.Resources.exit_left_ico;
-            ExitIco.Location = new Point(12, 398);
-            ExitIco.Name = "ExitIco";
-            ExitIco.Size = new Size(41, 40);
-            ExitIco.SizeMode = PictureBoxSizeMode.StretchImage;
-            ExitIco.TabIndex = 12;
-            ExitIco.TabStop = false;
-            ExitIco.Click += ExitIco_Click;
-            // 
             // lblIngreseCredenciales
             // 
             lblIngreseCredenciales.AutoSize = true;
@@ -217,6 +219,17 @@
             lblIngreseCredenciales.Size = new Size(133, 15);
             lblIngreseCredenciales.TabIndex = 11;
             lblIngreseCredenciales.Text = "Ingrese sus credenciales";
+            // 
+            // linklblForgotPass
+            // 
+            linklblForgotPass.AutoSize = true;
+            linklblForgotPass.Location = new Point(433, 423);
+            linklblForgotPass.Name = "linklblForgotPass";
+            linklblForgotPass.Size = new Size(126, 15);
+            linklblForgotPass.TabIndex = 14;
+            linklblForgotPass.TabStop = true;
+            linklblForgotPass.Text = "Olvidó Su Contraseña?";
+            linklblForgotPass.LinkClicked += linklblForgotPass_LinkClicked;
             // 
             // Login
             // 
@@ -234,10 +247,10 @@
             ((System.ComponentModel.ISupportInitialize)AlertId).EndInit();
             ((System.ComponentModel.ISupportInitialize)AlertPass).EndInit();
             panelLogo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)ExitIco).EndInit();
             panelLogin.ResumeLayout(false);
             panelLogin.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)PassStatusIcon).EndInit();
-            ((System.ComponentModel.ISupportInitialize)ExitIco).EndInit();
             ResumeLayout(false);
         }
 
@@ -258,5 +271,6 @@
         private Label lblIngreseCredenciales;
         private PictureBox ExitIco;
         private PictureBox PassStatusIcon;
+        private LinkLabel linklblForgotPass;
     }
 }

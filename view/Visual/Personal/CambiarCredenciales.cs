@@ -9,17 +9,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using view.Properties;
 
 namespace view.Visual.Personal
 {
     public partial class CambiarCredenciales : Form
     {
         public static string id_personal = "";
-        public CambiarCredenciales()
+        bool isShowPass = false;
+        public CambiarCredenciales(string id)
         {
             InitializeComponent();
             AlertIcon.Visible = false;
             AlertMessage.Visible = false;
+            id_personal = id;
+            lblCedulaPersonal.Text = id;
+            Aurora.HidePassword(txtNewPass, txtConfirmNewPass);
         }
 
         private async void btnActualizar_Click(object sender, EventArgs e)
@@ -29,7 +34,6 @@ namespace view.Visual.Personal
             {
                 if (Aurora.AreTextBoxEmpty(this))
                 {
-                    //MessageBox.Show("ERROR!: DEBE LLENAR TODOS LOS CAMPOS");
                     AlertMessage.Visible = true;
                     AlertMessage.Text = "ERROR!: DEBE LLENAR TODOS LOS CAMPOS";
                     await Task.Delay(2000);
@@ -38,9 +42,8 @@ namespace view.Visual.Personal
                 {
                     if (Guardian.AreTextEqual(txtNewPass, txtConfirmNewPass))
                     {
-                        if (await personalCtrl.CambiarCredencialesCtrl(lblCedulaPersonal.Text, txtNewPass.Text))
+                        if (await personalCtrl.CambiarCredencialesCtrl(id_personal, txtNewPass.Text))
                         {
-                            //MessageBox.Show("Credenciales Actualizadas Correctamente!");
                             AlertMessage.Visible = true;
                             AlertMessage.ForeColor = Color.Green;
                             AlertMessage.Text = "Credenciales Actualizadas Correctamente!";
@@ -50,7 +53,6 @@ namespace view.Visual.Personal
                         }
                         else
                         {
-                            //MessageBox.Show("ERROR!: No se pudo actualizar correctamente...");
                             AlertMessage.Visible = true;
                             AlertMessage.Text = "ERROR!: No se pudo actualizar correctamente";
                             btnActualizar.Enabled = false;
@@ -77,6 +79,22 @@ namespace view.Visual.Personal
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void PassStatusIcon_Click(object sender, EventArgs e)
+        {
+            if (isShowPass == false)
+            {
+                Aurora.ShowPassword(txtNewPass, txtConfirmNewPass);
+                PassStatusIcon.Image = Resources.show_pass;
+                isShowPass = true;
+            }
+            else
+            {
+                Aurora.HidePassword(txtNewPass, txtConfirmNewPass);
+                PassStatusIcon.Image = Resources.hide_pass;
+                isShowPass = false;
+            }
         }
     }
 }

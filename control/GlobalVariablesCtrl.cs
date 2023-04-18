@@ -33,5 +33,13 @@ namespace control
         {
             return GlobalVariables.encryptionKey;
         }
+        public static void AsignarCurrentCounter(long counter)
+        {
+            GlobalVariables.currentCounter = counter;
+        }
+        public static long ObtenerCurrentCounter()
+        {
+            return GlobalVariables.currentCounter;
+        }
     }
 }

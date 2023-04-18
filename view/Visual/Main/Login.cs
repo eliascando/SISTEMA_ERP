@@ -91,15 +91,15 @@ namespace view.Visual
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                if(ex is CryptographicException)
+                if (ex is CryptographicException)
                 {
                     btnLogin.Enabled = false;
                 }
                 MessageBox.Show("ERROR DE EXCEPCIÓN!: " + ex);
                 btnLogin.Visible = true;
-                Loading.Visible = false;            
+                Loading.Visible = false;
             }
         }
         private void txtId_TextChanged(object sender, EventArgs e)
@@ -160,7 +160,7 @@ namespace view.Visual
         private void ValidateFileEncryption()
         {
             string rootFolder = AppDomain.CurrentDomain.BaseDirectory;
-            string filePath = Path.Combine(rootFolder,"encryptionKey.bin");
+            string filePath = Path.Combine(rootFolder, "encryptionKey.bin");
             if (!File.Exists(filePath))
             {
                 Form fileKey = new FileKeyEncryptionNotFound();
@@ -180,6 +180,12 @@ namespace view.Visual
                 string keyEncrypt = Encoding.UTF8.GetString(keyEncryptBytes);
                 GlobalVariablesCtrl.AsignarKeyEncryption(keyEncrypt);
             }
+        }
+
+        private void linklblForgotPass_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Form forgotPass = new ForgotPassword();
+            loadState(forgotPass);
         }
     }
 }

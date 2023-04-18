@@ -39,7 +39,9 @@
             AlertMessage = new Label();
             label4 = new Label();
             lblCedulaPersonal = new Label();
+            PassStatusIcon = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)AlertIcon).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)PassStatusIcon).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -144,11 +146,24 @@
             lblCedulaPersonal.TabIndex = 10;
             lblCedulaPersonal.Text = "CedulaPersonal";
             // 
+            // PassStatusIcon
+            // 
+            PassStatusIcon.BackColor = SystemColors.Window;
+            PassStatusIcon.Image = Properties.Resources.hide_pass;
+            PassStatusIcon.Location = new Point(270, 111);
+            PassStatusIcon.Name = "PassStatusIcon";
+            PassStatusIcon.Size = new Size(23, 19);
+            PassStatusIcon.SizeMode = PictureBoxSizeMode.StretchImage;
+            PassStatusIcon.TabIndex = 14;
+            PassStatusIcon.TabStop = false;
+            PassStatusIcon.Click += PassStatusIcon_Click;
+            // 
             // CambiarCredenciales
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(420, 252);
+            Controls.Add(PassStatusIcon);
             Controls.Add(lblCedulaPersonal);
             Controls.Add(label4);
             Controls.Add(AlertMessage);
@@ -160,11 +175,12 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            FormBorderStyle = FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             Name = "CambiarCredenciales";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "CambiarCredenciales";
             ((System.ComponentModel.ISupportInitialize)AlertIcon).EndInit();
+            ((System.ComponentModel.ISupportInitialize)PassStatusIcon).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -182,5 +198,6 @@
         private Label AlertMessage;
         private Label label4;
         public Label lblCedulaPersonal;
+        private PictureBox PassStatusIcon;
     }
 }

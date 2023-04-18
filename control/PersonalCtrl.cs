@@ -14,12 +14,21 @@ namespace control
     public class PersonalCtrl
     {
         PersonalBD personalBD = new PersonalBD();
+        OTPKey OTPKey = new OTPKey();
         public async Task<bool> ValidarCredenciales(string usuario, string password)
         {
             CredencialesAcceso credenciales = new CredencialesAcceso();
             credenciales.Usuario = usuario;
             credenciales.Password = Alquimia.Encrypt(password);
             return await personalBD.ValidarCredenciales(credenciales);
+        }
+        public async Task<bool> SendEmailCtrl(string id)
+        {
+            return await personalBD.SendEmail(id);
+        }
+        public bool ValidarOTPCtrl(string key, string otp)
+        {
+            return OTPKey.ValidateOTP(key, otp);
         }
         public async Task<Boolean> RegistrarPersonalCtrl(string cedula, string nombre, string apellido, string cargo, DateTime nacimiento, string sexo, string telefono, string correo, string direccion, DateTime ingreso, string salario)
         {

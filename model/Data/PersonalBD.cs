@@ -1,17 +1,10 @@
 ﻿using libraries;
 using model.Entities;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Data.SqlClient;
-using System.Collections;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 using System.Net.Mail;
 using System.Net;
-using System.Xml.Linq;
 using System.Security.Cryptography;
 using System.Configuration;
 
@@ -39,6 +32,10 @@ namespace model.Data
                     SqlParameter idRolParam = new SqlParameter("@IdRol", SqlDbType.Int);
                     idRolParam.Direction = ParameterDirection.Output;
                     cmd.Parameters.Add(idRolParam);
+                    SqlParameter idParam = new SqlParameter("@IdUser", SqlDbType.NVarChar, 50);
+                    idParam.Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add(idParam);
+
                     await cmd.ExecuteNonQueryAsync();
 
                     isValidUser = (bool)esValidoParam.Value;
@@ -47,6 +44,7 @@ namespace model.Data
                         
                         GlobalVariables.id_rol = (int)idRolParam.Value;
                         GlobalVariables.usuario = (string)nombreParam.Value;
+                        GlobalVariables.id_usuario = (string)idParam.Value;
                     }
                 }
             }

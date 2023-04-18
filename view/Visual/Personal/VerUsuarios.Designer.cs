@@ -36,11 +36,9 @@
             label1 = new Label();
             btnActualizar = new Button();
             panelUsuarios = new Panel();
-            panelBotones = new Panel();
             btnCerrar = new Button();
             ((System.ComponentModel.ISupportInitialize)gridUsuarios).BeginInit();
             panelUsuarios.SuspendLayout();
-            panelBotones.SuspendLayout();
             SuspendLayout();
             // 
             // gridUsuarios
@@ -78,14 +76,14 @@
             gridUsuarios.RowsDefaultCellStyle = dataGridViewCellStyle3;
             gridUsuarios.RowTemplate.Height = 25;
             gridUsuarios.ScrollBars = ScrollBars.None;
-            gridUsuarios.Size = new Size(665, 346);
+            gridUsuarios.Size = new Size(665, 370);
             gridUsuarios.TabIndex = 1;
             gridUsuarios.CellClick += gridUsuarios_CellClick;
             // 
             // button1
             // 
             button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            button1.Location = new Point(533, 28);
+            button1.Location = new Point(530, 466);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 2;
@@ -106,7 +104,7 @@
             // btnActualizar
             // 
             btnActualizar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnActualizar.Location = new Point(629, 28);
+            btnActualizar.Location = new Point(621, 466);
             btnActualizar.Name = "btnActualizar";
             btnActualizar.Size = new Size(75, 23);
             btnActualizar.TabIndex = 4;
@@ -116,29 +114,21 @@
             // 
             // panelUsuarios
             // 
+            panelUsuarios.Controls.Add(btnActualizar);
+            panelUsuarios.Controls.Add(button1);
+            panelUsuarios.Controls.Add(btnCerrar);
             panelUsuarios.Controls.Add(gridUsuarios);
             panelUsuarios.Controls.Add(label1);
-            panelUsuarios.Dock = DockStyle.Top;
+            panelUsuarios.Dock = DockStyle.Fill;
             panelUsuarios.Location = new Point(0, 0);
             panelUsuarios.Name = "panelUsuarios";
-            panelUsuarios.Size = new Size(729, 451);
+            panelUsuarios.Size = new Size(729, 514);
             panelUsuarios.TabIndex = 5;
-            // 
-            // panelBotones
-            // 
-            panelBotones.Controls.Add(btnCerrar);
-            panelBotones.Controls.Add(button1);
-            panelBotones.Controls.Add(btnActualizar);
-            panelBotones.Dock = DockStyle.Fill;
-            panelBotones.Location = new Point(0, 451);
-            panelBotones.Name = "panelBotones";
-            panelBotones.Size = new Size(729, 63);
-            panelBotones.TabIndex = 6;
             // 
             // btnCerrar
             // 
             btnCerrar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnCerrar.Location = new Point(31, 27);
+            btnCerrar.Location = new Point(31, 466);
             btnCerrar.Name = "btnCerrar";
             btnCerrar.Size = new Size(75, 23);
             btnCerrar.TabIndex = 5;
@@ -151,7 +141,6 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(729, 514);
-            Controls.Add(panelBotones);
             Controls.Add(panelUsuarios);
             FormBorderStyle = FormBorderStyle.None;
             Name = "VerUsuarios";
@@ -161,7 +150,6 @@
             ((System.ComponentModel.ISupportInitialize)gridUsuarios).EndInit();
             panelUsuarios.ResumeLayout(false);
             panelUsuarios.PerformLayout();
-            panelBotones.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -172,7 +160,6 @@
         private Label label1;
         private Button btnActualizar;
         private Panel panelUsuarios;
-        private Panel panelBotones;
         private Button btnCerrar;
     }
 }

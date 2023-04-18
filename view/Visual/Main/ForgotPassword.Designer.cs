@@ -39,6 +39,8 @@
             lblSendEmailStatus = new Label();
             btnValidar = new Button();
             lblValidateOTP = new Label();
+            Loading = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)Loading).BeginInit();
             SuspendLayout();
             // 
             // btnCancelar
@@ -146,11 +148,23 @@
             lblValidateOTP.Text = "Estado de OTP";
             lblValidateOTP.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // Loading
+            // 
+            Loading.Anchor = AnchorStyles.None;
+            Loading.Image = Properties.Resources.ajax_loader;
+            Loading.Location = new Point(344, 182);
+            Loading.Name = "Loading";
+            Loading.Size = new Size(54, 52);
+            Loading.SizeMode = PictureBoxSizeMode.StretchImage;
+            Loading.TabIndex = 23;
+            Loading.TabStop = false;
+            // 
             // ForgotPassword
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(571, 450);
+            Controls.Add(Loading);
             Controls.Add(lblValidateOTP);
             Controls.Add(btnValidar);
             Controls.Add(lblSendEmailStatus);
@@ -165,6 +179,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "ForgotPassword";
             Text = "ForgotPassword";
+            ((System.ComponentModel.ISupportInitialize)Loading).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -182,5 +197,6 @@
         public Label lblSendEmailStatus;
         private Button btnValidar;
         public Label lblValidateOTP;
+        private PictureBox Loading;
     }
 }

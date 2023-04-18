@@ -35,6 +35,7 @@ namespace view.Visual.Personal
                 if (Aurora.AreTextBoxEmpty(this))
                 {
                     AlertMessage.Visible = true;
+                    AlertMessage.TextAlign = ContentAlignment.MiddleCenter;
                     AlertMessage.Text = "ERROR!: DEBE LLENAR TODOS LOS CAMPOS";
                     await Task.Delay(2000);
                 }
@@ -46,6 +47,7 @@ namespace view.Visual.Personal
                         {
                             AlertMessage.Visible = true;
                             AlertMessage.ForeColor = Color.Green;
+                            AlertMessage.TextAlign = ContentAlignment.MiddleCenter;
                             AlertMessage.Text = "Credenciales Actualizadas Correctamente!";
                             btnActualizar.Enabled = false;
                             await Task.Delay(2000);
@@ -54,6 +56,7 @@ namespace view.Visual.Personal
                         else
                         {
                             AlertMessage.Visible = true;
+                            AlertMessage.TextAlign = ContentAlignment.MiddleCenter;
                             AlertMessage.Text = "ERROR!: No se pudo actualizar correctamente";
                             btnActualizar.Enabled = false;
                             await Task.Delay(2000);

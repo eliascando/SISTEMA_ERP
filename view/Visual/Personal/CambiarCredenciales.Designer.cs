@@ -126,7 +126,7 @@
             AlertMessage.Size = new Size(354, 17);
             AlertMessage.TabIndex = 8;
             AlertMessage.Text = "La Nueva Contraseña  y la Confirmación deben coincidir";
-            AlertMessage.TextAlign = ContentAlignment.MiddleCenter;
+            AlertMessage.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label4
             // 

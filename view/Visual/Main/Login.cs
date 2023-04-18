@@ -25,6 +25,7 @@ namespace view.Visual
 
         private async void btnLogin_Click(object sender, EventArgs e)
         {
+            RegistroActividadesCtrl registroActividades = new RegistroActividadesCtrl();
             lblMensaje.Visible = false;
             try
             {
@@ -54,6 +55,7 @@ namespace view.Visual
 
                     if (validarCredencialesTask.Result)
                     {
+                        await registroActividades.RegistroInicioSesionCtrl(txtId.Text, "Acceso Exitoso");
                         Form success = new LoginSuccess();
                         loadState(success);
                         await Task.Delay(2000);
@@ -73,6 +75,7 @@ namespace view.Visual
                         if (idVentana.ContainsKey(id))
                         {
                             Form ventana = idVentana[id];
+                            
                             this.Hide();
                             ventana.Show();
                         }
@@ -82,6 +85,11 @@ namespace view.Visual
                     }
                     else
                     {
+                        if (GlobalVariablesCtrl.ObtenerIdUsuario() == txtId.Text)
+                        {
+                            await registroActividades.RegistroInicioSesionCtrl(txtId.Text, "Acceso Fallido");
+                            GlobalVariablesCtrl.AsignarIdUsuario("");
+                        }
                         Form fail = new LoginFail();
                         loadState(fail);
                         await Task.Delay(2000);

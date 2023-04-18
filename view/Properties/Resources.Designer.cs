@@ -143,6 +143,26 @@ namespace view.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap noun_reload_hold {
+            get {
+                object obj = ResourceManager.GetObject("noun_reload_hold", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap noun_reload_release {
+            get {
+                object obj = ResourceManager.GetObject("noun_reload_release", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap show_pass {
             get {
                 object obj = ResourceManager.GetObject("show_pass", resourceCulture);

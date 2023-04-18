@@ -148,4 +148,10 @@
   <data name="default_user_picture" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\default_user_picture.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="noun_reload_hold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\noun-reload-hold.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="noun_reload_release" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\noun-reload-release.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

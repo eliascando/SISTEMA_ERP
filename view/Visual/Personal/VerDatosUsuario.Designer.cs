@@ -51,23 +51,26 @@
             label1 = new Label();
             lblNombreUsuario = new Label();
             picFotoUsuario = new PictureBox();
+            ReloadBtn = new PictureBox();
+            btnSalir = new Button();
             tabActividades.SuspendLayout();
             tabInicioSesion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvInicioSesion).BeginInit();
             tabVentas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvVentas).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picFotoUsuario).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ReloadBtn).BeginInit();
             SuspendLayout();
             // 
             // tabActividades
             // 
-            tabActividades.Anchor = AnchorStyles.None;
+            tabActividades.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tabActividades.Controls.Add(tabInicioSesion);
             tabActividades.Controls.Add(tabVentas);
-            tabActividades.Location = new Point(12, 194);
+            tabActividades.Location = new Point(12, 190);
             tabActividades.Name = "tabActividades";
             tabActividades.SelectedIndex = 0;
-            tabActividades.Size = new Size(705, 228);
+            tabActividades.Size = new Size(705, 281);
             tabActividades.TabIndex = 24;
             // 
             // tabInicioSesion
@@ -76,19 +79,28 @@
             tabInicioSesion.Location = new Point(4, 24);
             tabInicioSesion.Name = "tabInicioSesion";
             tabInicioSesion.Padding = new Padding(3);
-            tabInicioSesion.Size = new Size(697, 200);
+            tabInicioSesion.Size = new Size(697, 253);
             tabInicioSesion.TabIndex = 0;
             tabInicioSesion.Text = "Inicios de Sesion";
             tabInicioSesion.UseVisualStyleBackColor = true;
             // 
             // dgvInicioSesion
             // 
+            dgvInicioSesion.AllowUserToAddRows = false;
+            dgvInicioSesion.AllowUserToDeleteRows = false;
+            dgvInicioSesion.AllowUserToResizeColumns = false;
+            dgvInicioSesion.AllowUserToResizeRows = false;
+            dgvInicioSesion.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvInicioSesion.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvInicioSesion.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvInicioSesion.Dock = DockStyle.Fill;
             dgvInicioSesion.Location = new Point(3, 3);
+            dgvInicioSesion.MultiSelect = false;
             dgvInicioSesion.Name = "dgvInicioSesion";
+            dgvInicioSesion.ReadOnly = true;
+            dgvInicioSesion.RowHeadersVisible = false;
             dgvInicioSesion.RowTemplate.Height = 25;
-            dgvInicioSesion.Size = new Size(691, 194);
+            dgvInicioSesion.SelectionMode = DataGridViewSelectionMode.CellSelect;
+            dgvInicioSesion.Size = new Size(691, 278);
             dgvInicioSesion.TabIndex = 0;
             // 
             // tabVentas
@@ -97,7 +109,7 @@
             tabVentas.Location = new Point(4, 24);
             tabVentas.Name = "tabVentas";
             tabVentas.Padding = new Padding(3);
-            tabVentas.Size = new Size(697, 200);
+            tabVentas.Size = new Size(697, 253);
             tabVentas.TabIndex = 1;
             tabVentas.Text = "Registro de Ventas";
             tabVentas.UseVisualStyleBackColor = true;
@@ -109,7 +121,7 @@
             dgvVentas.Location = new Point(3, 3);
             dgvVentas.Name = "dgvVentas";
             dgvVentas.RowTemplate.Height = 25;
-            dgvVentas.Size = new Size(691, 194);
+            dgvVentas.Size = new Size(691, 247);
             dgvVentas.TabIndex = 0;
             // 
             // lblVentasMes
@@ -277,11 +289,38 @@
             picFotoUsuario.TabIndex = 45;
             picFotoUsuario.TabStop = false;
             // 
+            // ReloadBtn
+            // 
+            ReloadBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            ReloadBtn.Image = Properties.Resources.noun_reload_hold;
+            ReloadBtn.Location = new Point(685, 474);
+            ReloadBtn.Name = "ReloadBtn";
+            ReloadBtn.Size = new Size(28, 28);
+            ReloadBtn.SizeMode = PictureBoxSizeMode.StretchImage;
+            ReloadBtn.TabIndex = 63;
+            ReloadBtn.TabStop = false;
+            ReloadBtn.Click += ReloadBtn_Click;
+            ReloadBtn.MouseDown += ReloadBtn_MouseDown;
+            ReloadBtn.MouseUp += ReloadBtn_MouseUp;
+            // 
+            // btnSalir
+            // 
+            btnSalir.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnSalir.Location = new Point(16, 479);
+            btnSalir.Name = "btnSalir";
+            btnSalir.Size = new Size(75, 23);
+            btnSalir.TabIndex = 64;
+            btnSalir.Text = "Atrás";
+            btnSalir.UseVisualStyleBackColor = true;
+            btnSalir.Click += btnSalir_Click;
+            // 
             // VerDatosUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(729, 451);
+            ClientSize = new Size(729, 514);
+            Controls.Add(btnSalir);
+            Controls.Add(ReloadBtn);
             Controls.Add(lblVentasMes);
             Controls.Add(label8);
             Controls.Add(lblID);
@@ -305,12 +344,14 @@
             Name = "VerDatosUsuario";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "VerDatosUsuario";
+            Load += VerDatosUsuario_Load;
             tabActividades.ResumeLayout(false);
             tabInicioSesion.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvInicioSesion).EndInit();
             tabVentas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvVentas).EndInit();
             ((System.ComponentModel.ISupportInitialize)picFotoUsuario).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ReloadBtn).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -339,5 +380,7 @@
         private Label label1;
         public Label lblNombreUsuario;
         public PictureBox picFotoUsuario;
+        private PictureBox ReloadBtn;
+        private Button btnSalir;
     }
 }

@@ -41,5 +41,13 @@ namespace control
         {
             return GlobalVariables.currentCounter;
         }
+        public static string ObtenerIdUsuario()
+        {
+            return GlobalVariables.id_usuario;
+        }
+        public static void AsignarIdUsuario(string id_usuario)
+        {
+            GlobalVariables.id_usuario = id_usuario;
+        }
     }
 }

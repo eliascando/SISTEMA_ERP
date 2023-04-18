@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -21,6 +22,10 @@ namespace view.Visual.Main
             InitializeComponent();
             lblSendEmailStatus.Visible = false;
             lblValidateOTP.Visible = false;
+            btnValidar.Enabled = false;
+            Loading.Visible = false;
+            Guardian.ValidateIdInput(txtId);
+            Guardian.ValidateIntegerInput(txtOTP);
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -30,32 +35,60 @@ namespace view.Visual.Main
 
         private async void btnEnviarOTP_Click(object sender, EventArgs e)
         {
-            string ID = txtId.Text.Trim();
+            PersonalCtrl personalCtrl = new PersonalCtrl();
             try
             {
-                PersonalCtrl personalCtrl = new PersonalCtrl();
-                if (await personalCtrl.SendEmailCtrl(ID))
+                if (String.IsNullOrEmpty(txtId.Text))
                 {
                     lblSendEmailStatus.Visible = true;
-                    lblSendEmailStatus.Text = "Correo enviado exitosamente";
-                    lblSendEmailStatus.ForeColor = Color.Green;
+                    lblSendEmailStatus.Text = "Debe ingresar su ID";
+                    lblSendEmailStatus.ForeColor = Color.Red;
                     await Task.Delay(2000);
                     lblSendEmailStatus.Visible = false;
                 }
                 else
                 {
-                    lblSendEmailStatus.Visible = true;
-                    lblSendEmailStatus.Text = "Error al enviar correo";
-                    lblSendEmailStatus.ForeColor = Color.Red;
-                    await Task.Delay(2000);
-                    lblSendEmailStatus.Visible = false;
+                    btnEnviarOTP.Visible = false;
+                    Loading.Visible = true;
+
+                    var enviarCorreoTask = personalCtrl.SendEmailCtrl(txtId.Text);
+                    var esperarTask = Task.Delay(3000);
+
+                    await Task.WhenAll(enviarCorreoTask, esperarTask);
+
+                    if (enviarCorreoTask.Result)
+                    {
+                        Loading.Visible = false;
+                        btnEnviarOTP.Visible = true;
+                        lblSendEmailStatus.Visible = true;
+                        lblSendEmailStatus.Text = "Correo enviado exitosamente";
+                        lblSendEmailStatus.ForeColor = Color.Green;
+                        await Task.Delay(2000);
+                        lblSendEmailStatus.Visible = false;
+                        btnValidar.Enabled = true;
+                    }
+                    else
+                    {
+                        Loading.Visible = false;
+                        btnEnviarOTP.Visible = true;
+                        lblSendEmailStatus.Visible = true;
+                        lblSendEmailStatus.Text = "Error al enviar correo";
+                        lblSendEmailStatus.ForeColor = Color.Red;
+                        await Task.Delay(2000);
+                        lblSendEmailStatus.Visible = false;
+                    }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("ERROR DE EXCEPCION: " + ex);
+                Loading.Visible = false;
+                btnEnviarOTP.Visible = true;
+                lblSendEmailStatus.Visible = true;
+                lblSendEmailStatus.Text = "Error al enviar correo";
+                lblSendEmailStatus.ForeColor = Color.Red;
+                await Task.Delay(2000);
+                lblSendEmailStatus.Visible = false;
             }
-
         }
 
         private async void btnValidar_Click(object sender, EventArgs e)
@@ -65,6 +98,7 @@ namespace view.Visual.Main
             {
                 CambiarCredenciales cambiarCredenciales = new CambiarCredenciales(txtId.Text);
                 cambiarCredenciales.ShowDialog();
+                GlobalVariablesCtrl.AsignarCurrentCounter(0);
                 this.Close();
             }
             else

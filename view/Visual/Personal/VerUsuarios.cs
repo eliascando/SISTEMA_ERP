@@ -91,7 +91,7 @@ namespace view.Visual
                         UpdateForm.picFotoPersonal.Image = Resources.default_user_picture;
                         UpdateForm.btnChangeImagen.Text = "Añadir";
                     }
-                    
+
 
                     Aurora.LoadFormInPanel(UpdateForm, panelUsuarios, ref activeForm);
                 }

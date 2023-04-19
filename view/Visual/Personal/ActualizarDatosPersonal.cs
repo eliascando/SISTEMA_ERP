@@ -1,6 +1,7 @@
 ﻿using libraries;
 using control;
 using view.Visual.Personal;
+using view.Properties;
 
 namespace view.Visual
 {
@@ -37,8 +38,9 @@ namespace view.Visual
                 if (Aurora.AreTextBoxModified(this) || imageData != null)
                 {
                     PersonalCtrl personalCtrl = new PersonalCtrl();
+                    validarImagen(picFotoPersonal.Image);
                     if (await personalCtrl.ActualizarDatosUsuarioCtrl(lblCedula.Text, txtTelefonoU.Text, txtCorreoU.Text, txtDireccionU.Text, imageData))
-                    {
+                    {            
                         await registroActividades.RegistroModificacionUsuarioCtrl(lblCedula.Text, GlobalVariablesCtrl.ObtenerIdUsuarioLogin(), "Actualización de Datos");
                         MessageBox.Show("Actualizado Correctamente!");
                         await verUsuario.CargarTabla();
@@ -70,6 +72,15 @@ namespace view.Visual
         {
             CambiarCredenciales cambiarCredenciales = new CambiarCredenciales(lblCedula.Text, GlobalVariablesCtrl.ObtenerIdUsuarioLogin(), "Cambio de contraseña realizado por Gerente");
             cambiarCredenciales.ShowDialog();
+        }
+        private void validarImagen(Image imagen)
+        {
+            if (imagen != Resources.default_user_picture)
+            {
+                Image foto = picFotoPersonal.Image;
+                ImageConverter converter = new ImageConverter();
+                imageData = (byte[])converter.ConvertTo(foto, typeof(byte[]));
+            }
         }
     }
 }

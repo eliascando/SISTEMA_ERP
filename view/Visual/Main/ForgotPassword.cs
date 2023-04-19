@@ -46,6 +46,14 @@ namespace view.Visual.Main
                     await Task.Delay(2000);
                     lblSendEmailStatus.Visible = false;
                 }
+                else if (txtId.Text.Length < 10)
+                {
+                    lblSendEmailStatus.Visible = true;
+                    lblSendEmailStatus.Text = "Debe ingresar un ID válido";
+                    lblSendEmailStatus.ForeColor = Color.Red;
+                    await Task.Delay(2000);
+                    lblSendEmailStatus.Visible = false;
+                }
                 else
                 {
                     btnEnviarOTP.Visible = false;
@@ -96,7 +104,7 @@ namespace view.Visual.Main
             PersonalCtrl personalCtrl = new PersonalCtrl();
             if (personalCtrl.ValidarOTPCtrl(Alquimia.Encrypt(txtId.Text), txtOTP.Text))
             {
-                CambiarCredenciales cambiarCredenciales = new CambiarCredenciales(txtId.Text);
+                CambiarCredenciales cambiarCredenciales = new CambiarCredenciales(txtId.Text, txtId.Text, "Cambio de contraseña por validación de clave OTP");
                 cambiarCredenciales.ShowDialog();
                 GlobalVariablesCtrl.AsignarCurrentCounter(0);
                 this.Close();

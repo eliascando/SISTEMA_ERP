@@ -12,11 +12,12 @@ namespace view.Visual
             InitializeComponent();
             this.verUsuario_prueba = verUsuarios_Prueba;
         }
-        public async Task CargarTablaLogins()
+        public async Task CargarTablas()
         {
             try
             {
                 dgvInicioSesion.DataSource = await registroActividades.ObtenerLoginsPorUsuarioCtrl(lblID.Text);
+                dgvModificaciones.DataSource = await registroActividades.ObtenerModificacionesPorUsuarioCtrl(lblID.Text);
             }
             catch (Exception ex)
             {
@@ -26,7 +27,7 @@ namespace view.Visual
 
         private async void VerDatosUsuario_Load(object sender, EventArgs e)
         {
-            await CargarTablaLogins();
+            await CargarTablas();
         }
 
         private void ReloadBtn_MouseDown(object sender, MouseEventArgs e)
@@ -41,7 +42,7 @@ namespace view.Visual
 
         private async void ReloadBtn_Click(object sender, EventArgs e)
         {
-            await CargarTablaLogins();
+            await CargarTablas();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)

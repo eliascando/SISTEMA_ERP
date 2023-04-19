@@ -15,10 +15,10 @@ namespace control
     {
         PersonalBD personalBD = new PersonalBD();
         OTPKey OTPKey = new OTPKey();
-        public async Task<bool> ValidarCredenciales(string usuario, string password)
+        public async Task<bool> ValidarCredenciales(string id_usuario, string password)
         {
             CredencialesAcceso credenciales = new CredencialesAcceso();
-            credenciales.Usuario = usuario;
+            credenciales.Id_usuario = id_usuario;
             credenciales.Password = Alquimia.Encrypt(password);
             return await personalBD.ValidarCredenciales(credenciales);
         }

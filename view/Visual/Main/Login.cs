@@ -85,10 +85,10 @@ namespace view.Visual
                     }
                     else
                     {
-                        if (GlobalVariablesCtrl.ObtenerIdUsuario() == txtId.Text)
+                        if (GlobalVariablesCtrl.ObtenerIdUsuarioValidator() == txtId.Text)
                         {
                             await registroActividades.RegistroInicioSesionCtrl(txtId.Text, "Acceso Fallido");
-                            GlobalVariablesCtrl.AsignarIdUsuario("");
+                            GlobalVariablesCtrl.AsignarIdUsuarioValidator("");
                         }
                         Form fail = new LoginFail();
                         loadState(fail);

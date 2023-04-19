@@ -30,6 +30,7 @@ namespace view.Visual
 
         private async void btnActualizar_Click(object sender, EventArgs e)
         {
+            RegistroActividadesCtrl registroActividades = new RegistroActividadesCtrl();
             try
             {
 
@@ -38,6 +39,7 @@ namespace view.Visual
                     PersonalCtrl personalCtrl = new PersonalCtrl();
                     if (await personalCtrl.ActualizarDatosUsuarioCtrl(lblCedula.Text, txtTelefonoU.Text, txtCorreoU.Text, txtDireccionU.Text, imageData))
                     {
+                        await registroActividades.RegistroModificacionUsuarioCtrl(lblCedula.Text, GlobalVariablesCtrl.ObtenerIdUsuarioLogin(), "Actualización de Datos");
                         MessageBox.Show("Actualizado Correctamente!");
                         await verUsuario.CargarTabla();
                         this.Close();
@@ -66,7 +68,7 @@ namespace view.Visual
 
         private void btnCambiarCredenciales_Click(object sender, EventArgs e)
         {
-            CambiarCredenciales cambiarCredenciales = new CambiarCredenciales(lblCedula.Text);
+            CambiarCredenciales cambiarCredenciales = new CambiarCredenciales(lblCedula.Text, GlobalVariablesCtrl.ObtenerIdUsuarioLogin(), "Cambio de contraseña realizado por Gerente");
             cambiarCredenciales.ShowDialog();
         }
     }

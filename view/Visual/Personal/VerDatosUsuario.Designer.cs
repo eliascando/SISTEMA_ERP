@@ -33,6 +33,8 @@
             dgvInicioSesion = new DataGridView();
             tabVentas = new TabPage();
             dgvVentas = new DataGridView();
+            tabPage1 = new TabPage();
+            dgvModificaciones = new DataGridView();
             lblVentasMes = new Label();
             label8 = new Label();
             lblID = new Label();
@@ -58,6 +60,8 @@
             ((System.ComponentModel.ISupportInitialize)dgvInicioSesion).BeginInit();
             tabVentas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvVentas).BeginInit();
+            tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvModificaciones).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picFotoUsuario).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ReloadBtn).BeginInit();
             SuspendLayout();
@@ -67,6 +71,7 @@
             tabActividades.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tabActividades.Controls.Add(tabInicioSesion);
             tabActividades.Controls.Add(tabVentas);
+            tabActividades.Controls.Add(tabPage1);
             tabActividades.Location = new Point(12, 190);
             tabActividades.Name = "tabActividades";
             tabActividades.SelectedIndex = 0;
@@ -90,9 +95,9 @@
             dgvInicioSesion.AllowUserToDeleteRows = false;
             dgvInicioSesion.AllowUserToResizeColumns = false;
             dgvInicioSesion.AllowUserToResizeRows = false;
-            dgvInicioSesion.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvInicioSesion.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvInicioSesion.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvInicioSesion.Dock = DockStyle.Fill;
             dgvInicioSesion.Location = new Point(3, 3);
             dgvInicioSesion.MultiSelect = false;
             dgvInicioSesion.Name = "dgvInicioSesion";
@@ -100,7 +105,7 @@
             dgvInicioSesion.RowHeadersVisible = false;
             dgvInicioSesion.RowTemplate.Height = 25;
             dgvInicioSesion.SelectionMode = DataGridViewSelectionMode.CellSelect;
-            dgvInicioSesion.Size = new Size(691, 278);
+            dgvInicioSesion.Size = new Size(691, 247);
             dgvInicioSesion.TabIndex = 0;
             // 
             // tabVentas
@@ -123,6 +128,33 @@
             dgvVentas.RowTemplate.Height = 25;
             dgvVentas.Size = new Size(691, 247);
             dgvVentas.TabIndex = 0;
+            // 
+            // tabPage1
+            // 
+            tabPage1.Controls.Add(dgvModificaciones);
+            tabPage1.Location = new Point(4, 24);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Size = new Size(697, 253);
+            tabPage1.TabIndex = 2;
+            tabPage1.Text = "Registro de Modificaciones";
+            tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // dgvModificaciones
+            // 
+            dgvModificaciones.AllowUserToAddRows = false;
+            dgvModificaciones.AllowUserToDeleteRows = false;
+            dgvModificaciones.AllowUserToResizeColumns = false;
+            dgvModificaciones.AllowUserToResizeRows = false;
+            dgvModificaciones.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvModificaciones.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvModificaciones.Dock = DockStyle.Fill;
+            dgvModificaciones.Location = new Point(0, 0);
+            dgvModificaciones.Name = "dgvModificaciones";
+            dgvModificaciones.ReadOnly = true;
+            dgvModificaciones.RowHeadersVisible = false;
+            dgvModificaciones.RowTemplate.Height = 25;
+            dgvModificaciones.Size = new Size(697, 253);
+            dgvModificaciones.TabIndex = 0;
             // 
             // lblVentasMes
             // 
@@ -350,6 +382,8 @@
             ((System.ComponentModel.ISupportInitialize)dgvInicioSesion).EndInit();
             tabVentas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvVentas).EndInit();
+            tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvModificaciones).EndInit();
             ((System.ComponentModel.ISupportInitialize)picFotoUsuario).EndInit();
             ((System.ComponentModel.ISupportInitialize)ReloadBtn).EndInit();
             ResumeLayout(false);
@@ -382,5 +416,7 @@
         public PictureBox picFotoUsuario;
         private PictureBox ReloadBtn;
         private Button btnSalir;
+        private TabPage tabPage1;
+        private DataGridView dgvModificaciones;
     }
 }

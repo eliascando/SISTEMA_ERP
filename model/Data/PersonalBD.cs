@@ -21,7 +21,7 @@ namespace model.Data
                 {
                     var cmd = new SqlCommand("ValidarCredenciales", ConexionBD.cn);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@id_usuario", credencialesAcceso.Usuario);
+                    cmd.Parameters.AddWithValue("@id_usuario", credencialesAcceso.Id_usuario);
                     cmd.Parameters.AddWithValue("@password", credencialesAcceso.Password);
                     SqlParameter esValidoParam = new SqlParameter("@EsValido", SqlDbType.Bit);
                     esValidoParam.Direction = ParameterDirection.Output;
@@ -41,10 +41,10 @@ namespace model.Data
                     isValidUser = (bool)esValidoParam.Value;
                     if (isValidUser)
                     {
-                        
+                        GlobalVariables.id_usuario_login = credencialesAcceso.Id_usuario;
                         GlobalVariables.id_rol = (int)idRolParam.Value;
                         GlobalVariables.usuario = (string)nombreParam.Value;
-                        GlobalVariables.id_usuario = (string)idParam.Value;
+                        GlobalVariables.id_usuario_validator = (string)idParam.Value;
                     }
                 }
             }

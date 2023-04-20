@@ -16,13 +16,17 @@ namespace view.Visual.Personal
     public partial class CambiarCredenciales : Form
     {
         public static string id_personal = "";
+        public static string id_user_responsable = "";
+        public static string autorizacion_metodo_cambio = "";
         bool isShowPass = false;
-        public CambiarCredenciales(string id)
+        public CambiarCredenciales(string id, string id_responsable, string autorizacion_cambio)
         {
             InitializeComponent();
             AlertIcon.Visible = false;
             AlertMessage.Visible = false;
             id_personal = id;
+            id_user_responsable = id_responsable;
+            autorizacion_metodo_cambio = autorizacion_cambio;
             lblCedulaPersonal.Text = id;
             Aurora.HidePassword(txtNewPass, txtConfirmNewPass);
         }
@@ -30,6 +34,7 @@ namespace view.Visual.Personal
         private async void btnActualizar_Click(object sender, EventArgs e)
         {
             PersonalCtrl personalCtrl = new PersonalCtrl();
+            RegistroActividadesCtrl actividadesCtrl = new RegistroActividadesCtrl();
             try
             {
                 if (Aurora.AreTextBoxEmpty(this))
@@ -45,6 +50,7 @@ namespace view.Visual.Personal
                     {
                         if (await personalCtrl.CambiarCredencialesCtrl(id_personal, txtNewPass.Text))
                         {
+                            await actividadesCtrl.RegistroModificacionUsuarioCtrl(id_personal,id_user_responsable,autorizacion_metodo_cambio);
                             AlertMessage.Visible = true;
                             AlertMessage.ForeColor = Color.Green;
                             AlertMessage.TextAlign = ContentAlignment.MiddleCenter;

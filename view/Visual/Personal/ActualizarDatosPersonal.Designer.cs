@@ -47,8 +47,10 @@
             txtCorreoU = new TextBox();
             txtDireccionU = new TextBox();
             btnActualizar = new Button();
-            btnCerrar = new Button();
             btnCambiarCredenciales = new Button();
+            btnSalir = new Button();
+            customToogleBtn1 = new utilitaries.CustomControls.CustomToogleBtn();
+            label9 = new Label();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picFotoPersonal).BeginInit();
             SuspendLayout();
@@ -63,9 +65,9 @@
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
-            groupBox1.Location = new Point(211, 68);
+            groupBox1.Location = new Point(30, 76);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(353, 152);
+            groupBox1.Size = new Size(525, 152);
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
             groupBox1.Text = "Datos de Personal";
@@ -146,7 +148,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Montserrat", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(273, 20);
+            label1.Location = new Point(233, 23);
             label1.Name = "label1";
             label1.Size = new Size(238, 33);
             label1.TabIndex = 3;
@@ -155,7 +157,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(211, 242);
+            label6.Location = new Point(30, 263);
             label6.Name = "label6";
             label6.Size = new Size(55, 15);
             label6.TabIndex = 5;
@@ -164,7 +166,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(211, 271);
+            label7.Location = new Point(273, 263);
             label7.Name = "label7";
             label7.Size = new Size(46, 15);
             label7.TabIndex = 6;
@@ -173,7 +175,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(211, 297);
+            label8.Location = new Point(30, 297);
             label8.Name = "label8";
             label8.Size = new Size(60, 15);
             label8.TabIndex = 7;
@@ -181,7 +183,7 @@
             // 
             // btnChangeImagen
             // 
-            btnChangeImagen.Location = new Point(465, 342);
+            btnChangeImagen.Location = new Point(577, 205);
             btnChangeImagen.Name = "btnChangeImagen";
             btnChangeImagen.Size = new Size(87, 23);
             btnChangeImagen.TabIndex = 9;
@@ -191,7 +193,7 @@
             // 
             // picFotoPersonal
             // 
-            picFotoPersonal.Location = new Point(465, 226);
+            picFotoPersonal.Location = new Point(577, 88);
             picFotoPersonal.Name = "picFotoPersonal";
             picFotoPersonal.Size = new Size(87, 110);
             picFotoPersonal.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -200,63 +202,89 @@
             // 
             // txtTelefonoU
             // 
-            txtTelefonoU.Location = new Point(273, 234);
+            txtTelefonoU.Location = new Point(92, 255);
             txtTelefonoU.Name = "txtTelefonoU";
             txtTelefonoU.Size = new Size(155, 23);
             txtTelefonoU.TabIndex = 10;
             // 
             // txtCorreoU
             // 
-            txtCorreoU.Location = new Point(273, 263);
+            txtCorreoU.Location = new Point(335, 255);
             txtCorreoU.Name = "txtCorreoU";
             txtCorreoU.Size = new Size(155, 23);
             txtCorreoU.TabIndex = 11;
             // 
             // txtDireccionU
             // 
-            txtDireccionU.Location = new Point(273, 297);
+            txtDireccionU.Location = new Point(92, 297);
             txtDireccionU.Multiline = true;
             txtDireccionU.Name = "txtDireccionU";
-            txtDireccionU.Size = new Size(155, 66);
+            txtDireccionU.Size = new Size(398, 29);
             txtDireccionU.TabIndex = 12;
             // 
             // btnActualizar
             // 
-            btnActualizar.Location = new Point(337, 389);
+            btnActualizar.Location = new Point(487, 461);
             btnActualizar.Name = "btnActualizar";
-            btnActualizar.Size = new Size(91, 37);
+            btnActualizar.Size = new Size(112, 41);
             btnActualizar.TabIndex = 13;
-            btnActualizar.Text = "Actualizar";
+            btnActualizar.Text = "Guardar Cambios";
             btnActualizar.UseVisualStyleBackColor = true;
             btnActualizar.Click += btnActualizar_Click;
             // 
-            // btnCerrar
-            // 
-            btnCerrar.Location = new Point(211, 389);
-            btnCerrar.Name = "btnCerrar";
-            btnCerrar.Size = new Size(91, 37);
-            btnCerrar.TabIndex = 14;
-            btnCerrar.Text = "Cerrar";
-            btnCerrar.UseVisualStyleBackColor = true;
-            btnCerrar.Click += btnCerrar_Click;
-            // 
             // btnCambiarCredenciales
             // 
-            btnCambiarCredenciales.Location = new Point(452, 383);
+            btnCambiarCredenciales.Location = new Point(605, 461);
             btnCambiarCredenciales.Name = "btnCambiarCredenciales";
-            btnCambiarCredenciales.Size = new Size(112, 49);
+            btnCambiarCredenciales.Size = new Size(112, 41);
             btnCambiarCredenciales.TabIndex = 15;
-            btnCambiarCredenciales.Text = "Cambiar Credenciales";
+            btnCambiarCredenciales.Text = "Cambiar Contraseña";
             btnCambiarCredenciales.UseVisualStyleBackColor = true;
             btnCambiarCredenciales.Click += btnCambiarCredenciales_Click;
+            // 
+            // btnSalir
+            // 
+            btnSalir.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnSalir.Location = new Point(12, 479);
+            btnSalir.Name = "btnSalir";
+            btnSalir.Size = new Size(75, 23);
+            btnSalir.TabIndex = 65;
+            btnSalir.Text = "Atrás";
+            btnSalir.UseVisualStyleBackColor = true;
+            btnSalir.Click += btnSalir_Click;
+            // 
+            // customToogleBtn1
+            // 
+            customToogleBtn1.AutoSize = true;
+            customToogleBtn1.Location = new Point(124, 343);
+            customToogleBtn1.MinimumSize = new Size(45, 22);
+            customToogleBtn1.Name = "customToogleBtn1";
+            customToogleBtn1.OffBackColor = Color.Gray;
+            customToogleBtn1.OffToogleColor = Color.Gainsboro;
+            customToogleBtn1.OnBackColor = Color.MediumSlateBlue;
+            customToogleBtn1.OnToogleColor = Color.WhiteSmoke;
+            customToogleBtn1.Size = new Size(45, 22);
+            customToogleBtn1.TabIndex = 66;
+            customToogleBtn1.UseVisualStyleBackColor = true;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(34, 346);
+            label9.Name = "label9";
+            label9.Size = new Size(84, 15);
+            label9.TabIndex = 67;
+            label9.Text = "Usuario Activo";
             // 
             // ActualizarDatosPersonal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(729, 451);
+            ClientSize = new Size(729, 514);
+            Controls.Add(label9);
+            Controls.Add(customToogleBtn1);
+            Controls.Add(btnSalir);
             Controls.Add(btnCambiarCredenciales);
-            Controls.Add(btnCerrar);
             Controls.Add(btnActualizar);
             Controls.Add(txtDireccionU);
             Controls.Add(txtCorreoU);
@@ -295,12 +323,14 @@
         private Label label7;
         private Label label8;
         private Button btnActualizar;
-        private Button btnCerrar;
         private Button btnCambiarCredenciales;
         public PictureBox picFotoPersonal;
         public TextBox txtTelefonoU;
         public TextBox txtCorreoU;
         public TextBox txtDireccionU;
         public Button btnChangeImagen;
+        private Button btnSalir;
+        private utilitaries.CustomControls.CustomToogleBtn customToogleBtn1;
+        private Label label9;
     }
 }

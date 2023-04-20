@@ -12,6 +12,11 @@ namespace model.Data
 {
     public class PersonalBD
     {
+        /// <summary>
+        /// Valida las credenciales de acceso de un usuario en la base de datos.
+        /// </summary>
+        /// <param name="credencialesAcceso">Objeto de tipo CredencialesAcceso que contiene la información de las credenciales de acceso del usuario.</param>
+        /// <returns>Un valor booleano que indica si las credenciales de acceso son válidas o no.</returns>
         public async Task<bool> ValidarCredenciales(CredencialesAcceso credencialesAcceso)
         {
             bool isValidUser = false;
@@ -21,7 +26,7 @@ namespace model.Data
                 {
                     var cmd = new SqlCommand("ValidarCredenciales", ConexionBD.cn);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@id_usuario", credencialesAcceso.Usuario);
+                    cmd.Parameters.AddWithValue("@id_usuario", credencialesAcceso.Id_usuario);
                     cmd.Parameters.AddWithValue("@password", credencialesAcceso.Password);
                     SqlParameter esValidoParam = new SqlParameter("@EsValido", SqlDbType.Bit);
                     esValidoParam.Direction = ParameterDirection.Output;
@@ -36,15 +41,16 @@ namespace model.Data
                     idParam.Direction = ParameterDirection.Output;
                     cmd.Parameters.Add(idParam);
 
-                    await cmd.ExecuteNonQueryAsync();
+                    await cmd.ExecuteNonQueryAsync(); // Ejecuta el comando de forma asíncrona
 
-                    isValidUser = (bool)esValidoParam.Value;
+                    isValidUser = (bool)esValidoParam.Value; // Obtiene el valor del parámetro de salida "EsValido" y lo asigna a la variable isValidUser
                     if (isValidUser)
                     {
-                        
+                        // Asigna los valores de los parámetros de salida a variables globales
+                        GlobalVariables.id_usuario_login = credencialesAcceso.Id_usuario;
                         GlobalVariables.id_rol = (int)idRolParam.Value;
                         GlobalVariables.usuario = (string)nombreParam.Value;
-                        GlobalVariables.id_usuario = (string)idParam.Value;
+                        GlobalVariables.id_usuario_validator = (string)idParam.Value;
                     }
                 }
             }
@@ -54,42 +60,57 @@ namespace model.Data
             }
             finally
             {
-                await ConexionBD.CerrarConexionAsync();
+                await ConexionBD.CerrarConexionAsync(); // Cierra la conexión a la base de datos
             }
 
-            return isValidUser;
+            return isValidUser; // Retorna el valor booleano que indica si las credenciales de acceso son válidas o no
         }
+
+        /// <summary>
+        /// Envía un correo electrónico con un código OTP a la dirección de correo electrónico asociada a un ID.
+        /// </summary>
+        /// <param name="id">ID del usuario para el cual se enviará el correo electrónico.</param>
+        /// <returns>Valor booleano que indica si el correo electrónico se ha enviado correctamente.</returns>
         public async Task<bool> SendEmail(string id)
         {
             bool sended = false;
-            string OTP = OTPKey.GenerateOTP(Alquimia.Encrypt(id));
-            string to = await GetEmail(id);
+            string OTP = OTPKey.GenerateOTP(Alquimia.Encrypt(id)); // Genera un código OTP a partir del ID encriptado
+            string to = await GetEmail(id); // Obtiene la dirección de correo electrónico asociada al ID
             string subject = "Recuperar Contraseña";
             string body = "Su clave OTP es: \n"+OTP+"\nNo compartas esta clave con nadie.";
             try
             {
+                // Obtiene la dirección de correo electrónico y la contraseña del cliente de correo electrónico de la configuración
                 string direccionCorreo = DecryptEmailClient(ConfigurationManager.AppSettings["DireccionCorreo"]);
                 string contraseñaCorreo = DecryptEmailClient(ConfigurationManager.AppSettings["ContraseñaCorreo"]);
 
+                // Crea un objeto MailMessage para el correo electrónico
                 MailMessage mail = new MailMessage();
                 mail.From = new MailAddress(direccionCorreo);
                 mail.To.Add(to);
                 mail.Subject = subject;
                 mail.Body = body;
 
+                // Configura el cliente de SMTP para el envío del correo electrónico
                 SmtpClient client = new SmtpClient("smtp.office365.com",587);
                 client.Credentials = new NetworkCredential(direccionCorreo, contraseñaCorreo);
                 client.EnableSsl = true;
-                client.Send(mail);
+                client.Send(mail); // Envía el correo electrónico
                 sended = true;
             }
             catch(Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw new Exception(ex.Message);  // Lanza una excepción con el mensaje de error si ocurre alguna excepción durante el envío del correo electrónico
             }
 
             return sended;
         }
+
+        /// <summary>
+        /// Obtiene la dirección de correo electrónico asociada a un ID de usuario.
+        /// </summary>
+        /// <param name="id">ID del usuario para el cual se obtendrá la dirección de correo electrónico.</param>
+        /// <returns>La dirección de correo electrónico del usuario.</returns>
         internal async Task<string> GetEmail(string id)
         {
             string email = "";
@@ -117,6 +138,12 @@ namespace model.Data
             }
             return email;
         }
+
+        /// <summary>
+        /// Desencripta las credenciales del correo cliente que estan en base64 utilizando el algoritmo de cifrado AES.
+        /// </summary>
+        /// <param name="input">Credenciales del correo cliente en base64 a desencriptar.</param>
+        /// <returns>Las credenciales desencriptadas.</returns>
         internal static string DecryptEmailClient(string input)
         {
             try
@@ -153,6 +180,12 @@ namespace model.Data
             }
             return input;
         }
+
+        /// <summary>
+        /// Registra información de personal en la base de datos utilizando un procedimiento almacenado.
+        /// </summary>
+        /// <param name="personal">Objeto del tipo Personal que contiene los datos del personal a registrar.</param>
+        /// <returns>True si el registro es exitoso, False si no lo es.</returns>
         public async Task<bool> RegistrarPersonal(Personal personal)
         {
             bool registroExitoso = false;
@@ -160,8 +193,11 @@ namespace model.Data
             {
                 if (await ConexionBD.AbrirConexionAsync())
                 {
+                    // Crear un nuevo comando SQL con el nombre del procedimiento almacenado y la conexión de base de datos
                     var cmd = new SqlCommand("RegistrarPersonal", ConexionBD.cn);
                     cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Agregar parámetros al comando con los valores del objeto Personal
                     cmd.Parameters.AddWithValue("@id_cedula", personal.Id_personal);
                     cmd.Parameters.AddWithValue("@nombre_personal", personal.Nombre_personal);
                     cmd.Parameters.AddWithValue("@apellido_personal", personal.Apellido_personal);
@@ -175,11 +211,16 @@ namespace model.Data
                     cmd.Parameters.AddWithValue("@salario_mensual", personal.Salario);
                     cmd.Parameters.AddWithValue("@personal_activo", personal.Personal_activo);
                     cmd.Parameters.AddWithValue("@usuario_asignado", personal.Usuario_asignado);
+
+                    // Agregar un parámetro de salida para capturar el resultado del registro exitoso
                     SqlParameter registroExitosoParam = new SqlParameter("@RegistroExitoso", SqlDbType.Bit);
                     registroExitosoParam.Direction = ParameterDirection.Output;
                     cmd.Parameters.Add(registroExitosoParam);
+
+                    // Ejecutar el comando en la base de datos de forma asíncrona
                     await cmd.ExecuteNonQueryAsync();
 
+                    // Obtener el valor del parámetro de salida que indica si el registro fue exitoso
                     registroExitoso = (bool)registroExitosoParam.Value;
                 }
             }
@@ -193,6 +234,11 @@ namespace model.Data
             }
             return registroExitoso;
         }
+
+        /// <summary>
+        /// Obtiene la información de personal que no tiene un usuario asociado en la base de datos.
+        /// </summary>
+        /// <returns>Un objeto DataTable que contiene la información de personal sin usuario.</returns>
         public async Task<DataTable> ObtenerPersonalSinUsuario()
         {
             DataTable personalDT = new DataTable();
@@ -200,8 +246,11 @@ namespace model.Data
             {
                 if (await ConexionBD.AbrirConexionAsync())
                 {
+                    // Crear un nuevo comando SQL con el nombre del procedimiento almacenado y la conexión de base de datos
                     var cmd = new SqlCommand("ObtenerPersonalSinUsuario", ConexionBD.cn);
                     cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Crear un SqlDataAdapter para obtener los datos del comando en el DataTable
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                     adapter.Fill(personalDT);
                 }
@@ -216,6 +265,11 @@ namespace model.Data
             }
             return personalDT;
         }
+
+        /// <summary>
+        /// Obtiene la lista de roles de usuarios desde la base de datos.
+        /// </summary>
+        /// <returns>Una lista de objetos RolUsuario que representan los roles de usuarios.</returns>
         public async Task<List<RolUsuario>> ObtenerRoles()
         {
             List<RolUsuario> roles = new List<RolUsuario>();
@@ -223,10 +277,15 @@ namespace model.Data
             {
                 if (await ConexionBD.AbrirConexionAsync())
                 {
+                    // Crear un nuevo comando SQL con el nombre del procedimiento almacenado y la conexión de base de datos
                     var cmd = new SqlCommand("ObtenerRoles", ConexionBD.cn);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@IdRol", GlobalVariables.id_rol);
+
+                    // Insertar un elemento inicial en la lista de roles
                     roles.Insert(0, new RolUsuario(-1, "Elegir cargo..."));
+
+                    // Utilizar un SqlDataReader para obtener los datos del comando y agregarlos a la lista de roles
                     using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
                     {
                         while (await reader.ReadAsync())
@@ -248,6 +307,14 @@ namespace model.Data
             }
             return roles;
         }
+
+        /// <summary>
+        /// Registra un nuevo usuario en la base de datos.
+        /// </summary>
+        /// <param name="personal">El objeto Personal que contiene la información personal del usuario.</param>
+        /// <param name="usuario">El objeto Usuario que contiene la información adicional del usuario.</param>
+        /// <param name="credenciales">El objeto CredencialesAcceso que contiene las credenciales de acceso del usuario.</param>
+        /// <returns>Un valor booleano que indica si el registro fue exitoso o no.</returns>
         public async Task<bool> RegistrarUsuario(Personal personal, Usuario usuario, CredencialesAcceso credenciales)
         {
             bool registroExitoso = false;
@@ -255,8 +322,11 @@ namespace model.Data
             {
                 if (await ConexionBD.AbrirConexionAsync())
                 {
+                    // Crear un nuevo comando SQL con el nombre del procedimiento almacenado y la conexión de base de datos
                     var cmd = new SqlCommand("RegistrarUsuario", ConexionBD.cn);
                     cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Agregar los parámetros necesarios para el procedimiento almacenado
                     cmd.Parameters.AddWithValue("@id_usuario", usuario.Id);
                     cmd.Parameters.AddWithValue("@nombre_rol", personal.Cargo);
                     cmd.Parameters.AddWithValue("@nombre_usuario", usuario.Nombre);
@@ -265,11 +335,16 @@ namespace model.Data
                     cmd.Parameters.AddWithValue("@usuario", credenciales.Usuario);
                     cmd.Parameters.AddWithValue("@password", credenciales.Password);
                     cmd.Parameters.AddWithValue("@usuario_activo", credenciales.Usuario_activo);
+
+                    // Agregar un parámetro de salida para capturar el resultado de registro exitoso
                     SqlParameter registroExitosoParam = new SqlParameter("@RegistroExitoso", SqlDbType.Bit);
                     registroExitosoParam.Direction = ParameterDirection.Output;
                     cmd.Parameters.Add(registroExitosoParam);
+
+                    // Ejecutar el comando SQL
                     await cmd.ExecuteNonQueryAsync();
 
+                    // Obtener el resultado de registro exitoso del parámetro de salida
                     registroExitoso = (bool)registroExitosoParam.Value;
                 }
             }
@@ -283,6 +358,11 @@ namespace model.Data
             }
             return registroExitoso;
         }
+
+        /// <summary>
+        /// Obtiene los usuarios registrados en la base de datos.
+        /// </summary>
+        /// <returns>Un objeto DataTable que contiene los datos de los usuarios.</returns>
         public async Task<DataTable> ObtenerUsuarios()
         {
             DataTable usuariosDT = new DataTable();
@@ -290,13 +370,16 @@ namespace model.Data
             {
                 if (await ConexionBD.AbrirConexionAsync())
                 {
+                    // Crear un nuevo comando SQL con el nombre del procedimiento almacenado y la conexión de base de datos
                     var cmd = new SqlCommand("ObtenerUsuarios", ConexionBD.cn);
                     cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Crear un adaptador de datos SQL para ejecutar el comando y llenar el DataTable
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                     adapter.Fill(usuariosDT);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
@@ -306,6 +389,12 @@ namespace model.Data
             }
             return usuariosDT;
         }
+
+        /// <summary>
+        /// Obtiene los datos combinados de un usuario específico en la base de datos.
+        /// </summary>
+        /// <param name="id">El identificador de cédula del usuario.</param>
+        /// <returns>Un diccionario que contiene los datos combinados del usuario.</returns>
         public async Task<Dictionary<string, object>> ObtenerDatosUsuarios(string id)
         {
             Dictionary<string, object> DatosCombinados = new Dictionary<string, object>();
@@ -316,12 +405,15 @@ namespace model.Data
                     Personal personal = new Personal();
                     Usuario usuario = new Usuario();
                     CredencialesAcceso credenciales = new CredencialesAcceso();
+
+                    // Crear un nuevo comando SQL con el nombre del procedimiento almacenado y la conexión de base de datos
                     var cmd = new SqlCommand("ObtenerDatosUsuarios", ConexionBD.cn);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@id_cedula", id);
                     SqlDataReader reader = await cmd.ExecuteReaderAsync();
                     while (await reader.ReadAsync())
                     {
+                        // Leer los datos del usuario desde el SqlDataReader y asignarlos a los objetos correspondientes
                         personal.Id_personal = id;
                         personal.Nombre_personal = reader.GetString(0);
                         personal.Apellido_personal = reader.GetString(1);
@@ -341,6 +433,8 @@ namespace model.Data
                             usuario.Imagen = null;
                         }
                         credenciales.Usuario = reader.GetString(10);
+
+                        // Combinar los objetos personal, usuario y credenciales en un diccionario
                         DatosCombinados = Alquimia.CombineObjects(personal, usuario, credenciales);
                     }
                 }
@@ -355,6 +449,12 @@ namespace model.Data
             }
             return DatosCombinados;
         }
+
+        /// <summary>
+        /// Registra un gerente en la base de datos.
+        /// </summary>
+        /// <param name="DatosGerente">Diccionario que contiene los datos del gerente a registrar.</param>
+        /// <returns>Valor booleano que indica si el registro del gerente fue exitoso.</returns>
         public async Task<bool>RegistrarGerente(Dictionary<string,object> DatosGerente)
         {
             bool registrado=false;
@@ -364,6 +464,8 @@ namespace model.Data
                 {
                     var cmd = new SqlCommand("RegistrarGerente", ConexionBD.cn);
                     cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Parámetros del procedimiento almacenado
                     cmd.Parameters.AddWithValue("@id_cedula", (string)DatosGerente["Id_personal"]);
                     cmd.Parameters.AddWithValue("@nombre_gerente", (string)DatosGerente["Nombre_personal"]);
                     cmd.Parameters.AddWithValue("@apellido_gerente", (string)DatosGerente["Apellido_personal"]);
@@ -395,6 +497,12 @@ namespace model.Data
             }
             return registrado;
         }
+
+        ///<summary>
+        /// Actualiza los datos personales de un empleado en la base de datos.
+        ///</summary>
+        ///<param name="DatosPersonal">Un diccionario que contiene los datos personales del empleado.</param>
+        ///<returns>Un booleano que indica si los datos fueron actualizados correctamente (true) o no (false).</returns>
         public async Task<bool>ActualizarDatosPersonal(Dictionary<string,object> DatosPersonal)
         {
             bool actualizado = false;
@@ -426,6 +534,12 @@ namespace model.Data
             }
             return actualizado;
         }
+
+        ///<summary>
+        /// Cambia las credenciales de acceso de un usuario en la base de datos.
+        ///</summary>
+        ///<param name="credencialesAcceso">Un objeto CredencialesAcceso que contiene las credenciales de acceso del usuario.</param>
+        ///<returns>Un booleano que indica si las credenciales fueron cambiadas correctamente (true) o no (false).</returns>
         public async Task<bool> CambiarCredenciales(CredencialesAcceso credencialesAcceso)
         {
             bool IsChanged = false;

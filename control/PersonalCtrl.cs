@@ -1,11 +1,5 @@
 ﻿using libraries;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using model.Data;
 using model.Entities;
 
@@ -14,11 +8,10 @@ namespace control
     public class PersonalCtrl
     {
         PersonalBD personalBD = new PersonalBD();
-        OTPKey OTPKey = new OTPKey();
-        public async Task<bool> ValidarCredenciales(string usuario, string password)
+        public async Task<bool> ValidarCredenciales(string id_usuario, string password)
         {
             CredencialesAcceso credenciales = new CredencialesAcceso();
-            credenciales.Usuario = usuario;
+            credenciales.Id_usuario = id_usuario;
             credenciales.Password = Alquimia.Encrypt(password);
             return await personalBD.ValidarCredenciales(credenciales);
         }

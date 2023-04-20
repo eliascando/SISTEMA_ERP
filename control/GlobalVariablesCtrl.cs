@@ -1,9 +1,4 @@
 ﻿using model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace control
 {
@@ -41,13 +36,21 @@ namespace control
         {
             return GlobalVariables.currentCounter;
         }
-        public static string ObtenerIdUsuario()
+        public static string ObtenerIdUsuarioLogin()
         {
-            return GlobalVariables.id_usuario;
+            return GlobalVariables.id_usuario_login;
         }
-        public static void AsignarIdUsuario(string id_usuario)
+        public static void AsignarIdUsuarioLogin(string id_usuario)
         {
-            GlobalVariables.id_usuario = id_usuario;
+            GlobalVariables.id_usuario_login = id_usuario;
+        }
+        public static string ObtenerIdUsuarioValidator()
+        {
+            return GlobalVariables.id_usuario_validator;
+        }
+        public static void AsignarIdUsuarioValidator(string id_usuario)
+        {
+            GlobalVariables.id_usuario_validator = id_usuario;
         }
     }
 }

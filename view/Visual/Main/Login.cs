@@ -23,93 +23,6 @@ namespace view.Visual
             ValidateFileEncryption();
         }
 
-        private async void btnLogin_Click(object sender, EventArgs e)
-        {
-            RegistroActividadesCtrl registroActividades = new RegistroActividadesCtrl();
-            lblMensaje.Visible = false;
-            try
-            {
-                if (Aurora.AreTextBoxPanelEmpty(panelLogin))
-                {
-                    if (String.IsNullOrEmpty(txtId.Text))
-                    {
-                        AlertId.Visible = true;
-                    }
-                    if (String.IsNullOrEmpty(txtPass.Text))
-                    {
-                        AlertPass.Visible = true;
-                    }
-                    lblMensaje.Visible = true;
-                    await Task.Delay(3000);
-                    lblMensaje.Visible = false;
-                }
-                else
-                {
-                    btnLogin.Visible = false;
-                    Loading.Visible = true;
-
-                    var validarCredencialesTask = personalCtrl.ValidarCredenciales(txtId.Text, txtPass.Text);
-                    var esperarTask = Task.Delay(1500);
-
-                    await Task.WhenAll(validarCredencialesTask, esperarTask);
-
-                    if (validarCredencialesTask.Result)
-                    {
-                        await registroActividades.RegistroInicioSesionCtrl(txtId.Text, "Acceso Exitoso");
-                        Form success = new LoginSuccess();
-                        loadState(success);
-                        await Task.Delay(2000);
-                        closeState(success);
-
-                        Dictionary<int, Form> idVentana = new Dictionary<int, Form>()
-                        {
-                            {1, new VentanaPrincipalGerente(this) },
-                            {2, new VentanaPrincipalRRHH(this) },
-                            {3, new VentanaPrincipalAdminCaja(this) },
-                            {4, new VentanaPrincipalAdminBodega(this) },
-                            {5, new VentanaPrincipalAsistente(this) },
-                            {10, new VentanaPrincipalGG(this) }
-                        };
-
-                        int id = GlobalVariablesCtrl.ObtenerIdRol();
-                        if (idVentana.ContainsKey(id))
-                        {
-                            Form ventana = idVentana[id];
-                            
-                            this.Hide();
-                            ventana.Show();
-                        }
-                        Aurora.ClearPanel(panelLogin);
-                        btnLogin.Visible = true;
-                        Loading.Visible = false;
-                    }
-                    else
-                    {
-                        if (GlobalVariablesCtrl.ObtenerIdUsuario() == txtId.Text)
-                        {
-                            await registroActividades.RegistroInicioSesionCtrl(txtId.Text, "Acceso Fallido");
-                            GlobalVariablesCtrl.AsignarIdUsuario("");
-                        }
-                        Form fail = new LoginFail();
-                        loadState(fail);
-                        await Task.Delay(2000);
-                        closeState(fail);
-                        btnLogin.Visible = true;
-                        Loading.Visible = false;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                if (ex is CryptographicException)
-                {
-                    btnLogin.Enabled = false;
-                }
-                MessageBox.Show("ERROR DE EXCEPCIÓN!: " + ex);
-                btnLogin.Visible = true;
-                Loading.Visible = false;
-            }
-        }
         private void txtId_TextChanged(object sender, EventArgs e)
         {
             AlertId.Visible = false;
@@ -194,6 +107,94 @@ namespace view.Visual
         {
             Form forgotPass = new ForgotPassword();
             loadState(forgotPass);
+        }
+
+        private async void btnLogin_Click(object sender, EventArgs e)
+        {
+            RegistroActividadesCtrl registroActividades = new RegistroActividadesCtrl();
+            lblMensaje.Visible = false;
+            try
+            {
+                if (Aurora.AreTextBoxPanelEmpty(panelLogin))
+                {
+                    if (String.IsNullOrEmpty(txtId.Text))
+                    {
+                        AlertId.Visible = true;
+                    }
+                    if (String.IsNullOrEmpty(txtPass.Text))
+                    {
+                        AlertPass.Visible = true;
+                    }
+                    lblMensaje.Visible = true;
+                    await Task.Delay(3000);
+                    lblMensaje.Visible = false;
+                }
+                else
+                {
+                    btnLogin.Visible = false;
+                    Loading.Visible = true;
+
+                    var validarCredencialesTask = personalCtrl.ValidarCredenciales(txtId.Text, txtPass.Text);
+                    var esperarTask = Task.Delay(1500);
+
+                    await Task.WhenAll(validarCredencialesTask, esperarTask);
+
+                    if (validarCredencialesTask.Result)
+                    {
+                        await registroActividades.RegistroInicioSesionCtrl(txtId.Text, "Acceso Exitoso");
+                        Form success = new LoginSuccess();
+                        loadState(success);
+                        await Task.Delay(2000);
+                        closeState(success);
+
+                        Dictionary<int, Form> idVentana = new Dictionary<int, Form>()
+                        {
+                            {1, new VentanaPrincipalGerente(this) },
+                            {2, new VentanaPrincipalRRHH(this) },
+                            {3, new VentanaPrincipalAdminCaja(this) },
+                            {4, new VentanaPrincipalAdminBodega(this) },
+                            {5, new VentanaPrincipalAsistente(this) },
+                            {10, new VentanaPrincipalGG(this) }
+                        };
+
+                        int id = GlobalVariablesCtrl.ObtenerIdRol();
+                        if (idVentana.ContainsKey(id))
+                        {
+                            Form ventana = idVentana[id];
+
+                            this.Hide();
+                            ventana.Show();
+                        }
+                        Aurora.ClearPanel(panelLogin);
+                        btnLogin.Visible = true;
+                        Loading.Visible = false;
+                    }
+                    else
+                    {
+                        if (GlobalVariablesCtrl.ObtenerIdUsuarioValidator() == txtId.Text)
+                        {
+                            await registroActividades.RegistroInicioSesionCtrl(txtId.Text, "Acceso Fallido");
+                            GlobalVariablesCtrl.AsignarIdUsuarioValidator("");
+                        }
+                        Form fail = new LoginFail();
+                        loadState(fail);
+                        await Task.Delay(2000);
+                        closeState(fail);
+                        btnLogin.Visible = true;
+                        Loading.Visible = false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                if (ex is CryptographicException)
+                {
+                    btnLogin.Enabled = false;
+                }
+                MessageBox.Show("ERROR DE EXCEPCIÓN!: " + ex);
+                btnLogin.Visible = true;
+                Loading.Visible = false;
+            }
         }
     }
 }

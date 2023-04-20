@@ -11,4 +11,8 @@
     <PackageReference Include="BouncyCastle.Cryptography" Version="2.1.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\utilitaries\utilitaries.csproj" />
+  </ItemGroup>
+
 </Project>

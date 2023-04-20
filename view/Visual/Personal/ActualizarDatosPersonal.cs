@@ -40,7 +40,7 @@ namespace view.Visual
                     PersonalCtrl personalCtrl = new PersonalCtrl();
                     validarImagen(picFotoPersonal.Image);
                     if (await personalCtrl.ActualizarDatosUsuarioCtrl(lblCedula.Text, txtTelefonoU.Text, txtCorreoU.Text, txtDireccionU.Text, imageData))
-                    {            
+                    {
                         await registroActividades.RegistroModificacionUsuarioCtrl(lblCedula.Text, GlobalVariablesCtrl.ObtenerIdUsuarioLogin(), "Actualización de Datos");
                         MessageBox.Show("Actualizado Correctamente!");
                         await verUsuario.CargarTabla();

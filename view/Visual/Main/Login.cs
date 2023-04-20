@@ -75,7 +75,7 @@ namespace view.Visual
                         if (idVentana.ContainsKey(id))
                         {
                             Form ventana = idVentana[id];
-                            
+
                             this.Hide();
                             ventana.Show();
                         }

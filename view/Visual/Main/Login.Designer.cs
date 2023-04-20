@@ -41,9 +41,9 @@
             panelLogo = new Panel();
             ExitIco = new PictureBox();
             panelLogin = new Panel();
+            linklblForgotPass = new LinkLabel();
             PassStatusIcon = new PictureBox();
             lblIngreseCredenciales = new Label();
-            linklblForgotPass = new LinkLabel();
             ((System.ComponentModel.ISupportInitialize)Loading).BeginInit();
             ((System.ComponentModel.ISupportInitialize)AlertId).BeginInit();
             ((System.ComponentModel.ISupportInitialize)AlertPass).BeginInit();
@@ -199,6 +199,17 @@
             panelLogin.Size = new Size(571, 450);
             panelLogin.TabIndex = 13;
             // 
+            // linklblForgotPass
+            // 
+            linklblForgotPass.AutoSize = true;
+            linklblForgotPass.Location = new Point(433, 423);
+            linklblForgotPass.Name = "linklblForgotPass";
+            linklblForgotPass.Size = new Size(126, 15);
+            linklblForgotPass.TabIndex = 14;
+            linklblForgotPass.TabStop = true;
+            linklblForgotPass.Text = "Olvidó Su Contraseña?";
+            linklblForgotPass.LinkClicked += linklblForgotPass_LinkClicked;
+            // 
             // PassStatusIcon
             // 
             PassStatusIcon.BackColor = SystemColors.Window;
@@ -219,17 +230,6 @@
             lblIngreseCredenciales.Size = new Size(133, 15);
             lblIngreseCredenciales.TabIndex = 11;
             lblIngreseCredenciales.Text = "Ingrese sus credenciales";
-            // 
-            // linklblForgotPass
-            // 
-            linklblForgotPass.AutoSize = true;
-            linklblForgotPass.Location = new Point(433, 423);
-            linklblForgotPass.Name = "linklblForgotPass";
-            linklblForgotPass.Size = new Size(126, 15);
-            linklblForgotPass.TabIndex = 14;
-            linklblForgotPass.TabStop = true;
-            linklblForgotPass.Text = "Olvidó Su Contraseña?";
-            linklblForgotPass.LinkClicked += linklblForgotPass_LinkClicked;
             // 
             // Login
             // 

@@ -251,6 +251,7 @@
             btnSalir.TabIndex = 65;
             btnSalir.Text = "Atrás";
             btnSalir.UseVisualStyleBackColor = true;
+            btnSalir.Click += btnSalir_Click;
             // 
             // customToogleBtn1
             // 

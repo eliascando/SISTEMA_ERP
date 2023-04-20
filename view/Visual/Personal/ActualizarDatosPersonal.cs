@@ -82,5 +82,10 @@ namespace view.Visual
                 imageData = (byte[])converter.ConvertTo(foto, typeof(byte[]));
             }
         }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

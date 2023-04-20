@@ -33,7 +33,6 @@
             label3 = new Label();
             txtId = new TextBox();
             txtPass = new TextBox();
-            btnLogin = new Button();
             Loading = new PictureBox();
             AlertId = new PictureBox();
             AlertPass = new PictureBox();
@@ -44,6 +43,7 @@
             linklblForgotPass = new LinkLabel();
             PassStatusIcon = new PictureBox();
             lblIngreseCredenciales = new Label();
+            btnLogin = new utilitaries.CustomControls.CustomButton();
             ((System.ComponentModel.ISupportInitialize)Loading).BeginInit();
             ((System.ComponentModel.ISupportInitialize)AlertId).BeginInit();
             ((System.ComponentModel.ISupportInitialize)AlertPass).BeginInit();
@@ -100,22 +100,11 @@
             txtPass.TabIndex = 4;
             txtPass.TextChanged += txtPass_TextChanged;
             // 
-            // btnLogin
-            // 
-            btnLogin.Anchor = AnchorStyles.None;
-            btnLogin.Location = new Point(215, 296);
-            btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(130, 39);
-            btnLogin.TabIndex = 5;
-            btnLogin.Text = "Iniciar Sesion";
-            btnLogin.UseVisualStyleBackColor = true;
-            btnLogin.Click += btnLogin_Click;
-            // 
             // Loading
             // 
             Loading.Anchor = AnchorStyles.None;
             Loading.Image = Properties.Resources.ajax_loader;
-            Loading.Location = new Point(241, 278);
+            Loading.Location = new Point(242, 278);
             Loading.Name = "Loading";
             Loading.Size = new Size(80, 73);
             Loading.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -180,6 +169,7 @@
             // panelLogin
             // 
             panelLogin.BackColor = SystemColors.InactiveCaption;
+            panelLogin.Controls.Add(btnLogin);
             panelLogin.Controls.Add(linklblForgotPass);
             panelLogin.Controls.Add(PassStatusIcon);
             panelLogin.Controls.Add(lblIngreseCredenciales);
@@ -191,7 +181,6 @@
             panelLogin.Controls.Add(lblMensaje);
             panelLogin.Controls.Add(txtId);
             panelLogin.Controls.Add(AlertId);
-            panelLogin.Controls.Add(btnLogin);
             panelLogin.Controls.Add(label2);
             panelLogin.Dock = DockStyle.Fill;
             panelLogin.Location = new Point(229, 0);
@@ -231,6 +220,25 @@
             lblIngreseCredenciales.TabIndex = 11;
             lblIngreseCredenciales.Text = "Ingrese sus credenciales";
             // 
+            // btnLogin
+            // 
+            btnLogin.BackColor = Color.MediumSlateBlue;
+            btnLogin.BackgroundColor = Color.MediumSlateBlue;
+            btnLogin.BorderColor = Color.PaleVioletRed;
+            btnLogin.BorderRadius = 31;
+            btnLogin.BorderSize = 0;
+            btnLogin.FlatAppearance.BorderSize = 0;
+            btnLogin.FlatStyle = FlatStyle.Flat;
+            btnLogin.ForeColor = Color.White;
+            btnLogin.Location = new Point(194, 292);
+            btnLogin.Name = "btnLogin";
+            btnLogin.Size = new Size(172, 35);
+            btnLogin.TabIndex = 15;
+            btnLogin.Text = "Iniciar Sesión";
+            btnLogin.TextColor = Color.White;
+            btnLogin.UseVisualStyleBackColor = false;
+            btnLogin.Click += btnLogin_Click;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -261,7 +269,6 @@
         private Label label3;
         private TextBox txtId;
         private TextBox txtPass;
-        private Button btnLogin;
         private PictureBox Loading;
         private PictureBox AlertId;
         private PictureBox AlertPass;
@@ -272,5 +279,6 @@
         private PictureBox ExitIco;
         private PictureBox PassStatusIcon;
         private LinkLabel linklblForgotPass;
+        private utilitaries.CustomControls.CustomButton btnLogin;
     }
 }

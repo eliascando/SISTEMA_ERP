@@ -31,8 +31,6 @@
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
-            txtId = new TextBox();
-            txtPass = new TextBox();
             Loading = new PictureBox();
             AlertId = new PictureBox();
             AlertPass = new PictureBox();
@@ -40,16 +38,20 @@
             panelLogo = new Panel();
             ExitIco = new PictureBox();
             panelLogin = new Panel();
-            linklblForgotPass = new LinkLabel();
+            panel1 = new Panel();
             PassStatusIcon = new PictureBox();
-            lblIngreseCredenciales = new Label();
+            txtPass = new utilitaries.CustomControls.CustomTextBox();
+            txtId = new utilitaries.CustomControls.CustomTextBox();
             btnLogin = new utilitaries.CustomControls.CustomButton();
+            linklblForgotPass = new LinkLabel();
+            lblIngreseCredenciales = new Label();
             ((System.ComponentModel.ISupportInitialize)Loading).BeginInit();
             ((System.ComponentModel.ISupportInitialize)AlertId).BeginInit();
             ((System.ComponentModel.ISupportInitialize)AlertPass).BeginInit();
             panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ExitIco).BeginInit();
             panelLogin.SuspendLayout();
+            panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PassStatusIcon).BeginInit();
             SuspendLayout();
             // 
@@ -82,24 +84,6 @@
             label3.TabIndex = 2;
             label3.Text = "Contraseña:";
             // 
-            // txtId
-            // 
-            txtId.Anchor = AnchorStyles.None;
-            txtId.Location = new Point(194, 180);
-            txtId.Name = "txtId";
-            txtId.Size = new Size(173, 23);
-            txtId.TabIndex = 3;
-            txtId.TextChanged += txtId_TextChanged;
-            // 
-            // txtPass
-            // 
-            txtPass.Anchor = AnchorStyles.None;
-            txtPass.Location = new Point(194, 237);
-            txtPass.Name = "txtPass";
-            txtPass.Size = new Size(173, 23);
-            txtPass.TabIndex = 4;
-            txtPass.TextChanged += txtPass_TextChanged;
-            // 
             // Loading
             // 
             Loading.Anchor = AnchorStyles.None;
@@ -116,7 +100,7 @@
             AlertId.Anchor = AnchorStyles.None;
             AlertId.Image = Properties.Resources.alert;
             AlertId.InitialImage = Properties.Resources.alert;
-            AlertId.Location = new Point(373, 180);
+            AlertId.Location = new Point(164, 186);
             AlertId.Name = "AlertId";
             AlertId.Size = new Size(24, 23);
             AlertId.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -127,7 +111,7 @@
             // 
             AlertPass.Anchor = AnchorStyles.None;
             AlertPass.Image = Properties.Resources.alert;
-            AlertPass.Location = new Point(373, 237);
+            AlertPass.Location = new Point(164, 241);
             AlertPass.Name = "AlertPass";
             AlertPass.Size = new Size(24, 23);
             AlertPass.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -169,17 +153,17 @@
             // panelLogin
             // 
             panelLogin.BackColor = SystemColors.InactiveCaption;
+            panelLogin.Controls.Add(panel1);
+            panelLogin.Controls.Add(txtPass);
+            panelLogin.Controls.Add(txtId);
             panelLogin.Controls.Add(btnLogin);
             panelLogin.Controls.Add(linklblForgotPass);
-            panelLogin.Controls.Add(PassStatusIcon);
             panelLogin.Controls.Add(lblIngreseCredenciales);
             panelLogin.Controls.Add(label1);
             panelLogin.Controls.Add(AlertPass);
-            panelLogin.Controls.Add(txtPass);
             panelLogin.Controls.Add(label3);
             panelLogin.Controls.Add(Loading);
             panelLogin.Controls.Add(lblMensaje);
-            panelLogin.Controls.Add(txtId);
             panelLogin.Controls.Add(AlertId);
             panelLogin.Controls.Add(label2);
             panelLogin.Dock = DockStyle.Fill;
@@ -188,28 +172,98 @@
             panelLogin.Size = new Size(571, 450);
             panelLogin.TabIndex = 13;
             // 
-            // linklblForgotPass
+            // panel1
             // 
-            linklblForgotPass.AutoSize = true;
-            linklblForgotPass.Location = new Point(433, 423);
-            linklblForgotPass.Name = "linklblForgotPass";
-            linklblForgotPass.Size = new Size(126, 15);
-            linklblForgotPass.TabIndex = 14;
-            linklblForgotPass.TabStop = true;
-            linklblForgotPass.Text = "Olvidó Su Contraseña?";
-            linklblForgotPass.LinkClicked += linklblForgotPass_LinkClicked;
+            panel1.Controls.Add(PassStatusIcon);
+            panel1.Location = new Point(339, 241);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(27, 23);
+            panel1.TabIndex = 17;
             // 
             // PassStatusIcon
             // 
-            PassStatusIcon.BackColor = SystemColors.Window;
+            PassStatusIcon.BackColor = SystemColors.InactiveCaption;
+            PassStatusIcon.Dock = DockStyle.Fill;
             PassStatusIcon.Image = Properties.Resources.hide_pass;
-            PassStatusIcon.Location = new Point(343, 239);
+            PassStatusIcon.Location = new Point(0, 0);
             PassStatusIcon.Name = "PassStatusIcon";
-            PassStatusIcon.Size = new Size(23, 19);
+            PassStatusIcon.Size = new Size(27, 23);
             PassStatusIcon.SizeMode = PictureBoxSizeMode.StretchImage;
             PassStatusIcon.TabIndex = 13;
             PassStatusIcon.TabStop = false;
             PassStatusIcon.Click += PassStatusIcon_Click;
+            // 
+            // txtPass
+            // 
+            txtPass.BackColor = SystemColors.InactiveCaption;
+            txtPass.BorderColor = Color.MediumSlateBlue;
+            txtPass.BorderFocusColor = Color.HotPink;
+            txtPass.BorderRadius = 0;
+            txtPass.BorderSize = 2;
+            txtPass.Location = new Point(194, 237);
+            txtPass.MaxLenght = 32767;
+            txtPass.Modified = false;
+            txtPass.Multiline = false;
+            txtPass.Name = "txtPass";
+            txtPass.Padding = new Padding(10, 7, 10, 7);
+            txtPass.PasswordChar = false;
+            txtPass.Size = new Size(172, 30);
+            txtPass.TabIndex = 2;
+            txtPass.Texts = "";
+            txtPass.UnderlineStyle = true;
+            txtPass._TextChanged += txtPass__TextChanged;
+            // 
+            // txtId
+            // 
+            txtId.BackColor = SystemColors.InactiveCaption;
+            txtId.BorderColor = Color.MediumSlateBlue;
+            txtId.BorderFocusColor = Color.HotPink;
+            txtId.BorderRadius = 0;
+            txtId.BorderSize = 2;
+            txtId.Location = new Point(194, 179);
+            txtId.MaxLenght = 32767;
+            txtId.Modified = false;
+            txtId.Multiline = false;
+            txtId.Name = "txtId";
+            txtId.Padding = new Padding(10, 7, 10, 7);
+            txtId.PasswordChar = false;
+            txtId.Size = new Size(172, 30);
+            txtId.TabIndex = 1;
+            txtId.Texts = "";
+            txtId.UnderlineStyle = true;
+            txtId._TextChanged += txtId__TextChanged;
+            // 
+            // btnLogin
+            // 
+            btnLogin.BackColor = Color.MediumSlateBlue;
+            btnLogin.BackgroundColor = Color.MediumSlateBlue;
+            btnLogin.BorderColor = Color.PaleVioletRed;
+            btnLogin.BorderRadius = 30;
+            btnLogin.BorderSize = 0;
+            btnLogin.FlatAppearance.BorderSize = 0;
+            btnLogin.FlatStyle = FlatStyle.Flat;
+            btnLogin.ForeColor = Color.White;
+            btnLogin.Location = new Point(194, 292);
+            btnLogin.Name = "btnLogin";
+            btnLogin.Size = new Size(172, 35);
+            btnLogin.TabIndex = 3;
+            btnLogin.Text = "Iniciar Sesión";
+            btnLogin.TextColor = Color.White;
+            btnLogin.UseVisualStyleBackColor = false;
+            btnLogin.Click += btnLogin_Click;
+            // 
+            // linklblForgotPass
+            // 
+            linklblForgotPass.ActiveLinkColor = Color.HotPink;
+            linklblForgotPass.AutoSize = true;
+            linklblForgotPass.LinkColor = Color.DarkSlateBlue;
+            linklblForgotPass.Location = new Point(433, 423);
+            linklblForgotPass.Name = "linklblForgotPass";
+            linklblForgotPass.Size = new Size(126, 15);
+            linklblForgotPass.TabIndex = 4;
+            linklblForgotPass.TabStop = true;
+            linklblForgotPass.Text = "Olvidó Su Contraseña?";
+            linklblForgotPass.LinkClicked += linklblForgotPass_LinkClicked;
             // 
             // lblIngreseCredenciales
             // 
@@ -219,25 +273,6 @@
             lblIngreseCredenciales.Size = new Size(133, 15);
             lblIngreseCredenciales.TabIndex = 11;
             lblIngreseCredenciales.Text = "Ingrese sus credenciales";
-            // 
-            // btnLogin
-            // 
-            btnLogin.BackColor = Color.MediumSlateBlue;
-            btnLogin.BackgroundColor = Color.MediumSlateBlue;
-            btnLogin.BorderColor = Color.PaleVioletRed;
-            btnLogin.BorderRadius = 31;
-            btnLogin.BorderSize = 0;
-            btnLogin.FlatAppearance.BorderSize = 0;
-            btnLogin.FlatStyle = FlatStyle.Flat;
-            btnLogin.ForeColor = Color.White;
-            btnLogin.Location = new Point(194, 292);
-            btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(172, 35);
-            btnLogin.TabIndex = 15;
-            btnLogin.Text = "Iniciar Sesión";
-            btnLogin.TextColor = Color.White;
-            btnLogin.UseVisualStyleBackColor = false;
-            btnLogin.Click += btnLogin_Click;
             // 
             // Login
             // 
@@ -258,6 +293,7 @@
             ((System.ComponentModel.ISupportInitialize)ExitIco).EndInit();
             panelLogin.ResumeLayout(false);
             panelLogin.PerformLayout();
+            panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)PassStatusIcon).EndInit();
             ResumeLayout(false);
         }
@@ -267,8 +303,6 @@
         private Label label1;
         private Label label2;
         private Label label3;
-        private TextBox txtId;
-        private TextBox txtPass;
         private PictureBox Loading;
         private PictureBox AlertId;
         private PictureBox AlertPass;
@@ -280,5 +314,8 @@
         private PictureBox PassStatusIcon;
         private LinkLabel linklblForgotPass;
         private utilitaries.CustomControls.CustomButton btnLogin;
+        private utilitaries.CustomControls.CustomTextBox txtId;
+        private utilitaries.CustomControls.CustomTextBox txtPass;
+        private Panel panel1;
     }
 }

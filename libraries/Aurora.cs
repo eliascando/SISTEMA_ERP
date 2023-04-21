@@ -1,4 +1,6 @@
-﻿namespace libraries
+﻿using utilitaries.CustomControls;
+
+namespace libraries
 {
     /// <summary>
     /// Aurora es la librería dedicada a las funciones gráficas y manejo de formularios,
@@ -19,6 +21,22 @@
                 if(control is TextBox textBox)
                 {
                     if(string.IsNullOrEmpty(textBox.Text))
+                    {
+                        isEmpty = true;
+                        break;
+                    }
+                }
+            }
+            return isEmpty;
+        }
+        public static bool AreTextBoxEmptyCustom(Form form)
+        {
+            bool isEmpty = false;
+            foreach (Control control in form.Controls)
+            {
+                if (control is CustomTextBox textBox)
+                {
+                    if (string.IsNullOrEmpty(textBox.Texts))
                     {
                         isEmpty = true;
                         break;
@@ -49,6 +67,22 @@
             }
             return isEmpty;
         }
+        public static bool AreTextBoxPanelEmptyCustom(Panel panel)
+        {
+            bool isEmpty = false;
+            foreach (Control control in panel.Controls)
+            {
+                if (control is CustomTextBox textBox)
+                {
+                    if (string.IsNullOrEmpty(textBox.Texts))
+                    {
+                        isEmpty = true;
+                        break;
+                    }
+                }
+            }
+            return isEmpty;
+        }
 
         /// <summary>
         /// Recibe como parametro un formulario y comprueba si los text box han sido modificado o no, devolviendo un bool
@@ -61,6 +95,22 @@
             foreach (Control control in form.Controls)
             {
                 if (control is TextBox textBox)
+                {
+                    if (textBox.Modified == true)
+                    {
+                        //Los textBox han sido modificados
+                        isModified = true;
+                    }
+                }
+            }
+            return isModified;
+        }
+        public static bool AreTextBoxModifiedCustom(Form form)
+        {
+            bool isModified = false;
+            foreach (Control control in form.Controls)
+            {
+                if (control is CustomTextBox textBox)
                 {
                     if (textBox.Modified == true)
                     {
@@ -93,6 +143,22 @@
             }
             return isModified;
         }
+        public static bool AreTextBoxPanelModifiedCustom(Panel panel)
+        {
+            bool isModified = false;
+            foreach (Control control in panel.Controls)
+            {
+                if (control is CustomTextBox textBox)
+                {
+                    if (textBox.Modified == true)
+                    {
+                        //Los textBox han sido modificados
+                        isModified = true;
+                    }
+                }
+            }
+            return isModified;
+        }
 
         /// <summary>
         /// Reestablece todos los controles del formulario
@@ -102,7 +168,7 @@
         {
             foreach (Control control in form.Controls)
             {
-                if(control is TextBox textBox)
+                if(control is CustomTextBox textBox)
                 {
                     textBox.Clear();
                 }
@@ -133,7 +199,7 @@
         {
             foreach (Control control in panel.Controls)
             {
-                if (control is TextBox textBox)
+                if (control is CustomTextBox textBox)
                 {
                     textBox.Clear();
                 }
@@ -167,7 +233,13 @@
                 textBox.UseSystemPasswordChar = true;
             }
         }
-
+        public static void HidePasswordCustom(params CustomTextBox[] textBoxes)
+        {
+            foreach (var textBox in textBoxes)
+            {
+                textBox.PasswordChar = true;
+            }
+        }
         /// <summary>
         /// Toma uno o más parámetros TextBox y establece la propiedad "UseSystemPasswordChar" de cada TextBox en false, lo que hace que los caracteres ingresados en los TextBox aparezcan en texto legible para ver la contraseña.
         /// </summary>
@@ -177,6 +249,13 @@
             foreach (var textBox in textBoxes)
             {
                 textBox.UseSystemPasswordChar = false;
+            }
+        }
+        public static void ShowPasswordCustom(params CustomTextBox[] textBoxes)
+        {
+            foreach (var textBox in textBoxes)
+            {
+                textBox.PasswordChar = false;
             }
         }
 

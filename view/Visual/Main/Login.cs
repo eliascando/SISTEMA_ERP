@@ -18,18 +18,10 @@ namespace view.Visual
             AlertId.Visible = false;
             AlertPass.Visible = false;
             lblMensaje.Visible = false;
-            Guardian.ValidateIdInput(txtId);
-            Aurora.HidePassword(txtPass);
+            Guardian.ValidateIdInputCustom(txtId);
+            Aurora.HidePasswordCustom(txtPass);
+            //txtPass.PasswordChar = true;
             ValidateFileEncryption();
-        }
-
-        private void txtId_TextChanged(object sender, EventArgs e)
-        {
-            AlertId.Visible = false;
-        }
-        private void txtPass_TextChanged(object sender, EventArgs e)
-        {
-            AlertPass.Visible = false;
         }
 
         private Form activeForm = null;
@@ -66,13 +58,15 @@ namespace view.Visual
         {
             if (isShowPass == false)
             {
-                Aurora.ShowPassword(txtPass);
+                Aurora.ShowPasswordCustom(txtPass);
+                //txtPass.PasswordChar = false;
                 PassStatusIcon.Image = Resources.show_pass;
                 isShowPass = true;
             }
             else
             {
-                Aurora.HidePassword(txtPass);
+                Aurora.HidePasswordCustom(txtPass);
+                //txtPass.PasswordChar = true;
                 PassStatusIcon.Image = Resources.hide_pass;
                 isShowPass = false;
             }
@@ -115,13 +109,13 @@ namespace view.Visual
             lblMensaje.Visible = false;
             try
             {
-                if (Aurora.AreTextBoxPanelEmpty(panelLogin))
+                if (Aurora.AreTextBoxPanelEmptyCustom(panelLogin))
                 {
-                    if (String.IsNullOrEmpty(txtId.Text))
+                    if (String.IsNullOrEmpty(txtId.Texts))
                     {
                         AlertId.Visible = true;
                     }
-                    if (String.IsNullOrEmpty(txtPass.Text))
+                    if (String.IsNullOrEmpty(txtPass.Texts))
                     {
                         AlertPass.Visible = true;
                     }
@@ -134,14 +128,14 @@ namespace view.Visual
                     btnLogin.Visible = false;
                     Loading.Visible = true;
 
-                    var validarCredencialesTask = personalCtrl.ValidarCredenciales(txtId.Text, txtPass.Text);
+                    var validarCredencialesTask = personalCtrl.ValidarCredenciales(txtId.Texts, txtPass.Texts);
                     var esperarTask = Task.Delay(1500);
 
                     await Task.WhenAll(validarCredencialesTask, esperarTask);
 
                     if (validarCredencialesTask.Result)
                     {
-                        await registroActividades.RegistroInicioSesionCtrl(txtId.Text, "Acceso Exitoso");
+                        await registroActividades.RegistroInicioSesionCtrl(txtId.Texts, "Acceso Exitoso");
                         Form success = new LoginSuccess();
                         loadState(success);
                         await Task.Delay(2000);
@@ -171,9 +165,9 @@ namespace view.Visual
                     }
                     else
                     {
-                        if (GlobalVariablesCtrl.ObtenerIdUsuarioValidator() == txtId.Text)
+                        if (GlobalVariablesCtrl.ObtenerIdUsuarioValidator() == txtId.Texts)
                         {
-                            await registroActividades.RegistroInicioSesionCtrl(txtId.Text, "Acceso Fallido");
+                            await registroActividades.RegistroInicioSesionCtrl(txtId.Texts, "Acceso Fallido");
                             GlobalVariablesCtrl.AsignarIdUsuarioValidator("");
                         }
                         Form fail = new LoginFail();
@@ -195,6 +189,16 @@ namespace view.Visual
                 btnLogin.Visible = true;
                 Loading.Visible = false;
             }
+        }
+
+        private void txtId__TextChanged(object sender, EventArgs e)
+        {
+            AlertId.Visible = false;
+        }
+
+        private void txtPass__TextChanged(object sender, EventArgs e)
+        {
+            AlertPass.Visible = false;
         }
     }
 }

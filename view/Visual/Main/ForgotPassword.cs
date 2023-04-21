@@ -24,21 +24,16 @@ namespace view.Visual.Main
             lblValidateOTP.Visible = false;
             btnValidar.Enabled = false;
             Loading.Visible = false;
-            Guardian.ValidateIdInput(txtId);
-            Guardian.ValidateIntegerInput(txtOTP);
+            Guardian.ValidateIdInputCustom(txtId);
+            Guardian.ValidateIntegerInputCustom(txtOTP);
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private async void btnEnviarOTP_Click(object sender, EventArgs e)
+        private async void btnEnviar_Click(object sender, EventArgs e)
         {
             PersonalCtrl personalCtrl = new PersonalCtrl();
             try
             {
-                if (String.IsNullOrEmpty(txtId.Text))
+                if (String.IsNullOrEmpty(txtId.Texts))
                 {
                     lblSendEmailStatus.Visible = true;
                     lblSendEmailStatus.Text = "Debe ingresar su ID";
@@ -56,10 +51,10 @@ namespace view.Visual.Main
                 }
                 else
                 {
-                    btnEnviarOTP.Visible = false;
+                    btnEnviar.Visible = false;
                     Loading.Visible = true;
 
-                    var enviarCorreoTask = personalCtrl.SendEmailCtrl(txtId.Text);
+                    var enviarCorreoTask = personalCtrl.SendEmailCtrl(txtId.Texts);
                     var esperarTask = Task.Delay(3000);
 
                     await Task.WhenAll(enviarCorreoTask, esperarTask);
@@ -67,7 +62,7 @@ namespace view.Visual.Main
                     if (enviarCorreoTask.Result)
                     {
                         Loading.Visible = false;
-                        btnEnviarOTP.Visible = true;
+                        btnEnviar.Visible = true;
                         lblSendEmailStatus.Visible = true;
                         lblSendEmailStatus.Text = "Correo enviado exitosamente";
                         lblSendEmailStatus.ForeColor = Color.Green;
@@ -78,7 +73,7 @@ namespace view.Visual.Main
                     else
                     {
                         Loading.Visible = false;
-                        btnEnviarOTP.Visible = true;
+                        btnEnviar.Visible = true;
                         lblSendEmailStatus.Visible = true;
                         lblSendEmailStatus.Text = "Error al enviar correo";
                         lblSendEmailStatus.ForeColor = Color.Red;
@@ -90,7 +85,7 @@ namespace view.Visual.Main
             catch (Exception ex)
             {
                 Loading.Visible = false;
-                btnEnviarOTP.Visible = true;
+                btnEnviar.Visible = true;
                 lblSendEmailStatus.Visible = true;
                 lblSendEmailStatus.Text = "Error al enviar correo";
                 lblSendEmailStatus.ForeColor = Color.Red;
@@ -99,12 +94,12 @@ namespace view.Visual.Main
             }
         }
 
-        private async void btnValidar_Click(object sender, EventArgs e)
+        private async void btnValidar_Click_1(object sender, EventArgs e)
         {
             PersonalCtrl personalCtrl = new PersonalCtrl();
-            if (personalCtrl.ValidarOTPCtrl(Alquimia.Encrypt(txtId.Text), txtOTP.Text))
+            if (personalCtrl.ValidarOTPCtrl(Alquimia.Encrypt(txtId.Texts), txtOTP.Texts))
             {
-                CambiarCredenciales cambiarCredenciales = new CambiarCredenciales(txtId.Text, txtId.Text, "Cambio de contraseña por validación de clave OTP");
+                CambiarCredenciales cambiarCredenciales = new CambiarCredenciales(txtId.Texts, txtId.Texts, "Cambio de contraseña por validación de clave OTP");
                 cambiarCredenciales.ShowDialog();
                 GlobalVariablesCtrl.AsignarCurrentCounter(0);
                 this.Close();
@@ -117,6 +112,11 @@ namespace view.Visual.Main
                 await Task.Delay(2000);
                 lblValidateOTP.Visible = false;
             }
+        }
+
+        private void btnCancelar_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

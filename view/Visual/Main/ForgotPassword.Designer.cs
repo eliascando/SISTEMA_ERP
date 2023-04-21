@@ -126,7 +126,7 @@
             btnEnviar.Location = new Point(342, 197);
             btnEnviar.Name = "btnEnviar";
             btnEnviar.Size = new Size(86, 30);
-            btnEnviar.TabIndex = 24;
+            btnEnviar.TabIndex = 2;
             btnEnviar.Text = "Enviar";
             btnEnviar.TextColor = Color.White;
             btnEnviar.UseVisualStyleBackColor = false;
@@ -147,7 +147,7 @@
             txtId.Padding = new Padding(10, 7, 10, 7);
             txtId.PasswordChar = false;
             txtId.Size = new Size(182, 30);
-            txtId.TabIndex = 25;
+            txtId.TabIndex = 1;
             txtId.Texts = "";
             txtId.UnderlineStyle = false;
             // 
@@ -166,7 +166,7 @@
             txtOTP.Padding = new Padding(10, 7, 10, 7);
             txtOTP.PasswordChar = false;
             txtOTP.Size = new Size(274, 30);
-            txtOTP.TabIndex = 26;
+            txtOTP.TabIndex = 3;
             txtOTP.Texts = "";
             txtOTP.UnderlineStyle = false;
             // 
@@ -183,7 +183,7 @@
             btnValidar.Location = new Point(250, 321);
             btnValidar.Name = "btnValidar";
             btnValidar.Size = new Size(86, 30);
-            btnValidar.TabIndex = 27;
+            btnValidar.TabIndex = 4;
             btnValidar.Text = "Validar";
             btnValidar.TextColor = Color.White;
             btnValidar.UseVisualStyleBackColor = false;
@@ -202,7 +202,7 @@
             btnCancelar.Location = new Point(473, 408);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(86, 30);
-            btnCancelar.TabIndex = 28;
+            btnCancelar.TabIndex = 5;
             btnCancelar.Text = "Cancelar";
             btnCancelar.TextColor = Color.White;
             btnCancelar.UseVisualStyleBackColor = false;

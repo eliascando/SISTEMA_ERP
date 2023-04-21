@@ -41,7 +41,7 @@ namespace view.Visual.Main
                     await Task.Delay(2000);
                     lblSendEmailStatus.Visible = false;
                 }
-                else if (txtId.Text.Length < 10)
+                else if (txtId.Texts.Length < 10)
                 {
                     lblSendEmailStatus.Visible = true;
                     lblSendEmailStatus.Text = "Debe ingresar un ID válido";

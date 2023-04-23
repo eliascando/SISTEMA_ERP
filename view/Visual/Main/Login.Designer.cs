@@ -32,9 +32,6 @@
             label2 = new Label();
             label3 = new Label();
             Loading = new PictureBox();
-            AlertId = new PictureBox();
-            AlertPass = new PictureBox();
-            lblMensaje = new Label();
             panelLogo = new Panel();
             ExitIco = new PictureBox();
             panelLogin = new Panel();
@@ -45,9 +42,8 @@
             btnLogin = new utilitaries.CustomControls.CustomButton();
             linklblForgotPass = new LinkLabel();
             lblIngreseCredenciales = new Label();
+            customRoundedForms1 = new utilitaries.CustomComponents.CustomRoundedForms();
             ((System.ComponentModel.ISupportInitialize)Loading).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)AlertId).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)AlertPass).BeginInit();
             panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ExitIco).BeginInit();
             panelLogin.SuspendLayout();
@@ -95,40 +91,6 @@
             Loading.TabIndex = 7;
             Loading.TabStop = false;
             // 
-            // AlertId
-            // 
-            AlertId.Anchor = AnchorStyles.None;
-            AlertId.Image = Properties.Resources.alert;
-            AlertId.InitialImage = Properties.Resources.alert;
-            AlertId.Location = new Point(164, 186);
-            AlertId.Name = "AlertId";
-            AlertId.Size = new Size(24, 23);
-            AlertId.SizeMode = PictureBoxSizeMode.StretchImage;
-            AlertId.TabIndex = 8;
-            AlertId.TabStop = false;
-            // 
-            // AlertPass
-            // 
-            AlertPass.Anchor = AnchorStyles.None;
-            AlertPass.Image = Properties.Resources.alert;
-            AlertPass.Location = new Point(164, 241);
-            AlertPass.Name = "AlertPass";
-            AlertPass.Size = new Size(24, 23);
-            AlertPass.SizeMode = PictureBoxSizeMode.StretchImage;
-            AlertPass.TabIndex = 9;
-            AlertPass.TabStop = false;
-            // 
-            // lblMensaje
-            // 
-            lblMensaje.AutoSize = true;
-            lblMensaje.Font = new Font("Montserrat", 8.999999F, FontStyle.Bold, GraphicsUnit.Point);
-            lblMensaje.ForeColor = Color.Brown;
-            lblMensaje.Location = new Point(170, 274);
-            lblMensaje.Name = "lblMensaje";
-            lblMensaje.Size = new Size(234, 15);
-            lblMensaje.TabIndex = 10;
-            lblMensaje.Text = "Debe ingresar todos los campos!";
-            // 
             // panelLogo
             // 
             panelLogo.BackColor = SystemColors.ActiveCaption;
@@ -160,11 +122,8 @@
             panelLogin.Controls.Add(linklblForgotPass);
             panelLogin.Controls.Add(lblIngreseCredenciales);
             panelLogin.Controls.Add(label1);
-            panelLogin.Controls.Add(AlertPass);
             panelLogin.Controls.Add(label3);
             panelLogin.Controls.Add(Loading);
-            panelLogin.Controls.Add(lblMensaje);
-            panelLogin.Controls.Add(AlertId);
             panelLogin.Controls.Add(label2);
             panelLogin.Dock = DockStyle.Fill;
             panelLogin.Location = new Point(229, 0);
@@ -211,7 +170,6 @@
             txtPass.TabIndex = 2;
             txtPass.Texts = "";
             txtPass.UnderlineStyle = true;
-            txtPass._TextChanged += txtPass__TextChanged;
             // 
             // txtId
             // 
@@ -231,7 +189,6 @@
             txtId.TabIndex = 1;
             txtId.Texts = "";
             txtId.UnderlineStyle = true;
-            txtId._TextChanged += txtId__TextChanged;
             // 
             // btnLogin
             // 
@@ -274,6 +231,11 @@
             lblIngreseCredenciales.TabIndex = 11;
             lblIngreseCredenciales.Text = "Ingrese sus credenciales";
             // 
+            // customRoundedForms1
+            // 
+            customRoundedForms1.CornerRedius = 40;
+            customRoundedForms1.TargetControl = this;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -287,8 +249,6 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
             ((System.ComponentModel.ISupportInitialize)Loading).EndInit();
-            ((System.ComponentModel.ISupportInitialize)AlertId).EndInit();
-            ((System.ComponentModel.ISupportInitialize)AlertPass).EndInit();
             panelLogo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)ExitIco).EndInit();
             panelLogin.ResumeLayout(false);
@@ -304,9 +264,6 @@
         private Label label2;
         private Label label3;
         private PictureBox Loading;
-        private PictureBox AlertId;
-        private PictureBox AlertPass;
-        private Label lblMensaje;
         private Panel panelLogo;
         public Panel panelLogin;
         private Label lblIngreseCredenciales;
@@ -317,5 +274,6 @@
         private utilitaries.CustomControls.CustomTextBox txtId;
         private utilitaries.CustomControls.CustomTextBox txtPass;
         private Panel panel1;
+        private utilitaries.CustomComponents.CustomRoundedForms customRoundedForms1;
     }
 }

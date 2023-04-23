@@ -8,5 +8,7 @@
         public static string encryptionKey = "";
         public static long currentCounter = 0;
         public static string id_usuario_validator = "";
+        public static string sexUser = "";
+        public static Form parentForm;
     }
 }

@@ -1,7 +1,9 @@
 ﻿using libraries;
+using utilitaries;
 using control;
 using view.Visual.Personal;
 using view.Properties;
+using utilitaries.CustomForms;
 
 namespace view.Visual
 {
@@ -42,18 +44,21 @@ namespace view.Visual
                     if (await personalCtrl.ActualizarDatosUsuarioCtrl(lblCedula.Text, txtTelefonoU.Text, txtCorreoU.Text, txtDireccionU.Text, imageData))
                     {
                         await registroActividades.RegistroModificacionUsuarioCtrl(lblCedula.Text, GlobalVariablesCtrl.ObtenerIdUsuarioLogin(), "Actualización de Datos");
-                        MessageBox.Show("Actualizado Correctamente!");
+                        Form alert = new AlertBox(GlobalVariablesCtrl.ObtenerParentForm(), "success", "Actualizado", "Usuario actualizado correctamente");
+                        alert.ShowDialog();
                         await verUsuario.CargarTabla();
                         this.Close();
                     }
                     else
                     {
-                        MessageBox.Show("ERROR!: No se pudo actualizar");
+                        Form alert = new AlertBox(GlobalVariablesCtrl.ObtenerParentForm(), "error", "Error!", "No se pudo actualizar");
+                        alert.ShowDialog();
                     }
                 }
                 else
                 {
-                    MessageBox.Show("No se han registrado cambios!");
+                    Form alert = new AlertBox(GlobalVariablesCtrl.ObtenerParentForm(), "warning", "Alerta", "No se han registrado cambios");
+                    alert.ShowDialog();
                     this.Close();
                 }
             }

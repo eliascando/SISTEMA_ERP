@@ -1,9 +1,11 @@
 ﻿using libraries;
+using utilitaries;
 using control;
 using view.Visual.Main;
 using view.Properties;
 using System.Security.Cryptography;
 using System.Text;
+using utilitaries.CustomForms;
 
 namespace view.Visual
 {
@@ -11,16 +13,13 @@ namespace view.Visual
     {
         PersonalCtrl personalCtrl = new PersonalCtrl();
         bool isShowPass = false;
+        private string well_come;
         public Login()
         {
             InitializeComponent();
             Loading.Visible = false;
-            AlertId.Visible = false;
-            AlertPass.Visible = false;
-            lblMensaje.Visible = false;
             Guardian.ValidateIdInputCustom(txtId);
             Aurora.HidePasswordCustom(txtPass);
-            //txtPass.PasswordChar = true;
             ValidateFileEncryption();
         }
 
@@ -46,27 +45,35 @@ namespace view.Visual
         }
         private void ExitIco_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Esta seguro que desa Salir?", "Confirmación", MessageBoxButtons.OKCancel);
-            if (result == DialogResult.OK)
+            //DialogResult result = MessageBox.Show("Esta seguro que desa Salir?", "Confirmación", MessageBoxButtons.OKCancel);
+            //if (result == DialogResult.OK)
+            //{
+            //    this.Close();
+            //    this.Dispose();
+            //    Environment.Exit(0);
+            //}
+            Form dialogo = new DialogBox(this,"Confirmación", "Esta seguro que desa Salir?");
+            dialogo.ShowDialog();
+            if (dialogo.DialogResult.Equals(DialogResult.OK))
             {
                 this.Close();
                 this.Dispose();
                 Environment.Exit(0);
             }
+            
+
         }
         private void PassStatusIcon_Click(object sender, EventArgs e)
         {
             if (isShowPass == false)
             {
                 Aurora.ShowPasswordCustom(txtPass);
-                //txtPass.PasswordChar = false;
                 PassStatusIcon.Image = Resources.show_pass;
                 isShowPass = true;
             }
             else
             {
                 Aurora.HidePasswordCustom(txtPass);
-                //txtPass.PasswordChar = true;
                 PassStatusIcon.Image = Resources.hide_pass;
                 isShowPass = false;
             }
@@ -99,6 +106,7 @@ namespace view.Visual
 
         private void linklblForgotPass_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            GlobalVariablesCtrl.AsignarParentForm(this);
             Form forgotPass = new ForgotPassword();
             loadState(forgotPass);
         }
@@ -106,22 +114,17 @@ namespace view.Visual
         private async void btnLogin_Click(object sender, EventArgs e)
         {
             RegistroActividadesCtrl registroActividades = new RegistroActividadesCtrl();
-            lblMensaje.Visible = false;
             try
             {
                 if (Aurora.AreTextBoxPanelEmptyCustom(panelLogin))
                 {
-                    if (String.IsNullOrEmpty(txtId.Texts))
-                    {
-                        AlertId.Visible = true;
-                    }
-                    if (String.IsNullOrEmpty(txtPass.Texts))
-                    {
-                        AlertPass.Visible = true;
-                    }
-                    lblMensaje.Visible = true;
-                    await Task.Delay(3000);
-                    lblMensaje.Visible = false;
+                    Form alert = new AlertBox(this, "warning", "Atención!", "Debe ingresar todos los campos");
+                    alert.Show();
+                }
+                else if (txtId.Texts.Length < 10)
+                {
+                    Form alert = new AlertBox(this, "warning", "Atencion!", "Debe ingresar un ID válido");
+                    alert.Show();
                 }
                 else
                 {
@@ -135,11 +138,13 @@ namespace view.Visual
 
                     if (validarCredencialesTask.Result)
                     {
+                        AsignarGenero();
+                        Aurora.ClearPanel(panelLogin);
+                        btnLogin.Visible = true;
+                        Loading.Visible = false;
                         await registroActividades.RegistroInicioSesionCtrl(txtId.Texts, "Acceso Exitoso");
-                        Form success = new LoginSuccess();
-                        loadState(success);
-                        await Task.Delay(2000);
-                        closeState(success);
+                        Form alert = new AlertBox(this, "success", "Acceso Exitoso!", well_come + " " + GlobalVariablesCtrl.ObtenerUsuario());
+                        alert.ShowDialog();
 
                         Dictionary<int, Form> idVentana = new Dictionary<int, Form>()
                         {
@@ -155,13 +160,10 @@ namespace view.Visual
                         if (idVentana.ContainsKey(id))
                         {
                             Form ventana = idVentana[id];
-
+                            GlobalVariablesCtrl.AsignarParentForm(ventana);
                             this.Hide();
                             ventana.Show();
                         }
-                        Aurora.ClearPanel(panelLogin);
-                        btnLogin.Visible = true;
-                        Loading.Visible = false;
                     }
                     else
                     {
@@ -170,10 +172,8 @@ namespace view.Visual
                             await registroActividades.RegistroInicioSesionCtrl(txtId.Texts, "Acceso Fallido");
                             GlobalVariablesCtrl.AsignarIdUsuarioValidator("");
                         }
-                        Form fail = new LoginFail();
-                        loadState(fail);
-                        await Task.Delay(2000);
-                        closeState(fail);
+                        Form alert = new AlertBox(this, "error", "Acceso Fallido!", "Credenciales Incorrectas");
+                        alert.Show();
                         btnLogin.Visible = true;
                         Loading.Visible = false;
                     }
@@ -190,15 +190,21 @@ namespace view.Visual
                 Loading.Visible = false;
             }
         }
-
-        private void txtId__TextChanged(object sender, EventArgs e)
+        private void AsignarGenero()
         {
-            AlertId.Visible = false;
-        }
-
-        private void txtPass__TextChanged(object sender, EventArgs e)
-        {
-            AlertPass.Visible = false;
+            string welcome = GlobalVariablesCtrl.ObtenerSexo();
+            if (String.IsNullOrEmpty(welcome))
+            {
+                well_come = "Bienvenid@";
+            }
+            else if (welcome == "Femenino")
+            {
+                well_come = "Bienvenida";
+            }
+            else if (welcome == "Masculino")
+            {
+                well_come = "Bienvenido";
+            }
         }
     }
 }

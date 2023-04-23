@@ -52,5 +52,17 @@ namespace control
         {
             GlobalVariables.id_usuario_validator = id_usuario;
         }
+        public static void AsignarParentForm(Form form)
+        {
+            GlobalVariables.parentForm = form;
+        }
+        public static Form ObtenerParentForm()
+        {
+            return GlobalVariables.parentForm;
+        }
+        public static string ObtenerSexo()
+        {
+            return GlobalVariables.sexUser;
+        }
     }
 }

@@ -40,6 +40,9 @@ namespace model.Data
                     SqlParameter idParam = new SqlParameter("@IdUser", SqlDbType.NVarChar, 50);
                     idParam.Direction = ParameterDirection.Output;
                     cmd.Parameters.Add(idParam);
+                    SqlParameter sexParam = new SqlParameter("@UserSex", SqlDbType.NVarChar, 10);
+                    sexParam.Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add(sexParam);
 
                     await cmd.ExecuteNonQueryAsync(); // Ejecuta el comando de forma asíncrona
 
@@ -51,6 +54,7 @@ namespace model.Data
                         GlobalVariables.id_rol = (int)idRolParam.Value;
                         GlobalVariables.usuario = (string)nombreParam.Value;
                         GlobalVariables.id_usuario_validator = (string)idParam.Value;
+                        GlobalVariables.sexUser = (string)sexParam.Value;
                     }
                 }
             }

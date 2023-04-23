@@ -35,12 +35,9 @@
             btnCancelar = new Button();
             txtNewPass = new TextBox();
             txtConfirmNewPass = new TextBox();
-            AlertIcon = new PictureBox();
-            AlertMessage = new Label();
             label4 = new Label();
             lblCedulaPersonal = new Label();
             PassStatusIcon = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)AlertIcon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PassStatusIcon).BeginInit();
             SuspendLayout();
             // 
@@ -106,28 +103,6 @@
             txtConfirmNewPass.Size = new Size(195, 23);
             txtConfirmNewPass.TabIndex = 6;
             // 
-            // AlertIcon
-            // 
-            AlertIcon.Image = Properties.Resources.alert;
-            AlertIcon.Location = new Point(301, 153);
-            AlertIcon.Name = "AlertIcon";
-            AlertIcon.Size = new Size(23, 23);
-            AlertIcon.SizeMode = PictureBoxSizeMode.StretchImage;
-            AlertIcon.TabIndex = 7;
-            AlertIcon.TabStop = false;
-            // 
-            // AlertMessage
-            // 
-            AlertMessage.AutoSize = true;
-            AlertMessage.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            AlertMessage.ForeColor = Color.DarkRed;
-            AlertMessage.Location = new Point(32, 182);
-            AlertMessage.Name = "AlertMessage";
-            AlertMessage.Size = new Size(354, 17);
-            AlertMessage.TabIndex = 8;
-            AlertMessage.Text = "La Nueva Contraseña  y la Confirmación deben coincidir";
-            AlertMessage.TextAlign = ContentAlignment.MiddleRight;
-            // 
             // label4
             // 
             label4.AutoSize = true;
@@ -166,8 +141,6 @@
             Controls.Add(PassStatusIcon);
             Controls.Add(lblCedulaPersonal);
             Controls.Add(label4);
-            Controls.Add(AlertMessage);
-            Controls.Add(AlertIcon);
             Controls.Add(txtConfirmNewPass);
             Controls.Add(txtNewPass);
             Controls.Add(btnCancelar);
@@ -179,7 +152,6 @@
             Name = "CambiarCredenciales";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "CambiarCredenciales";
-            ((System.ComponentModel.ISupportInitialize)AlertIcon).EndInit();
             ((System.ComponentModel.ISupportInitialize)PassStatusIcon).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -194,8 +166,6 @@
         private Button btnCancelar;
         private TextBox txtNewPass;
         private TextBox txtConfirmNewPass;
-        private PictureBox AlertIcon;
-        private Label AlertMessage;
         private Label label4;
         public Label lblCedulaPersonal;
         private PictureBox PassStatusIcon;

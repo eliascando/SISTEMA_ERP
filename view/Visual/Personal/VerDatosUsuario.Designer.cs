@@ -75,7 +75,7 @@
             tabActividades.Location = new Point(12, 190);
             tabActividades.Name = "tabActividades";
             tabActividades.SelectedIndex = 0;
-            tabActividades.Size = new Size(705, 281);
+            tabActividades.Size = new Size(705, 286);
             tabActividades.TabIndex = 24;
             // 
             // tabInicioSesion
@@ -84,7 +84,7 @@
             tabInicioSesion.Location = new Point(4, 24);
             tabInicioSesion.Name = "tabInicioSesion";
             tabInicioSesion.Padding = new Padding(3);
-            tabInicioSesion.Size = new Size(697, 253);
+            tabInicioSesion.Size = new Size(697, 258);
             tabInicioSesion.TabIndex = 0;
             tabInicioSesion.Text = "Inicios de Sesion";
             tabInicioSesion.UseVisualStyleBackColor = true;
@@ -105,7 +105,7 @@
             dgvInicioSesion.RowHeadersVisible = false;
             dgvInicioSesion.RowTemplate.Height = 25;
             dgvInicioSesion.SelectionMode = DataGridViewSelectionMode.CellSelect;
-            dgvInicioSesion.Size = new Size(691, 247);
+            dgvInicioSesion.Size = new Size(691, 252);
             dgvInicioSesion.TabIndex = 0;
             // 
             // tabVentas
@@ -325,7 +325,7 @@
             // 
             ReloadBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             ReloadBtn.Image = Properties.Resources.noun_reload_hold;
-            ReloadBtn.Location = new Point(685, 474);
+            ReloadBtn.Location = new Point(685, 479);
             ReloadBtn.Name = "ReloadBtn";
             ReloadBtn.Size = new Size(28, 28);
             ReloadBtn.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -338,7 +338,7 @@
             // btnSalir
             // 
             btnSalir.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnSalir.Location = new Point(16, 479);
+            btnSalir.Location = new Point(16, 484);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(75, 23);
             btnSalir.TabIndex = 64;
@@ -350,7 +350,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(729, 514);
+            ClientSize = new Size(729, 519);
             Controls.Add(btnSalir);
             Controls.Add(ReloadBtn);
             Controls.Add(lblVentasMes);

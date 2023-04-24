@@ -76,12 +76,12 @@
             lblNombreUsuario.BackColor = Color.Transparent;
             lblNombreUsuario.Font = new Font("Montserrat", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             lblNombreUsuario.ForeColor = SystemColors.Control;
-            lblNombreUsuario.Location = new Point(525, 11);
+            lblNombreUsuario.Location = new Point(534, 14);
             lblNombreUsuario.Name = "lblNombreUsuario";
             lblNombreUsuario.Size = new Size(192, 25);
             lblNombreUsuario.TabIndex = 3;
             lblNombreUsuario.Text = "NombresUsuario";
-            lblNombreUsuario.TextAlign = ContentAlignment.MiddleLeft;
+            lblNombreUsuario.TextAlign = ContentAlignment.MiddleRight;
             // 
             // btnLogout
             // 
@@ -469,12 +469,12 @@
             // 
             // lblFecha
             // 
-            lblFecha.Anchor = AnchorStyles.None;
+            lblFecha.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             lblFecha.AutoSize = true;
             lblFecha.BackColor = Color.Transparent;
             lblFecha.Font = new Font("Montserrat", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblFecha.ForeColor = SystemColors.Control;
-            lblFecha.Location = new Point(347, 23);
+            lblFecha.Location = new Point(3, 25);
             lblFecha.Margin = new Padding(0);
             lblFecha.Name = "lblFecha";
             lblFecha.Size = new Size(57, 19);
@@ -484,12 +484,12 @@
             // 
             // lblHora
             // 
-            lblHora.Anchor = AnchorStyles.None;
+            lblHora.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             lblHora.AutoSize = true;
             lblHora.BackColor = Color.Transparent;
             lblHora.Font = new Font("Montserrat", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             lblHora.ForeColor = SystemColors.Control;
-            lblHora.Location = new Point(347, 1);
+            lblHora.Location = new Point(3, 3);
             lblHora.Margin = new Padding(0);
             lblHora.Name = "lblHora";
             lblHora.Size = new Size(62, 25);

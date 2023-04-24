@@ -206,6 +206,7 @@ namespace model.Data
                     cmd.Parameters.AddWithValue("@nombre_personal", personal.Nombre_personal);
                     cmd.Parameters.AddWithValue("@apellido_personal", personal.Apellido_personal);
                     cmd.Parameters.AddWithValue("@cargo_personal", personal.Cargo);
+                    cmd.Parameters.AddWithValue("@imagen_personal", personal.Imagen);
                     cmd.Parameters.AddWithValue("@fecha_nacimiento", personal.Fecha_nacimiento);
                     cmd.Parameters.AddWithValue("@sexo", personal.Sexo);
                     cmd.Parameters.AddWithValue("@telefono_personal", personal.Telefono);
@@ -335,8 +336,7 @@ namespace model.Data
                     cmd.Parameters.AddWithValue("@nombre_rol", personal.Cargo);
                     cmd.Parameters.AddWithValue("@nombre_usuario", usuario.Nombre);
                     cmd.Parameters.AddWithValue("@apellido_usuario", usuario.Apellido);
-                    cmd.Parameters.AddWithValue("@imagen_usuario", usuario.Imagen);
-                    cmd.Parameters.AddWithValue("@usuario", credenciales.Usuario);
+                    cmd.Parameters.AddWithValue("@usuario", usuario.Usuario_);
                     cmd.Parameters.AddWithValue("@password", credenciales.Password);
                     cmd.Parameters.AddWithValue("@usuario_activo", credenciales.Usuario_activo);
 
@@ -431,13 +431,13 @@ namespace model.Data
                         personal.Personal_activo = (bool)reader.GetValue(9);
                         if (!reader.IsDBNull(10))
                         {
-                            usuario.Imagen = (byte[])reader.GetValue(10);
+                            personal.Imagen = (byte[])reader.GetValue(10);
                         }
                         else
                         {
-                            usuario.Imagen = null;
+                            personal.Imagen = null;
                         }
-                        credenciales.Usuario = reader.GetString(11);
+                        usuario.Usuario_ = reader.GetString(11);
                         credenciales.Usuario_activo = (bool)reader.GetValue(12);
 
                         // Combinar los objetos personal, usuario y credenciales en un diccionario

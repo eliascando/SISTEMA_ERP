@@ -23,13 +23,14 @@ namespace control
         {
             return OTPKey.ValidateOTP(key, otp);
         }
-        public async Task<Boolean> RegistrarPersonalCtrl(string cedula, string nombre, string apellido, string cargo, DateTime nacimiento, string sexo, string telefono, string correo, string direccion, DateTime ingreso, string salario)
+        public async Task<Boolean> RegistrarPersonalCtrl(string cedula, string nombre, string apellido, string cargo, byte[]imagen, DateTime nacimiento, string sexo, string telefono, string correo, string direccion, DateTime ingreso, string salario)
         {
             Personal personal = new Personal();
             personal.Id_personal = cedula;
             personal.Nombre_personal = nombre;
             personal.Apellido_personal = apellido;
             personal.Cargo = cargo;
+            personal.Imagen = imagen;
             personal.Fecha_nacimiento = nacimiento;
             personal.Sexo = sexo;
             personal.Telefono = telefono;
@@ -50,7 +51,7 @@ namespace control
         {
             return await personalBD.ObtenerRoles();
         }
-        public async Task<bool> RegistrarUsuarioCrl(string id, string nombre_rol, string nombres, string apellidos, byte[] imagen, string usuario, string password)
+        public async Task<bool> RegistrarUsuarioCtrl(string id, string nombre_rol, string nombres, string apellidos, string usuario, string password)
         {
             Personal personal = new Personal();
             Usuario usuarios = new Usuario();
@@ -60,8 +61,7 @@ namespace control
             personal.Cargo = nombre_rol;
             usuarios.Nombre = nombres;
             usuarios.Apellido = apellidos;
-            usuarios.Imagen = imagen;
-            credenciales.Usuario = usuario;
+            usuarios.Usuario_ = usuario;
             credenciales.Password = Alquimia.Encrypt(password);
             credenciales.Usuario_activo = true;
             return await personalBD.RegistrarUsuario(personal, usuarios, credenciales);
@@ -91,8 +91,8 @@ namespace control
             personal.Direccion = direccion;
             personal.Fecha_ingreso = ingreso;
             personal.Salario = Double.Parse(salario);
-            usuarios.Imagen = imagen;
-            credenciales.Usuario = usuario;
+            personal.Imagen = imagen;
+            usuarios.Usuario_ = usuario;
             credenciales.Password = Alquimia.Encrypt(password);
             DatosCombinados = Alquimia.CombineObjects(personal, usuarios, credenciales);
             return await personalBD.RegistrarGerente(DatosCombinados);
@@ -105,7 +105,7 @@ namespace control
             personal.Telefono = telefono;
             personal.Correo = correo;
             personal.Direccion = direccion;
-            usuario.Imagen = imagen;
+            personal.Imagen = imagen;
             
             return await personalBD.ActualizarDatosPersonal(Alquimia.CombineObjects(personal,usuario));
         }

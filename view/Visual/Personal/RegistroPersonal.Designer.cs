@@ -53,6 +53,9 @@
             label2 = new Label();
             label1 = new Label();
             btnCancelar = new Button();
+            btnAddImagen = new Button();
+            picFotoPersonal = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)picFotoPersonal).BeginInit();
             SuspendLayout();
             // 
             // btnGuardar
@@ -269,11 +272,33 @@
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click;
             // 
+            // btnAddImagen
+            // 
+            btnAddImagen.Location = new Point(566, 174);
+            btnAddImagen.Name = "btnAddImagen";
+            btnAddImagen.Size = new Size(105, 23);
+            btnAddImagen.TabIndex = 50;
+            btnAddImagen.Text = "Añadir Foto";
+            btnAddImagen.UseVisualStyleBackColor = true;
+            btnAddImagen.Click += btnAddImagen_Click;
+            // 
+            // picFotoPersonal
+            // 
+            picFotoPersonal.Image = Properties.Resources.default_user_picture;
+            picFotoPersonal.Location = new Point(566, 55);
+            picFotoPersonal.Name = "picFotoPersonal";
+            picFotoPersonal.Size = new Size(105, 110);
+            picFotoPersonal.SizeMode = PictureBoxSizeMode.StretchImage;
+            picFotoPersonal.TabIndex = 49;
+            picFotoPersonal.TabStop = false;
+            // 
             // RegistroPersonal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(729, 514);
+            Controls.Add(btnAddImagen);
+            Controls.Add(picFotoPersonal);
             Controls.Add(btnCancelar);
             Controls.Add(btnGuardar);
             Controls.Add(rbtnSexoM);
@@ -304,6 +329,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "RegistroPersonal";
             Load += RegistroPersonal_Load;
+            ((System.ComponentModel.ISupportInitialize)picFotoPersonal).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -335,5 +361,7 @@
         private Label label2;
         private Label label1;
         private Button btnCancelar;
+        private Button btnAddImagen;
+        private PictureBox picFotoPersonal;
     }
 }

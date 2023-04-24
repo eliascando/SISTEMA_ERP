@@ -62,7 +62,7 @@ namespace view.Visual
                     {
                         DatosForm.picFotoUsuario.Image = Resources.default_user_picture;
                     }
-                    DatosForm.lblUsuario.Text = (string)combinedData["Usuario"];
+                    DatosForm.lblUsuario.Text = (string)combinedData["Usuario_"];
                     DatosForm.lblEdad.Text = Alquimia.GetAge((DateTime)combinedData["Fecha_nacimiento"]).ToString();
 
                     Aurora.LoadFormInPanel(DatosForm, panelUsuarios, ref activeForm);

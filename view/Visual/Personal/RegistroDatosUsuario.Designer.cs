@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            picFotoPersonal = new PictureBox();
             groupBox1 = new GroupBox();
             lblCargoPersonal = new Label();
             lblApellidosPersonal = new Label();
@@ -40,14 +39,12 @@
             label3 = new Label();
             label2 = new Label();
             groupBox2 = new GroupBox();
-            btnAddImagen = new Button();
             txtPassword = new TextBox();
             txtUsuario = new TextBox();
             label7 = new Label();
             label6 = new Label();
             btnGuardar = new Button();
             btnCancelar = new Button();
-            ((System.ComponentModel.ISupportInitialize)picFotoPersonal).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
@@ -61,15 +58,6 @@
             label1.Size = new Size(216, 33);
             label1.TabIndex = 0;
             label1.Text = "Nuevo Usuario";
-            // 
-            // picFotoPersonal
-            // 
-            picFotoPersonal.Location = new Point(230, 22);
-            picFotoPersonal.Name = "picFotoPersonal";
-            picFotoPersonal.Size = new Size(87, 110);
-            picFotoPersonal.SizeMode = PictureBoxSizeMode.StretchImage;
-            picFotoPersonal.TabIndex = 1;
-            picFotoPersonal.TabStop = false;
             // 
             // groupBox1
             // 
@@ -162,28 +150,16 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(btnAddImagen);
             groupBox2.Controls.Add(txtPassword);
             groupBox2.Controls.Add(txtUsuario);
             groupBox2.Controls.Add(label7);
             groupBox2.Controls.Add(label6);
-            groupBox2.Controls.Add(picFotoPersonal);
             groupBox2.Location = new Point(25, 226);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(353, 171);
             groupBox2.TabIndex = 3;
             groupBox2.TabStop = false;
             groupBox2.Text = "Datos de Usuario";
-            // 
-            // btnAddImagen
-            // 
-            btnAddImagen.Location = new Point(230, 136);
-            btnAddImagen.Name = "btnAddImagen";
-            btnAddImagen.Size = new Size(87, 23);
-            btnAddImagen.TabIndex = 6;
-            btnAddImagen.Text = "Añadir Foto";
-            btnAddImagen.UseVisualStyleBackColor = true;
-            btnAddImagen.Click += btnAddImagen_Click;
             // 
             // txtPassword
             // 
@@ -250,7 +226,6 @@
             Name = "RegistroDatosUsuario";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "RegistroDatosUsuario";
-            ((System.ComponentModel.ISupportInitialize)picFotoPersonal).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
@@ -262,7 +237,6 @@
         #endregion
 
         private Label label1;
-        private PictureBox picFotoPersonal;
         private GroupBox groupBox1;
         private Label label5;
         private Label label4;
@@ -271,7 +245,6 @@
         private GroupBox groupBox2;
         private Label label7;
         private Label label6;
-        private Button btnAddImagen;
         private TextBox txtPassword;
         private TextBox txtUsuario;
         private Button btnGuardar;

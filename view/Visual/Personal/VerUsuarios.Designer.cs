@@ -32,13 +32,13 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             label1 = new Label();
-            panelUsuarios = new Panel();
             gridUsuarios = new DataGridView();
             btnActualizar = new utilitaries.CustomControls.CustomButton();
             btnVerUsuario = new utilitaries.CustomControls.CustomButton();
             btnCerrar = new utilitaries.CustomControls.CustomButton();
-            panelUsuarios.SuspendLayout();
+            panelUsuarios = new Panel();
             ((System.ComponentModel.ISupportInitialize)gridUsuarios).BeginInit();
+            panelUsuarios.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -46,24 +46,11 @@
             label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
             label1.Font = new Font("Montserrat", 20.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(292, 18);
+            label1.Location = new Point(301, 29);
             label1.Name = "label1";
             label1.Size = new Size(141, 33);
             label1.TabIndex = 3;
             label1.Text = "Usuarios";
-            // 
-            // panelUsuarios
-            // 
-            panelUsuarios.Controls.Add(gridUsuarios);
-            panelUsuarios.Controls.Add(btnActualizar);
-            panelUsuarios.Controls.Add(btnVerUsuario);
-            panelUsuarios.Controls.Add(btnCerrar);
-            panelUsuarios.Controls.Add(label1);
-            panelUsuarios.Dock = DockStyle.Fill;
-            panelUsuarios.Location = new Point(0, 0);
-            panelUsuarios.Name = "panelUsuarios";
-            panelUsuarios.Size = new Size(729, 514);
-            panelUsuarios.TabIndex = 5;
             // 
             // gridUsuarios
             // 
@@ -95,7 +82,7 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             gridUsuarios.DefaultCellStyle = dataGridViewCellStyle2;
             gridUsuarios.EnableHeadersVisualStyles = false;
-            gridUsuarios.Location = new Point(31, 63);
+            gridUsuarios.Location = new Point(42, 83);
             gridUsuarios.MultiSelect = false;
             gridUsuarios.Name = "gridUsuarios";
             gridUsuarios.ReadOnly = true;
@@ -108,7 +95,7 @@
             gridUsuarios.RowTemplate.Height = 25;
             gridUsuarios.ScrollBars = ScrollBars.None;
             gridUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            gridUsuarios.Size = new Size(663, 393);
+            gridUsuarios.Size = new Size(645, 368);
             gridUsuarios.TabIndex = 1;
             // 
             // btnActualizar
@@ -122,7 +109,7 @@
             btnActualizar.FlatAppearance.BorderSize = 0;
             btnActualizar.FlatStyle = FlatStyle.Flat;
             btnActualizar.ForeColor = Color.White;
-            btnActualizar.Location = new Point(604, 472);
+            btnActualizar.Location = new Point(597, 472);
             btnActualizar.Name = "btnActualizar";
             btnActualizar.Size = new Size(90, 30);
             btnActualizar.TabIndex = 9;
@@ -142,7 +129,7 @@
             btnVerUsuario.FlatAppearance.BorderSize = 0;
             btnVerUsuario.FlatStyle = FlatStyle.Flat;
             btnVerUsuario.ForeColor = Color.White;
-            btnVerUsuario.Location = new Point(508, 472);
+            btnVerUsuario.Location = new Point(501, 472);
             btnVerUsuario.Name = "btnVerUsuario";
             btnVerUsuario.Size = new Size(90, 30);
             btnVerUsuario.TabIndex = 8;
@@ -162,7 +149,7 @@
             btnCerrar.FlatAppearance.BorderSize = 0;
             btnCerrar.FlatStyle = FlatStyle.Flat;
             btnCerrar.ForeColor = Color.White;
-            btnCerrar.Location = new Point(31, 472);
+            btnCerrar.Location = new Point(42, 472);
             btnCerrar.Name = "btnCerrar";
             btnCerrar.Size = new Size(90, 30);
             btnCerrar.TabIndex = 7;
@@ -171,29 +158,42 @@
             btnCerrar.UseVisualStyleBackColor = false;
             btnCerrar.Click += btnCerrar_Click;
             // 
+            // panelUsuarios
+            // 
+            panelUsuarios.Controls.Add(label1);
+            panelUsuarios.Controls.Add(btnVerUsuario);
+            panelUsuarios.Controls.Add(gridUsuarios);
+            panelUsuarios.Controls.Add(btnActualizar);
+            panelUsuarios.Controls.Add(btnCerrar);
+            panelUsuarios.Dock = DockStyle.Fill;
+            panelUsuarios.Location = new Point(0, 0);
+            panelUsuarios.Name = "panelUsuarios";
+            panelUsuarios.Size = new Size(729, 519);
+            panelUsuarios.TabIndex = 10;
+            // 
             // VerUsuarios
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(729, 514);
+            ClientSize = new Size(729, 519);
             Controls.Add(panelUsuarios);
             FormBorderStyle = FormBorderStyle.None;
             Name = "VerUsuarios";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "VerUsuarios";
             Load += VerUsuarios_prueba_Load;
+            ((System.ComponentModel.ISupportInitialize)gridUsuarios).EndInit();
             panelUsuarios.ResumeLayout(false);
             panelUsuarios.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)gridUsuarios).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
         private Label label1;
-        private Panel panelUsuarios;
         private utilitaries.CustomControls.CustomButton btnCerrar;
         private utilitaries.CustomControls.CustomButton btnActualizar;
         private utilitaries.CustomControls.CustomButton btnVerUsuario;
         private DataGridView gridUsuarios;
+        private Panel panelUsuarios;
     }
 }

@@ -106,7 +106,7 @@ namespace view.Visual
 
         private void horayfecha_Tick(object sender, EventArgs e)
         {
-            lblHora.Text = DateTime.Now.ToShortTimeString();
+            lblHora.Text = DateTime.Now.ToLongTimeString();
             lblFecha.Text = DateTime.Now.ToShortDateString();
         }
     }

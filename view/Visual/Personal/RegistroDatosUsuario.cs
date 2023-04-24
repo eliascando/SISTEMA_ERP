@@ -6,7 +6,7 @@ namespace view
     {
         PersonalCtrl personalCtrl = new PersonalCtrl();
         private RegistroUsuario registroForm;
-        private byte[] imageData;
+
         public RegistroDatosUsuario(RegistroUsuario registroForm)
         {
             InitializeComponent();
@@ -17,7 +17,7 @@ namespace view
         {
             try
             {
-                if (await personalCtrl.RegistrarUsuarioCrl(lblIdCedula.Text, lblCargoPersonal.Text, blbNombresPersonal.Text, lblApellidosPersonal.Text, imageData, txtUsuario.Text, txtPassword.Text))
+                if (await personalCtrl.RegistrarUsuarioCtrl(lblIdCedula.Text, lblCargoPersonal.Text, blbNombresPersonal.Text, lblApellidosPersonal.Text, txtUsuario.Text, txtPassword.Text))
                 {
                     MessageBox.Show("Usuario Registrado!");
                     this.Close();
@@ -41,16 +41,7 @@ namespace view
 
         private void btnAddImagen_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                string path = openFileDialog1.FileName;
-
-                picFotoPersonal.Image = Image.FromFile(path);
-
-                imageData = File.ReadAllBytes(path);
-            }
         }
     }
 }

@@ -46,7 +46,7 @@ namespace view.Visual
                     Form dialogo = new DialogBox(GlobalVariablesCtrl.ObtenerParentForm(), "Confirmación", "Desea guardar los cambios?");
                     dialogo.ShowDialog();
                     if (dialogo.DialogResult.Equals(DialogResult.OK))
-                    {      
+                    {
                         validarImagen(picFotoPersonal.Image);
                         if (EstadoPersonalCambiado())
                         {
@@ -61,7 +61,7 @@ namespace view.Visual
                                 await registroActividades.RegistroModificacionUsuarioCtrl(lblCedula.Text, GlobalVariablesCtrl.ObtenerIdUsuarioLogin(), "Actualización de Datos");
                                 cambiosRealizados = true;
                             }
-                            Form alert = new AlertBox(GlobalVariablesCtrl.ObtenerParentForm(), "success", "Actualizado", "Usuario actualizado correctamente");                            
+                            Form alert = new AlertBox(GlobalVariablesCtrl.ObtenerParentForm(), "success", "Actualizado", "Usuario actualizado correctamente");
                             await verUsuario.CargarTabla();
                             this.Close();
                             alert.Show();
@@ -75,7 +75,7 @@ namespace view.Visual
                 }
                 else
                 {
-                    Form alert = new AlertBox(GlobalVariablesCtrl.ObtenerParentForm(), "warning", "Alerta", "No se han registrado cambios");                  
+                    Form alert = new AlertBox(GlobalVariablesCtrl.ObtenerParentForm(), "warning", "Alerta", "No se han registrado cambios");
                     this.Close();
                     alert.Show();
                 }
@@ -125,7 +125,8 @@ namespace view.Visual
             if ((personalActivoToogle.Checked == isPersonalStateChanged) && usuarioActivoToogle.Checked)
             {
                 mensaje = "Activación de Usuario";
-            }else if(personalActivoToogle.Checked && (usuarioActivoToogle.Checked == isUserStateChanged))
+            }
+            else if (personalActivoToogle.Checked && (usuarioActivoToogle.Checked == isUserStateChanged))
             {
                 mensaje = "Activación de Personal";
             }

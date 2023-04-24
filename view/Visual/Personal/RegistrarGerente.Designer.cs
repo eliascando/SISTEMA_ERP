@@ -323,7 +323,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(729, 514);
+            ClientSize = new Size(729, 519);
             Controls.Add(txtPassword);
             Controls.Add(btnAddImagen);
             Controls.Add(label12);

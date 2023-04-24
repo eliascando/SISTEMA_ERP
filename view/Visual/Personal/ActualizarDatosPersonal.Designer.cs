@@ -226,7 +226,7 @@
             // 
             // btnActualizar
             // 
-            btnActualizar.Location = new Point(487, 461);
+            btnActualizar.Location = new Point(487, 466);
             btnActualizar.Name = "btnActualizar";
             btnActualizar.Size = new Size(112, 41);
             btnActualizar.TabIndex = 13;
@@ -236,7 +236,7 @@
             // 
             // btnCambiarCredenciales
             // 
-            btnCambiarCredenciales.Location = new Point(605, 461);
+            btnCambiarCredenciales.Location = new Point(605, 466);
             btnCambiarCredenciales.Name = "btnCambiarCredenciales";
             btnCambiarCredenciales.Size = new Size(112, 41);
             btnCambiarCredenciales.TabIndex = 15;
@@ -247,7 +247,7 @@
             // btnSalir
             // 
             btnSalir.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnSalir.Location = new Point(12, 479);
+            btnSalir.Location = new Point(12, 484);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(75, 23);
             btnSalir.TabIndex = 65;
@@ -307,7 +307,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(729, 514);
+            ClientSize = new Size(729, 519);
             Controls.Add(label10);
             Controls.Add(personalActivoToogle);
             Controls.Add(label9);

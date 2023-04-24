@@ -474,7 +474,7 @@
             lblFecha.BackColor = Color.Transparent;
             lblFecha.Font = new Font("Montserrat", 12F, FontStyle.Regular, GraphicsUnit.Point);
             lblFecha.ForeColor = SystemColors.Control;
-            lblFecha.Location = new Point(352, 21);
+            lblFecha.Location = new Point(347, 23);
             lblFecha.Margin = new Padding(0);
             lblFecha.Name = "lblFecha";
             lblFecha.Size = new Size(57, 19);
@@ -512,7 +512,7 @@
             label2.AutoSize = true;
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Berlin Sans FB", 48F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(279, 211);
+            label2.Location = new Point(267, 216);
             label2.Name = "label2";
             label2.Size = new Size(189, 79);
             label2.TabIndex = 1;

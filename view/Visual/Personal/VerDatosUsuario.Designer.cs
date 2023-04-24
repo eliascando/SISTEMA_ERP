@@ -36,7 +36,7 @@
             tabPage1 = new TabPage();
             dgvModificaciones = new DataGridView();
             lblVentasMes = new Label();
-            label8 = new Label();
+            lblVentas = new Label();
             lblID = new Label();
             label7 = new Label();
             lblFechaIngreso = new Label();
@@ -165,14 +165,14 @@
             lblVentasMes.TabIndex = 62;
             lblVentasMes.Text = "TotalVentasdelMes";
             // 
-            // label8
+            // lblVentas
             // 
-            label8.AutoSize = true;
-            label8.Location = new Point(285, 157);
-            label8.Name = "label8";
-            label8.Size = new Size(69, 15);
-            label8.TabIndex = 61;
-            label8.Text = "Ventas Mes:";
+            lblVentas.AutoSize = true;
+            lblVentas.Location = new Point(285, 157);
+            lblVentas.Name = "lblVentas";
+            lblVentas.Size = new Size(69, 15);
+            lblVentas.TabIndex = 61;
+            lblVentas.Text = "Ventas Mes:";
             // 
             // lblID
             // 
@@ -354,7 +354,7 @@
             Controls.Add(btnSalir);
             Controls.Add(ReloadBtn);
             Controls.Add(lblVentasMes);
-            Controls.Add(label8);
+            Controls.Add(lblVentas);
             Controls.Add(lblID);
             Controls.Add(label7);
             Controls.Add(lblFechaIngreso);
@@ -397,7 +397,7 @@
         private TabPage tabVentas;
         private DataGridView dgvVentas;
         private Label lblVentasMes;
-        private Label label8;
+        private Label lblVentas;
         public Label lblID;
         private Label label7;
         public Label lblFechaIngreso;

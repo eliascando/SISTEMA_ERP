@@ -1,5 +1,7 @@
 ﻿using control;
 using libraries;
+using utilitaries;
+using utilitaries.CustomForms;
 using view.Properties;
 
 namespace view.Visual
@@ -29,7 +31,14 @@ namespace view.Visual
             }
         }
 
-        private async void button1_Click(object sender, EventArgs e)
+        private Form activeForm = null;
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private async void btnVerUsuario_Click(object sender, EventArgs e)
         {
             try
             {
@@ -57,6 +66,11 @@ namespace view.Visual
                     DatosForm.lblEdad.Text = Alquimia.GetAge((DateTime)combinedData["Fecha_nacimiento"]).ToString();
 
                     Aurora.LoadFormInPanel(DatosForm, panelUsuarios, ref activeForm);
+                }
+                else
+                {
+                    Form alert = new AlertBox(GlobalVariablesCtrl.ObtenerParentForm(), "warning", "Atención", "Debe seleccionar un usuario");
+                    alert.Show();
                 }
             }
             catch (Exception ex)
@@ -91,7 +105,8 @@ namespace view.Visual
                         UpdateForm.picFotoPersonal.Image = Resources.default_user_picture;
                         UpdateForm.btnChangeImagen.Text = "Añadir";
                     }
-
+                    UpdateForm.usuarioActivoToogle.Checked = (bool)combinedData["Usuario_activo"];
+                    UpdateForm.personalActivoToogle.Checked = (bool)combinedData["Personal_activo"];
 
                     Aurora.LoadFormInPanel(UpdateForm, panelUsuarios, ref activeForm);
                 }
@@ -99,20 +114,6 @@ namespace view.Visual
             catch (Exception ex)
             {
                 MessageBox.Show("ERROR DE EXCEPCIÓN: " + ex);
-            }
-        }
-        private Form activeForm = null;
-
-        private void btnCerrar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void gridUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                gridUsuarios.Rows[e.RowIndex].Selected = true;
             }
         }
     }

@@ -111,12 +111,21 @@ namespace control
         }
         public async Task<bool> CambiarCredencialesCtrl(string id, string newPassword)
         {
-            PersonalBD personalBD = new PersonalBD();
             CredencialesAcceso credenciales = new CredencialesAcceso();
             credenciales.Id_usuario = id;
             credenciales.Password = Alquimia.Encrypt(newPassword);
 
             return await personalBD.CambiarCredenciales(credenciales);
+        }
+        public async Task CambiarEstadoPersonal(string id, bool estado_usuario, bool estado_personal)
+        {
+            Personal personal = new Personal();
+            CredencialesAcceso credenciales = new CredencialesAcceso();
+            personal.Id_personal = id;
+            personal.Personal_activo = estado_personal;
+            credenciales.Usuario_activo = estado_usuario;
+
+            await personalBD.CambiarEstadoPersonal(personal, credenciales);
         }
     }
 }

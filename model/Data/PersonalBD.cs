@@ -428,15 +428,17 @@ namespace model.Data
                         personal.Correo = reader.GetString(6);
                         personal.Direccion = reader.GetString(7);
                         personal.Fecha_ingreso = reader.GetDateTime(8);
-                        if (!reader.IsDBNull(9))
+                        personal.Personal_activo = (bool)reader.GetValue(9);
+                        if (!reader.IsDBNull(10))
                         {
-                            usuario.Imagen = (byte[])reader.GetValue(9);
+                            usuario.Imagen = (byte[])reader.GetValue(10);
                         }
                         else
                         {
                             usuario.Imagen = null;
                         }
-                        credenciales.Usuario = reader.GetString(10);
+                        credenciales.Usuario = reader.GetString(11);
+                        credenciales.Usuario_activo = (bool)reader.GetValue(12);
 
                         // Combinar los objetos personal, usuario y credenciales en un diccionario
                         DatosCombinados = Alquimia.CombineObjects(personal, usuario, credenciales);
@@ -572,6 +574,30 @@ namespace model.Data
                 await ConexionBD.CerrarConexionAsync();
             }
             return IsChanged;
+        }
+        public async Task CambiarEstadoPersonal(Personal personal, CredencialesAcceso credenciales)
+        {
+            try
+            {
+                if (await ConexionBD.AbrirConexionAsync())
+                {
+                    var cmd = new SqlCommand("CambiarEstadoPersonal", ConexionBD.cn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@id_cedula", personal.Id_personal);
+                    cmd.Parameters.AddWithValue("@estado_personal", personal.Personal_activo);
+                    cmd.Parameters.AddWithValue("@estado_usuario", credenciales.Usuario_activo);
+
+                    await cmd.ExecuteNonQueryAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                await ConexionBD.CerrarConexionAsync();
+            }
         }
     }
 }

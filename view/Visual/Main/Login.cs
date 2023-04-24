@@ -45,14 +45,7 @@ namespace view.Visual
         }
         private void ExitIco_Click(object sender, EventArgs e)
         {
-            //DialogResult result = MessageBox.Show("Esta seguro que desa Salir?", "Confirmación", MessageBoxButtons.OKCancel);
-            //if (result == DialogResult.OK)
-            //{
-            //    this.Close();
-            //    this.Dispose();
-            //    Environment.Exit(0);
-            //}
-            Form dialogo = new DialogBox(this,"Confirmación", "Esta seguro que desa Salir?");
+            Form dialogo = new DialogBox(this,"Confirmación", "Está seguro que desea Salir?");
             dialogo.ShowDialog();
             if (dialogo.DialogResult.Equals(DialogResult.OK))
             {
@@ -60,8 +53,6 @@ namespace view.Visual
                 this.Dispose();
                 Environment.Exit(0);
             }
-            
-
         }
         private void PassStatusIcon_Click(object sender, EventArgs e)
         {

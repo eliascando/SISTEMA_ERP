@@ -11,6 +11,14 @@ namespace view.Visual
         {
             InitializeComponent();
             this.verUsuario_prueba = verUsuarios_Prueba;
+            if (lblCargo.Text == "Asistente")
+            {
+                this.lblVentas.Visible = this.lblVentasMes.Visible = true;
+            }
+            else
+            {
+                this.lblVentas.Visible = this.lblVentasMes.Visible = false;
+            }
         }
         public async Task CargarTablas()
         {

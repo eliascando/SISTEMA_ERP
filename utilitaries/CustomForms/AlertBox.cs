@@ -26,6 +26,7 @@ namespace utilitaries.CustomForms
             this.TextAlertBox = Text;
             this.TypeAlertBox = typeAlert;
             this.ParentForm = parentForm;
+            this.TopMost = true;
             SetIconAlert(TypeAlertBox);
             SetColors(TypeAlertBox);
         }

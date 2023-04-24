@@ -49,9 +49,9 @@
             btnActualizar = new Button();
             btnCambiarCredenciales = new Button();
             btnSalir = new Button();
-            customToogleBtn1 = new utilitaries.CustomControls.CustomToogleBtn();
+            usuarioActivoToogle = new utilitaries.CustomControls.CustomToogleBtn();
             label9 = new Label();
-            customToogleBtn2 = new utilitaries.CustomControls.CustomToogleBtn();
+            personalActivoToogle = new utilitaries.CustomControls.CustomToogleBtn();
             label10 = new Label();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picFotoPersonal).BeginInit();
@@ -255,47 +255,49 @@
             btnSalir.UseVisualStyleBackColor = true;
             btnSalir.Click += btnSalir_Click;
             // 
-            // customToogleBtn1
+            // usuarioActivoToogle
             // 
-            customToogleBtn1.AutoSize = true;
-            customToogleBtn1.Location = new Point(125, 260);
-            customToogleBtn1.MinimumSize = new Size(45, 22);
-            customToogleBtn1.Name = "customToogleBtn1";
-            customToogleBtn1.OffBackColor = Color.Gray;
-            customToogleBtn1.OffToogleColor = Color.Gainsboro;
-            customToogleBtn1.OnBackColor = Color.MediumSlateBlue;
-            customToogleBtn1.OnToogleColor = Color.WhiteSmoke;
-            customToogleBtn1.Size = new Size(45, 22);
-            customToogleBtn1.TabIndex = 66;
-            customToogleBtn1.UseVisualStyleBackColor = true;
+            usuarioActivoToogle.AutoSize = true;
+            usuarioActivoToogle.Location = new Point(125, 260);
+            usuarioActivoToogle.MinimumSize = new Size(45, 22);
+            usuarioActivoToogle.Name = "usuarioActivoToogle";
+            usuarioActivoToogle.OffBackColor = Color.Gray;
+            usuarioActivoToogle.OffToogleColor = Color.Gainsboro;
+            usuarioActivoToogle.OnBackColor = Color.MediumSlateBlue;
+            usuarioActivoToogle.OnToogleColor = Color.WhiteSmoke;
+            usuarioActivoToogle.Size = new Size(45, 22);
+            usuarioActivoToogle.TabIndex = 66;
+            usuarioActivoToogle.UseVisualStyleBackColor = true;
+            usuarioActivoToogle.CheckedChanged += usuarioActivoToogle_CheckedChanged;
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(30, 267);
+            label9.Location = new Point(30, 263);
             label9.Name = "label9";
             label9.Size = new Size(84, 15);
             label9.TabIndex = 67;
             label9.Text = "Usuario Activo";
             // 
-            // customToogleBtn2
+            // personalActivoToogle
             // 
-            customToogleBtn2.AutoSize = true;
-            customToogleBtn2.Location = new Point(125, 297);
-            customToogleBtn2.MinimumSize = new Size(45, 22);
-            customToogleBtn2.Name = "customToogleBtn2";
-            customToogleBtn2.OffBackColor = Color.Gray;
-            customToogleBtn2.OffToogleColor = Color.Gainsboro;
-            customToogleBtn2.OnBackColor = Color.MediumSlateBlue;
-            customToogleBtn2.OnToogleColor = Color.WhiteSmoke;
-            customToogleBtn2.Size = new Size(45, 22);
-            customToogleBtn2.TabIndex = 68;
-            customToogleBtn2.UseVisualStyleBackColor = true;
+            personalActivoToogle.AutoSize = true;
+            personalActivoToogle.Location = new Point(125, 297);
+            personalActivoToogle.MinimumSize = new Size(45, 22);
+            personalActivoToogle.Name = "personalActivoToogle";
+            personalActivoToogle.OffBackColor = Color.Gray;
+            personalActivoToogle.OffToogleColor = Color.Gainsboro;
+            personalActivoToogle.OnBackColor = Color.MediumSlateBlue;
+            personalActivoToogle.OnToogleColor = Color.WhiteSmoke;
+            personalActivoToogle.Size = new Size(45, 22);
+            personalActivoToogle.TabIndex = 68;
+            personalActivoToogle.UseVisualStyleBackColor = true;
+            personalActivoToogle.CheckStateChanged += personalActivoToogle_CheckStateChanged;
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(30, 304);
+            label10.Location = new Point(30, 301);
             label10.Name = "label10";
             label10.Size = new Size(89, 15);
             label10.TabIndex = 69;
@@ -307,9 +309,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(729, 514);
             Controls.Add(label10);
-            Controls.Add(customToogleBtn2);
+            Controls.Add(personalActivoToogle);
             Controls.Add(label9);
-            Controls.Add(customToogleBtn1);
+            Controls.Add(usuarioActivoToogle);
             Controls.Add(btnSalir);
             Controls.Add(btnCambiarCredenciales);
             Controls.Add(btnActualizar);
@@ -327,6 +329,7 @@
             Name = "ActualizarDatosPersonal";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ActualizarDatosPersonal";
+            Load += ActualizarDatosPersonal_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picFotoPersonal).EndInit();
@@ -357,9 +360,9 @@
         public TextBox txtDireccionU;
         public Button btnChangeImagen;
         private Button btnSalir;
-        private utilitaries.CustomControls.CustomToogleBtn customToogleBtn1;
         private Label label9;
-        private utilitaries.CustomControls.CustomToogleBtn customToogleBtn2;
         private Label label10;
+        public utilitaries.CustomControls.CustomToogleBtn usuarioActivoToogle;
+        public utilitaries.CustomControls.CustomToogleBtn personalActivoToogle;
     }
 }

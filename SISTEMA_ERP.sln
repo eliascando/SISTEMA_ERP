@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "model", "model\model.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "libraries", "libraries\libraries.csproj", "{058C94FF-8DA3-42D6-BF50-6FE0FE2D5A5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "utilitaries", "utilitaries\utilitaries.csproj", "{61B0012D-6B26-4F01-BC91-985B851EF146}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "utilitaries", "utilitaries\utilitaries.csproj", "{61B0012D-6B26-4F01-BC91-985B851EF146}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

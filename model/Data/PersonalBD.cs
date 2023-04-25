@@ -336,7 +336,7 @@ namespace model.Data
                     cmd.Parameters.AddWithValue("@nombre_rol", personal.Cargo);
                     cmd.Parameters.AddWithValue("@nombre_usuario", usuario.Nombre);
                     cmd.Parameters.AddWithValue("@apellido_usuario", usuario.Apellido);
-                    cmd.Parameters.AddWithValue("@usuario", usuario.Usuario_);
+                    cmd.Parameters.AddWithValue("@usuario", usuario.User);
                     cmd.Parameters.AddWithValue("@password", credenciales.Password);
                     cmd.Parameters.AddWithValue("@usuario_activo", credenciales.Usuario_activo);
 
@@ -437,7 +437,7 @@ namespace model.Data
                         {
                             personal.Imagen = null;
                         }
-                        usuario.Usuario_ = reader.GetString(11);
+                        usuario.User = reader.GetString(11);
                         credenciales.Usuario_activo = (bool)reader.GetValue(12);
 
                         // Combinar los objetos personal, usuario y credenciales en un diccionario
@@ -483,7 +483,7 @@ namespace model.Data
                     cmd.Parameters.AddWithValue("@fecha_ingreso", (DateTime)DatosGerente["Fecha_ingreso"]);
                     cmd.Parameters.AddWithValue("@salario_mensual", (double)DatosGerente["Salario"]);
                     cmd.Parameters.AddWithValue("@imagen_gerente", (byte[])DatosGerente["Imagen"]);
-                    cmd.Parameters.AddWithValue("@usuario", (string)DatosGerente["Usuario"]);
+                    cmd.Parameters.AddWithValue("@usuario", (string)DatosGerente["User"]);
                     cmd.Parameters.AddWithValue("@password", (string)DatosGerente["Password"]);
                     SqlParameter registroExitosoParam = new SqlParameter("@RegistroExitoso", SqlDbType.Bit);
                     registroExitosoParam.Direction = ParameterDirection.Output;

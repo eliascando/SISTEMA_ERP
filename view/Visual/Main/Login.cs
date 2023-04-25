@@ -133,7 +133,7 @@ namespace view.Visual
                         Aurora.ClearPanel(panelLogin);
                         btnLogin.Visible = true;
                         Loading.Visible = false;
-                        await registroActividades.RegistroInicioSesionCtrl(txtId.Texts, "Acceso Exitoso");
+                        await registroActividades.RegistroInicioSesionCtrl(GlobalVariablesCtrl.ObtenerIdUsuarioLogin(), "Acceso Exitoso");
                         Form alert = new AlertBox(this, "success", "Acceso Exitoso!", well_come + " " + GlobalVariablesCtrl.ObtenerUsuario());
                         alert.ShowDialog();
 
@@ -148,19 +148,20 @@ namespace view.Visual
                         };
 
                         int id = GlobalVariablesCtrl.ObtenerIdRol();
+
                         if (idVentana.ContainsKey(id))
                         {
                             Form ventana = idVentana[id];
-                            GlobalVariablesCtrl.AsignarParentForm(ventana);
-                            this.Hide();
-                            ventana.Show();
+                            GlobalVariablesCtrl.AsignarParentForm(ventana);                           
+                            this.Hide();                             
+                            ventana.Show();                            
                         }
                     }
                     else
                     {
                         if (GlobalVariablesCtrl.ObtenerIdUsuarioValidator() == txtId.Texts)
                         {
-                            await registroActividades.RegistroInicioSesionCtrl(txtId.Texts, "Acceso Fallido");
+                            await registroActividades.RegistroInicioSesionCtrl(GlobalVariablesCtrl.ObtenerIdUsuarioLogin(), "Acceso Fallido");
                             GlobalVariablesCtrl.AsignarIdUsuarioValidator("");
                         }
                         Form alert = new AlertBox(this, "error", "Acceso Fallido!", "Credenciales Incorrectas");

@@ -61,7 +61,7 @@ namespace control
             personal.Cargo = nombre_rol;
             usuarios.Nombre = nombres;
             usuarios.Apellido = apellidos;
-            usuarios.Usuario_ = usuario;
+            usuarios.User = usuario;
             credenciales.Password = Alquimia.Encrypt(password);
             credenciales.Usuario_activo = true;
             return await personalBD.RegistrarUsuario(personal, usuarios, credenciales);
@@ -92,7 +92,7 @@ namespace control
             personal.Fecha_ingreso = ingreso;
             personal.Salario = Double.Parse(salario);
             personal.Imagen = imagen;
-            usuarios.Usuario_ = usuario;
+            usuarios.User = usuario;
             credenciales.Password = Alquimia.Encrypt(password);
             DatosCombinados = Alquimia.CombineObjects(personal, usuarios, credenciales);
             return await personalBD.RegistrarGerente(DatosCombinados);

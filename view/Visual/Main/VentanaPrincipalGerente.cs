@@ -57,6 +57,8 @@ namespace view
             }
         }
 
+        private Form activeForm = null;
+
         private void btnRRHH_Click(object sender, EventArgs e)
         {
             showSubMenu(panelRRHHMenu);
@@ -72,7 +74,17 @@ namespace view
             showSubMenu(panelVentasMenu);
         }
 
-        private Form activeForm = null;
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("¿Cerrar Sesión?", "Confirmación", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK)
+            {
+                GlobalVariablesCtrl.AsignarIdRol(0);
+                GlobalVariablesCtrl.AsignarUsuario("");
+                this.Dispose();
+                loginForm.Show();
+            }
+        }
 
         private void btnRegistrarPersonal_Click(object sender, EventArgs e)
         {
@@ -92,16 +104,10 @@ namespace view
             Aurora.LoadFormInPanel(verUsuarios, panelContenedor, ref activeForm);
         }
 
-        private void button14_Click(object sender, EventArgs e)
+        private void horayfecha_Tick(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("¿Cerrar Sesión?", "Confirmación", MessageBoxButtons.OKCancel);
-            if (result == DialogResult.OK)
-            {
-                GlobalVariablesCtrl.AsignarIdRol(0);
-                GlobalVariablesCtrl.AsignarUsuario("");
-                this.Dispose();
-                loginForm.Show();
-            }
+            lblHora.Text = DateTime.Now.ToLongTimeString();
+            lblFecha.Text = DateTime.Now.ToShortDateString();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using control;
 using libraries;
+using utilitaries;
 using model.Data;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using view.Visual.Personal;
+using utilitaries.CustomForms;
 
 namespace view.Visual.Main
 {
@@ -24,42 +26,31 @@ namespace view.Visual.Main
             lblValidateOTP.Visible = false;
             btnValidar.Enabled = false;
             Loading.Visible = false;
-            Guardian.ValidateIdInput(txtId);
-            Guardian.ValidateIntegerInput(txtOTP);
+            Guardian.ValidateIdInputCustom(txtId);
+            Guardian.ValidateIntegerInputCustom(txtOTP);
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private async void btnEnviarOTP_Click(object sender, EventArgs e)
+        private async void btnEnviar_Click(object sender, EventArgs e)
         {
             PersonalCtrl personalCtrl = new PersonalCtrl();
             try
             {
-                if (String.IsNullOrEmpty(txtId.Text))
+                if (String.IsNullOrEmpty(txtId.Texts))
                 {
-                    lblSendEmailStatus.Visible = true;
-                    lblSendEmailStatus.Text = "Debe ingresar su ID";
-                    lblSendEmailStatus.ForeColor = Color.Red;
-                    await Task.Delay(2000);
-                    lblSendEmailStatus.Visible = false;
+                    Form alert = new AlertBox(GlobalVariablesCtrl.ObtenerParentForm(),"warning","Atencion!","Debe ingresar su ID" );
+                    alert.Show();
                 }
-                else if (txtId.Text.Length < 10)
+                else if (txtId.Texts.Length < 10)
                 {
-                    lblSendEmailStatus.Visible = true;
-                    lblSendEmailStatus.Text = "Debe ingresar un ID válido";
-                    lblSendEmailStatus.ForeColor = Color.Red;
-                    await Task.Delay(2000);
-                    lblSendEmailStatus.Visible = false;
+                    Form alert = new AlertBox(GlobalVariablesCtrl.ObtenerParentForm(), "warning", "Atencion!", "Debe ingresar un ID válido");
+                    alert.Show();
                 }
                 else
                 {
-                    btnEnviarOTP.Visible = false;
+                    btnEnviar.Visible = false;
                     Loading.Visible = true;
 
-                    var enviarCorreoTask = personalCtrl.SendEmailCtrl(txtId.Text);
+                    var enviarCorreoTask = personalCtrl.SendEmailCtrl(txtId.Texts);
                     var esperarTask = Task.Delay(3000);
 
                     await Task.WhenAll(enviarCorreoTask, esperarTask);
@@ -67,22 +58,17 @@ namespace view.Visual.Main
                     if (enviarCorreoTask.Result)
                     {
                         Loading.Visible = false;
-                        btnEnviarOTP.Visible = true;
-                        lblSendEmailStatus.Visible = true;
-                        lblSendEmailStatus.Text = "Correo enviado exitosamente";
-                        lblSendEmailStatus.ForeColor = Color.Green;
-                        await Task.Delay(2000);
-                        lblSendEmailStatus.Visible = false;
+                        btnEnviar.Visible = true;
+                        Form alert = new AlertBox(GlobalVariablesCtrl.ObtenerParentForm(), "success", "Enviado!", "Correo enviado exitosamente");
+                        alert.Show();
                         btnValidar.Enabled = true;
                     }
                     else
                     {
                         Loading.Visible = false;
-                        btnEnviarOTP.Visible = true;
-                        lblSendEmailStatus.Visible = true;
-                        lblSendEmailStatus.Text = "Error al enviar correo";
-                        lblSendEmailStatus.ForeColor = Color.Red;
-                        await Task.Delay(2000);
+                        btnEnviar.Visible = true;
+                        Form alert = new AlertBox(GlobalVariablesCtrl.ObtenerParentForm(), "error", "No enviado!", "Hubo un error al enviar el correo");
+                        alert.Show();
                         lblSendEmailStatus.Visible = false;
                     }
                 }
@@ -90,33 +76,32 @@ namespace view.Visual.Main
             catch (Exception ex)
             {
                 Loading.Visible = false;
-                btnEnviarOTP.Visible = true;
-                lblSendEmailStatus.Visible = true;
-                lblSendEmailStatus.Text = "Error al enviar correo";
-                lblSendEmailStatus.ForeColor = Color.Red;
-                await Task.Delay(2000);
-                lblSendEmailStatus.Visible = false;
+                btnEnviar.Visible = true;
+                Form alert = new AlertBox(GlobalVariablesCtrl.ObtenerParentForm(), "error", "No enviado!", "Hubo un error al enviar el correo");
+                alert.Show();
             }
         }
 
-        private async void btnValidar_Click(object sender, EventArgs e)
+        private async void btnValidar_Click_1(object sender, EventArgs e)
         {
             PersonalCtrl personalCtrl = new PersonalCtrl();
-            if (personalCtrl.ValidarOTPCtrl(Alquimia.Encrypt(txtId.Text), txtOTP.Text))
+            if (personalCtrl.ValidarOTPCtrl(Alquimia.Encrypt(txtId.Texts), txtOTP.Texts))
             {
-                CambiarCredenciales cambiarCredenciales = new CambiarCredenciales(txtId.Text, txtId.Text, "Cambio de contraseña por validación de clave OTP");
+                CambiarCredenciales cambiarCredenciales = new CambiarCredenciales(txtId.Texts, txtId.Texts, "Cambio de contraseña por validación de clave OTP");
                 cambiarCredenciales.ShowDialog();
                 GlobalVariablesCtrl.AsignarCurrentCounter(0);
                 this.Close();
             }
             else
             {
-                lblValidateOTP.Visible = true;
-                lblValidateOTP.Text = "Clave Incorrecta";
-                lblValidateOTP.ForeColor = Color.Red;
-                await Task.Delay(2000);
-                lblValidateOTP.Visible = false;
+                Form alert = new AlertBox(GlobalVariablesCtrl.ObtenerParentForm(), "error", "Error!", "Clave Incorrecta");
+                alert.Show();
             }
+        }
+
+        private void btnCancelar_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

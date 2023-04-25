@@ -1,5 +1,6 @@
 ﻿using control;
 using libraries;
+using utilitaries.CustomForms;
 
 namespace view.Visual
 {
@@ -24,8 +25,9 @@ namespace view.Visual
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("¿Cerrar Sesión?", "Confirmación", MessageBoxButtons.OKCancel);
-            if (result == DialogResult.OK)
+            Form dialogo = new DialogBox(this, "Confirmación", "¿Cerrar Sesión?");
+            dialogo.ShowDialog();
+            if (dialogo.DialogResult.Equals(DialogResult.OK))
             {
                 GlobalVariablesCtrl.AsignarIdRol(0);
                 GlobalVariablesCtrl.AsignarUsuario("");
@@ -101,5 +103,11 @@ namespace view.Visual
         }
 
         private Form activeForm = null;
+
+        private void horayfecha_Tick(object sender, EventArgs e)
+        {
+            lblHora.Text = DateTime.Now.ToLongTimeString();
+            lblFecha.Text = DateTime.Now.ToShortDateString();
+        }
     }
 }

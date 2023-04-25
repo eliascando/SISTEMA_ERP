@@ -8,7 +8,7 @@ namespace view.Visual
         public VentanaPrincipalAdminBodega(Login loginForm)
         {
             InitializeComponent();
-            lblNombreUsuarioAdminB.Text = GlobalVariablesCtrl.ObtenerUsuario();
+            lblNombreUsuario.Text = GlobalVariablesCtrl.ObtenerUsuario();
             this.FormClosing += VentanaPrincipal_FormClosing;
             this.loginForm = loginForm;
             customizeDesign();
@@ -54,6 +54,24 @@ namespace view.Visual
             else
             {
                 subMenu.Visible = false;
+            }
+        }
+
+        private void horayfecha_Tick(object sender, EventArgs e)
+        {
+            lblHora.Text = DateTime.Now.ToLongTimeString();
+            lblFecha.Text = DateTime.Now.ToShortDateString();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("¿Cerrar Sesión?", "Confirmación", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK)
+            {
+                GlobalVariablesCtrl.AsignarIdRol(0);
+                GlobalVariablesCtrl.AsignarUsuario("");
+                this.Dispose();
+                loginForm.Show();
             }
         }
     }

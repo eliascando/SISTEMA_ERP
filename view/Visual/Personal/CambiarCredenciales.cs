@@ -1,14 +1,6 @@
 ﻿using control;
 using libraries;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using utilitaries.CustomForms;
 using view.Properties;
 
 namespace view.Visual.Personal
@@ -22,8 +14,6 @@ namespace view.Visual.Personal
         public CambiarCredenciales(string id, string id_responsable, string autorizacion_cambio)
         {
             InitializeComponent();
-            AlertIcon.Visible = false;
-            AlertMessage.Visible = false;
             id_personal = id;
             id_user_responsable = id_responsable;
             autorizacion_metodo_cambio = autorizacion_cambio;
@@ -39,10 +29,8 @@ namespace view.Visual.Personal
             {
                 if (Aurora.AreTextBoxEmpty(this))
                 {
-                    AlertMessage.Visible = true;
-                    AlertMessage.TextAlign = ContentAlignment.MiddleCenter;
-                    AlertMessage.Text = "ERROR!: DEBE LLENAR TODOS LOS CAMPOS";
-                    await Task.Delay(2000);
+                    Form alert = new AlertBox(GlobalVariablesCtrl.ObtenerParentForm(), "warning", "Atención!", "Debe llenar todos los campos");
+                    alert.Show();
                 }
                 else
                 {
@@ -50,32 +38,22 @@ namespace view.Visual.Personal
                     {
                         if (await personalCtrl.CambiarCredencialesCtrl(id_personal, txtNewPass.Text))
                         {
-                            await actividadesCtrl.RegistroModificacionUsuarioCtrl(id_personal,id_user_responsable,autorizacion_metodo_cambio);
-                            AlertMessage.Visible = true;
-                            AlertMessage.ForeColor = Color.Green;
-                            AlertMessage.TextAlign = ContentAlignment.MiddleCenter;
-                            AlertMessage.Text = "Credenciales Actualizadas Correctamente!";
-                            btnActualizar.Enabled = false;
-                            await Task.Delay(2000);
+                            await actividadesCtrl.RegistroModificacionUsuarioCtrl(id_personal, id_user_responsable, autorizacion_metodo_cambio);
+                            Form alert = new AlertBox(GlobalVariablesCtrl.ObtenerParentForm(), "success", "Exito!", "Credenciales Actualizadas Correctamente");
+                            alert.ShowDialog();
                             this.Close();
                         }
                         else
                         {
-                            AlertMessage.Visible = true;
-                            AlertMessage.TextAlign = ContentAlignment.MiddleCenter;
-                            AlertMessage.Text = "ERROR!: No se pudo actualizar correctamente";
-                            btnActualizar.Enabled = false;
-                            await Task.Delay(2000);
+                            Form alert = new AlertBox(GlobalVariablesCtrl.ObtenerParentForm(), "error", "Error!", "No se pudo actualizar correctamente");
+                            alert.ShowDialog();
                             this.Close();
                         }
                     }
                     else
                     {
-                        AlertIcon.Visible = true;
-                        AlertMessage.Visible = true;
-                        await Task.Delay(2000);
-                        AlertIcon.Visible = false;
-                        AlertMessage.Visible = false;
+                        Form alert = new AlertBox(GlobalVariablesCtrl.ObtenerParentForm(), "error", "Error!", "Las contraseñas deben coincidir");
+                        alert.Show();
                     }
                 }
             }

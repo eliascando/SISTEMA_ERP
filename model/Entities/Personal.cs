@@ -9,6 +9,7 @@
         private string correo;
         private string direccion;
         private string cargo;
+        private byte[] imagen;
         private DateTime fecha_nacimiento;
         private string sexo;
         private DateTime fecha_ingreso;
@@ -21,7 +22,7 @@
 
         }
 
-        public Personal(string id_personal, string nombre_personal, string apellido_personal, string telefono, string correo, string direccion, string cargo, DateTime fecha_nacimiento, string sexo, DateTime fecha_ingreso, double salario, bool personal_activo, bool usuario_asignado)
+        public Personal(string id_personal, string nombre_personal, string apellido_personal, string telefono, string correo, string direccion, string cargo, byte[] imagen, DateTime fecha_nacimiento, string sexo, DateTime fecha_ingreso, double salario, bool personal_activo, bool usuario_asignado)
         {
             Id_personal = id_personal;
             Nombre_personal = nombre_personal;
@@ -30,6 +31,7 @@
             Correo = correo;
             Direccion = direccion;
             Cargo = cargo;
+            Imagen = imagen;
             Fecha_nacimiento = fecha_nacimiento;
             Sexo = sexo;
             Fecha_ingreso = fecha_ingreso;
@@ -45,6 +47,7 @@
         public string Correo { get => correo; set => correo = value; }
         public string Direccion { get => direccion; set => direccion = value; }
         public string Cargo { get => cargo; set => cargo = value; }
+        public byte[] Imagen { get => imagen; set => imagen = value; }
         public DateTime Fecha_nacimiento { get => fecha_nacimiento; set => fecha_nacimiento = value; }
         public string Sexo { get => sexo; set => sexo = value; }
         public DateTime Fecha_ingreso { get => fecha_ingreso; set => fecha_ingreso = value; }

@@ -36,7 +36,7 @@
             tabPage1 = new TabPage();
             dgvModificaciones = new DataGridView();
             lblVentasMes = new Label();
-            label8 = new Label();
+            lblVentas = new Label();
             lblID = new Label();
             label7 = new Label();
             lblFechaIngreso = new Label();
@@ -75,7 +75,7 @@
             tabActividades.Location = new Point(12, 190);
             tabActividades.Name = "tabActividades";
             tabActividades.SelectedIndex = 0;
-            tabActividades.Size = new Size(705, 281);
+            tabActividades.Size = new Size(705, 286);
             tabActividades.TabIndex = 24;
             // 
             // tabInicioSesion
@@ -84,7 +84,7 @@
             tabInicioSesion.Location = new Point(4, 24);
             tabInicioSesion.Name = "tabInicioSesion";
             tabInicioSesion.Padding = new Padding(3);
-            tabInicioSesion.Size = new Size(697, 253);
+            tabInicioSesion.Size = new Size(697, 258);
             tabInicioSesion.TabIndex = 0;
             tabInicioSesion.Text = "Inicios de Sesion";
             tabInicioSesion.UseVisualStyleBackColor = true;
@@ -105,7 +105,7 @@
             dgvInicioSesion.RowHeadersVisible = false;
             dgvInicioSesion.RowTemplate.Height = 25;
             dgvInicioSesion.SelectionMode = DataGridViewSelectionMode.CellSelect;
-            dgvInicioSesion.Size = new Size(691, 247);
+            dgvInicioSesion.Size = new Size(691, 252);
             dgvInicioSesion.TabIndex = 0;
             // 
             // tabVentas
@@ -165,14 +165,14 @@
             lblVentasMes.TabIndex = 62;
             lblVentasMes.Text = "TotalVentasdelMes";
             // 
-            // label8
+            // lblVentas
             // 
-            label8.AutoSize = true;
-            label8.Location = new Point(285, 157);
-            label8.Name = "label8";
-            label8.Size = new Size(69, 15);
-            label8.TabIndex = 61;
-            label8.Text = "Ventas Mes:";
+            lblVentas.AutoSize = true;
+            lblVentas.Location = new Point(285, 157);
+            lblVentas.Name = "lblVentas";
+            lblVentas.Size = new Size(69, 15);
+            lblVentas.TabIndex = 61;
+            lblVentas.Text = "Ventas Mes:";
             // 
             // lblID
             // 
@@ -325,7 +325,7 @@
             // 
             ReloadBtn.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             ReloadBtn.Image = Properties.Resources.noun_reload_hold;
-            ReloadBtn.Location = new Point(685, 474);
+            ReloadBtn.Location = new Point(685, 479);
             ReloadBtn.Name = "ReloadBtn";
             ReloadBtn.Size = new Size(28, 28);
             ReloadBtn.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -338,7 +338,7 @@
             // btnSalir
             // 
             btnSalir.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnSalir.Location = new Point(16, 479);
+            btnSalir.Location = new Point(16, 484);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(75, 23);
             btnSalir.TabIndex = 64;
@@ -350,11 +350,11 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(729, 514);
+            ClientSize = new Size(729, 519);
             Controls.Add(btnSalir);
             Controls.Add(ReloadBtn);
             Controls.Add(lblVentasMes);
-            Controls.Add(label8);
+            Controls.Add(lblVentas);
             Controls.Add(lblID);
             Controls.Add(label7);
             Controls.Add(lblFechaIngreso);
@@ -397,7 +397,7 @@
         private TabPage tabVentas;
         private DataGridView dgvVentas;
         private Label lblVentasMes;
-        private Label label8;
+        private Label lblVentas;
         public Label lblID;
         private Label label7;
         public Label lblFechaIngreso;

@@ -40,6 +40,9 @@ namespace model.Data
                     SqlParameter idParam = new SqlParameter("@IdUser", SqlDbType.NVarChar, 50);
                     idParam.Direction = ParameterDirection.Output;
                     cmd.Parameters.Add(idParam);
+                    SqlParameter sexParam = new SqlParameter("@UserSex", SqlDbType.NVarChar, 10);
+                    sexParam.Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add(sexParam);
 
                     await cmd.ExecuteNonQueryAsync(); // Ejecuta el comando de forma asíncrona
 
@@ -51,6 +54,7 @@ namespace model.Data
                         GlobalVariables.id_rol = (int)idRolParam.Value;
                         GlobalVariables.usuario = (string)nombreParam.Value;
                         GlobalVariables.id_usuario_validator = (string)idParam.Value;
+                        GlobalVariables.sexUser = (string)sexParam.Value;
                     }
                 }
             }
@@ -202,6 +206,7 @@ namespace model.Data
                     cmd.Parameters.AddWithValue("@nombre_personal", personal.Nombre_personal);
                     cmd.Parameters.AddWithValue("@apellido_personal", personal.Apellido_personal);
                     cmd.Parameters.AddWithValue("@cargo_personal", personal.Cargo);
+                    cmd.Parameters.AddWithValue("@imagen_personal", personal.Imagen);
                     cmd.Parameters.AddWithValue("@fecha_nacimiento", personal.Fecha_nacimiento);
                     cmd.Parameters.AddWithValue("@sexo", personal.Sexo);
                     cmd.Parameters.AddWithValue("@telefono_personal", personal.Telefono);
@@ -331,8 +336,7 @@ namespace model.Data
                     cmd.Parameters.AddWithValue("@nombre_rol", personal.Cargo);
                     cmd.Parameters.AddWithValue("@nombre_usuario", usuario.Nombre);
                     cmd.Parameters.AddWithValue("@apellido_usuario", usuario.Apellido);
-                    cmd.Parameters.AddWithValue("@imagen_usuario", usuario.Imagen);
-                    cmd.Parameters.AddWithValue("@usuario", credenciales.Usuario);
+                    cmd.Parameters.AddWithValue("@usuario", usuario.User);
                     cmd.Parameters.AddWithValue("@password", credenciales.Password);
                     cmd.Parameters.AddWithValue("@usuario_activo", credenciales.Usuario_activo);
 
@@ -424,15 +428,17 @@ namespace model.Data
                         personal.Correo = reader.GetString(6);
                         personal.Direccion = reader.GetString(7);
                         personal.Fecha_ingreso = reader.GetDateTime(8);
-                        if (!reader.IsDBNull(9))
+                        personal.Personal_activo = (bool)reader.GetValue(9);
+                        if (!reader.IsDBNull(10))
                         {
-                            usuario.Imagen = (byte[])reader.GetValue(9);
+                            personal.Imagen = (byte[])reader.GetValue(10);
                         }
                         else
                         {
-                            usuario.Imagen = null;
+                            personal.Imagen = null;
                         }
-                        credenciales.Usuario = reader.GetString(10);
+                        usuario.User = reader.GetString(11);
+                        credenciales.Usuario_activo = (bool)reader.GetValue(12);
 
                         // Combinar los objetos personal, usuario y credenciales en un diccionario
                         DatosCombinados = Alquimia.CombineObjects(personal, usuario, credenciales);
@@ -477,7 +483,7 @@ namespace model.Data
                     cmd.Parameters.AddWithValue("@fecha_ingreso", (DateTime)DatosGerente["Fecha_ingreso"]);
                     cmd.Parameters.AddWithValue("@salario_mensual", (double)DatosGerente["Salario"]);
                     cmd.Parameters.AddWithValue("@imagen_gerente", (byte[])DatosGerente["Imagen"]);
-                    cmd.Parameters.AddWithValue("@usuario", (string)DatosGerente["Usuario"]);
+                    cmd.Parameters.AddWithValue("@usuario", (string)DatosGerente["User"]);
                     cmd.Parameters.AddWithValue("@password", (string)DatosGerente["Password"]);
                     SqlParameter registroExitosoParam = new SqlParameter("@RegistroExitoso", SqlDbType.Bit);
                     registroExitosoParam.Direction = ParameterDirection.Output;
@@ -568,6 +574,30 @@ namespace model.Data
                 await ConexionBD.CerrarConexionAsync();
             }
             return IsChanged;
+        }
+        public async Task CambiarEstadoPersonal(Personal personal, CredencialesAcceso credenciales)
+        {
+            try
+            {
+                if (await ConexionBD.AbrirConexionAsync())
+                {
+                    var cmd = new SqlCommand("CambiarEstadoPersonal", ConexionBD.cn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@id_cedula", personal.Id_personal);
+                    cmd.Parameters.AddWithValue("@estado_personal", personal.Personal_activo);
+                    cmd.Parameters.AddWithValue("@estado_usuario", credenciales.Usuario_activo);
+
+                    await cmd.ExecuteNonQueryAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                await ConexionBD.CerrarConexionAsync();
+            }
         }
     }
 }

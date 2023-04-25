@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using System.ComponentModel;
 using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace utilitaries.CustomControls
 {
-    [DefaultEvent("_TextChanged")]
+    [DefaultEvent("TextChanged")]
     public partial class CustomTextBox : UserControl
     {
         //Fields
@@ -68,6 +60,23 @@ namespace utilitaries.CustomControls
                 this.Invalidate();
             }
         }
+        public bool PasswordChar
+        {
+            get { return textBox1.UseSystemPasswordChar; }
+            set { textBox1.UseSystemPasswordChar = value; }
+        }
+        public bool Modified
+        {
+            get
+            {
+                return textBox1.Modified;
+            }
+            set
+            {
+                textBox1.Modified = value;
+            }
+        }
+
         public Color BorderFocusColor
         {
             get
@@ -150,6 +159,21 @@ namespace utilitaries.CustomControls
                     borderRadius = value;
                     this.Invalidate(); //Redraw control
                 }
+            }
+        }
+        public void Clear()
+        {
+            textBox1.Clear();
+        }
+        public int MaxLenght
+        {
+            get
+            {
+                return textBox1.MaxLength;
+            }
+            set
+            {
+                textBox1.MaxLength = value;
             }
         }
 

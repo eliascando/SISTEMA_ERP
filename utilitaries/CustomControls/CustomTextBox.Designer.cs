@@ -57,7 +57,7 @@
             Controls.Add(textBox1);
             Name = "CustomTextBox";
             Padding = new Padding(10, 7, 10, 7);
-            Size = new Size(250, 30);
+            Size = new Size(250, 23);
             ResumeLayout(false);
             PerformLayout();
         }

@@ -6,6 +6,8 @@ namespace view.Visual
     public partial class RegistroPersonal : Form
     {
         PersonalCtrl personalCtrl = new PersonalCtrl();
+        private byte[] imageData;
+
         public RegistroPersonal()
         {
             InitializeComponent();
@@ -36,7 +38,7 @@ namespace view.Visual
                         {
                             string sexoE = rbtnSexoM.Checked ? rbtnSexoM.Text : rbtnSexoM.Text;
 
-                            if (await personalCtrl.RegistrarPersonalCtrl(txtCedula.Text, txtNombres.Text, txtApellidos.Text, cmbCargo.Text, dateNacimiento.Value, sexoE, txtTelefono.Text, txtCorreo.Text, txtDireccion.Text, dateIngreso.Value, txtSalario.Text))
+                            if (await personalCtrl.RegistrarPersonalCtrl(txtCedula.Text, txtNombres.Text, txtApellidos.Text, cmbCargo.Text, imageData, dateNacimiento.Value, sexoE, txtTelefono.Text, txtCorreo.Text, txtDireccion.Text, dateIngreso.Value, txtSalario.Text))
                             {
                                 MessageBox.Show("Registro Exitoso!");
                             }
@@ -72,6 +74,20 @@ namespace view.Visual
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnAddImagen_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string path = openFileDialog1.FileName;
+
+                picFotoPersonal.Image = Image.FromFile(path);
+
+                imageData = File.ReadAllBytes(path);
+            }
         }
     }
 }
